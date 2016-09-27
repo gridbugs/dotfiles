@@ -6,6 +6,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
+Plug 'chazy/cscope_maps'
 call plug#end()
 
 filetype plugin indent on
