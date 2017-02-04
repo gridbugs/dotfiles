@@ -58,11 +58,6 @@ nmap <silent> 0 g<Home>
 " rainbow parentheses
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
-" Rust auto-formatting
-let g:formatdef_rustfmt = '"rustfmt"'
-let g:formatters_rust = ['rustfmt']
-let g:rustfmt_autosave = 0
-
 " Rust racer settings
 set hidden
 let g:racer_cmd = "/home/steve/.cargo/bin/racer"
