@@ -1,0 +1,32 @@
+urxvt.termName:     xterm-256color
+
+urxvt.font:         xft:inconsolata:size=14:antialias=true:hinting=true
+
+! Scrolling configuration
+urxvt.tabbed.no-tabbedex-keys:  true
+urxvt.scrollTtyKeypress:        true
+urxvt.scrollTtyOutput:          false
+urxvt.scrollWithBuffer:         false
+urxvt.scrollBar:                false
+
+! Perl extensions
+urxvt.perl-lib:         /usr/lib/urxvt/perl:ENV_HOME/.urxvt-perl
+urxvt.perl-ext-common:  default,matcher,clipboard
+urxvt.url-launcher:     /usr/bin/xdg-open
+urxvt.matcher.button:   1
+
+! Copy/paste
+urxvt.keysym.Shift-Control-C: perl:clipboard:copy
+urxvt.keysym.Shift-Control-V: perl:clipboard:paste
+
+! Prevent yellow box
+urxvt.iso14755 : false
+
+! Transparency
+urxvt.transparent:   true
+urxvt.shading:       20
+
+! Colour scheme
+#include "urxvt-pastel-colours"
+
+! vi: ft=xdefaults
