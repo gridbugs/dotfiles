@@ -6,7 +6,7 @@ urxvt.font:         xft:inconsolata:size=14:antialias=true:hinting=true
 urxvt.tabbed.no-tabbedex-keys:  true
 urxvt.scrollTtyKeypress:        true
 urxvt.scrollTtyOutput:          false
-urxvt.scrollWithBuffer:         false
+urxvt.scrollWithBuffer:         true
 urxvt.scrollBar:                false
 
 ! Perl extensions
