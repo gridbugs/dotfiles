@@ -13,3 +13,7 @@ alias tmp='pushd `mktemp -d`'
 eval `keychain --quiet --eval --agents ssh id_rsa`
 
 source $ZSH/oh-my-zsh.sh
+
+if test -f $HOME/.profile; then
+    source $HOME/.profile
+fi
