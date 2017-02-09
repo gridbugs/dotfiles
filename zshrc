@@ -8,6 +8,7 @@ plugins=(git cargo rust archlinux z)
 export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH"
 
 alias ls='ls -Fp --group-directories-first --color=auto'
+alias tmp='pushd `mktemp -d`'
 
 eval `keychain --quiet --eval --agents ssh id_rsa`
 
