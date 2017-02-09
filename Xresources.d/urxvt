@@ -8,6 +8,7 @@ urxvt.scrollTtyKeypress:        true
 urxvt.scrollTtyOutput:          false
 urxvt.scrollWithBuffer:         true
 urxvt.scrollBar:                false
+urxvt.saveLines:                65535
 
 ! Perl extensions
 urxvt.perl-lib:         /usr/lib/urxvt/perl:ENV_HOME/.urxvt-perl
