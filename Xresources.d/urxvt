@@ -25,7 +25,7 @@ urxvt.iso14755 : false
 
 ! Transparency
 urxvt.transparent:   true
-urxvt.shading:       20
+urxvt.shading:       10
 
 ! Terminal navigation shortcuts
 URxvt.keysym.Control-Up:     \033[1;5A
