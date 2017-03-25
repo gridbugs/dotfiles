@@ -5,7 +5,7 @@ ZSH_THEME="stevebob"
 
 plugins=(git cargo rust archlinux z)
 
-export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 
 alias ls='ls -Fp --group-directories-first --color=auto'
 alias tmp='pushd `mktemp -d`'
