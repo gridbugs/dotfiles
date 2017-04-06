@@ -31,7 +31,12 @@ set bg=dark
 
 " highlight trailing whitespace
 set list
-set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+
+if system('uname -s') == "Darwin\n"
+    set listchars=tab:>\ ,trail:*,extends:#,nbsp:. " Highlight problematic whitespace
+else
+    set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+endif
 
 " dvorak remapping
 no t j
