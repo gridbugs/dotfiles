@@ -3,7 +3,13 @@ MACHINE=%{$fg_bold[red]%}%m%{$reset_color%}
 DIR=%{$fg_bold[green]%}%d%{$reset_color%}
 AT=%{$fg_bold[white]%}@%{$reset_color%}
 
-TOP='$DIR $USER$AT$MACHINE $(git_prompt_info)'
+if [ -z ${STY+x} ]; then
+    SCREEN_INFO=""
+else
+    SCREEN_INFO="%{$fg_bold[magenta]%}$STY%{$reset_color%} "
+fi
+
+TOP='$DIR $USER$AT$MACHINE $SCREEN_INFO$(git_prompt_info)'
 BOTTOM='%{$fg_bold[white]%}$%{$reset_color%} '
 PROMPT="
 $TOP
