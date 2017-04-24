@@ -9,7 +9,9 @@ export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 
 alias tmp='pushd `mktemp -d`'
 
-eval `keychain --quiet --eval --agents ssh id_rsa`
+if hash keychain 2>/dev/null; then
+    eval `keychain --quiet --eval --agents ssh id_rsa`
+fi
 
 source $ZSH/oh-my-zsh.sh
 
