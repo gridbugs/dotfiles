@@ -14,6 +14,12 @@ function make_link {
 
 cd $HOME
 
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+if [ -e $HOME/.zshrc ]; then
+    mv -v $HOME/.zshrc{,.old}
+fi
+
 make_link zshrc .zshrc
 make_link zsh-custom .zsh-custom
 make_link vimrc .vimrc
