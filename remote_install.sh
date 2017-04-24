@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
 
@@ -10,4 +10,4 @@ if [ -e $HOME/.zshrc ]; then
     mv -v $HOME/.zshrc{,.old}
 fi
 
-sh $HOME/.dotfiles/install.sh
+bash $HOME/.dotfiles/install.sh
