@@ -7,6 +7,7 @@ Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
 Plug 'chazy/cscope_maps'
 Plug 'cespare/vim-toml'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 filetype plugin indent on
