@@ -1,5 +1,4 @@
 call plug#begin()
-Plug 'tpope/vim-sensible'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'Chiel92/vim-autoformat'
