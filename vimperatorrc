@@ -9,3 +9,6 @@ no j t
 no k s
 no b n
 no B N
+
+" Ctrl-a
+inoremap <C-a> <C-Home><C-S-End>
