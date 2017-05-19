@@ -9,6 +9,7 @@ Plug 'chazy/cscope_maps'
 Plug 'cespare/vim-toml'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-sensible'
 call plug#end()
 
 filetype plugin indent on
