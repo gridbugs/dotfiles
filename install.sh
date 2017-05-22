@@ -25,6 +25,7 @@ make_link zsh-custom .zsh-custom
 make_link vimrc .vimrc
 make_link vim .vim
 make_link vimperatorrc .vimperatorrc
+make_link i3 .i3
 make_link xinitrc .xinitrc
 
 if test `uname -s` = 'Linux'; then
