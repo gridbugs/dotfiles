@@ -12,6 +12,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-sensible'
 call plug#end()
 
+" prevent auto-paired single quotes in rust files for lifetimes
+au Filetype rust let b:AutoPairs = {"\"": "\"", "{": "}", "(": ")", "[": "]"}
+
 filetype plugin indent on
 set softtabstop=4
 set shiftwidth=4
