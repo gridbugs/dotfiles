@@ -7,6 +7,7 @@ plugins=(git cargo rust archlinux z)
 
 export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 export EDITOR=vim
+export VISUAL=vim
 
 alias tmp='pushd `mktemp -d`'
 
