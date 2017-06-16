@@ -1,5 +1,5 @@
 call plug#begin()
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 Plug 'racer-rust/vim-racer'
 Plug 'Chiel92/vim-autoformat'
 Plug 'rust-lang/rust.vim'
@@ -37,11 +37,13 @@ set bg=dark
 " highlight trailing whitespace
 set list
 
-if system('uname -s') == "Darwin\n"
-    set listchars=tab:>\ ,trail:*,extends:#,nbsp:. " Highlight problematic whitespace
+if has("multi_byte")
+    set encoding=utf-8
+    set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 else
-    set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+    set listchars=tab:>\ ,trail:*,extends:#,nbsp:.
 endif
+
 
 " dvorak remapping
 no t j
@@ -53,8 +55,10 @@ no k s
 no b n
 no B N
 
+" Use :W to write with sudo privelages if was forgotten
+command W w !sudo tee %
+
 " Fix shift mistakes.
-cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
