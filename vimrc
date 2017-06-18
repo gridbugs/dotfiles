@@ -75,5 +75,9 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
 " Rust racer settings
 set hidden
-let g:racer_cmd = "/home/steve/.cargo/bin/racer"
-let $RUST_SRC_PATH="/home/steve/src/rustc-1.11.0/src"
+let g:racer_cmd = "$HOME/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)

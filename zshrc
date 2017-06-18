@@ -24,6 +24,7 @@ if test -f $HOME/.profile; then
 fi
 
 export CARGO_INCREMENTAL=1
+export RUST_SRC_PATH=$HOME/src/rust/src
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
   exec startx
