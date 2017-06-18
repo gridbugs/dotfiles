@@ -17,6 +17,8 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
+export I3_MOD_KEY=Mod4
+
 if test -f $HOME/.profile; then
     source $HOME/.profile
 fi
