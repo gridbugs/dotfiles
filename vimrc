@@ -10,6 +10,7 @@ Plug 'cespare/vim-toml'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-sensible'
+Plug 'tikhomirov/vim-glsl'
 call plug#end()
 
 " prevent auto-paired single quotes in rust files for lifetimes
