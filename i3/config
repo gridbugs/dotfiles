@@ -152,10 +152,12 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         position top
-        mode dock
+        mode hide
         hidden_state hide
         modifier $mod
 }
+
+bindsym $mod+m bar mode toggle
 
 new_window pixel 4
 gaps inner 8
