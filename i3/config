@@ -160,8 +160,8 @@ bar {
 bindsym $mod+m bar mode toggle
 
 new_window pixel 4
-gaps inner 8
-gaps outer -8
+gaps inner 4
+gaps outer -4
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +1%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -1%
