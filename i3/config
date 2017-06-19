@@ -167,3 +167,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 bindsym $mod+Shift+backslash exec --no-startup-id i3lock -c 000000
 bindsym $mod+b border toggle
+
+bindsym $mod+a exec --no-startup-id toggle_keymap
+bindsym $mod+o exec --no-startup-id toggle_tap
+bindsym $mod+e exec --no-startup-id toggle_close
