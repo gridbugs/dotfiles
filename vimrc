@@ -58,9 +58,6 @@ no k s
 no b n
 no B N
 
-" Use :W to write with sudo privelages if was forgotten
-command W w !sudo tee %
-
 " Fix shift mistakes.
 cnoreabbrev Q q
 cnoreabbrev Wq wq
