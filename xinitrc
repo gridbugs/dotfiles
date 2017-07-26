@@ -3,7 +3,7 @@
 if test -f $HOME/.xprofile; then
     source $HOME/.xprofile
 else
-    I3_MOD_KEY=Mod4
+    export I3_MOD_KEY=Mod4
 fi
 
 xrdb -remove
