@@ -8,15 +8,11 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
 Plug 'chazy/cscope_maps'
 Plug 'cespare/vim-toml'
 Plug 'airblade/vim-gitgutter'
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-sensible'
 Plug 'tikhomirov/vim-glsl'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 call plug#end()
-
-" prevent auto-paired single quotes in rust files for lifetimes
-au Filetype rust let b:AutoPairs = {"\"": "\"", "{": "}", "(": ")", "[": "]"}
 
 filetype plugin indent on
 set softtabstop=4
