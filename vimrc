@@ -12,6 +12,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tikhomirov/vim-glsl'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
+Plug 'avsm/ocaml-annot'
 call plug#end()
 
 filetype plugin indent on

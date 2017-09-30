@@ -26,6 +26,13 @@ if test -f $HOME/.profile; then
 fi
 
 export CARGO_INCREMENTAL=1
+
+OPAM_ZSH=$HOME/.opam/opam-init/init.zsh
+if test -f $OPAM_ZSH; then
+    # OPAM configuration
+    . $OPAM_ZSH > /dev/null 2> /dev/null || true
+fi
+
 export RUST_SRC_PATH=$HOME/src/rust/src
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
