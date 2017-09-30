@@ -25,7 +25,7 @@ if test -f $HOME/.profile; then
     source $HOME/.profile
 fi
 
-export CARGO_INCREMENTAL=1
+export CARGO_INCREMENTAL=0
 
 OPAM_ZSH=$HOME/.opam/opam-init/init.zsh
 if test -f $OPAM_ZSH; then
