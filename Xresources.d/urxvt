@@ -1,4 +1,4 @@
-urxvt.termName:     xterm-256color
+urxvt.termName:     rxvt-unicode-256color
 
 urxvt.font:         xft:inconsolata:size=14:antialias=true:hinting=true
 

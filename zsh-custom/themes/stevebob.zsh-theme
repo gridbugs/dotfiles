@@ -6,10 +6,16 @@ AT=%{$fg_bold[white]%}@%{$reset_color%}
 if [ -z ${STY+x} ]; then
     SCREEN_INFO=""
 else
-    SCREEN_INFO="%{$fg_bold[magenta]%}$STY%{$reset_color%} "
+    SCREEN_INFO="%{$fg_bold[cyan]%}$STY%{$reset_color%} "
 fi
 
-TOP='$DIR $USER$AT$MACHINE $SCREEN_INFO$(git_prompt_info)'
+if [ -z ${NIX_CC+x} ]; then
+    NIX_INFO=""
+else
+    NIX_INFO="%{$fg_bold[magenta]%}nix%{$reset_color%} "
+fi
+
+TOP='$DIR $USER$AT$MACHINE $NIX_INFO$SCREEN_INFO$(git_prompt_info)'
 BOTTOM='%{$fg_bold[white]%}$%{$reset_color%} '
 PROMPT="
 $TOP

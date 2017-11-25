@@ -1,9 +1,7 @@
 call plug#begin()
-Plug 'luochen1990/rainbow'
 Plug 'racer-rust/vim-racer'
 Plug 'Chiel92/vim-autoformat'
 Plug 'rust-lang/rust.vim'
-Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
 Plug 'chazy/cscope_maps'
 Plug 'cespare/vim-toml'
@@ -12,7 +10,10 @@ Plug 'tpope/vim-sensible'
 Plug 'tikhomirov/vim-glsl'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
-Plug 'avsm/ocaml-annot'
+Plug 'OCamlPro/ocp-indent'
+Plug 'ocaml/merlin'
+Plug 'rgrinberg/vim-ocaml'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 filetype plugin indent on
@@ -44,7 +45,6 @@ else
     set listchars=tab:>\ ,trail:*,extends:#,nbsp:.
 endif
 
-
 " dvorak remapping
 no t j
 no n k
@@ -66,14 +66,24 @@ nmap <silent> n gk
 nmap <silent> $ g<End>
 nmap <silent> 0 g<Home>
 
-" rainbow parentheses
-let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
-
 " Rust racer settings
 set hidden
-let g:racer_cmd = "$HOME/.cargo/bin/racer"
+let g:racer_cmd="/home/steve/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+" ocaml
+set rtp+=~/.opam/4.05.0/share/merlin/vim/doc
+source ~/.vim/ocaml.vim
+au FileType ocaml nmap ,,t :MerlinTypeOf<CR>
+
+" Per-language tab width
+au FileType python setl sw=2 sts=2 et
+au FileType ocaml setl sw=2 sts=2 et
+au FileType html setl sw=2 sts=2 et
+au FileType yaml setl sw=2 sts=2 et
+au BufRead,BufNewFile jbuild set lisp
+au BufRead,BufNewFile jbuild set syntax=scm

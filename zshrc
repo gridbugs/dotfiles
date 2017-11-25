@@ -3,7 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM="$HOME/.zsh-custom"
 ZSH_THEME="stevebob"
 
-plugins=(git cargo rust archlinux z)
+plugins=(git cargo rust archlinux z rvm nvm gem npm)
 
 export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/sbin:$PATH"
 export EDITOR=vim
@@ -38,3 +38,9 @@ export RUST_SRC_PATH=$HOME/src/rust/src
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
   exec startx
 fi
+
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+    . $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
