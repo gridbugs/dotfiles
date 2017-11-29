@@ -1,6 +1,8 @@
 urxvt.termName:     rxvt-unicode-256color
 
-urxvt.font:         xft:inconsolata:size=14:antialias=true:hinting=true
+urxvt.font:         xft:xos4 Terminess Powerline:size=14
+
+URxvt.letterSpace: 1
 
 ! Scrolling configuration
 urxvt.tabbed.no-tabbedex-keys:  true

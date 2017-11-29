@@ -28,6 +28,10 @@ make_link vimperatorrc .vimperatorrc
 make_link i3 .i3
 make_link xinitrc .xinitrc
 make_link zfunc .zfunc
+make_link fonts .fonts
+
+mkdir -v -p $HOME/.config
+ln -v -s $DIR/fontconfig $HOME/.config/fontconfig
 
 if test `uname -s` = 'Linux'; then
     make_link urxvt .urxvt

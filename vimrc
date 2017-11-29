@@ -1,4 +1,6 @@
 call plug#begin()
+Plug 'powerline/powerline'
+Plug 'vim-airline/vim-airline'
 Plug 'racer-rust/vim-racer'
 Plug 'Chiel92/vim-autoformat'
 Plug 'rust-lang/rust.vim'
@@ -46,12 +48,15 @@ else
 endif
 
 " dvorak remapping
-no t j
-no n k
-no s l
-no l n
-no j t
-no k s
+map t <DOWN>
+map n <UP>
+map h <LEFT>
+map s <RIGHT>
+map T 10<DOWN>
+map N 10<UP>
+map H 10<LEFT>
+map S 10<RIGHT>
+
 no b n
 no B N
 
@@ -87,3 +92,11 @@ au FileType html setl sw=2 sts=2 et
 au FileType yaml setl sw=2 sts=2 et
 au BufRead,BufNewFile jbuild set lisp
 au BufRead,BufNewFile jbuild set syntax=scm
+
+colorscheme ron
+set cursorline
+set cursorcolumn
+hi CursorColumn ctermbg=236
+hi CursorLine ctermbg=236 cterm=none
+
+let g:airline_powerline_fonts = 1
