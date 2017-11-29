@@ -32,7 +32,12 @@ make_link fonts .fonts
 make_link i3status.conf .i3status.conf
 
 mkdir -v -p $HOME/.config
-ln -v -s $DIR/fontconfig $HOME/.config/fontconfig
+
+if test -e $HOME/.config/fontconfig; then
+    echo $DIR/fontconfig already exists
+else
+    ln -v -s $DIR/fontconfig $HOME/.config/
+fi
 
 if test `uname -s` = 'Linux'; then
     make_link urxvt .urxvt
