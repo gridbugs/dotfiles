@@ -29,6 +29,7 @@ make_link i3 .i3
 make_link xinitrc .xinitrc
 make_link zfunc .zfunc
 make_link fonts .fonts
+make_link i3status.conf .i3status.conf
 
 mkdir -v -p $HOME/.config
 ln -v -s $DIR/fontconfig $HOME/.config/fontconfig
