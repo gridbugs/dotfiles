@@ -96,7 +96,7 @@ au BufRead,BufNewFile jbuild set syntax=scm
 colorscheme ron
 set cursorline
 set cursorcolumn
-hi CursorColumn ctermbg=236
-hi CursorLine ctermbg=236 cterm=none
+hi CursorColumn ctermbg=235
+hi CursorLine ctermbg=235 cterm=none
 
 let g:airline_powerline_fonts = 1
