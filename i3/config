@@ -38,7 +38,7 @@ bindsym $mod+Return exec firefox
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec dmenu_run -fn "monospace-10"
+bindsym $mod+p exec dmenu_run -fn "xos4 Terminess Powerline-15"
 
 # change focus
 bindsym $mod+h focus left
