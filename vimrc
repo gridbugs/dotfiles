@@ -7,7 +7,6 @@ Plug 'rust-lang/rust.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
 Plug 'chazy/cscope_maps'
 Plug 'cespare/vim-toml'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-sensible'
 Plug 'tikhomirov/vim-glsl'
 Plug 'tpope/vim-fugitive'
@@ -16,6 +15,8 @@ Plug 'OCamlPro/ocp-indent'
 Plug 'ocaml/merlin'
 Plug 'rgrinberg/vim-ocaml'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'mhinz/vim-signify'
+Plug 'unblevable/quick-scope'
 call plug#end()
 
 filetype plugin indent on
