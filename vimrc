@@ -32,8 +32,11 @@ set incsearch
 set ignorecase
 set smartcase
 set hlsearch
-set mouse=a
 set t_Co=256
+
+" mouse support
+set mouse=a
+set ttymouse=xterm2 " required for window resizing in tmux
 
 set pastetoggle=<F2>
 set bg=dark
