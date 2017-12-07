@@ -104,4 +104,6 @@ hi CursorColumn ctermbg=235
 hi CursorLine ctermbg=235 cterm=none
 hi Search cterm=none ctermfg=lightgrey ctermbg=darkblue
 
+let g:qs_enable = 0
+
 let g:airline_powerline_fonts = 1
