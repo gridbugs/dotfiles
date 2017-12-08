@@ -103,6 +103,11 @@ set cursorcolumn
 hi CursorColumn ctermbg=235
 hi CursorLine ctermbg=235 cterm=none
 
+" highlight signs in Sy
+highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
+highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
+highlight SignifySignChange cterm=bold ctermbg=237 ctermfg=227
+
 let g:qs_enable = 0
 
 let g:airline_powerline_fonts = 1
