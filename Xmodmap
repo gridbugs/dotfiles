@@ -1,0 +1,4 @@
+! Map caps lock to control
+clear lock
+keycode 66 = Control_L
+add control = Control_L Control_R

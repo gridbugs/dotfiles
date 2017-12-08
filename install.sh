@@ -31,6 +31,7 @@ make_link zfunc .zfunc
 make_link fonts .fonts
 make_link i3status.conf .i3status.conf
 make_link tmux.conf .tmux.conf
+make_link Xmodmap .Xmodmap
 make_link wallpaper.png .wallpaper.png
 
 mkdir -v -p $HOME/.config
