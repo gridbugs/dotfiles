@@ -1,6 +1,6 @@
 urxvt.termName:     rxvt-unicode-256color
 
-urxvt.font:         xft:xos4 Terminess Powerline:size=14
+urxvt.font:         xft:Hack:size=12
 
 URxvt.letterSpace: 1
 
