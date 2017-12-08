@@ -33,7 +33,7 @@ if test -f $OPAM_ZSH; then
     . $OPAM_ZSH > /dev/null 2> /dev/null || true
 fi
 
-export RUST_SRC_PATH=$HOME/src/rust/src
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
   exec startx
