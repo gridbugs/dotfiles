@@ -20,6 +20,9 @@ if [ -e $HOME/.zshrc ]; then
     mv -v $HOME/.zshrc{,.old}
 fi
 
+mkdir -v -p $HOME/.config
+mkdir -v -p $HOME/.config/terminator
+
 make_link zshrc .zshrc
 make_link zsh-custom .zsh-custom
 make_link vimrc .vimrc
@@ -33,8 +36,7 @@ make_link i3status.conf .i3status.conf
 make_link tmux.conf .tmux.conf
 make_link Xmodmap .Xmodmap
 make_link wallpaper.png .wallpaper.png
-
-mkdir -v -p $HOME/.config
+make_link terminator.config .config/terminator/config
 
 if test -e $HOME/.config/fontconfig; then
     echo $DIR/fontconfig already exists
