@@ -17,6 +17,7 @@ Plug 'rgrinberg/vim-ocaml'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-signify'
 Plug 'unblevable/quick-scope'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 call plug#end()
 
 filetype plugin indent on

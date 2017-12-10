@@ -44,3 +44,5 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
 fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
