@@ -110,5 +110,5 @@ highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
 highlight SignifySignChange cterm=bold ctermbg=237 ctermfg=227
 
 let g:qs_enable = 0
-
+let g:multi_cursor_exit_from_insert_mode = 0
 let g:airline_powerline_fonts = 1
