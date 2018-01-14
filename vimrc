@@ -99,10 +99,8 @@ au BufRead,BufNewFile jbuild set lisp
 au BufRead,BufNewFile jbuild set syntax=scm
 
 colorscheme ron
-set cursorline
 set cursorcolumn
 hi CursorColumn ctermbg=235
-hi CursorLine ctermbg=235 cterm=none
 
 " highlight signs in Sy
 highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
