@@ -98,9 +98,13 @@ au FileType yaml setl sw=2 sts=2 et
 au BufRead,BufNewFile jbuild set lisp
 au BufRead,BufNewFile jbuild set syntax=scm
 
-colorscheme ron
-set cursorcolumn
-hi CursorColumn ctermbg=235
+hi CursorColumn term=reverse ctermbg=234 guibg=Grey40
+hi CursorLine ctermbg=235 cterm=none
+hi Search cterm=none ctermfg=lightgrey ctermbg=darkblue
+                                
+" make spelling errors visible when the line is highlighted
+hi clear SpellBad               
+hi SpellBad cterm=bold,underline  
 
 " highlight signs in Sy
 highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
