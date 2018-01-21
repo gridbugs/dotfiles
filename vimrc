@@ -100,10 +100,9 @@ au BufRead,BufNewFile jbuild set syntax=scm
 
 hi CursorColumn term=reverse ctermbg=234 guibg=Grey40
 hi CursorLine ctermbg=235 cterm=none
-hi Search cterm=none ctermfg=lightgrey ctermbg=darkblue
-                                
+
 " make spelling errors visible when the line is highlighted
-hi clear SpellBad               
+hi clear SpellBad
 hi SpellBad cterm=bold,underline  
 
 " highlight signs in Sy
