@@ -1,10 +1,7 @@
 call plug#begin()
 Plug 'powerline/powerline'
 Plug 'vim-airline/vim-airline'
-Plug 'racer-rust/vim-racer'
 Plug 'Chiel92/vim-autoformat'
-Plug 'rust-lang/rust.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
 Plug 'chazy/cscope_maps'
 Plug 'cespare/vim-toml'
 Plug 'tpope/vim-sensible'
@@ -16,11 +13,18 @@ Plug 'ocaml/merlin'
 Plug 'rgrinberg/vim-ocaml'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-signify'
-Plug 'unblevable/quick-scope'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'rust-lang/rust.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'racer-rust/vim-racer'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
 call plug#end()
 
 filetype plugin indent on
+syntax enable
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
@@ -37,7 +41,7 @@ set t_Co=256
 
 " mouse support
 set mouse=a
-set ttymouse=xterm2 " required for window resizing in tmux
+"set ttymouse=xterm2 " required for window resizing in tmux
 
 set pastetoggle=<F2>
 set bg=dark
@@ -52,7 +56,7 @@ else
     set listchars=tab:>\ ,trail:*,extends:#,nbsp:.
 endif
 
-" dvorak remapping
+"" dvorak remapping
 map t <DOWN>
 map n <UP>
 map h <LEFT>
@@ -76,40 +80,26 @@ nmap <silent> n gk
 nmap <silent> $ g<End>
 nmap <silent> 0 g<Home>
 
+hi CursorColumn term=reverse ctermbg=234 guibg=Grey40
+hi CursorLine ctermbg=235 cterm=bold
+
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
+
 " Rust racer settings
-set hidden
 let g:racer_cmd="/home/steve/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
-
-" ocaml
-set rtp+=~/.opam/4.05.0/share/merlin/vim/doc
-source ~/.vim/ocaml.vim
-au FileType ocaml nmap ,,t :MerlinTypeOf<CR>
-
-" Per-language tab width
-au FileType python setl sw=2 sts=2 et
-au FileType ocaml setl sw=2 sts=2 et
-au FileType html setl sw=2 sts=2 et
-au FileType yaml setl sw=2 sts=2 et
-au BufRead,BufNewFile jbuild set lisp
-au BufRead,BufNewFile jbuild set syntax=scm
-
-hi CursorColumn term=reverse ctermbg=234 guibg=Grey40
-hi CursorLine ctermbg=235 cterm=none
-
-" make spelling errors visible when the line is highlighted
-hi clear SpellBad
-hi SpellBad cterm=bold,underline  
+let g:autofmt_autosave = 1
 
 " highlight signs in Sy
 highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
 highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
 highlight SignifySignChange cterm=bold ctermbg=237 ctermfg=227
 
-let g:qs_enable = 0
 let g:multi_cursor_exit_from_insert_mode = 0
 let g:airline_powerline_fonts = 1
