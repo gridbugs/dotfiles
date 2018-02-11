@@ -10,6 +10,7 @@ export EDITOR=vim
 export VISUAL=vim
 
 alias tmp='pushd `mktemp -d`'
+alias vim='nvim'
 
 if hash keychain 2>/dev/null; then
     eval `keychain --quiet --eval --agents ssh id_rsa`

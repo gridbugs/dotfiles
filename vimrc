@@ -20,7 +20,11 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'racer-rust/vim-racer'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 filetype plugin indent on
@@ -80,8 +84,13 @@ nmap <silent> n gk
 nmap <silent> $ g<End>
 nmap <silent> 0 g<Home>
 
-hi CursorColumn term=reverse ctermbg=234 guibg=Grey40
-hi CursorLine ctermbg=235 cterm=bold
+colorscheme ron
+set cursorcolumn
+set cursorline
+hi CursorColumn term=reverse ctermbg=235 guibg=Grey40
+hi CursorLine ctermbg=235 cterm=none
+hi clear SpellBad
+hi SpellBad cterm=bold,underline
 
 if executable('rls')
     au User lsp_setup call lsp#register_server({
@@ -90,6 +99,14 @@ if executable('rls')
         \ 'whitelist': ['rust'],
         \ })
 endif
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ }
+
+nnoremap <silent> ,,t :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent>go <C-O>
 
 " Rust racer settings
 let g:racer_cmd="/home/steve/.cargo/bin/racer"
