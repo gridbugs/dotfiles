@@ -24,7 +24,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 filetype plugin indent on
@@ -92,6 +91,8 @@ hi CursorLine ctermbg=235 cterm=none
 hi clear SpellBad
 hi SpellBad cterm=bold,underline
 
+set guicursor=i-n-v-c:block-Cursor
+
 if executable('rls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'rls',
@@ -108,6 +109,10 @@ nnoremap <silent> ,,t :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent>go <C-O>
 
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+
 " Rust racer settings
 let g:racer_cmd="/home/steve/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
@@ -120,3 +125,26 @@ highlight SignifySignChange cterm=bold ctermbg=237 ctermfg=227
 
 let g:multi_cursor_exit_from_insert_mode = 0
 let g:airline_powerline_fonts = 1
+
+" Put plugins and dictionaries in this dir (also on Windows)
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir ' . vimDir)
+    call system('mkdir ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+endif
+
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" Auto reload vimrc
+autocmd! bufwritepost .vimrc source %
