@@ -38,6 +38,7 @@ make_link tmux.conf .tmux.conf
 make_link Xmodmap .Xmodmap
 make_link wallpaper.png .wallpaper.png
 make_link terminator.config .config/terminator/config
+make_link htoprc .config/htop/htoprc
 
 if test -e $HOME/.config/fontconfig; then
     echo $DIR/fontconfig already exists
