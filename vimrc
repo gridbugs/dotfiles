@@ -80,9 +80,9 @@ map N 10<UP>
 map H 10<LEFT>
 map S 10<RIGHT>
 
-" Use qwerty b and e to jump within word
-no . e
-no x b
+" Use s and d keys (o and e in dvorak) to move between words
+no o b
+" d is already the e key
 
 " Use b and B to navigate search
 no b n
