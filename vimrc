@@ -59,11 +59,17 @@ else
     set listchars=tab:>\ ,trail:*,extends:#,nbsp:.
 endif
 
-" Different cursors in different modes
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[2 q"
-      
+if exists('$TMUX')
+    " tmux will only forward escape sequences to the terminal if surrounded by a DCS sequence
+    let &t_SI .= "\<Esc>Ptmux;\<Esc>\<Esc>[6 q\<Esc>\\"
+    let &t_EI .= "\<Esc>Ptmux;\<Esc>\<Esc>[2 q\<Esc>\\"
+    autocmd VimLeave * silent !echo -ne "\033Ptmux;\033\033[0 q\033\\"
+else
+    let &t_SI .= "\<Esc>[6 q"
+    let &t_EI .= "\<Esc>[2 q"
+    autocmd VimLeave * silent !echo -ne "\033[0 q"
+endif
+
 " Resize windows with +/-
 if bufwinnr(1)
   map + <C-W>+
@@ -102,12 +108,10 @@ nmap <silent> 0 g<Home>
 colorscheme ron
 set cursorcolumn
 set cursorline
-hi CursorColumn term=reverse ctermbg=235 guibg=Grey40
-hi CursorLine ctermbg=235 cterm=none
+hi CursorColumn term=reverse ctermbg=233 guibg=Grey40
+hi CursorLine ctermbg=233 cterm=none
 hi clear SpellBad
 hi SpellBad cterm=bold,underline
-
-set guicursor=i-n-v-c:block-Cursor
 
 if executable('rls')
     au User lsp_setup call lsp#register_server({
