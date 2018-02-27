@@ -44,7 +44,7 @@ set t_Co=256
 
 " mouse support
 set mouse=a
-"set ttymouse=xterm2 " required for window resizing in tmux
+set ttymouse=xterm2 " required for window resizing in tmux
 
 set pastetoggle=<F2>
 set bg=dark
@@ -59,7 +59,18 @@ else
     set listchars=tab:>\ ,trail:*,extends:#,nbsp:.
 endif
 
-"" dvorak remapping
+" Different cursors in different modes
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+      
+" Resize windows with +/-
+if bufwinnr(1)
+  map + <C-W>+
+  map - <C-W>-
+endif
+
+" dvorak remapping
 map t <DOWN>
 map n <UP>
 map h <LEFT>
@@ -69,6 +80,11 @@ map N 10<UP>
 map H 10<LEFT>
 map S 10<RIGHT>
 
+" Use qwerty b and e to jump within word
+no . e
+no x b
+
+" Use b and B to navigate search
 no b n
 no B N
 
