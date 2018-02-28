@@ -47,6 +47,10 @@ set mouse=a
 set ttymouse=xterm2 " required for window resizing in tmux
 
 set pastetoggle=<F2>
+
+" F3 lists files in the current file's directory
+map <F3> :let g:f3_filename=expand("%:t")<CR>:e %:h<CR>10j:call search('^\V' . g:f3_filename, 'c')<CR>
+
 set bg=dark
 
 " highlight trailing whitespace
@@ -166,8 +170,13 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+" Auto reflow paragraphs
 command! Reflow setl fo=aw2tq
 command! NoReflow setl fo=n1croql
+
+" space is also useless in normal mode, : is awesome  
+nnoremap <space> :                                       
+vnoremap <space> :   
 
 " Auto reload vimrc
 autocmd! bufwritepost .vimrc source %
