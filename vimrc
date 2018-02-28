@@ -166,5 +166,8 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+command! Reflow setl fo=aw2tq
+command! NoReflow setl fo=n1croql
+
 " Auto reload vimrc
 autocmd! bufwritepost .vimrc source %
