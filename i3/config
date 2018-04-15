@@ -185,8 +185,8 @@ bar {
 bindsym $mod+m bar mode toggle
 
 new_window pixel 4
-gaps inner 4
-gaps outer -4
+gaps inner 0
+gaps outer 0
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
