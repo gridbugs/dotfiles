@@ -15,15 +15,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-signify'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'rust-lang/rust.vim'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'racer-rust/vim-racer'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --system-libclang --clang-completer --rust-completion --racer-completion --js-completion' }
 call plug#end()
 
 filetype plugin indent on
@@ -117,30 +110,12 @@ hi CursorLine ctermbg=233 cterm=none
 hi clear SpellBad
 hi SpellBad cterm=bold,underline
 
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-        \ 'whitelist': ['rust'],
-        \ })
-endif
-
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ }
-
-nnoremap <silent> ,,t :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent>go <C-O>
-
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-
 " Rust racer settings
-let g:racer_cmd="/home/steve/.cargo/bin/racer"
+let g:racer_cmd="~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 let g:autofmt_autosave = 1
+
+let g:ycm_rust_src_path = '~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 
 " highlight signs in Sy
 highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
