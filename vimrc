@@ -120,6 +120,8 @@ let g:autofmt_autosave = 1
 let g:ycm_rust_src_path = '~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 nnoremap <Leader>s :YcmCompleter GoTo<CR>
 
+autocmd BufWritePost *.rs RustFmt
+
 " highlight signs in Sy
 highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
 highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
