@@ -17,6 +17,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --system-libclang --clang-completer --rust-completion --racer-completion --js-completion' }
+Plug 'scrooloose/syntastic'
+Plug 'bitc/vim-hdevtools'
 call plug#end()
 
 filetype plugin indent on
@@ -185,6 +187,17 @@ command! NoReflow setl fo=n1croql
 " space is also useless in normal mode, : is awesome
 nnoremap <space> :
 vnoremap <space> :
+
+au FileType haskell nnoremap <Leader>t :HdevtoolsType<CR>
+
+" Syntastic settings
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let stack_ghc_args = '$(stack path --ghc-package-path | xargs -d: -I{} echo -n "-g-package-db={} ")'
+let g:syntastic_haskell_hdevtools_args = stack_ghc_args
+let g:hdevtools_options = stack_ghc_args
 
 " Auto reload vimrc
 autocmd! bufwritepost .vimrc source %
