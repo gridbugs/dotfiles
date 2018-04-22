@@ -49,5 +49,6 @@ if test `uname -s` = 'Linux'; then
     make_link urxvt .urxvt
     make_link Xresources .Xresources
     make_link Xresources.d .Xresources.d
+    make_link xmonad .xmonad
     make_link Xmodmap .Xmodmap
 fi
