@@ -35,7 +35,6 @@ make_link zfunc .zfunc
 make_link fonts .fonts
 make_link i3status.conf .i3status.conf
 make_link tmux.conf .tmux.conf
-make_link Xmodmap .Xmodmap
 make_link wallpaper.png .wallpaper.png
 make_link terminator.config .config/terminator/config
 make_link htoprc .config/htop/htoprc
@@ -50,4 +49,5 @@ if test `uname -s` = 'Linux'; then
     make_link urxvt .urxvt
     make_link Xresources .Xresources
     make_link Xresources.d .Xresources.d
+    make_link Xmodmap .Xmodmap
 fi
