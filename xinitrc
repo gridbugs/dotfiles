@@ -9,7 +9,7 @@ if test -f $HOME/.xprofile; then
 fi
 
 if hash xsetroot 2>/dev/null; then
-    xsetroot -solid blcak
+    xsetroot -solid black
 fi
 
 xrdb -remove
