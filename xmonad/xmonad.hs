@@ -23,6 +23,10 @@ main = do
 myTerminal = "urxvt"
 myWebBrowser = "firefox"
 
+myNormalBorderColour = "#000000"
+myFocusedBorderColour = "#880000"
+myNavBorderColour = "#000044"
+
 myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
 
 myConfig xmproc =
@@ -37,8 +41,8 @@ myConfig xmproc =
             { ppOutput        = hPutStrLn xmproc
             , ppTitle         = xmobarColor "#999999" "" . shorten 50
             }
-        , normalBorderColor  = "#000000"
-        , focusedBorderColor = "#cc0000"
+        , normalBorderColor  = myNormalBorderColour
+        , focusedBorderColor = myFocusedBorderColour
         , borderWidth     = 4
         }
     in additionalKeysP c $ myKeys c
@@ -62,9 +66,9 @@ myKeys c =
     , ("M-S-t"          , O.windows S.swapDown)
     ]
 
-myLayout = WN.configurableNavigation (WN.navigateColor "#440000") $
+myLayout = WN.configurableNavigation (WN.navigateColor myNavBorderColour) $
     WN.windowNavigation $
         noBorders Full
-    ||| Tall 1 (1/100) (3/4)
-    ||| Mirror (Tall 1 (1/100) (3/4))
+    ||| Tall 1 (4/100) (3/4)
+    ||| Mirror (Tall 1 (4/100) (3/4))
     ||| emptyBSP
