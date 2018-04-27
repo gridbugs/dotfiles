@@ -5,7 +5,7 @@ ZSH_THEME="stevebob"
 
 plugins=(git cargo rust archlinux z rvm nvm gem npm)
 
-export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/sbin:$PATH"
+export PATH="$HOME/bin:$HOME/.bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/sbin:$PATH"
 export EDITOR=vim
 export VISUAL=vim
 

@@ -14,6 +14,7 @@ Plug 'rgrinberg/vim-ocaml'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mhinz/vim-signify'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --system-libclang --clang-completer --rust-completion --racer-completion --js-completion' }
@@ -180,8 +181,6 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-" Auto reflow paragraphs
-command! Reflow setl fo=aw2tq
 command! NoReflow setl fo=n1croql
 
 " space is also useless in normal mode, : is awesome
@@ -193,11 +192,19 @@ au FileType haskell nnoremap <Leader>t :HdevtoolsType<CR>
 " Syntastic settings
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let stack_ghc_args = '$(stack path --ghc-package-path | xargs -d: -I{} echo -n "-g-package-db={} ")'
+let stack_ghc_args = '$(stack-hdevtools-args)'
 let g:syntastic_haskell_hdevtools_args = stack_ghc_args
 let g:hdevtools_options = stack_ghc_args
+
+let g:fzf_command_prefix = 'Nth'
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>, "--all-text",
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
 
 " Auto reload vimrc
 autocmd! bufwritepost .vimrc source %

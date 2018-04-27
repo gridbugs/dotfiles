@@ -1,0 +1,3 @@
+rofi.theme:         purple
+rofi.font:          hack 10
+rofi.modi:          combi
