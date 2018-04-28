@@ -91,6 +91,7 @@ myKeys c =
     , ("M-b"            , sendMessage ToggleStruts)
     , ("M-q"            , spawn "killall xmobar; xmonad --recompile; xmonad --restart")
     , ("M-S-q"          , io exitSuccess)
+    , ("M-S-c"          , kill)
     , ("M-h"            , sendMessage $ WN.Go L)
     , ("M-s"            , sendMessage $ WN.Go R)
     , ("M-n"            , sendMessage $ WN.Go U)
