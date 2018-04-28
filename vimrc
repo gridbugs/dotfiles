@@ -108,8 +108,8 @@ nmap <silent> 0 g<Home>
 colorscheme ron
 set cursorcolumn
 set cursorline
-hi CursorColumn term=reverse ctermbg=233 guibg=Grey40
-hi CursorLine ctermbg=233 cterm=none
+hi CursorColumn term=reverse ctermbg=235 guibg=Grey40
+hi CursorLine ctermbg=235 cterm=none
 hi clear SpellBad
 hi SpellBad cterm=bold,underline
 
@@ -199,6 +199,7 @@ let g:syntastic_haskell_hdevtools_args = stack_ghc_args
 let g:hdevtools_options = stack_ghc_args
 
 let g:fzf_command_prefix = 'Nth'
+let g:fzf_history_dir = '~/.fzf-history/vim'
 
 command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>, "--all-text",

@@ -1,36 +1,36 @@
-urxvt.termName:     rxvt-unicode-256color
+URxvt.termName:     rxvt-unicode-256color
 
-urxvt.font:         xft:Hack:size=12
+URxvt.font:         xft:Hack:size=12
 
 URxvt.letterSpace: 1
 
 ! Scrolling configuration
-urxvt.tabbed.no-tabbedex-keys:  true
-urxvt.scrollTtyKeypress:        true
-urxvt.scrollTtyOutput:          false
-urxvt.scrollWithBuffer:         true
-urxvt.scrollBar:                false
-urxvt.saveLines:                65535
+URxvt.tabbed.no-tabbedex-keys:  true
+URxvt.scrollTtyKeypress:        true
+URxvt.scrollTtyOutput:          false
+URxvt.scrollWithBuffer:         true
+URxvt.scrollBar:                false
+URxvt.saveLines:                65535
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
 
 ! Perl extensions
-urxvt.perl-lib:         /usr/lib/urxvt/perl
-urxvt.perl-ext-common:  default,matcher,clipboard
-urxvt.url-launcher:     /usr/bin/xdg-open
-urxvt.matcher.button:   1
+URxvt.perl-lib:         /usr/lib/URxvt/perl
+URxvt.perl-ext-common:  default,matcher,clipboard
+URxvt.url-launcher:     /usr/bin/xdg-open
+URxvt.matcher.button:   1
 
 ! Copy/paste
-urxvt.keysym.Shift-Control-C: perl:clipboard:copy
-urxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 
 ! Prevent yellow box
-urxvt.iso14755 : false
+URxvt.iso14755 : false
 
 ! Transparency
-urxvt.transparent:   true
-urxvt.shading:       10
+URxvt.transparent:   true
+URxvt.shading:       10
 
 ! Terminal navigation shortcuts
 URxvt.keysym.Control-Up:     \033[1;5A
