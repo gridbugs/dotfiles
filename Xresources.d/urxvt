@@ -16,8 +16,8 @@ URxvt.secondaryScroll: 0
 URxvt.secondaryWheel: 1
 
 ! Perl extensions
-URxvt.perl-lib:         /usr/lib/URxvt/perl
-URxvt.perl-ext-common:  default,matcher,clipboard
+URxvt.perl-lib:         HOME/.urxvt/ext
+URxvt.perl-ext-common:  clipboard
 URxvt.url-launcher:     /usr/bin/xdg-open
 URxvt.matcher.button:   1
 

@@ -98,6 +98,7 @@ myKeys c =
     , ("M-t"            , sendMessage $ WN.Go D)
     , ("M-S-s"          , sendMessage Expand)
     , ("M-S-h"          , sendMessage Shrink)
+    , ("M-<Space>"      , sendMessage NextLayout)
     , ("M-S-<Space>"    , O.windows S.swapMaster)
     , ("M-S-n"          , O.windows S.swapUp)
     , ("M-S-t"          , O.windows S.swapDown)
