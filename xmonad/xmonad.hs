@@ -106,6 +106,7 @@ myKeys c =
     , ("M-."            , sendMessage $ IncMasterN (-1))
     , ("M-a"            , spawn "setxkbmap en_US")
     , ("M-m"            , spawn "setxkbmap dvorak")
+    , ("M-y"            , withFocused $ windows . S.sink)
     , ("M-e"            , scratchpadSpawnActionTerminal myTerminal)
     , ("<XF86AudioLowerVolume>", spawn "amixer set Master 2%-")
     , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 2%+")
