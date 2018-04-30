@@ -35,12 +35,12 @@ noScratchPad ws = if ws == "NSP" then "" else ws
 myNormalBorderColour    = "#000000"
 myFocusedBorderColour   = "#cc0000"
 myNavBorderColour       = "#444488"
-myXmobarTitle           = xmobarColor "#6688ff" "" . shorten 50
-myXmobarCurrent         = xmobarColor "#ffff00" ""
+myXmobarTitle           = xmobarColor "#8888ff" "" . shorten 50
+myXmobarCurrent         = xmobarColor "#00ff00" ""
+myXmobarVisible         = xmobarColor "#ffff00" ""
 myXmobarHidden          = xmobarColor "#aaaaaa" "" . noScratchPad
 myXmobarHiddenNoWindows = xmobarColor "#666666" "" . myXmobarHiddenNoWindowsFilter
-myXmobarLayout          = xmobarColor "#ff8866" "" . noScratchPad
-
+myXmobarLayout          = xmobarColor "#ff8888" "" . noScratchPad
 
 myConfig xmproc =
     let c = def {
@@ -102,8 +102,8 @@ myKeys c =
     , ("M-S-<Space>"    , O.windows S.swapMaster)
     , ("M-S-n"          , O.windows S.swapUp)
     , ("M-S-t"          , O.windows S.swapDown)
-    , ("M-,"            , sendMessage $ IncMasterN 1)
-    , ("M-."            , sendMessage $ IncMasterN (-1))
+    , ("M-w"            , sendMessage $ IncMasterN 1)
+    , ("M-v"            , sendMessage $ IncMasterN (-1))
     , ("M-a"            , spawn "setxkbmap en_US")
     , ("M-m"            , spawn "setxkbmap dvorak")
     , ("M-y"            , withFocused $ windows . S.sink)
@@ -121,6 +121,11 @@ myKeys c =
         | (w, k) <- zip (workspaces c) [1..]
         , (s, f) <- zip ["", "S-"] [S.view, S.shift]
     ]
+    ++
+    [ ("M-" ++ s ++ k, screenWorkspace sc >>= flip whenJust (O.windows . f))
+        | (sc, k) <- zip [0..] ["'", ",", "."]
+        , (s, f) <- zip ["", "S-"] [S.view, S.shift]
+    ] 
 
 myLayout = WN.configurableNavigation (WN.navigateColor myNavBorderColour) $
     WN.windowNavigation $
