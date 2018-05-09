@@ -2,6 +2,7 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.NoBorders
+import XMonad.Layout.IndependentScreens(countScreens)
 import qualified XMonad.Layout.WindowNavigation as WN
 import qualified XMonad.StackSet as S
 import qualified XMonad.Operations as O
@@ -13,16 +14,21 @@ import System.Exit
 import qualified Data.Map as M
 import qualified Data.Set as Set
 import Data.Maybe
+import qualified Graphics.X11.Xinerama as Xinerama
 
 main :: IO ()
 main = do
-    xmproc <- spawnPipe "xmobar"
-    xmonad $ myConfig xmproc
+    numScreens <- countScreens
+    xmobars <- sequence $ map xmobarScreen [0 .. (numScreens - 1)]
+    xmonad $ myConfig xmobars
+
+xmobarScreen :: Int -> IO Handle
+xmobarScreen = spawnPipe . ("xmobar -x " ++) . show
 
 myTerminal = "urxvt"
 myWebBrowser = "firefox"
 
-myWorkspaceNames = ["web", "code", "mail", "gimp", "steam", "scratch"]
+myWorkspaceNames = ["web", "code", "misc", "game"]
 myWorkspaceDisplayNames = map (\(name, num) -> show num ++ ":" ++ name) $ zip myWorkspaceNames [1..]
 myWorkspaceDisplayNameSet = Set.fromList myWorkspaceDisplayNames
 myWorkspaceTable =
@@ -42,7 +48,12 @@ myXmobarHidden          = xmobarColor "#aaaaaa" "" . noScratchPad
 myXmobarHiddenNoWindows = xmobarColor "#666666" "" . myXmobarHiddenNoWindowsFilter
 myXmobarLayout          = xmobarColor "#ff8888" "" . noScratchPad
 
-myConfig xmproc =
+hPutStrLnMulti :: [Handle] -> String -> IO ()
+hPutStrLnMulti handles string = do
+    sequence $ map (flip hPutStrLn string) handles
+    return ()
+
+myConfig xmobars =
     let c = def {
           terminal        = myTerminal
         , modMask         = mod1Mask
@@ -51,7 +62,7 @@ myConfig xmproc =
         , handleEventHook = docksEventHook <+> handleEventHook def
         , startupHook     = docksStartupHook <+> startupHook def
         , logHook         = dynamicLogWithPP xmobarPP
-            { ppOutput    = hPutStrLn xmproc
+            { ppOutput    = hPutStrLnMulti xmobars
             , ppTitle     = myXmobarTitle
             , ppCurrent   = myXmobarCurrent
             , ppHidden    = myXmobarHidden
@@ -60,7 +71,7 @@ myConfig xmproc =
             }
         , normalBorderColor  = myNormalBorderColour
         , focusedBorderColor = myFocusedBorderColour
-        , borderWidth        = 4
+        , borderWidth        = 2
         , XMonad.workspaces  = myWorkspaceDisplayNames
         , keys            = const M.empty
         }
@@ -70,9 +81,9 @@ toWorkspace name = doF(S.shift $ workspace name)
 
 myManageHook = composeAll [
       className =? "Firefox"     --> toWorkspace "web"
-    , className =? "Thunderbird" --> toWorkspace "mail"
-    , className =? "Gimp"        --> toWorkspace "gimp"
-    , className =? "Steam"       --> toWorkspace "steam"
+    , className =? "Thunderbird" --> toWorkspace "misc"
+    , className =? "Gimp"        --> toWorkspace "misc"
+    , className =? "Steam"       --> toWorkspace "game"
     ]
 
 manageScratchPad :: ManageHook
@@ -119,16 +130,18 @@ myKeys c =
     ++
     [ ("M-" ++ s ++ show k, O.windows $ f w)
         | (w, k) <- zip (workspaces c) [1..]
-        , (s, f) <- zip ["", "S-"] [S.view, S.shift]
+        , (s, f) <- zip ["", "S-"] [S.greedyView, S.shift]
     ]
     ++
     [ ("M-" ++ s ++ k, screenWorkspace sc >>= flip whenJust (O.windows . f))
-        | (sc, k) <- zip [0..] ["'", ",", "."]
+        | (sc, k) <- zip [1, 0] ["'", ",", "."]
         , (s, f) <- zip ["", "S-"] [S.view, S.shift]
-    ] 
+    ]
 
-myLayout = WN.configurableNavigation (WN.navigateColor myNavBorderColour) $
+myLayout =
+    WN.configurableNavigation (WN.navigateColor myNavBorderColour) $
     WN.windowNavigation $
-        noBorders Full
+    smartBorders $
+        Full
     ||| Tall 1 (4/100) (3/4)
     ||| Mirror (Tall 1 (4/100) (3/4))
