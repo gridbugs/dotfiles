@@ -1,0 +1,25 @@
+$include /etc/inputrc                                                                                                                                
+set show-all-if-ambiguous on
+set completion-ignore-case on
+     
+set editing-mode vi
+set keymap vi-command
+"s": forward-char
+"S": forward-word
+"h": backward-char
+"H": backward-word
+"ciw": kill-word
+     
+set keymap vi-insert
+# Press up-arrow for previous matching command
+"\e[A":history-search-backward
+# Press down-arrow for next matching command
+"\e[B":history-search-forward
+"\C-a": beginning-of-line
+"\C-e": end-of-line
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e\e[C": forward-word
+"\e\e[D": backward-word
