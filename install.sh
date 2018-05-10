@@ -31,7 +31,6 @@ make_link vim .config/nvim
 make_link i3 .i3
 make_link xinitrc .xinitrc
 make_link zfunc .zfunc
-make_link fonts .fonts
 make_link i3status.conf .i3status.conf
 make_link tmux.conf .tmux.conf
 make_link wallpaper.png .wallpaper.png
@@ -53,3 +52,9 @@ if test `uname -s` = 'Linux'; then
     make_link xmonad .xmonad
     make_link Xmodmap .Xmodmap
 fi
+
+mkdir -p ~/.local/share/fonts
+cp -v $DIR/fonts/* ~/.local/share/fonts
+
+echo
+echo Done!
