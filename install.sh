@@ -39,12 +39,6 @@ make_link htoprc .config/htop/htoprc
 make_link bin .bin
 make_link xmobarrc .xmobarrc
 
-if test -e $HOME/.config/fontconfig; then
-    echo $DIR/fontconfig already exists
-else
-    ln -v -s $DIR/fontconfig $HOME/.config/
-fi
-
 if test `uname -s` = 'Linux'; then
     make_link urxvt .urxvt
     make_link Xresources .Xresources
@@ -52,9 +46,6 @@ if test `uname -s` = 'Linux'; then
     make_link xmonad .xmonad
     make_link Xmodmap .Xmodmap
 fi
-
-mkdir -p ~/.local/share/fonts
-cp -v $DIR/fonts/* ~/.local/share/fonts
 
 echo
 echo Done!
