@@ -1,8 +1,12 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.NoBorders
 import XMonad.Layout.IndependentScreens(countScreens)
+import XMonad.Layout.Simplest
+import XMonad.Layout.PerWorkspace
 import qualified XMonad.Layout.WindowNavigation as WN
 import qualified XMonad.StackSet as S
 import qualified XMonad.Operations as O
@@ -23,6 +27,8 @@ main = do
 
 xmobarScreen :: Int -> IO Handle
 xmobarScreen = spawnPipe . ("xmobar -x " ++) . show
+
+myBorderWidth = 2
 
 myTerminal = "urxvt"
 myWebBrowser = "firefox"
@@ -70,7 +76,7 @@ myConfig xmobars =
             }
         , normalBorderColor  = myNormalBorderColour
         , focusedBorderColor = myFocusedBorderColour
-        , borderWidth        = 2
+        , borderWidth        = myBorderWidth
         , XMonad.workspaces  = myWorkspaceDisplayNames
         , keys            = const M.empty
         }
@@ -141,6 +147,7 @@ myLayout =
     WN.configurableNavigation (WN.navigateColor myNavBorderColour) $
     WN.windowNavigation $
     smartBorders $
+    onWorkspace (workspace "steam") (noBorders Simplest) $
         Full
     ||| Tall 1 (4/100) (3/4)
     ||| Mirror (Tall 1 (4/100) (3/4))
