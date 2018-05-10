@@ -1,7 +1,7 @@
 Config {
 
    -- appearance
-    font = "xft:hack:ptsize=10:autohint=true"
+    font = "xft:xos4 Terminus:pixelsize=14:antialias=true:hinting=true"
    , bgColor =      "black"
    , fgColor =      "#999999"
    , position =     Top
