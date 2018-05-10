@@ -22,7 +22,7 @@ import Data.Maybe
 main :: IO ()
 main = do
     numScreens <- countScreens
-    xmobars <- sequence $ map xmobarScreen [0 .. (numScreens - 1)]
+    xmobars <- mapM xmobarScreen [0 .. (numScreens - 1)]
     xmonad $ myConfig xmobars
 
 xmobarScreen :: Int -> IO Handle
@@ -54,9 +54,7 @@ myXmobarHiddenNoWindows = xmobarColor "#666666" "" . myXmobarHiddenNoWindowsFilt
 myXmobarLayout          = xmobarColor "#ff8888" "" . noScratchPad
 
 hPutStrLnMulti :: [Handle] -> String -> IO ()
-hPutStrLnMulti handles string = do
-    sequence $ map (flip hPutStrLn string) handles
-    return ()
+hPutStrLnMulti handles string = mapM_ (`hPutStrLn` string) handles
 
 myConfig xmobars =
     let c = def {
@@ -147,7 +145,7 @@ myLayout =
     WN.configurableNavigation (WN.navigateColor myNavBorderColour) $
     WN.windowNavigation $
     smartBorders $
-    onWorkspace (workspace "steam") (noBorders Simplest) $
+    onWorkspace (workspace "game") (noBorders Simplest) $
         Full
     ||| Tall 1 (4/100) (3/4)
     ||| Mirror (Tall 1 (4/100) (3/4))

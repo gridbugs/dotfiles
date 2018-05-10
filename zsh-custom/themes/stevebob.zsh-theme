@@ -3,29 +3,26 @@ MACHINE=%{$fg_bold[red]%}%m%{$reset_color%}
 DIR=%{$fg_bold[green]%}%d%{$reset_color%}
 AT=%{$fg_bold[white]%}@%{$reset_color%}
 
-if [ -z ${STY+x} ]; then
-    SCREEN_INFO=""
-else
-    SCREEN_INFO="%{$fg_bold[cyan]%}$STY%{$reset_color%} "
-fi
-
-if [ -z ${NIX_CC+x} ]; then
-    NIX_INFO=""
-else
-    NIX_INFO="%{$fg_bold[magenta]%}nix%{$reset_color%} "
-fi
-
-TOP='$DIR $USER$AT$MACHINE $NIX_INFO$SCREEN_INFO$(git_prompt_info)'
-BOTTOM='%{$fg_bold[white]%}$%{$reset_color%} '
-PROMPT="
-$TOP
-$BOTTOM"
+TOP='$DIR $USER$AT$MACHINE $(git_prompt_info)'
+PROMPT_PREFIX='%{$fg_bold[white]%}$%{$reset_color%} '
+VIM_PROMPT_PREFIX='%{$fg_bold[red]%}$%{$reset_color%} '
 
 TIME="%D{%H:%M:%S}"
 RPROMPT="%{$fg_bold[white]%}$TIME%{$reset_color%}"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[yellow]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+
+function zle-line-init zle-keymap-select {
+    PROMPT="
+$TOP
+${${KEYMAP/vicmd/$VIM_PROMPT_PREFIX}/(main|viins)/$PROMPT_PREFIX}"
+
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 # LS colors, made with http://geoff.greer.fm/lscolors/
 export LSCOLORS="Gxfxcxdxbxegedabagacad"

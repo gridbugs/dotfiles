@@ -38,7 +38,6 @@ make_link terminator.config .config/terminator/config
 make_link htoprc .config/htop/htoprc
 make_link bin .bin
 make_link xmobarrc .xmobarrc
-make_link inputrc .inputrc
 
 if test `uname -s` = 'Linux'; then
     make_link urxvt .urxvt
