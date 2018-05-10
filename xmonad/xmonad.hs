@@ -14,7 +14,6 @@ import System.Exit
 import qualified Data.Map as M
 import qualified Data.Set as Set
 import Data.Maybe
-import qualified Graphics.X11.Xinerama as Xinerama
 
 main :: IO ()
 main = do
