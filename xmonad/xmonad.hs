@@ -3,6 +3,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Layout.Groups.Helpers
 import XMonad.Layout.NoBorders
 import XMonad.Layout.IndependentScreens(countScreens)
 import XMonad.Layout.Simplest
@@ -110,6 +111,8 @@ myKeys c =
     , ("M-s"            , sendMessage $ WN.Go R)
     , ("M-n"            , sendMessage $ WN.Go U)
     , ("M-t"            , sendMessage $ WN.Go D)
+    , ("M-<Tab>"        , focusUp)
+    , ("M-S-<Tab>"      , focusDown)
     , ("M-S-s"          , sendMessage Expand)
     , ("M-S-h"          , sendMessage Shrink)
     , ("M-<Space>"      , sendMessage NextLayout)
@@ -118,8 +121,8 @@ myKeys c =
     , ("M-S-t"          , O.windows S.swapDown)
     , ("M-w"            , sendMessage $ IncMasterN 1)
     , ("M-v"            , sendMessage $ IncMasterN (-1))
-    , ("M-a"            , spawn "setxkbmap en_US")
-    , ("M-m"            , spawn "setxkbmap dvorak")
+    , ("M-a"            , spawn "setxkbmap en_US; xmodmap $HOME/.Xmodmap")
+    , ("M-m"            , spawn "setxkbmap dvorak; xmodmap $HOME/.Xmodmap")
     , ("M-y"            , withFocused $ windows . S.sink)
     , ("M-e"            , scratchpadSpawnActionTerminal myTerminal)
     , ("<XF86AudioLowerVolume>", spawn "amixer set Master 2%-")
@@ -145,7 +148,6 @@ myLayout =
     WN.configurableNavigation (WN.navigateColor myNavBorderColour) $
     WN.windowNavigation $
     smartBorders $
-    onWorkspace (workspace "game") (noBorders Simplest) $
-        Full
+    onWorkspace (workspace "game") (noBorders Simplest) Full
     ||| Tall 1 (4/100) (3/4)
     ||| Mirror (Tall 1 (4/100) (3/4))
