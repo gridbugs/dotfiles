@@ -1,7 +1,7 @@
 URxvt.termName:     rxvt-unicode-256color
 
-URxvt.font:         -xos4-Terminus-Medium-R-Normal--14-140-72-72-C-80-ISO10646-1
-URxvt.boldFont:     -xos4-Terminus-Bold-R-Normal--14-140-72-72-C-80-ISO10646-1
+URxvt.font:         -xos4-Terminus-Medium-*-*--18-*
+URxvt.boldFont:     -xos4-Terminus-Bold-*-*--18-*
 
 URxvt.letterSpace: 1
 
