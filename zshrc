@@ -53,21 +53,26 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
 bindkey -v
 export KEYTIMEOUT=1
 bindkey -a 'h' backward-char
 bindkey -a 's' forward-char
 bindkey -a 'H' backward-word
 bindkey -a 'S' forward-word
-bindkey -a 'n' up-line-or-search
-bindkey -a 't' up-line-or-search
+bindkey -a 'n' up-line-or-beginning-search
+bindkey -a 't' up-line-or-beginning-search
 
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
 
 export LS_COLORS="di=1;34:ln=35;40:so=32;40:pi=33;40:ex=31:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=1;42;40:ow=33;40:"
 alias ls="ls --color --group-directories-first"
