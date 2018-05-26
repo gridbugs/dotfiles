@@ -18,6 +18,7 @@ Plug 'racer-rust/vim-racer'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --system-libclang --clang-completer --rust-completer --racer-completer --js-completer ' }
 Plug 'scrooloose/syntastic'
 Plug 'bitc/vim-hdevtools'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 filetype plugin indent on

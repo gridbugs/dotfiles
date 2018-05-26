@@ -1,7 +1,12 @@
 URxvt.termName:     rxvt-unicode-256color
 
+#ifdef DESKTOP
+URxvt.font:         -xos4-Terminus-Medium-*-*--14-*
+URxvt.boldFont:     -xos4-Terminus-Bold-*-*--14-*
+#else
 URxvt.font:         -xos4-Terminus-Medium-*-*--18-*
 URxvt.boldFont:     -xos4-Terminus-Bold-*-*--18-*
+#endif
 
 URxvt.letterSpace: 1
 

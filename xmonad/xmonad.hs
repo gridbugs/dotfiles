@@ -50,6 +50,7 @@ myNavBorderColour       = "#444488"
 myXmobarTitle           = xmobarColor "#8888ff" "" . shorten 50
 myXmobarCurrent         = xmobarColor "#00ff00" ""
 myXmobarVisible         = xmobarColor "#ffff00" ""
+myXmobarUrgent          = xmobarColor "#ffffff" "#ff0000"
 myXmobarHidden          = xmobarColor "#aaaaaa" "" . noScratchPad
 myXmobarHiddenNoWindows = xmobarColor "#666666" "" . myXmobarHiddenNoWindowsFilter
 myXmobarLayout          = xmobarColor "#ff8888" "" . noScratchPad
@@ -72,6 +73,8 @@ myConfig xmobars =
             , ppHidden    = myXmobarHidden
             , ppHiddenNoWindows = myXmobarHiddenNoWindows
             , ppLayout    = myXmobarLayout
+            , ppVisible   = myXmobarVisible
+            , ppUrgent    = myXmobarUrgent
             }
         , normalBorderColor  = myNormalBorderColour
         , focusedBorderColor = myFocusedBorderColour
@@ -140,7 +143,7 @@ myKeys c =
     ]
     ++
     [ ("M-" ++ s ++ k, screenWorkspace sc >>= flip whenJust (O.windows . f))
-        | (sc, k) <- zip [1, 0] ["'", ",", "."]
+        | (sc, k) <- zip [1, 0, 0] ["'", ",", "."]
         , (s, f) <- zip ["", "S-"] [S.view, S.shift]
     ]
 
