@@ -59,6 +59,9 @@ bindkey -a 'h' backward-char
 bindkey -a 's' forward-char
 bindkey -a 'H' backward-word
 bindkey -a 'S' forward-word
+bindkey -a 'n' up-line-or-search
+bindkey -a 't' up-line-or-search
+
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 bindkey "^[[1;5C" forward-word
