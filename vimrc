@@ -121,6 +121,7 @@ let g:autofmt_autosave = 1
 
 let g:ycm_rust_src_path = '~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 nnoremap <Leader>s :YcmCompleter GoTo<CR>
+let g:ycm_key_list_select_completion = ['<tab>', '<Down>']
 
 autocmd BufWritePost *.rs RustFmt
 

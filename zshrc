@@ -65,7 +65,7 @@ bindkey -a 's' forward-char
 bindkey -a 'H' backward-word
 bindkey -a 'S' forward-word
 bindkey -a 'n' up-line-or-beginning-search
-bindkey -a 't' up-line-or-beginning-search
+bindkey -a 't' down-line-or-beginning-search
 
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
