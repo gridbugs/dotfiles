@@ -22,6 +22,7 @@ fi
 
 mkdir -v -p $HOME/.config
 mkdir -v -p $HOME/.config/terminator
+mkdir -v -p $HOME/.config/htop
 
 make_link zshrc .zshrc
 make_link zsh-custom .zsh-custom
