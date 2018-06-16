@@ -172,6 +172,12 @@ let g:hdevtools_options = stack_ghc_args
 let g:fzf_command_prefix = 'Nth'
 let g:fzf_history_dir = '~/.fzf-history/vim'
 
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
+      \ }
+      \ }
+
 command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>, "--all-text",
   \                 <bang>0 ? fzf#vim#with_preview('up:60%')
