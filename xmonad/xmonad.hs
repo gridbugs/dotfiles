@@ -19,6 +19,7 @@ import System.Exit
 import qualified Data.Map as M
 import qualified Data.Set as Set
 import Data.Maybe
+import XMonad.Layout.Fullscreen
 
 main :: IO ()
 main = do
@@ -91,6 +92,8 @@ myManageHook = composeAll [
     , className =? "Thunderbird" --> toWorkspace "misc"
     , className =? "Gimp"        --> toWorkspace "misc"
     , className =? "Steam"       --> toWorkspace "game"
+    , isFullscreen --> doFullFloat
+    , fullscreenManageHook
     ]
 
 manageScratchPad :: ManageHook
@@ -151,6 +154,8 @@ myLayout =
     WN.configurableNavigation (WN.navigateColor myNavBorderColour) $
     WN.windowNavigation $
     smartBorders $
-    onWorkspace (workspace "game") (noBorders Simplest) Full
+    onWorkspace (workspace "game") gameFull Full
     ||| Tall 1 (4/100) (3/4)
     ||| Mirror (Tall 1 (4/100) (3/4))
+    where
+        gameFull = noBorders ((fullscreenFloat . fullscreenFull) Full)
