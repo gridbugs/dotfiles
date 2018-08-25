@@ -172,6 +172,8 @@ myLayout =
     let gameWorkspace = "4" in
     let fullScreenLayout = onWorkspace gameWorkspace gameFull Full in
     let splitLayout = emptyBSP in
+    -- for changes to navBorderColour to take effect, one must
+    -- toggle the following line
     WN.configurableNavigation (WN.navigateColor myNavBorderColour) $
     WN.windowNavigation $
     smartBorders $
