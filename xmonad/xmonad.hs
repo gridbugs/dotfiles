@@ -8,10 +8,11 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.IndependentScreens(countScreens)
 import XMonad.Layout.Simplest
 import XMonad.Layout.PerWorkspace
+import XMonad.Layout.BinarySpacePartition
 import qualified XMonad.Layout.WindowNavigation as WN
 import qualified XMonad.StackSet as S
 import qualified XMonad.Operations as O
-import XMonad.Util.EZConfig(additionalKeysP)
+import XMonad.Util.EZConfig(additionalKeys, additionalKeysP)
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.Scratchpad
 import System.IO
@@ -35,26 +36,26 @@ myBorderWidth = 2
 myTerminal = "urxvt"
 myWebBrowser = "firefox"
 
-myWorkspaceNames = ["web", "code", "misc", "game"]
-myWorkspaceDisplayNames = map (\(name, num) -> show num ++ ":" ++ name) $ zip myWorkspaceNames [1..]
-myWorkspaceDisplayNameSet = Set.fromList myWorkspaceDisplayNames
-myWorkspaceTable =
-    M.fromList $ zip myWorkspaceNames myWorkspaceDisplayNames
-workspace name = fromJust $ M.lookup name myWorkspaceTable
+myWorkspaceNames = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+myWorkspaceNamesSet = Set.fromList myWorkspaceNames
 
-myXmobarHiddenNoWindowsFilter ws = if Set.member ws myWorkspaceDisplayNameSet then ws else ""
+myXmobarHiddenNoWindowsFilter ws = if Set.member ws myWorkspaceNamesSet then ws else ""
 noScratchPad ws = if ws == "NSP" then "" else ws
 
+lightGrey = "#aaaaaa"
+darkGrey = "#666666"
+
 myNormalBorderColour    = "#000000"
-myFocusedBorderColour   = "#cc0000"
-myNavBorderColour       = "#444488"
-myXmobarTitle           = xmobarColor "#8888ff" "" . shorten 50
+myFocusedBorderColour   = lightGrey
+myNavBorderColour       = darkGrey
+myXmobarTitle           = xmobarColor lightGrey "" . shorten 50
 myXmobarCurrent         = xmobarColor "#00ff00" ""
 myXmobarVisible         = xmobarColor "#ffff00" ""
 myXmobarUrgent          = xmobarColor "#ffffff" "#ff0000"
-myXmobarHidden          = xmobarColor "#aaaaaa" "" . noScratchPad
-myXmobarHiddenNoWindows = xmobarColor "#666666" "" . myXmobarHiddenNoWindowsFilter
-myXmobarLayout          = xmobarColor "#ff8888" "" . noScratchPad
+myXmobarHidden          = xmobarColor lightGrey "" . noScratchPad
+myXmobarHiddenNoWindows = xmobarColor darkGrey "" . myXmobarHiddenNoWindowsFilter
+myXmobarLayout          = xmobarColor darkGrey "" . noScratchPad
+myXmobarSep             = " | "
 
 hPutStrLnMulti :: [Handle] -> String -> IO ()
 hPutStrLnMulti handles string = mapM_ (`hPutStrLn` string) handles
@@ -65,7 +66,7 @@ myConfig xmobars =
         , modMask         = mod1Mask
         , manageHook      = manageDocks <+> manageScratchPad <+> myManageHook <+> manageHook def
         , layoutHook      = avoidStruts myLayout
-        , handleEventHook = docksEventHook <+> handleEventHook def
+        , handleEventHook = ewmhDesktopsEventHook <+> docksEventHook <+> handleEventHook def
         , startupHook     = docksStartupHook <+> startupHook def
         , logHook         = dynamicLogWithPP xmobarPP
             { ppOutput    = hPutStrLnMulti xmobars
@@ -76,22 +77,26 @@ myConfig xmobars =
             , ppLayout    = myXmobarLayout
             , ppVisible   = myXmobarVisible
             , ppUrgent    = myXmobarUrgent
-            }
+            , ppSep       = myXmobarSep
+            } >> ewmhDesktopsLogHook
         , normalBorderColor  = myNormalBorderColour
         , focusedBorderColor = myFocusedBorderColour
         , borderWidth        = myBorderWidth
-        , XMonad.workspaces  = myWorkspaceDisplayNames
+        , XMonad.workspaces  = myWorkspaceNames
         , keys            = const M.empty
         }
-    in additionalKeysP c $ myKeys c
+    in
+    let c1 = additionalKeysP c $ myKeys c in
+    additionalKeys c1 $ myKeysExtra c1
 
-toWorkspace name = doF(S.shift $ workspace name)
+
+toWorkspace name = doF(S.shift name)
 
 myManageHook = composeAll [
-      className =? "Firefox"     --> toWorkspace "web"
-    , className =? "Thunderbird" --> toWorkspace "misc"
-    , className =? "Gimp"        --> toWorkspace "misc"
-    , className =? "Steam"       --> toWorkspace "game"
+      className =? "Firefox"     --> toWorkspace "1"
+    , className =? "Thunderbird" --> toWorkspace "3"
+    , className =? "Gimp"        --> toWorkspace "5"
+    , className =? "Steam"       --> toWorkspace "4"
     , isFullscreen --> doFullFloat
     , fullscreenManageHook
     ]
@@ -117,14 +122,23 @@ myKeys c =
     , ("M-s"            , sendMessage $ WN.Go R)
     , ("M-n"            , sendMessage $ WN.Go U)
     , ("M-t"            , sendMessage $ WN.Go D)
+    , ("M-S-h"          , sendMessage $ ExpandTowards L)
+    , ("M-S-s"          , sendMessage $ ExpandTowards R)
+    , ("M-S-n"          , sendMessage $ ExpandTowards U)
+    , ("M-S-t"          , sendMessage $ ExpandTowards D)
+    , ("M-C-h"          , sendMessage $ ShrinkFrom L)
+    , ("M-C-s"          , sendMessage $ ShrinkFrom R)
+    , ("M-C-n"          , sendMessage $ ShrinkFrom U)
+    , ("M-C-t"          , sendMessage $ ShrinkFrom D)
+    , ("M-r"            , sendMessage Rotate)
+    , ("M-c"            , sendMessage Swap)
+    , ("M-g"            , sendMessage FocusParent)
+    , ("M-l"            , sendMessage SelectNode)
+    , ("M-S-l"          , sendMessage MoveNode)
     , ("M-<Tab>"        , focusUp)
     , ("M-S-<Tab>"      , focusDown)
-    , ("M-S-s"          , sendMessage Expand)
-    , ("M-S-h"          , sendMessage Shrink)
     , ("M-<Space>"      , sendMessage NextLayout)
     , ("M-S-<Space>"    , O.windows S.swapMaster)
-    , ("M-S-n"          , O.windows S.swapUp)
-    , ("M-S-t"          , O.windows S.swapDown)
     , ("M-w"            , sendMessage $ IncMasterN 1)
     , ("M-v"            , sendMessage $ IncMasterN (-1))
     , ("M-a"            , spawn "setxkbmap en_US; xmodmap $HOME/.Xmodmap")
@@ -150,12 +164,18 @@ myKeys c =
         , (s, f) <- zip ["", "S-"] [S.view, S.shift]
     ]
 
+myKeysExtra c =
+    [ ((modMask c, xK_slash),      spawn "xeyes")
+    ]
+
 myLayout =
+    let gameWorkspace = "4" in
+    let fullScreenLayout = onWorkspace gameWorkspace gameFull Full in
+    let splitLayout = emptyBSP in
     WN.configurableNavigation (WN.navigateColor myNavBorderColour) $
     WN.windowNavigation $
     smartBorders $
-    onWorkspace (workspace "game") gameFull Full
-    ||| Tall 1 (4/100) (3/4)
-    ||| Mirror (Tall 1 (4/100) (3/4))
+    fullScreenLayout
+    ||| splitLayout
     where
         gameFull = noBorders ((fullscreenFloat . fullscreenFull) Full)

@@ -14,4 +14,13 @@ xrdb -DHOME=$HOME $XRDB_ARGS -merge $HOME/.Xresources
 
 xmodmap $HOME/.Xmodmap
 
-exec xmonad
+case $WM in
+    xmonad)
+        exec xmonad
+        ;;
+    lxde)
+        exec startlxde
+        ;;
+    *)
+        exec xmonad
+esac

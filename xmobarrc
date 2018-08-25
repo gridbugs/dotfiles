@@ -3,10 +3,10 @@ Config {
    -- appearance
     font = "xft:xos4 Terminus:pixelsize=14:antialias=true:hinting=true"
    , bgColor =      "black"
-   , fgColor =      "#999999"
+   , fgColor =      "#aaaaaa"
    , position =     Top
    , border =       BottomB
-   , borderColor =  "#646464"
+   , borderColor =  "#666666"
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
@@ -42,7 +42,7 @@ Config {
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 10
+                             ] 50
         -- cpu activity monitor
         , Run MultiCpu       [ "--template" , "Cpu: <autototal>"
                              , "--Low"      , "50"         -- units: %
@@ -50,7 +50,7 @@ Config {
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 10
+                             ] 50
 
         -- cpu core temperature monitor
         , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
@@ -67,7 +67,7 @@ Config {
                              , "--low"      , "green"
                              , "--normal"   , "orange"
                              , "--high"     , "red"
-                             ] 10
+                             ] 50
 
         -- battery monitor
         , Run Battery        [ "--template" , "Batt: <acstatus>"
@@ -79,11 +79,11 @@ Config {
 
                              , "--" -- battery specific options
                                        -- discharging status
-                                       , "-o"	, "<left>% (<timeleft>)"
+                                       , "-o", "<left>% (<timeleft>)"
                                        -- AC "on" status
-                                       , "-O"	, "<fc=#dAA520>Charging</fc>"
+                                       , "-O", "<fc=#dAA520>Charging</fc>"
                                        -- charged status
-                                       , "-i"	, "<fc=#00ff00>Charged</fc>"
+                                       , "-i", "<fc=#00ff00>Charged</fc>"
                              ] 50
 
         -- time and date indicator

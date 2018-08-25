@@ -78,4 +78,7 @@ bindkey '^[[B' down-line-or-beginning-search
 export LS_COLORS="di=1;34:ln=35;40:so=32;40:pi=33;40:ex=31:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=1;42;40:ow=33;40:"
 alias ls="ls --color --group-directories-first"
 
+alias aoeu='setxkbmap en_US'
+alias asdf='setxkbmap dvorak'
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
