@@ -27,6 +27,7 @@ set softtabstop=4
 set shiftwidth=4
 set tabstop=4
 set expandtab
+set wildmode=longest:list,full
 set wildmenu
 set number
 set visualbell t_vb=
@@ -118,9 +119,12 @@ let mapleader = ",,"
 let g:racer_cmd="~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 let g:autofmt_autosave = 1
+au FileType rust nmap <leader>gd <Plug>(rust-def)
+au FileType rust nmap <leader>gs <Plug>(rust-def-split)
+au FileType rust nmap <leader>gv <Plug>(rust-def-vertical)
 
 let g:ycm_rust_src_path = '~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-nnoremap <Leader>s :YcmCompleter GoTo<CR>
+"nnoremap <Leader>s :YcmCompleter GoTo<CR>
 let g:ycm_key_list_select_completion = ['<tab>', '<Down>']
 
 autocmd BufWritePost *.rs RustFmt
@@ -175,7 +179,8 @@ let g:fzf_history_dir = '~/.fzf-history/vim'
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ],
-      \ }
+      \ },
+      \ 'colorscheme': 'wombat',
       \ }
 
 command! -bang -nargs=* Ag
@@ -183,6 +188,13 @@ command! -bang -nargs=* Ag
   \                 <bang>0 ? fzf#vim#with_preview('up:60%')
   \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
   \                 <bang>0)
+
+" ocaml setup
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+au FileType ocaml nmap <Leader>t :MerlinTypeOf<CR>
+au FileType ocaml vmap <Leader>t :MerlinTypeOfSel<CR>
+au FileType ocaml nmap <Leader>s :MerlinLocate<CR>
 
 " Auto reload vimrc
 autocmd! bufwritepost .vimrc source %

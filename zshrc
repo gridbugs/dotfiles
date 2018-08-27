@@ -59,6 +59,9 @@ autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
+bindkey -M viins '^[[3~' delete-char
+bindkey -a '^[[3~' delete-char
+
 bindkey -v
 export KEYTIMEOUT=1
 bindkey -a 'h' backward-char
