@@ -195,6 +195,25 @@ execute "set rtp+=" . g:opamshare . "/merlin/vim"
 au FileType ocaml nmap <Leader>t :MerlinTypeOf<CR>
 au FileType ocaml vmap <Leader>t :MerlinTypeOfSel<CR>
 au FileType ocaml nmap <Leader>s :MerlinLocate<CR>
+au FileType ocaml set softtabstop=2
+au FileType ocaml set shiftwidth=2
+au FileType ocaml set tabstop=2
+autocmd FileType ocaml exec "source " . g:opamshare . "/ocp-indent/vim/indent/ocaml.vim"
+
+" useful aliases
+fun! SetupCommandAlias(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfun
+call SetupCommandAlias("W","w")
+call SetupCommandAlias("X","x")
+call SetupCommandAlias("Q","q")
+call SetupCommandAlias("Ls","ls")
+call SetupCommandAlias("B","b")
+
+nnoremap <F8> :e $MYVIMRC<CR>
+
 
 " Auto reload vimrc
 autocmd! bufwritepost .vimrc source %
