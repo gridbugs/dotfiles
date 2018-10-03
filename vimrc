@@ -106,10 +106,6 @@ nmap <silent> $ g<End>
 nmap <silent> 0 g<Home>
 
 colorscheme ron
-set cursorcolumn
-set cursorline
-hi CursorColumn term=reverse ctermbg=235 guibg=Grey40
-hi CursorLine ctermbg=235 cterm=none
 hi clear SpellBad
 hi SpellBad cterm=bold,underline
 
@@ -189,16 +185,6 @@ command! -bang -nargs=* Ag
   \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
   \                 <bang>0)
 
-" ocaml setup
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-au FileType ocaml nmap <Leader>t :MerlinTypeOf<CR>
-au FileType ocaml vmap <Leader>t :MerlinTypeOfSel<CR>
-au FileType ocaml nmap <Leader>s :MerlinLocate<CR>
-au FileType ocaml set softtabstop=2
-au FileType ocaml set shiftwidth=2
-au FileType ocaml set tabstop=2
-autocmd FileType ocaml exec "source " . g:opamshare . "/ocp-indent/vim/indent/ocaml.vim"
 
 " useful aliases
 fun! SetupCommandAlias(from, to)
@@ -212,8 +198,54 @@ call SetupCommandAlias("Q","q")
 call SetupCommandAlias("Ls","ls")
 call SetupCommandAlias("B","b")
 
-nnoremap <F8> :e $MYVIMRC<CR>
+" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
+let s:opam_share_dir = system("opam config var share")
+let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
 
+let s:opam_configuration = {}
+
+function! OpamConfOcpIndent()
+  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
+endfunction
+let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
+
+function! OpamConfOcpIndex()
+  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
+endfunction
+let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
+
+function! OpamConfMerlin()
+  let l:dir = s:opam_share_dir . "/merlin/vim"
+  execute "set rtp+=" . l:dir
+endfunction
+let s:opam_configuration['merlin'] = function('OpamConfMerlin')
+
+let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
+let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
+let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
+for tool in s:opam_packages
+  " Respect package order (merlin should be after ocp-index)
+  if count(s:opam_available_tools, tool) > 0
+    call s:opam_configuration[tool]()
+  endif
+endfor
+" ## end of OPAM user-setup addition for vim / base ## keep this line
+
+"" ocaml setup
+"let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+"execute "set rtp+=" . g:opamshare . "/merlin/vim"
+au FileType ocaml nmap <Leader>t :MerlinTypeOf<CR>
+au FileType ocaml vmap <Leader>t :MerlinTypeOfSel<CR>
+au FileType ocaml nmap <Leader>s :MerlinLocate<CR>
+au FileType ocaml set softtabstop=2
+au FileType ocaml set shiftwidth=2
+au FileType ocaml set tabstop=2
+"autocmd FileType ocaml exec "source " . g:opamshare . "/ocp-indent/vim/indent/ocaml.vim"
+
+au FileType yaml set softtabstop=2
+au FileType yaml set shiftwidth=2
+au FileType yaml set tabstop=2
 
 " Auto reload vimrc
+nnoremap <F8> :e $MYVIMRC<CR>
 autocmd! bufwritepost .vimrc source %
