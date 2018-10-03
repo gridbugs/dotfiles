@@ -16,7 +16,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --system-libclang --clang-completer --rust-completer --racer-completer --js-completer ' }
-Plug 'scrooloose/syntastic'
 Plug 'bitc/vim-hdevtools'
 Plug 'itchyny/lightline.vim'
 call plug#end()
@@ -113,8 +112,8 @@ let mapleader = ",,"
 
 " Rust racer settings
 let g:racer_cmd="~/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
-let g:autofmt_autosave = 1
+"let g:racer_experimental_completer = 1
+"let g:autofmt_autosave = 1
 au FileType rust nmap <leader>gd <Plug>(rust-def)
 au FileType rust nmap <leader>gs <Plug>(rust-def-split)
 au FileType rust nmap <leader>gv <Plug>(rust-def-vertical)
@@ -123,7 +122,7 @@ let g:ycm_rust_src_path = '~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu
 "nnoremap <Leader>s :YcmCompleter GoTo<CR>
 let g:ycm_key_list_select_completion = ['<tab>', '<Down>']
 
-autocmd BufWritePost *.rs RustFmt
+let g:rustfmt_autosave = 1
 
 " highlight signs in Sy
 highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119

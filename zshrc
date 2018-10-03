@@ -14,7 +14,7 @@ alias tmux='tmux -2'
 alias portscan='nmap -sP' # follow this with e.g. 192.168.1.1-255
 
 # typos
-alias vmi vim
+alias vmi='vim'
 
 if hash keychain 2>/dev/null; then
     eval `keychain --quiet --eval --agents ssh id_rsa`
