@@ -3,7 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM="$HOME/.zsh-custom"
 ZSH_THEME="stevebob"
 
-plugins=(git cargo rust archlinux z rvm nvm gem npm)
+plugins=(git cargo rust archlinux z nvm gem npm)
 
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/sbin:$PATH"
 export EDITOR=vim
@@ -48,8 +48,10 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
     . $HOME/.nix-profile/etc/profile.d/nix.sh
 fi
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
+if hash gem 2>/dev/null; then
+    GEM_BIN=$(gem environment gempath | awk -v RS=: '{print}' | grep $HOME)
+    PATH=$GEM_BIN:$PATH
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
