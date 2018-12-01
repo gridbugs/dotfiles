@@ -13,8 +13,9 @@ function make_link {
 }
 
 cd $HOME
-
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+export ZSH_CUSTOM=$HOME/.zsh-custom
+mkdir -p $ZSH_CUSTOM/plugins
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 if [ -e $HOME/.zshrc ]; then
