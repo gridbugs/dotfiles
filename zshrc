@@ -3,7 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM="$HOME/.zsh-custom"
 ZSH_THEME="stevebob"
 
-plugins=(git cargo rust archlinux z nvm gem npm)
+plugins=(git cargo rust archlinux z nvm gem npm zsh-autosuggestions)
 
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/sbin:$PATH"
 export EDITOR=vim
