@@ -114,14 +114,14 @@ let mapleader = ",,"
 " Rust racer settings
 let g:racer_cmd="~/.cargo/bin/racer"
 "let g:racer_experimental_completer = 1
-"let g:autofmt_autosave = 1
 au FileType rust nmap <leader>gd <Plug>(rust-def)
+au FileType rust nmap <leader>gt <Plug>(rust-def)
 au FileType rust nmap <leader>gs <Plug>(rust-def-split)
 au FileType rust nmap <leader>gv <Plug>(rust-def-vertical)
 
 let g:ycm_rust_src_path = '~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 "nnoremap <Leader>s :YcmCompleter GoTo<CR>
-let g:ycm_key_list_select_completion = ['<tab>', '<Down>']
+"let g:ycm_key_list_select_completion = ['<tab>', '<Down>']
 
 let g:rustfmt_autosave = 1
 
@@ -240,6 +240,11 @@ au FileType yaml set softtabstop=2
 au FileType yaml set shiftwidth=2
 au FileType yaml set tabstop=2
 
+au FileType python set softtabstop=4
+au FileType python set shiftwidth=4
+au FileType python set tabstop=4
+
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_theme = 'jellybeans'
@@ -263,7 +268,6 @@ let g:airline_symbols.maxlinenr = ''
 let g:airline#extensions#whitespace#checks = []
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#show_splits = 0
-
 
 " Auto reload vimrc
 nnoremap <F8> :e $MYVIMRC<CR>

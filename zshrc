@@ -49,7 +49,7 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
 fi
 
 if hash gem 2>/dev/null; then
-    GEM_BIN=$(gem environment gempath | awk -v RS=: '{print}' | grep $HOME)
+    GEM_BIN=$(gem environment gempath | awk -v RS=: '{print}' | grep $HOME)/bin
     PATH=$GEM_BIN:$PATH
 fi
 
