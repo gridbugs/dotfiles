@@ -69,6 +69,16 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+map t <DOWN>
+map n <UP>
+map h <LEFT>
+map s <RIGHT>
+map T 10<DOWN>
+map N 10<UP>
+map H 10<LEFT>
+map S 10<RIGHT>
+
+
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
@@ -83,6 +93,9 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" F3 lists files in the current file's directory
+map <F3> :let g:f3_filename=expand("%:t")<CR>:e %:h<CR>10j:call search('^\V' . g:f3_filename, 'c')<CR>
 
 " Backup files
 set nobackup
@@ -134,6 +147,20 @@ endif
 
 " Multiple Cursors Config
 let g:multi_cursor_exit_from_insert_mode = 0
+
+" highlight trailing whitespace
+set list
+if has("multi_byte")
+    set encoding=utf-8
+    set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+else
+    set listchars=tab:>\ ,trail:*,extends:#,nbsp:.
+endif
+
+" Fix shift mistakes.
+cnoreabbrev Q q
+cnoreabbrev Wq wq
+cnoreabbrev WQ wq
 
 " Shortcut to open this config
 nnoremap <F8> :e $MYVIMRC<CR>

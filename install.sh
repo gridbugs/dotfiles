@@ -1,6 +1,5 @@
 #!/bin/bash
-
-set -e
+set -euxo pipefail
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -13,13 +12,21 @@ function make_link {
 }
 
 cd $HOME
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+if [ -e .oh-my-zsh ]; then
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
 export ZSH_CUSTOM=$HOME/.zsh-custom
-mkdir -p $ZSH_CUSTOM/plugins
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+if [ ! -e $ZSH_CUSTOM/plugins ]; then
+    mkdir -p $ZSH_CUSTOM/plugins
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+fi
 
 if [ -e $HOME/.zshrc ]; then
     mv -v $HOME/.zshrc{,.old}
+fi
+
+if [ ! -e $HOME/.config/nvim/Vundle.vim ]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/Vundle.vim
 fi
 
 mkdir -v -p $HOME/.config
@@ -30,7 +37,7 @@ make_link zshrc .zshrc
 make_link zsh-custom .zsh-custom
 make_link vimrc .vimrc
 make_link vim .vim
-make_link vim .config/nvim
+make_link nvim .config/nvim
 make_link i3 .i3
 make_link xinitrc .xinitrc
 make_link zfunc .zfunc

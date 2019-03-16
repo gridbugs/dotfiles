@@ -12,7 +12,7 @@ fi
 
 xrdb -DHOME=$HOME $XRDB_ARGS -merge $HOME/.Xresources
 
-xmodmap $HOME/.Xmodmap
+setxkbmap -option caps:swapescape
 
 case $WM in
     xmonad)
