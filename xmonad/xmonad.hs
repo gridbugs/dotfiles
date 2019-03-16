@@ -43,19 +43,16 @@ myWorkspaceNamesSet = Set.fromList myWorkspaceNames
 
 myXmobarHiddenNoWindowsFilter ws = if Set.member ws myWorkspaceNamesSet then ws else ""
 
-lightGrey = "#aaaaaa"
-darkGrey = "#666666"
-
 myNormalBorderColour    = "#000000"
 myFocusedBorderColour   = "#bb0000"
 myNavBorderColour       = "#660000"
-myXmobarTitle           = xmobarColor lightGrey "" . shorten 50
+myXmobarTitle           = xmobarColor "#aaaaaa" "" . shorten 50
 myXmobarCurrent         = xmobarColor "#00ff00" ""
 myXmobarVisible         = xmobarColor "#ffff00" ""
 myXmobarUrgent          = xmobarColor "#ffffff" "#ff0000"
-myXmobarHidden          = xmobarColor lightGrey ""
-myXmobarHiddenNoWindows = xmobarColor darkGrey "" . myXmobarHiddenNoWindowsFilter
-myXmobarLayout          = xmobarColor darkGrey ""
+myXmobarHidden          = xmobarColor "#aaaaaa" ""
+myXmobarHiddenNoWindows = xmobarColor "#666666" "" . myXmobarHiddenNoWindowsFilter
+myXmobarLayout          = xmobarColor "#666666" ""
 myXmobarSep             = " | "
 
 hPutStrLnMulti :: [Handle] -> String -> IO ()
@@ -109,13 +106,13 @@ myKeys c =
     , ("M-n"            , sendMessage $ WN.Go U)
     , ("M-t"            , sendMessage $ WN.Go D)
     , ("M-S-h"          , sendMessage $ ExpandTowards L)
-    , ("M-S-s"          , sendMessage $ ExpandTowards R)
+    , ("M-S-s"          , sendMessage $ ShrinkFrom L)
     , ("M-S-n"          , sendMessage $ ExpandTowards U)
-    , ("M-S-t"          , sendMessage $ ExpandTowards D)
-    , ("M-C-h"          , sendMessage $ ShrinkFrom L)
-    , ("M-C-s"          , sendMessage $ ShrinkFrom R)
-    , ("M-C-n"          , sendMessage $ ShrinkFrom U)
-    , ("M-C-t"          , sendMessage $ ShrinkFrom D)
+    , ("M-S-t"          , sendMessage $ ShrinkFrom U)
+    , ("M-C-h"          , sendMessage $ ShrinkFrom R)
+    , ("M-C-s"          , sendMessage $ ExpandTowards R)
+    , ("M-C-n"          , sendMessage $ ShrinkFrom D)
+    , ("M-C-t"          , sendMessage $ ExpandTowards D)
     , ("M-r"            , sendMessage Rotate)
     , ("M-c"            , sendMessage Swap)
     , ("M-S-C-b"        , sendMessage FocusParent)
