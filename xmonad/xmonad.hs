@@ -1,3 +1,4 @@
+{-# LANGUAGE DeriveDataTypeable, MultiParamTypeClasses, TypeSynonymInstances #-}
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -6,15 +7,16 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.Groups.Helpers
 import XMonad.Layout.NoBorders
 import XMonad.Layout.IndependentScreens(countScreens)
-import XMonad.Layout.Simplest
-import XMonad.Layout.PerWorkspace
 import XMonad.Layout.BinarySpacePartition
+import XMonad.Layout.MouseResizableTile
+import XMonad.Layout.Tabbed
+import XMonad.Layout.MultiToggle
+import XMonad.Layout.MultiToggle.Instances
 import qualified XMonad.Layout.WindowNavigation as WN
 import qualified XMonad.StackSet as S
 import qualified XMonad.Operations as O
 import XMonad.Util.EZConfig(additionalKeys, additionalKeysP)
 import XMonad.Util.Run(spawnPipe)
-import XMonad.Util.Scratchpad
 import System.IO
 import System.Exit
 import qualified Data.Map as M
@@ -33,28 +35,27 @@ xmobarScreen = spawnPipe . ("xmobar -x " ++) . show
 
 myBorderWidth = 2
 
-myTerminal = "urxvt"
+myTerminal = "terminator"
 myWebBrowser = "firefox"
 
 myWorkspaceNames = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 myWorkspaceNamesSet = Set.fromList myWorkspaceNames
 
 myXmobarHiddenNoWindowsFilter ws = if Set.member ws myWorkspaceNamesSet then ws else ""
-noScratchPad ws = if ws == "NSP" then "" else ws
 
 lightGrey = "#aaaaaa"
 darkGrey = "#666666"
 
 myNormalBorderColour    = "#000000"
-myFocusedBorderColour   = lightGrey
-myNavBorderColour       = darkGrey
+myFocusedBorderColour   = "#bb0000"
+myNavBorderColour       = "#660000"
 myXmobarTitle           = xmobarColor lightGrey "" . shorten 50
 myXmobarCurrent         = xmobarColor "#00ff00" ""
 myXmobarVisible         = xmobarColor "#ffff00" ""
 myXmobarUrgent          = xmobarColor "#ffffff" "#ff0000"
-myXmobarHidden          = xmobarColor lightGrey "" . noScratchPad
+myXmobarHidden          = xmobarColor lightGrey ""
 myXmobarHiddenNoWindows = xmobarColor darkGrey "" . myXmobarHiddenNoWindowsFilter
-myXmobarLayout          = xmobarColor darkGrey "" . noScratchPad
+myXmobarLayout          = xmobarColor darkGrey ""
 myXmobarSep             = " | "
 
 hPutStrLnMulti :: [Handle] -> String -> IO ()
@@ -64,7 +65,7 @@ myConfig xmobars =
     let c = def {
           terminal        = myTerminal
         , modMask         = mod1Mask
-        , manageHook      = manageDocks <+> manageScratchPad <+> myManageHook <+> manageHook def
+        , manageHook      = manageDocks <+> myManageHook <+> manageHook def
         , layoutHook      = avoidStruts myLayout
         , handleEventHook = ewmhDesktopsEventHook <+> docksEventHook <+> handleEventHook def
         , startupHook     = docksStartupHook <+> startupHook def
@@ -89,25 +90,10 @@ myConfig xmobars =
     let c1 = additionalKeysP c $ myKeys c in
     additionalKeys c1 $ myKeysExtra c1
 
-
-toWorkspace name = doF(S.shift name)
-
 myManageHook = composeAll [
-      className =? "Firefox"     --> toWorkspace "1"
-    , className =? "Thunderbird" --> toWorkspace "3"
-    , className =? "Gimp"        --> toWorkspace "5"
-    , className =? "Steam"       --> toWorkspace "4"
-    , isFullscreen --> doFullFloat
+      isFullscreen --> doFullFloat
     , fullscreenManageHook
     ]
-
-manageScratchPad :: ManageHook
-manageScratchPad = scratchpadManageHook (S.RationalRect l t w h)
-  where
-    h = 0.25
-    w = 1
-    t = 1 - h
-    l = 1 - w
 
 myKeys :: XConfig a -> [(String, X ())]
 myKeys c =
@@ -135,16 +121,16 @@ myKeys c =
     , ("M-S-C-b"        , sendMessage FocusParent)
     , ("M-C-b"          , sendMessage SelectNode)
     , ("M-S-b"          , sendMessage MoveNode)
-    , ("M-<Tab>"        , focusUp)
-    , ("M-S-<Tab>"      , focusDown)
-    , ("M-<Space>"      , sendMessage NextLayout)
+    , ("M-<Tab>"        , focusDown)
+    , ("M-S-<Tab>"      , focusUp)
+    , ("M-<Space>"      , sendMessage $ Toggle TABBED)
+    , ("M-x"            , sendMessage NextLayout)
     , ("M-S-<Space>"    , O.windows S.swapMaster)
     , ("M-w"            , sendMessage $ IncMasterN 1)
     , ("M-v"            , sendMessage $ IncMasterN (-1))
     , ("M-a"            , spawn "setxkbmap en_US; xmodmap $HOME/.Xmodmap")
     , ("M-m"            , spawn "setxkbmap dvorak; xmodmap $HOME/.Xmodmap")
     , ("M-y"            , withFocused $ windows . S.sink)
-    , ("M-e"            , scratchpadSpawnActionTerminal myTerminal)
     , ("<XF86AudioLowerVolume>", spawn "amixer sset Master 2%-")
     , ("<XF86AudioRaiseVolume>", spawn "amixer sset Master 2%+")
     , ("<XF86AudioMute>", spawn "amixer sset Master toggle; amixer sset Headphone unmute; amixer sset Speaker unmute")
@@ -168,16 +154,16 @@ myKeysExtra c =
     [ ((modMask c, xK_slash),      spawn "xeyes")
     ]
 
+data TABBED = TABBED deriving (Read, Show, Eq, Typeable)
+instance Transformer TABBED Window where
+    transform _ x k = k (noBorders simpleTabbed) (const x)
+
 myLayout =
-    let gameWorkspace = "4" in
-    let fullScreenLayout = onWorkspace gameWorkspace gameFull Full in
-    let splitLayout = emptyBSP in
     -- for changes to navBorderColour to take effect, one must
     -- toggle the following line
     WN.configurableNavigation (WN.navigateColor myNavBorderColour) $
     WN.windowNavigation $
     smartBorders $
-    fullScreenLayout
-    ||| splitLayout
-    where
-        gameFull = noBorders ((fullscreenFloat . fullscreenFull) Full)
+    mkToggle (single TABBED) $
+    mouseResizableTile
+    ||| emptyBSP

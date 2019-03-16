@@ -11,6 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'racer-rust/vim-racer'
 
 " Fuzzy Find
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 
 " Git Annotations
@@ -21,6 +22,12 @@ Plugin 'Valloric/YouCompleteMe'
 
 " Multiple Visual Cursors
 Plugin 'terryma/vim-multiple-cursors'
+
+" TOML Syntax Highlighting
+Plugin 'cespare/vim-toml'
+
+" Rust Plugin
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -69,14 +76,18 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-map t <DOWN>
-map n <UP>
-map h <LEFT>
-map s <RIGHT>
-map T 10<DOWN>
-map N 10<UP>
-map H 10<LEFT>
-map S 10<RIGHT>
+" Dvorak Remappings
+noremap t <DOWN>
+noremap n <UP>
+noremap h <LEFT>
+noremap s <RIGHT>
+noremap T 10<DOWN>
+noremap N 10<UP>
+noremap H 10<LEFT>
+noremap S 10<RIGHT>
+noremap b n
+noremap B N
+noremap m b
 
 
 " Let 'tl' toggle between this and the last accessed tab
@@ -131,6 +142,13 @@ set pastetoggle=<F2>
 " Racer Config
 let g:racer_cmd="~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+" Auto format rust code on save
+let g:rustfmt_autosave = 1
 
 " Keep undo history across sessions by storing it in a file
 " Put plugins and dictionaries in this dir (also on Windows)
@@ -161,6 +179,26 @@ endif
 cnoreabbrev Q q
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
+
+" Resize windows with +/-
+if bufwinnr(1)
+    map + <C-W>+
+    map - <C-W>-
+endif
+
+" Underline spelling errors
+hi clear SpellBad
+hi SpellBad cterm=bold,underline
+
+if exists('$TMUX')
+    let &t_SI .= "\<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"
+    let &t_EI .= "\<Esc>Ptmux;\<Esc>\<Esc>[2 q\<Esc>\\"
+    autocmd VimLeave * silent !echo -ne "\033Ptmux;\033\033[0 q\033\\"
+else
+    let &t_SI .= "\<Esc>[4 q"
+    let &t_EI .= "\<Esc>[2 q"
+    autocmd VimLeave * silent !echo -ne "\033[0 q"
+endif
 
 " Shortcut to open this config
 nnoremap <F8> :e $MYVIMRC<CR>
