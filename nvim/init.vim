@@ -18,7 +18,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'tpope/vim-fugitive'
 
 " Code Completion
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
 
 " Multiple Visual Cursors
 Plugin 'terryma/vim-multiple-cursors'
