@@ -151,9 +151,18 @@ myKeysExtra c =
     [ ((modMask c, xK_slash),      spawn "xeyes")
     ]
 
+myTabConfig = defaultTheme {
+    fontName = "xft:terminus:size=12",
+    decoHeight = 20,
+    activeColor = "#FFFFFF",
+    inactiveColor = "#333333",
+    activeTextColor = "#000000",
+    inactiveTextColor = "#bbbbbb"
+  }
+
 data TABBED = TABBED deriving (Read, Show, Eq, Typeable)
 instance Transformer TABBED Window where
-    transform _ x k = k (noBorders simpleTabbed) (const x)
+    transform _ x k = k (noBorders (tabbed shrinkText myTabConfig)) (const x)
 
 myLayout =
     -- for changes to navBorderColour to take effect, one must
