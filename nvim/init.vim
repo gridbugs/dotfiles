@@ -56,6 +56,7 @@ set mouse=a
 
 " Fast saving
 nmap <leader>w :w!<cr>
+nmap <leader>x :x!<cr>
 
 " Colours
 syntax enable
@@ -77,6 +78,8 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Dvorak Remappings
+noremap k t
+noremap K T
 noremap t <DOWN>
 noremap n <UP>
 noremap h <LEFT>
@@ -89,6 +92,8 @@ noremap b n
 noremap B N
 noremap m b
 
+" Map fzf
+map <C-f> :FZF<CR>
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
