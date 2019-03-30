@@ -129,6 +129,12 @@ set expandtab
 set smarttab
 set shiftwidth=4
 set tabstop=4
+set smartindent
+set autoindent
+
+" Bell rules
+set visualbell t_vb=
+set novisualbell
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
