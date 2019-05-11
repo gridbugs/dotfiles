@@ -29,6 +29,18 @@ Plugin 'cespare/vim-toml'
 " Rust Plugin
 Plugin 'rust-lang/rust.vim'
 
+" Javascript Plugin
+Plugin 'pangloss/vim-javascript'
+
+" JSX Plugin
+Plugin 'mxw/vim-jsx'
+
+" Typescript Plugin
+Plugin 'leafgarland/typescript-vim'
+
+" Typescript JSX Plugin
+Plugin 'peitalin/vim-jsx-typescript'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -173,6 +185,11 @@ if has('persistent_undo')
     let &undodir = myUndoDir
     set undofile
 endif
+
+" set filetypes as typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+au FileType typescript.tsx,typescript,javascript set shiftwidth=2
+au FileType typescript.tsx,typescript,javascript set tabstop=2
 
 " Multiple Cursors Config
 let g:multi_cursor_exit_from_insert_mode = 0

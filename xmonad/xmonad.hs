@@ -105,14 +105,14 @@ myKeys c =
     , ("M-s"            , sendMessage $ WN.Go R)
     , ("M-n"            , sendMessage $ WN.Go U)
     , ("M-t"            , sendMessage $ WN.Go D)
-    , ("M-S-h"          , sendMessage $ ExpandTowards L)
-    , ("M-S-s"          , sendMessage $ ShrinkFrom L)
-    , ("M-S-n"          , sendMessage $ ExpandTowards U)
-    , ("M-S-t"          , sendMessage $ ShrinkFrom U)
-    , ("M-C-h"          , sendMessage $ ShrinkFrom R)
-    , ("M-C-s"          , sendMessage $ ExpandTowards R)
-    , ("M-C-n"          , sendMessage $ ShrinkFrom D)
-    , ("M-C-t"          , sendMessage $ ExpandTowards D)
+    , ("M-C-h"          , sendMessage $ ExpandTowards L)
+    , ("M-C-s"          , sendMessage $ ShrinkFrom L)
+    , ("M-C-n"          , sendMessage $ ExpandTowards U)
+    , ("M-C-t"          , sendMessage $ ShrinkFrom U)
+    , ("M-S-h"          , sendMessage $ ShrinkFrom R)
+    , ("M-S-s"          , sendMessage $ ExpandTowards R)
+    , ("M-S-n"          , sendMessage $ ShrinkFrom D)
+    , ("M-S-t"          , sendMessage $ ExpandTowards D)
     , ("M-r"            , sendMessage Rotate)
     , ("M-c"            , sendMessage Swap)
     , ("M-S-C-b"        , sendMessage FocusParent)
@@ -152,7 +152,7 @@ myKeysExtra c =
     ]
 
 myTabConfig = defaultTheme {
-    fontName = "xft:terminus:size=12",
+    fontName = "xft:xos4 Terminus:pixelsize=14:antialias=true:hinting=true",
     decoHeight = 20,
     activeColor = "#FFFFFF",
     inactiveColor = "#333333",
