@@ -6,8 +6,8 @@ ZSH_THEME="stevebob"
 plugins=(git cargo rust archlinux z nvm gem npm zsh-autosuggestions)
 
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/sbin:$PATH"
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
 alias tmp='pushd `mktemp -d`'
 alias tmux='tmux -2'

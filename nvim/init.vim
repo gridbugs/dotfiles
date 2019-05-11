@@ -102,7 +102,6 @@ noremap H 10<LEFT>
 noremap S 10<RIGHT>
 noremap b n
 noremap B N
-noremap m b
 
 " Map fzf
 map <C-f> :FZF<CR>
