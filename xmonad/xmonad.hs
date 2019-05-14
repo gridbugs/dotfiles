@@ -101,6 +101,8 @@ myKeys c =
     , ("M-q"            , spawn "killall xmobar; xmonad --recompile; xmonad --restart")
     , ("M-S-q"          , io exitSuccess)
     , ("M-S-c"          , kill)
+    --, ("M-S-h"          , sendMessage $ Shrink)
+    --, ("M-S-s"          , sendMessage $ Expand)
     , ("M-h"            , sendMessage $ WN.Go L)
     , ("M-s"            , sendMessage $ WN.Go R)
     , ("M-n"            , sendMessage $ WN.Go U)
@@ -173,3 +175,4 @@ myLayout =
     mkToggle (single TABBED) $
     mouseResizableTile
     ||| emptyBSP
+    ||| Tall { tallNMaster = 1, tallRatioIncrement = 3/100, tallRatio = 2/3 }
