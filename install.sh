@@ -2,17 +2,19 @@
 set -euxo pipefail
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+TARGET=$HOME
 
 function make_link {
-    if test -e $2; then
-        echo $2 already exists
+    DEST=$TARGET/$2
+    if test -e $DEST; then
+        echo $DEST already exists
     else
-        ln -v -s $DIR/$1 $2
+        ln -v -s $DIR/$1 $DEST
     fi
 }
 
 cd $HOME
-if [ -e .oh-my-zsh ]; then
+if [ ! -e .oh-my-zsh ]; then
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 export ZSH_CUSTOM=$HOME/.zsh-custom
