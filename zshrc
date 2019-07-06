@@ -3,7 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM="$HOME/.zsh-custom"
 ZSH_THEME="stevebob"
 
-plugins=(git zsh-autosuggestions)
+plugins=(git)
 
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/sbin:$PATH"
 export EDITOR=nvim
@@ -40,10 +40,6 @@ if test -f $OPAM_ZSH; then
 fi
 
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
-
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-  exec startx
-fi
 
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
     . $HOME/.nix-profile/etc/profile.d/nix.sh

@@ -17,11 +17,6 @@ cd $HOME
 if [ ! -e .oh-my-zsh ]; then
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
-export ZSH_CUSTOM=$HOME/.zsh-custom
-if [ ! -e $ZSH_CUSTOM/plugins ]; then
-    mkdir -p $ZSH_CUSTOM/plugins
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-fi
 
 mkdir -v -p $HOME/.config
 mkdir -v -p $HOME/.config/terminator
