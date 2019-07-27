@@ -3,7 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM="$HOME/.zsh-custom"
 ZSH_THEME="stevebob"
 
-plugins=(git)
+plugins=(git cargo)
 
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/sbin:$PATH"
 export EDITOR=nvim
