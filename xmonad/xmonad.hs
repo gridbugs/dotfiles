@@ -7,8 +7,6 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.Groups.Helpers
 import XMonad.Layout.NoBorders
 import XMonad.Layout.IndependentScreens(countScreens)
-import XMonad.Layout.BinarySpacePartition
-import XMonad.Layout.MouseResizableTile
 import XMonad.Layout.Tabbed
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
@@ -101,25 +99,12 @@ myKeys c =
     , ("M-q"            , spawn "killall xmobar; xmonad --recompile; xmonad --restart")
     , ("M-S-q"          , io exitSuccess)
     , ("M-S-c"          , kill)
-    --, ("M-S-h"          , sendMessage $ Shrink)
-    --, ("M-S-s"          , sendMessage $ Expand)
+    , ("M-S-h"          , sendMessage $ Shrink)
+    , ("M-S-s"          , sendMessage $ Expand)
     , ("M-h"            , sendMessage $ WN.Go L)
     , ("M-s"            , sendMessage $ WN.Go R)
     , ("M-n"            , sendMessage $ WN.Go U)
     , ("M-t"            , sendMessage $ WN.Go D)
-    , ("M-C-h"          , sendMessage $ ExpandTowards L)
-    , ("M-C-s"          , sendMessage $ ShrinkFrom L)
-    , ("M-C-n"          , sendMessage $ ExpandTowards U)
-    , ("M-C-t"          , sendMessage $ ShrinkFrom U)
-    , ("M-S-h"          , sendMessage $ ShrinkFrom R)
-    , ("M-S-s"          , sendMessage $ ExpandTowards R)
-    , ("M-S-n"          , sendMessage $ ShrinkFrom D)
-    , ("M-S-t"          , sendMessage $ ExpandTowards D)
-    , ("M-r"            , sendMessage Rotate)
-    , ("M-c"            , sendMessage Swap)
-    , ("M-S-C-b"        , sendMessage FocusParent)
-    , ("M-C-b"          , sendMessage SelectNode)
-    , ("M-S-b"          , sendMessage MoveNode)
     , ("M-<Tab>"        , focusDown)
     , ("M-S-<Tab>"      , focusUp)
     , ("M-<Space>"      , sendMessage $ Toggle TABBED)
@@ -173,6 +158,4 @@ myLayout =
     WN.windowNavigation $
     smartBorders $
     mkToggle (single TABBED) $
-    mouseResizableTile
-    ||| emptyBSP
-    ||| Tall { tallNMaster = 1, tallRatioIncrement = 3/100, tallRatio = 2/3 }
+    Tall { tallNMaster = 1, tallRatioIncrement = 3/100, tallRatio = 2/3 }

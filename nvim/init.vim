@@ -17,6 +17,9 @@ Plugin 'junegunn/fzf.vim'
 " Git Annotations
 Plugin 'tpope/vim-fugitive'
 
+" See unstaged changes
+Plugin 'airblade/vim-gitgutter'
+
 " Code Completion
 Plugin 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
 
@@ -226,6 +229,12 @@ else
     let &t_EI .= "\<Esc>[2 q"
     autocmd VimLeave * silent !echo -ne "\033[0 q"
 endif
+
+" GitGutter Colours
+highlight GitGutterAdd    guifg=#009900 guibg=0 ctermfg=2 ctermbg=0
+highlight GitGutterChange guifg=#bbbb00 guibg=0 ctermfg=3 ctermbg=0
+highlight GitGutterDelete guifg=#ff2222 guibg=0 ctermfg=1 ctermbg=0
+autocmd BufWritePost * GitGutter
 
 " Shortcut to open this config
 nnoremap <F8> :e $MYVIMRC<CR>
