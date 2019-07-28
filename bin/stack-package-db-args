@@ -1,2 +1,0 @@
-#!/bin/bash
-stack path --ghc-package-path | xargs -d: -I{} echo -n "-package-db={} "
