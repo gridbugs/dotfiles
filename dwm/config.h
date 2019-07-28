@@ -66,8 +66,7 @@ static const char *monbrightnessdeccmd[] = { "xbacklight", "-dec", "1", NULL };
 static const char *kbdbrightnessinccmd[] = { "kb-light.py", "--up", "1", NULL };
 static const char *kbdbrightnessdeccmd[] = { "kb-light.py", "--down", "1", NULL };
 
-#define XF86MonBrightnessDown           0x1008ff03
-#define XF86MonBrightnessUp             0x1008ff02
+#include <X11/XF86keysym.h>
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -105,10 +104,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-    { 0,                            XF86MonBrightnessUp, spawn, {.v = monbrightnessinccmd } },
-    { 0,                            XF86MonBrightnessDown, spawn, {.v = monbrightnessdeccmd } },
-    { MODKEY,                       XF86MonBrightnessUp, spawn, {.v = kbdbrightnessinccmd } },
-    { MODKEY,                       XF86MonBrightnessDown, spawn, {.v = kbdbrightnessdeccmd } },
+    { 0,                            XF86XK_MonBrightnessUp, spawn, {.v = monbrightnessinccmd } },
+    { 0,                            XF86XK_MonBrightnessDown, spawn, {.v = monbrightnessdeccmd } },
+    { MODKEY,                       XF86XK_MonBrightnessUp, spawn, {.v = kbdbrightnessinccmd } },
+    { MODKEY,                       XF86XK_MonBrightnessDown, spawn, {.v = kbdbrightnessdeccmd } },
 };
 
 /* button definitions */
