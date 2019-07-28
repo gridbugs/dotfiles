@@ -1,12 +1,13 @@
+set --export PATH "$HOME/bin:$HOME/.bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.local/sbin:$PATH"
+
 alias vim nvim
 alias refish "source $HOME/.config/fish/config.fish"
 fish_vi_key_bindings
-bind \ce end-of-line
-bind \ca beginning-of-line
-bind h backward-char
-bind s forward-char
-bind H backward-word
-bind S forward-word
-bind n up-or-search
-bind t down-or-search
-
+bind --mode insert \ce end-of-line
+bind --mode insert \ca beginning-of-line
+bind --mode default n up-or-search
+bind --mode default t down-or-search
+bind --mode default h backward-char
+bind --mode default s forward-char
+bind --mode default H backward-word
+bind --mode default S forward-word

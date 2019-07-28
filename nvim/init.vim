@@ -233,6 +233,9 @@ else
     autocmd VimLeave * silent !echo -ne "\033[0 q"
 endif
 
+" This sets the cursor to an underline when leaving vim
+:au VimLeave * set guicursor=a:hor20-blinkon0
+
 " GitGutter Colours
 highlight GitGutterAdd    guifg=#009900 guibg=0 ctermfg=2 ctermbg=0
 highlight GitGutterChange guifg=#bbbb00 guibg=0 ctermfg=3 ctermbg=0
@@ -242,6 +245,3 @@ autocmd BufWritePost * GitGutter
 " Shortcut to open this config
 nnoremap <F8> :e $MYVIMRC<CR>
 autocmd! bufwritepost $MYVIMRC source %
-
-" This sets the cursor to an underline when leaving vim
-:au VimLeave * set guicursor=a:hor20-blinkon0
