@@ -1,7 +1,5 @@
 #!/bin/bash
 
-xrdb -remove
-
 if test -f $HOME/.xprofile; then
     source $HOME/.xprofile
 fi
@@ -10,11 +8,12 @@ if hash xsetroot 2>/dev/null; then
     xsetroot -solid black
 fi
 
-xrdb -DHOME=$HOME $XRDB_ARGS -merge $HOME/.Xresources
-
 setxkbmap -option caps:swapescape
 
 case $WM in
+    dwm)
+        $HOME/.bin/dwm-loop.sh
+        ;;
     xmonad)
         exec xmonad
         ;;
@@ -22,5 +21,5 @@ case $WM in
         exec startlxde
         ;;
     *)
-        exec xmonad
+        exec dwm
 esac
