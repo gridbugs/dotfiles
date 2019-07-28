@@ -12,10 +12,11 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_purple[]      = "#7704a8";
+static const char col_dark_purple[] = "#421654";
 static const char *colors[][3]      = {
     /*               fg         bg          border   */
     [SchemeNorm] = { col_gray3, col_gray1,  col_gray2 },
-    [SchemeSel]  = { col_gray4, col_purple, col_purple  },
+    [SchemeSel]  = { col_gray4, col_dark_purple, col_purple  },
 };
 
 /* tagging */
@@ -28,7 +29,6 @@ static const Rule rules[] = {
      */
     /* class      instance    title       tags mask     isfloating   monitor */
     { "Gimp",     NULL,       NULL,       0,            1,           -1 },
-    { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
