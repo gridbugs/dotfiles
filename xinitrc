@@ -10,9 +10,31 @@ fi
 
 setxkbmap -option caps:swapescape
 
+dwm_loop() {
+    while true; do
+        xsetroot -name "$($HOME/.bin/dwm-bar.sh)"
+        sleep 10
+    done &
+
+    new_csum=$(sha1sum $(which dwm))
+    csum=""
+
+    while true; do
+        if [ "$csum" != "$new_csum" ]
+        then
+            csum=$new_csum
+            dwm
+        else
+            exit 0
+        fi
+        new_csum=$(sha1sum $(which dwm))
+        sleep 0.5
+    done
+}
+
 case $WM in
     dwm)
-        $HOME/.bin/dwm-loop.sh
+        dwm_loop
         ;;
     xmonad)
         exec xmonad
@@ -21,5 +43,5 @@ case $WM in
         exec startlxde
         ;;
     *)
-        exec dwm
+        dwm_loop
 esac

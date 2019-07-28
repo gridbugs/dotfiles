@@ -58,8 +58,16 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "termite", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
+
+static const char *monbrightnessinccmd[] = { "xbacklight", "-inc", "1", NULL };
+static const char *monbrightnessdeccmd[] = { "xbacklight", "-dec", "1", NULL };
+static const char *kbdbrightnessinccmd[] = { "kb-light.py", "--up", "1", NULL };
+static const char *kbdbrightnessdeccmd[] = { "kb-light.py", "--down", "1", NULL };
+
+#define XF86MonBrightnessDown           0x1008ff03
+#define XF86MonBrightnessUp             0x1008ff02
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -97,6 +105,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+    { 0,                            XF86MonBrightnessUp, spawn, {.v = monbrightnessinccmd } },
+    { 0,                            XF86MonBrightnessDown, spawn, {.v = monbrightnessdeccmd } },
+    { MODKEY,                       XF86MonBrightnessUp, spawn, {.v = kbdbrightnessinccmd } },
+    { MODKEY,                       XF86MonBrightnessDown, spawn, {.v = kbdbrightnessdeccmd } },
 };
 
 /* button definitions */
