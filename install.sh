@@ -9,7 +9,7 @@ function make_link {
     if test -e $DEST; then
         echo $DEST already exists
     else
-        mkdir -v -p dirname $DEST
+        mkdir -v -p $(dirname $DEST)
         ln -v -s $DIR/$1 $DEST
     fi
 }
