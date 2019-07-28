@@ -44,6 +44,9 @@ Plugin 'leafgarland/typescript-vim'
 " Typescript JSX Plugin
 Plugin 'peitalin/vim-jsx-typescript'
 
+" Fish Plugin
+Plugin 'dag/vim-fish'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -239,3 +242,6 @@ autocmd BufWritePost * GitGutter
 " Shortcut to open this config
 nnoremap <F8> :e $MYVIMRC<CR>
 autocmd! bufwritepost $MYVIMRC source %
+
+" This sets the cursor to an underline when leaving vim
+:au VimLeave * set guicursor=a:hor20-blinkon0

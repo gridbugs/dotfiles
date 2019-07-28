@@ -9,22 +9,20 @@ function make_link {
     if test -e $DEST; then
         echo $DEST already exists
     else
+        mkdir -v -p dirname $DEST
         ln -v -s $DIR/$1 $DEST
     fi
 }
 
 cd $HOME
-if [ ! -e .oh-my-zsh ]; then
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-fi
-
-mkdir -v -p $HOME/.config
-mkdir -v -p $HOME/.config/terminator
-mkdir -v -p $HOME/.config/htop
 
 make_link nvim .config/nvim
 if [ ! -e $HOME/.config/nvim/Vundle.vim ]; then
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/Vundle.vim
+fi
+
+if [ ! -e $HOME/.fzf ]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
 fi
 
 make_link zshrc .zshrc
@@ -38,6 +36,8 @@ make_link i3status.conf .i3status.conf
 make_link tmux.conf .tmux.conf
 make_link wallpaper.png .wallpaper.png
 make_link terminator.config .config/terminator/config
+make_link termite.config .config/termite/config
+make_link fish .config/fish
 make_link htoprc .config/htop/htoprc
 make_link bin .bin
 make_link xmobarrc .xmobarrc

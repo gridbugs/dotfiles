@@ -8,6 +8,10 @@ if hash xsetroot 2>/dev/null; then
     xsetroot -solid black
 fi
 
+if hash synclient 2>/dev/null; then
+    synclient HorizTwoFingerScroll=1
+fi
+
 setxkbmap -option caps:swapescape
 
 dwm_loop() {
