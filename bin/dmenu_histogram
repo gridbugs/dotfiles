@@ -1,0 +1,48 @@
+#!/bin/bash
+
+set -euo pipefail
+
+cachedir="${XDG_CACHE_HOME:-"$HOME/.cache"}"
+histogram="$cachedir/dmenu_histogram"
+histogram_cache="$cachedir/dmenu_histogram_cache"
+
+[[ ! -e "$cachedir" ]] && mkdir -p "$cachedir"
+
+file_list_uncached() {
+    if [[ -r $histogram ]]; then
+        cat $histogram | sort -nr | cut -d' ' -f1 --complement
+        comm -13 <(cat $histogram | cut -d' ' -f1 --complement | sort) <(dmenu_path)
+    else
+        dmenu_path
+    fi
+}
+
+file_list() {
+    IFS=:
+    if stest -dqr -n $histogram_cache $PATH; then
+        file_list_uncached | tee $histogram_cache
+    else
+        cat $histogram_cache
+    fi
+}
+
+update_histogram() {
+    choice=$1
+    if count=$(grep -E "^[0-9]+ $choice$" $histogram | awk '{ print $1 }') ; then
+        next_count=$((count + 1))
+        sed -i "s/^$count $choice$/$next_count $choice/" $histogram
+    else
+        echo "1 $choice" >> $histogram
+    fi
+    file_list_uncached > $histogram_cache
+}
+
+main() {
+    choice=$(file_list | dmenu "$@")
+    if which $choice; then
+        update_histogram $choice &
+        $choice
+    fi
+}
+
+main &
