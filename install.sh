@@ -31,7 +31,6 @@ make_link termite.config .config/termite/config
 make_link fish .config/fish
 make_link htoprc .config/htop/htoprc
 make_link bin .bin
-make_link xmobarrc .xmobarrc
 make_link fzf.zsh .fzf.zsh
 
 echo Done!
