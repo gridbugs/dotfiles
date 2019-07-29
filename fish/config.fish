@@ -5,7 +5,7 @@ set --export VISUAL nvim
 alias vim nvim
 alias vmi nvim
 
-if type keychain 2>/dev/null >/dev/null
+if type keychain ^/dev/null >/dev/null
     keychain --quiet --agents ssh id_rsa
 end
 
