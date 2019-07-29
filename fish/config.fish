@@ -6,7 +6,7 @@ alias vim nvim
 alias vmi nvim
 
 if type keychain 2>/dev/null >/dev/null
-    eval (keychain --quiet --eval --agents ssh id_rsa)
+    keychain --quiet --eval --agents ssh id_rsa
 end
 
 set --export RUST_SRC_PATH (rustc --print sysroot)"/lib/rustlib/src/rust/src"
