@@ -1,4 +1,6 @@
 *
 !PKGBUILD
 !config.h
+!dwm.install
+!dwm.desktop
 !.gitignore
