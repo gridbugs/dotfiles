@@ -1,5 +1,8 @@
 function fish_prompt --description 'Write out the prompt'
-	set -l last_status $status
+    set fish_color_host normal
+    set fish_color_cwd brblue
+    set fish_color_vcs yellow
+    set -l last_status $status
     set -l normal (set_color normal)
 
     # Hack; fish_config only copies the fish_prompt function (see #736)
@@ -63,5 +66,5 @@ function fish_prompt --description 'Write out the prompt'
         set prompt_status ' ' (set_color $fish_color_status) "[$last_status]" "$normal"
     end
 
-    echo -n -s (set_color $fish_color_host) [(prompt_hostname)] $normal ' ' (set_color $color_cwd) (prompt_pwd) $normal (__fish_vcs_prompt) $normal $prompt_status $suffix " "
+    echo -n -s (set_color $fish_color_host) (prompt_hostname) $normal ' ' (set_color $color_cwd) (prompt_pwd) $normal (set_color $fish_color_vcs) (__fish_vcs_prompt) $normal $prompt_status $suffix " "
 end
