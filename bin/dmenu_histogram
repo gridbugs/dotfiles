@@ -37,12 +37,10 @@ update_histogram() {
     file_list_uncached > $histogram_cache
 }
 
-main() {
+{
     choice=$(file_list | dmenu "$@")
     if which $choice; then
         update_histogram $choice &
         $choice
     fi
-}
-
-main &
+} &
