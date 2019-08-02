@@ -75,6 +75,7 @@ set mouse=a
 " Fast saving
 nmap <leader>w :w!<cr>
 nmap <leader>x :x!<cr>
+nmap <CR> :w!<cr>
 
 " Colours
 syntax enable
@@ -108,6 +109,13 @@ noremap H 10<LEFT>
 noremap S 10<RIGHT>
 noremap b n
 noremap B N
+
+" Easier navigation between windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-t> <C-w>j
+nnoremap <C-n> <C-w>k
+nnoremap <C-s> <C-w>l
+nnoremap <C-w> <C-w>w
 
 " Map fzf
 map <C-f> :FZF<CR>
