@@ -90,12 +90,6 @@ map <c-space> ?
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
 " Dvorak Remappings
 noremap k t
 noremap K T
@@ -109,13 +103,6 @@ noremap H 10<LEFT>
 noremap S 10<RIGHT>
 noremap b n
 noremap B N
-
-" Easier navigation between windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-t> <C-w>j
-nnoremap <C-n> <C-w>k
-nnoremap <C-s> <C-w>l
-nnoremap <C-w> <C-w>w
 
 " Map fzf
 map <C-f> :FZF<CR>
@@ -201,8 +188,10 @@ endif
 
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
-au FileType typescript.tsx,typescript,javascript set shiftwidth=2
-au FileType typescript.tsx,typescript,javascript set tabstop=2
+
+" filetype-specific indentation
+au FileType typescript.tsx,typescript,javascript,yaml set shiftwidth=2
+au FileType typescript.tsx,typescript,javascript,yaml set tabstop=2
 
 " Multiple Cursors Config
 let g:multi_cursor_exit_from_insert_mode = 0
@@ -249,6 +238,15 @@ highlight GitGutterAdd    guifg=#009900 guibg=0 ctermfg=2 ctermbg=0
 highlight GitGutterChange guifg=#bbbb00 guibg=0 ctermfg=3 ctermbg=0
 highlight GitGutterDelete guifg=#ff2222 guibg=0 ctermfg=1 ctermbg=0
 autocmd BufWritePost * GitGutter
+
+" Ycm Colours
+:hi YcmWarningSection ctermbg=238
+
+" Easier navigation between windows
+noremap <C-h> <C-W>h
+noremap <C-t> <C-W>j
+noremap <C-n> <C-W>k
+noremap <C-s> <C-W>l
 
 " Shortcut to open this config
 nnoremap <F8> :e $MYVIMRC<CR>
