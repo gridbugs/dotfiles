@@ -194,7 +194,10 @@ au FileType typescript.tsx,typescript,javascript,yaml set shiftwidth=2
 au FileType typescript.tsx,typescript,javascript,yaml set tabstop=2
 
 " Multiple Cursors Config
+let g:multi_cursor_use_default_mapping = 0
 let g:multi_cursor_exit_from_insert_mode = 0
+let g:multi_cursor_next_key = '<C-a>'
+let g:multi_cursor_quit_key = '<Esc>'
 
 " highlight trailing whitespace
 set list
