@@ -5,6 +5,8 @@ set --export VISUAL nvim
 alias vim nvim
 alias vmi nvim
 
+alias ls 'ls --color -h --group-directories-first'
+
 if type keychain ^/dev/null >/dev/null
     eval (keychain --quiet --agents ssh id_rsa --eval)
 end
