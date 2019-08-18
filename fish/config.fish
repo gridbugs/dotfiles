@@ -11,7 +11,9 @@ if type keychain ^/dev/null >/dev/null
     eval (keychain --quiet --agents ssh id_rsa --eval)
 end
 
-set --export RUST_SRC_PATH (rustc --print sysroot)"/lib/rustlib/src/rust/src"
+if type rustc ^/dev/null >/dev/null
+    set --export RUST_SRC_PATH (rustc --print sysroot)"/lib/rustlib/src/rust/src"
+end
 
 fish_vi_key_bindings
 bind --mode insert \ce end-of-line
