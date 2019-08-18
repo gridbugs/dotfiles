@@ -12,10 +12,6 @@ if hash synclient 2>/dev/null; then
     synclient HorizTwoFingerScroll=1
 fi
 
-if hash redshift 2>/dev/null; then
-    redshift &
-fi
-
 setxkbmap -option caps:swapescape
 
 dwm_loop() {
