@@ -243,7 +243,8 @@ highlight GitGutterDelete guifg=#ff2222 guibg=0 ctermfg=1 ctermbg=0
 autocmd BufWritePost * GitGutter
 
 " Ycm Colours
-:hi YcmWarningSection ctermbg=238
+highlight YcmWarningSection ctermbg=238
+highlight YcmErrorSection ctermfg=1
 
 " Easier navigation between windows
 noremap <C-h> <C-W>h
