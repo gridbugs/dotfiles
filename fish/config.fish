@@ -22,5 +22,9 @@ bind --mode default h backward-char
 bind --mode default s forward-char
 bind --mode default H backward-word
 bind --mode default S forward-word
+bind --mode insert \e\[1\;5C forward-word
+bind --mode insert \e\[1\;5D backward-word
+bind --mode normal \e\[1\;5C forward-word
+bind --mode normal \e\[1\;5D backward-word
 
 alias refish "source $HOME/.config/fish/config.fish"
