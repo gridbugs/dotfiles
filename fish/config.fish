@@ -2,6 +2,7 @@ set --export PATH "$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:$HOME
 set --export EDITOR nvim
 set --export VISUAL nvim
 
+alias tmp 'pushd (mktemp -d)'
 alias vim nvim
 alias vmi nvim
 
