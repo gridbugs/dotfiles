@@ -27,4 +27,5 @@ unclutter
 vlc
 xorg-server
 xorg-xinit
+xorg-xsetroot
 yaourt

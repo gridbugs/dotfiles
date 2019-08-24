@@ -44,9 +44,6 @@ case $WM in
     dwm)
         dwm_loop
         ;;
-    xmonad)
-        exec xmonad
-        ;;
     lxde)
         exec startlxde
         ;;
