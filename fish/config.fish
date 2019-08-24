@@ -5,6 +5,7 @@ set --export VISUAL nvim
 alias tmp 'pushd (mktemp -d)'
 alias vim nvim
 alias vmi nvim
+alias explicit-non-default-packages "bash -c 'comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)'"
 
 alias ls 'ls --color -h --group-directories-first'
 

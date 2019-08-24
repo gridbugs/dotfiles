@@ -1,4 +1,3 @@
-# generated with "bash -c 'comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)'"
 acpi
 alsa-utils
 dialog
@@ -24,6 +23,7 @@ python-pip
 st
 stalonetray
 terminus-font-ll2-td1
+thunderbird
 tmux
 ttf-inconsolata
 upower
