@@ -12,6 +12,10 @@ if hash synclient 2>/dev/null; then
     synclient HorizTwoFingerScroll=1
 fi
 
+if hash unclutter 2>/dev/null; then
+    unclutter &
+fi
+
 setxkbmap -option caps:swapescape
 
 dwm_loop() {
