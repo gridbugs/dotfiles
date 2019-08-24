@@ -15,6 +15,7 @@ ntfs-3g
 nvidia
 openssh
 package-query
+pavucontrol
 pulseaudio
 python-pip
 st
@@ -22,6 +23,7 @@ terminus-font-ll2-td1
 thunderbird
 tmux
 ttf-inconsolata
+vlc
 xorg-server
 xorg-xinit
 yaourt
