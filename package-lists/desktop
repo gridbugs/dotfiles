@@ -4,9 +4,11 @@ dwm
 efibootmgr
 firefox
 fish
+gdb
 gimp
 git
 grub
+htop
 keychain
 lxterminal
 mplayer
@@ -18,6 +20,7 @@ package-query
 pavucontrol
 pulseaudio
 python-pip
+rsync
 st
 terminus-font-ll2-td1
 thunderbird
