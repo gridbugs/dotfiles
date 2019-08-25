@@ -21,3 +21,9 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # install grub to efi partition
 sudo grub-install --target=x86_64-efi --efi-directory=/boot/ --bootloader-id=arch_grub
 ```
+
+# Pip
+
+Using YouCompleteMe in neovim requires `pynvim`.
+
+The kb-light.py script depends on `dbus-python`.
