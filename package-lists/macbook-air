@@ -1,5 +1,6 @@
 acpi
 alsa-utils
+broadcom-wl
 dmenu
 dwm
 efibootmgr
@@ -17,6 +18,7 @@ pavucontrol
 pulseaudio
 pulseaudio-alsa
 python-pip
+rsync
 st
 terminus-font-ll2-td1
 thunderbird
