@@ -20,6 +20,7 @@ pavucontrol
 pkgfile
 pulseaudio
 python-pip
+rsync
 st
 stalonetray
 terminus-font-ll2-td1
