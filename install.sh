@@ -29,7 +29,6 @@ make_link xinitrc .xinitrc
 make_link tmux.conf .tmux.conf
 make_link fish .config/fish
 make_link htoprc .config/htop/htoprc
-make_link lxterminal.conf .config/lxterminal/lxterminal.conf
 make_link bin .bin
 make_link fzf.zsh .fzf.zsh
 make_link dwm pkg/dwm
