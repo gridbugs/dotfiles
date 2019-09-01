@@ -47,6 +47,12 @@ Plugin 'peitalin/vim-jsx-typescript'
 " Fish Plugin
 Plugin 'dag/vim-fish'
 
+" Rainbow Parens
+Plugin 'luochen1990/rainbow'
+
+" Vlime
+Plugin 'l04m33/vlime', {'rtp': 'vim/'}
+
 call vundle#end()
 filetype plugin indent on
 
@@ -251,6 +257,9 @@ noremap <C-h> <C-W>h
 noremap <C-t> <C-W>j
 noremap <C-n> <C-W>k
 noremap <C-s> <C-W>l
+
+" Enable rainbow parens
+let g:rainbow_active = 1
 
 " Shortcut to open this config
 nnoremap <F8> :e $MYVIMRC<CR>
