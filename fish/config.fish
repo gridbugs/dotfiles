@@ -6,6 +6,7 @@ alias tmp 'pushd (mktemp -d)'
 alias vim nvim
 alias vmi nvim
 alias explicit-non-default-packages "bash -c 'comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)'"
+alias orphaned-packages "pacman -Qdtq"
 
 if type gls ^/dev/null >/dev/null
     alias ls 'gls --color --human-readable --group-directories-first'
