@@ -50,9 +50,6 @@ Plugin 'dag/vim-fish'
 " Rainbow Parens
 Plugin 'luochen1990/rainbow'
 
-" Vlime
-Plugin 'l04m33/vlime', {'rtp': 'vim/'}
-
 call vundle#end()
 filetype plugin indent on
 
