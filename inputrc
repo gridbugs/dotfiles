@@ -1,0 +1,32 @@
+set editing-mode vi
+set show-mode-in-prompt on
+set keyseq-timeout 50
+
+# set cursor based on editing mode
+$if term=linux
+    set vi-ins-mode-string \1\e[?0c\2
+    set vi-cmd-mode-string \1\e[?8c\2
+$else
+    set vi-ins-mode-string \1\e[1m\e[32mI\e[0m \1\e[6 q\2
+    set vi-cmd-mode-string \1\e[1m\e[31mN\e[0m \1\e[2 q\2
+$endif
+
+set keymap vi-command
+
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\e[C": forward-char
+"\e[D": backward-char
+"n": history-search-backward
+"t": history-search-forward
+"h": backward-char
+"s": forward-char
+
+set keymap vi-insert
+
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\e[C": forward-char
+"\e[D": backward-char
+"\C-e": end-of-line
+"\C-a": beginning-of-line
