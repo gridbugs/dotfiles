@@ -11,8 +11,8 @@ else
     MAYBE_BATT=""
 fi
 
-if hash xbacklight 2>/dev/null; then
-    BACKLIGHT=$(printf "%.2f" $(xbacklight -get))
+if hash getbacklight 2>/dev/null; then
+    BACKLIGHT=$(printf "%.2f" $(getbacklight))
     MAYBE_BACKLIGHT=" ☼ $BACKLIGHT |"
 else
     MAYBE_BACKLIGHT=""

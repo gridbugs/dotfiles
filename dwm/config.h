@@ -60,10 +60,10 @@ static const char *dmenucmd[] = { "dmenu_histogram", "-m", dmenumon, "-fn", dmen
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
 
-static const char *monbrightnessinccmd[] = { "xbacklight", "-inc", "1", NULL };
-static const char *monbrightnessdeccmd[] = { "xbacklight", "-dec", "1", NULL };
-static const char *monbrightnessbiginccmd[] = { "xbacklight", "-inc", "5", NULL };
-static const char *monbrightnessbigdeccmd[] = { "xbacklight", "-dec", "5", NULL };
+static const char *monbrightnessinccmd[] = { "setbacklight", "+10", NULL };
+static const char *monbrightnessdeccmd[] = { "setbacklight", "-10", NULL };
+static const char *monbrightnessbiginccmd[] = { "setbacklight", "50", NULL };
+static const char *monbrightnessbigdeccmd[] = { "setbacklight", "-50", NULL };
 static const char *kbdbrightnessinccmd[] = { "kb-light.py", "--up", "1", NULL };
 static const char *kbdbrightnessdeccmd[] = { "kb-light.py", "--down", "1", NULL };
 static const char *volumeinccmd[] = { "amixer", "sset", "Master", "1%+", NULL };
