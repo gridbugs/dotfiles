@@ -14,14 +14,8 @@ Plugin 'racer-rust/vim-racer'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 
-" Git Annotations
-Plugin 'tpope/vim-fugitive'
-
 " See unstaged changes
 Plugin 'airblade/vim-gitgutter'
-
-" Code Completion
-Plugin 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
 
 " Multiple Visual Cursors
 Plugin 'terryma/vim-multiple-cursors'
@@ -49,6 +43,12 @@ Plugin 'dag/vim-fish'
 
 " Rainbow Parens
 Plugin 'luochen1990/rainbow'
+
+" Clojure
+Plugin 'tpope/vim-fireplace'
+
+" Code Completion
+Plugin 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
 
 call vundle#end()
 filetype plugin indent on
@@ -106,6 +106,8 @@ noremap H 10<LEFT>
 noremap S 10<RIGHT>
 noremap b n
 noremap B N
+
+imap hh <Esc>
 
 " Map fzf
 map <C-f> :FZF<CR>
@@ -168,10 +170,11 @@ set pastetoggle=<F2>
 " Racer Config
 let g:racer_cmd="~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader><leader>d <Plug>(rust-def)
+au FileType rust nmap <leader><leader>s <Plug>(rust-def-split)
+au FileType rust nmap <leader><leader>x <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
+au FileType rust nmap <leader><leader>t :YcmCompleter GetType<CR>
 
 " Auto format rust code on save
 let g:rustfmt_autosave = 1
