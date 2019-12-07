@@ -1,10 +1,12 @@
 #!/bin/bash
-set -euo pipefail
 
 # Only run if the shell is interactive
 if [[ $- == *i* ]]; then
 
-    export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:$HOME/.cargo/bin:$HOME/.rvm/bin:$PATH"
+    # fail if unset variable is read
+    set -u
+
+    export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:$HOME/.cargo/bin:$HOME:$PATH"
 
     # Use neovim, vim, or vi as editor
     if type nvim 2>/dev/null >/dev/null; then
@@ -55,10 +57,13 @@ if [[ $- == *i* ]]; then
     # FZF
     [[ -f ~/.fzf.bash ]] && [[ "$SHELL" == "/bin/bash" ]] && source ~/.fzf.bash
 
-    # NVM
-    export NVM_DIR="$HOME/.nvm"
-    [[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [[ -s "$NVM_DIR/bash_completion" ]] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    # Lazily load NVM
+    function nvm() {
+        export NVM_DIR="$HOME/.nvm"
+        [[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+        [[ -s "$NVM_DIR/bash_completion" ]] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+        nvm $@
+    }
 
     # Prompt
     PS1="\h \[\e[1;34m\]\w\[\e[0m\] \$ "
