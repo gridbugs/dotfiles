@@ -24,3 +24,15 @@ set menu-complete-display-prefix on
 "t": history-search-forward
 "h": backward-char
 "s": forward-char
+
+# restore some emacs shortcuts
+set keymap vi-insert
+Control-a: beginning-of-line
+Control-e: end-of-line
+Control-k: kill-line
+
+# restore some emacs shortcuts
+set keymap vi-command
+Control-a: beginning-of-line
+Control-e: end-of-line
+Control-k: kill-line
