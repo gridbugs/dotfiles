@@ -3,9 +3,6 @@
 # Only run if the shell is interactive
 if [[ $- == *i* ]]; then
 
-    # fail if unset variable is read
-    set -u
-
     export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:$HOME/.cargo/bin:$HOME:$PATH"
 
     # Use neovim, vim, or vi as editor
