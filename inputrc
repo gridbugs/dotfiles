@@ -1,0 +1,24 @@
+# vi mode settings
+set show-mode-in-prompt on
+set vi-ins-mode-string "\e[1;32mI\e[0m "
+set vi-cmd-mode-string "\e[1;31mN\e[0m "
+set editing-mode vi
+set keymap vi-command
+set keyseq-timeout 50
+
+# more ergonomic tab completion
+tab: menu-complete
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set completion-ignore-case on
+set menu-complete-display-prefix on
+
+# dvorak navigation
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\e[C": forward-char
+"\e[D": backward-char
+"n": history-search-backward
+"t": history-search-forward
+"h": backward-char
+"s": forward-char
