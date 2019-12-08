@@ -5,17 +5,18 @@ set show-mode-in-prompt on
 set vi-ins-mode-string "\1\e[1;32mI\e[0m\2 "
 set vi-cmd-mode-string "\1\e[1;31mN\e[0m\2 "
 set editing-mode vi
-set keymap vi-command
 set keyseq-timeout 50
 
 # more ergonomic tab completion
-tab: menu-complete
+set keymap vi-insert
+Tab: menu-complete
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
 set completion-ignore-case on
 set menu-complete-display-prefix on
 
 # dvorak navigation
+set keymap vi-command
 "\e[A": history-search-backward
 "\e[B": history-search-forward
 "\e[C": forward-char
