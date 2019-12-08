@@ -25,12 +25,16 @@ if [ ! -e $HOME/.fzf ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
 fi
 
+# link archlinux-specific packages
+if type pacman 2>/dev/null >/dev/null; then
+    make_link dwm pkg/dwm
+    make_link st pkg/st
+fi
+
 make_link xinitrc .xinitrc
 make_link tmux.conf .tmux.conf
 make_link htoprc .config/htop/htoprc
 make_link bin .bin
 make_link fzf.zsh .fzf.zsh
-make_link dwm pkg/dwm
-make_link st pkg/st
 
 echo Done!
