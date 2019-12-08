@@ -27,7 +27,6 @@ fi
 
 make_link xinitrc .xinitrc
 make_link tmux.conf .tmux.conf
-make_link fish .config/fish
 make_link htoprc .config/htop/htoprc
 make_link bin .bin
 make_link fzf.zsh .fzf.zsh
