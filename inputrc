@@ -24,6 +24,8 @@ set menu-complete-display-prefix on
 "t": history-search-forward
 "h": backward-char
 "s": forward-char
+"H": backward-word
+"S": forward-word
 
 # restore some emacs shortcuts
 set keymap vi-insert
