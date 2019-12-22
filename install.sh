@@ -9,8 +9,8 @@ function make_link {
     if test -e $DEST; then
         echo $DEST already exists
     else
-        mkdir -v -p $(dirname $DEST)
-        ln -v -s $DIR/$1 $DEST
+        mkdir -p $(dirname $DEST)
+        ln -s $DIR/$1 $DEST
     fi
 }
 
@@ -31,10 +31,11 @@ if type pacman 2>/dev/null >/dev/null; then
     make_link st pkg/st
 fi
 
+make_link bashrc .bashrc
+make_link inputrc .inputrc
 make_link xinitrc .xinitrc
 make_link tmux.conf .tmux.conf
 make_link htoprc .config/htop/htoprc
 make_link bin .bin
-make_link fzf.zsh .fzf.zsh
 
 echo Done!

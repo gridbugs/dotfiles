@@ -37,7 +37,7 @@ if [[ $- == *i* ]]; then
         alias ls='ls --color --human-readable --group-directories-first'
     else
         # this case will be hit on macos and bsd without gls installed
-        alias ls='ls -Gh'
+        alias ls='ls -h'
     fi
 
     # Start keychain if it is installed
