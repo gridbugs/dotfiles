@@ -63,5 +63,5 @@ if [[ $- == *i* ]]; then
     }
 
     # Prompt
-    PS1="\h \[\e[1;34m\]\w\[\e[0m\] \$ "
+    PS1="\h \[\e[1;34m\]\w\[\e[0m\] $(if [[ $(id -u) == "0" ]]; then echo "#"; else echo "\$"; fi) "
 fi
