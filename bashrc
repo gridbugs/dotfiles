@@ -19,6 +19,9 @@ if [[ $- == *i* ]]; then
         alias vim=vi
     fi
 
+    # Allow aliases in sudo
+    alias sudo='sudo '
+
     # Some handy aliases
     alias tmp='pushd $(mktemp -d)'
     alias rebash='source $HOME/.bashrc'
