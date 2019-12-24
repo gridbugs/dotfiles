@@ -66,5 +66,10 @@ if [[ $- == *i* ]]; then
     }
 
     # Prompt
-    PS1="\h \[\e[1;34m\]\w\[\e[0m\] $(if [[ $(id -u) == "0" ]]; then echo "#"; else echo "\$"; fi) "
+    if [[ $(id -u) == "0" ]]; then
+        PROMPT_COLOUR=31
+    else
+        PROMPT_COLOUR=34
+    fi
+    PS1="\u\[\e[1;${PROMPT_COLOUR}m\]@\[\e[0m\]\h \[\e[1;${PROMPT_COLOUR}m\]\w\[\e[0m\] $ "
 fi
