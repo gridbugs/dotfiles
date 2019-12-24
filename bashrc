@@ -69,11 +69,13 @@ if [[ $- == *i* ]]; then
     function set_prompt() {
         if [[ $(id -u) == "0" ]]; then
             local PROMPT_COLOUR=31
+            local PROMPT_TERMINATOR='#'
         else
             local PROMPT_COLOUR=34
+            local PROMPT_TERMINATOR='$'
         fi
         local EXIT_CODE_MESSAGE="\$(EXIT=\$?; if [[ \$EXIT != 0 ]]; then echo \"\[\e[0;31m\]\$EXIT\[\e[0m\] \"; fi)"
-        PS1="\u\[\e[1;${PROMPT_COLOUR}m\]@\[\e[0m\]\h \[\e[1;${PROMPT_COLOUR}m\]\w\[\e[0m\] $EXIT_CODE_MESSAGE$ "
+        PS1="\u\[\e[1;${PROMPT_COLOUR}m\]@\[\e[0m\]\h \[\e[1;${PROMPT_COLOUR}m\]\w\[\e[0m\] $EXIT_CODE_MESSAGE$PROMPT_TERMINATOR "
     }
     set_prompt
 
