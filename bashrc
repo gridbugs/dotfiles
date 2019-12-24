@@ -49,7 +49,7 @@ if [[ $- == *i* ]]; then
     fi
 
     # Set some rust-specific environment variables if rust is installed
-    if type rustc 2>/dev/null >/dev/null; then
+    if type rustc 2>/dev/null >/dev/null && [[ -d ~/.cargo ]]; then
         export RUST_SRC_PATH=$(rustc --print sysroot)"/lib/rustlib/src/rust/src"
         export CARGO_HOME=$HOME/.cargo
     fi

@@ -7,9 +7,6 @@ call vundle#begin()
 " Let Vundle manage itself
 Plugin 'VundleVim/Vundle.vim'
 
-" Rust Completion
-Plugin 'racer-rust/vim-racer'
-
 " Fuzzy Find
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
@@ -47,8 +44,13 @@ Plugin 'luochen1990/rainbow'
 " Clojure
 Plugin 'tpope/vim-fireplace'
 
-" Code Completion
-Plugin 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
+if filereadable(expand("~/.cargo/env"))
+    " Rust Completion
+    Plugin 'racer-rust/vim-racer'
+
+    " Code Completion
+    Plugin 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
+endif
 
 call vundle#end()
 filetype plugin indent on
