@@ -109,8 +109,6 @@ noremap S 10<RIGHT>
 noremap b n
 noremap B N
 
-imap hh <Esc>
-
 " Map fzf
 map <C-f> :FZF<CR>
 
