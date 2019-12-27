@@ -35,9 +35,6 @@ Plugin 'leafgarland/typescript-vim'
 " Typescript JSX Plugin
 Plugin 'peitalin/vim-jsx-typescript'
 
-" Fish Plugin
-Plugin 'dag/vim-fish'
-
 " Rainbow Parens
 Plugin 'luochen1990/rainbow'
 
