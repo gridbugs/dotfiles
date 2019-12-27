@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TIME=$(date "+%Y-%m-%d %H:%M:%S")
+TIME=$(date "+%a %Y-%m-%d %H:%M:%S %Z")
 IP=$(for i in $(ip route); do echo $i; done | grep -A 1 src | tail -n1)
 MAYBE_IP="🖧 $IP |"
 
