@@ -47,6 +47,9 @@ case $WM in
     lxde)
         exec startlxde
         ;;
+    xfce4)
+        exec xfce4
+        ;;
     *)
         dwm_loop
 esac
