@@ -48,7 +48,7 @@ case $WM in
         exec startlxde
         ;;
     xfce4)
-        exec xfce4
+        exec startxfce4
         ;;
     *)
         dwm_loop
