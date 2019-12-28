@@ -170,7 +170,7 @@ let g:racer_experimental_completer = 1
 au FileType rust nmap <leader><leader>d <Plug>(rust-def)
 au FileType rust nmap <leader><leader>s <Plug>(rust-def-split)
 au FileType rust nmap <leader><leader>x <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
+au FileType rust nmap <leader><leader>D <Plug>(rust-doc)
 au FileType rust nmap <leader><leader>t :YcmCompleter GetType<CR>
 
 " Auto format rust code on save
