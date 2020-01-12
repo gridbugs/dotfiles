@@ -9,6 +9,8 @@ set keyseq-timeout 50
 
 # more ergonomic tab completion
 set keymap vi-insert
+"\e[A": history-search-backward
+"\e[B": history-search-forward
 Tab: menu-complete
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
