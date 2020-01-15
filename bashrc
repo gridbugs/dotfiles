@@ -76,17 +76,35 @@ if [[ $- == *i* ]]; then
     }
 
     # Prompt
-    function set_prompt() {
-        if [[ $(id -u) == "0" ]]; then
-            local PROMPT_COLOUR=31
-            local PROMPT_TERMINATOR='#'
+    PS1="\$(
+        EXIT=\$?;
+        if [[ \$(id -u) == '0' ]]; then
+            PROMPT_COLOUR=31
+            PROMPT_TERMINATOR='#'
         else
-            local PROMPT_COLOUR=34
-            local PROMPT_TERMINATOR='$'
+            PROMPT_COLOUR=34
+            PROMPT_TERMINATOR='$'
         fi
-        local EXIT_CODE_MESSAGE="\$(EXIT=\$?; if [[ \$EXIT != 0 ]]; then echo \"\[\e[0;31m\]\$EXIT\[\e[0m\] \"; fi)"
-        PS1="\u\[\e[1;${PROMPT_COLOUR}m\]@\[\e[0m\]\h \[\e[1;${PROMPT_COLOUR}m\]\w\[\e[0m\] $EXIT_CODE_MESSAGE$PROMPT_TERMINATOR "
-    }
-    set_prompt
-
+        if [[ \$EXIT != 0 ]]; then
+            RED=31
+            EXIT_CODE_MESSAGE=\"\[\e[0;\${RED}m\]\$EXIT\[\e[0m\] \"
+        else
+            EXIT_CODE_MESSAGE=''
+        fi
+        if type git 2>/dev/null >/dev/null; then
+            if git rev-parse --is-inside-work-tree 2>/dev/null >/dev/null; then
+                BRANCH=\" \$(git symbolic-ref HEAD --short 2>/dev/null)\" || BRANCH=''
+                REV=\" \$(git log --pretty=format:'%h' -n 1 2>/dev/null)\"
+                GIT_BRANCH_MESSAGE=\"(git\$REV\$BRANCH) \"
+            else
+                GIT_BRANCH_MESSAGE=''
+            fi
+        else
+            GIT_BRANCH_MESSAGE=''
+        fi
+        BASE_PROMPT=\"\u\[\e[1;\${PROMPT_COLOUR}m\]@\[\e[0m\]\h \[\e[1;\${PROMPT_COLOUR}m\]\w\[\e[0m\]\"
+        PROMPT=\"\$BASE_PROMPT \$GIT_BRANCH_MESSAGE\$EXIT_CODE_MESSAGE\$PROMPT_TERMINATOR \"
+        echo \"\$PROMPT\"
+    )"
 fi
+            #"\$(git symbolic-ref HEAD --short 2> /dev/null || true )"
