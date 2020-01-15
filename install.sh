@@ -32,6 +32,7 @@ if type pacman 2>/dev/null >/dev/null; then
 fi
 
 make_link bashrc .bashrc
+make_link bash_profile .bash_profile
 make_link inputrc .inputrc
 make_link xinitrc .xinitrc
 make_link tmux.conf .tmux.conf
