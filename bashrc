@@ -82,7 +82,7 @@ if [[ $- == *i* ]]; then
             PROMPT_COLOUR=31
             PROMPT_TERMINATOR='#'
         else
-            PROMPT_COLOUR=34
+            PROMPT_COLOUR=35
             PROMPT_TERMINATOR='$'
         fi
         if [[ \$EXIT != 0 ]]; then
