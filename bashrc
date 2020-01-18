@@ -94,8 +94,9 @@ if [[ $- == *i* ]]; then
         if type git 2>/dev/null >/dev/null; then
             if git rev-parse --is-inside-work-tree 2>/dev/null >/dev/null; then
                 BRANCH=\" \$(git symbolic-ref HEAD --short 2>/dev/null)\" || BRANCH=''
-                REV=\" \$(git log --pretty=format:'%h' -n 1 2>/dev/null)\"
-                GIT_BRANCH_MESSAGE=\"(git\$REV\$BRANCH) \"
+                REV=\"\$(git log --pretty=format:'%h' -n 1 2>/dev/null)\"
+                YELLOW=33
+                GIT_BRANCH_MESSAGE=\"\[\e[0;\[\e[1;\${YELLOW}m\]\$REV\$BRANCH\[\e[0m\] \"
             else
                 GIT_BRANCH_MESSAGE=''
             fi
@@ -107,4 +108,3 @@ if [[ $- == *i* ]]; then
         echo \"\$PROMPT\"
     )"
 fi
-            #"\$(git symbolic-ref HEAD --short 2> /dev/null || true )"
