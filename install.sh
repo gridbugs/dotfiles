@@ -5,16 +5,16 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TARGET=$HOME
 
 function make_link {
-    DEST=$TARGET/$2
-    if test -e $DEST; then
-        echo $DEST already exists
+    DEST="$TARGET/$2"
+    if test -e "$DEST"; then
+        echo "$DEST already exists"
     else
-        mkdir -p $(dirname $DEST)
-        ln -s $DIR/$1 $DEST
+        mkdir -p "$(dirname "$DEST")"
+        ln -s "$DIR/$1" "$DEST"
     fi
 }
 
-cd $HOME
+cd "$HOME"
 
 make_link nvim .vim
 make_link nvim .config/nvim
@@ -23,8 +23,8 @@ if [ ! -e $DIR/nvim/Vundle.vim ]; then
     git clone https://github.com/VundleVim/Vundle.vim.git $DIR/nvim/Vundle.vim
 fi
 
-if [ ! -e $HOME/.fzf ]; then
-    git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+if [ ! -e "$HOME/.fzf" ]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
 fi
 
 # link archlinux-specific packages
