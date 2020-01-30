@@ -67,6 +67,9 @@ else
 endif
 autocmd BufWritePost * GitGutter
 
+" Disable preview window when using autocomplete
+set completeopt-=preview
+
 " Multiple Cursors
 let g:multi_cursor_use_default_mapping = 0
 let g:multi_cursor_exit_from_insert_mode = 0
