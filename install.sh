@@ -16,9 +16,11 @@ function make_link {
 
 cd $HOME
 
+make_link nvim .vim
 make_link nvim .config/nvim
-if [ ! -e $HOME/.config/nvim/Vundle.vim ]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/Vundle.vim
+make_link nvim/init.vim .vimrc
+if [ ! -e $DIR/nvim/Vundle.vim ]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git $DIR/nvim/Vundle.vim
 fi
 
 if [ ! -e $HOME/.fzf ]; then

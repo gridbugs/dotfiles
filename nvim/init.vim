@@ -1,58 +1,10 @@
-" Vundle preamble and packages
-set nocompatible
-filetype off
-set rtp+=~/.config/nvim/Vundle.vim
-call vundle#begin()
-
-" Let Vundle manage itself
-Plugin 'VundleVim/Vundle.vim'
-
-" Fuzzy Find
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plugin 'junegunn/fzf.vim'
-
-" See unstaged changes
-Plugin 'airblade/vim-gitgutter'
-
-" Multiple Visual Cursors
-Plugin 'terryma/vim-multiple-cursors'
-
-" TOML Syntax Highlighting
-Plugin 'cespare/vim-toml'
-
-" Rust Plugin
-Plugin 'rust-lang/rust.vim'
-
-" Javascript Plugin
-Plugin 'pangloss/vim-javascript'
-
-" JSX Plugin
-Plugin 'mxw/vim-jsx'
-
-" Typescript Plugin
-Plugin 'leafgarland/typescript-vim'
-
-" Typescript JSX Plugin
-Plugin 'peitalin/vim-jsx-typescript'
-
-" Rainbow Parens
-Plugin 'luochen1990/rainbow'
-
-" Clojure
-Plugin 'tpope/vim-fireplace'
-
-if filereadable(expand("~/.cargo/env"))
-    " Rust Completion
-    Plugin 'racer-rust/vim-racer'
-
-    " Code Completion
-    Plugin 'Valloric/YouCompleteMe', { 'do': './install.py --racer-completer' }
+if filereadable(expand("~/.vim/plugins.vim"))
+    source ~/.vim/plugins.vim
 endif
 
-call vundle#end()
-filetype plugin indent on
-
-" End of Vundle preamble
+if filereadable(expand("~/.vim/dvorak.vim"))
+    source ~/.vim/dvorak.vim
+endif
 
 " Custom Leader
 let mapleader=","
@@ -77,7 +29,6 @@ set mouse=a
 " Fast saving
 nmap <leader>w :w!<cr>
 nmap <leader>x :x!<cr>
-nmap <CR> :w!<cr>
 
 " Colours
 syntax enable
@@ -91,20 +42,6 @@ map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
-
-" Dvorak Remappings
-noremap k t
-noremap K T
-noremap t <DOWN>
-noremap n <UP>
-noremap h <LEFT>
-noremap s <RIGHT>
-noremap T 10<DOWN>
-noremap N 10<UP>
-noremap H 10<LEFT>
-noremap S 10<RIGHT>
-noremap b n
-noremap B N
 
 " Map fzf
 map <C-f> :FZF<CR>
@@ -158,23 +95,11 @@ au TabLeave * let g:lasttab = tabpagenr()
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Pressing ,ss will toggle and untoggle spell checking
+" Pressing ,ss will toggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
 " Toggle paste mode on and off
 set pastetoggle=<F2>
-
-" Racer Config
-let g:racer_cmd="~/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
-au FileType rust nmap <leader><leader>d <Plug>(rust-def)
-au FileType rust nmap <leader><leader>s <Plug>(rust-def-split)
-au FileType rust nmap <leader><leader>x <Plug>(rust-def-vertical)
-au FileType rust nmap <leader><leader>D <Plug>(rust-doc)
-au FileType rust nmap <leader><leader>t :YcmCompleter GetType<CR>
-
-" Auto format rust code on save
-let g:rustfmt_autosave = 1
 
 " Keep undo history across sessions by storing it in a file
 " Put plugins and dictionaries in this dir (also on Windows)
@@ -195,12 +120,6 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 " filetype-specific indentation
 au FileType typescript.tsx,typescript,javascript,yaml set shiftwidth=2
 au FileType typescript.tsx,typescript,javascript,yaml set tabstop=2
-
-" Multiple Cursors Config
-let g:multi_cursor_use_default_mapping = 0
-let g:multi_cursor_exit_from_insert_mode = 0
-let g:multi_cursor_next_key = '<C-a>'
-let g:multi_cursor_quit_key = '<Esc>'
 
 " highlight trailing whitespace
 set list
@@ -226,6 +145,7 @@ endif
 hi clear SpellBad
 hi SpellBad cterm=bold,underline
 
+" Cursor changes depedning on mode
 if exists('$TMUX')
     let &t_SI .= "\<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"
     let &t_EI .= "\<Esc>Ptmux;\<Esc>\<Esc>[2 q\<Esc>\\"
@@ -239,24 +159,11 @@ endif
 " This sets the cursor to an underline when leaving vim
 :au VimLeave * set guicursor=a:hor20-blinkon0
 
-" GitGutter Colours
-highlight GitGutterAdd    guifg=#009900 guibg=0 ctermfg=2 ctermbg=0
-highlight GitGutterChange guifg=#bbbb00 guibg=0 ctermfg=3 ctermbg=0
-highlight GitGutterDelete guifg=#ff2222 guibg=0 ctermfg=1 ctermbg=0
-autocmd BufWritePost * GitGutter
-
-" Ycm Colours
-highlight YcmWarningSection ctermbg=238
-highlight YcmErrorSection ctermfg=1
-
 " Easier navigation between windows
 noremap <C-h> <C-W>h
 noremap <C-t> <C-W>j
 noremap <C-n> <C-W>k
 noremap <C-s> <C-W>l
-
-" Enable rainbow parens
-let g:rainbow_active = 1
 
 " Shortcut to open this config
 nnoremap <F8> :e $MYVIMRC<CR>

@@ -1,2 +1,4 @@
 Vundle.vim
 .netrwhist
+bundle
+undodir
