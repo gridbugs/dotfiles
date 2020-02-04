@@ -44,7 +44,7 @@ if [[ $- == *i* ]]; then
     fi
 
     # Start keychain if it is installed
-    if type keychain 2>/dev/null >/dev/null && [[ "$SHELL" == "/bin/bash" ]] && [[ -e ~/.ssh/id_rsa ]]; then
+    if type keychain 2>/dev/null >/dev/null && [[ $(basename "$SHELL") == "bash" ]] && [[ -e ~/.ssh/id_rsa ]]; then
        eval $(keychain --quiet --agents ssh id_rsa --eval)
     fi
 
