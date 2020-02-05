@@ -1,0 +1,4 @@
+{
+    "metals.javaHome": "/usr/lib/jvm/default",
+    "coc.preferences.formatOnSaveFiletypes": ["scala"]
+}

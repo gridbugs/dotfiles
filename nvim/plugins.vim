@@ -44,7 +44,13 @@ Plugin 'rhysd/vim-clang-format'
 " Rust Completion
 Plugin 'racer-rust/vim-racer'
 
-" Code Completion
+" Scala Highlighting
+Plugin 'derekwyatt/vim-scala'
+
+" LSP Client (requires manual install)
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Code Completion (requires manual install)
 Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
@@ -96,3 +102,5 @@ let g:rainbow_active = 1
 
 " Auto format c code on save
 autocmd FileType c ClangFormatAutoEnable
+
+source ~/.vim/coc.vim
