@@ -1,62 +1,61 @@
-" Vundle preamble and packages
-set nocompatible
-filetype off
-set rtp+=~/.config/nvim/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
 " Let Vundle manage itself
-Plugin 'VundleVim/Vundle.vim'
+Plug 'VundleVim/Vundle.vim'
 
 " Fuzzy Find
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plugin 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " See unstaged changes
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 " Multiple Visual Cursors
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 
 " TOML Syntax Highlighting
-Plugin 'cespare/vim-toml'
+Plug 'cespare/vim-toml'
 
-" Rust Plugin
-Plugin 'rust-lang/rust.vim'
+" Rust Plug
+Plug 'rust-lang/rust.vim'
 
-" Javascript Plugin
-Plugin 'pangloss/vim-javascript'
+" Javascript Plug
+Plug 'pangloss/vim-javascript'
 
-" JSX Plugin
-Plugin 'mxw/vim-jsx'
+" JSX Plug
+Plug 'mxw/vim-jsx'
 
-" Typescript Plugin
-Plugin 'leafgarland/typescript-vim'
+" Typescript Plug
+Plug 'leafgarland/typescript-vim'
 
-" Typescript JSX Plugin
-Plugin 'peitalin/vim-jsx-typescript'
+" Typescript JSX Plug
+Plug 'peitalin/vim-jsx-typescript'
 
 " Rainbow Parens
-Plugin 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow'
 
 " Auto Format C
-Plugin 'rhysd/vim-clang-format'
+Plug 'rhysd/vim-clang-format'
 
 " Rust Completion
-Plugin 'racer-rust/vim-racer'
+Plug 'racer-rust/vim-racer'
 
 " Scala Highlighting
-Plugin 'derekwyatt/vim-scala'
+Plug 'derekwyatt/vim-scala'
 
-" LSP Client (requires manual install)
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+" LSP Client
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Scala Autocomplete
+Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
 
 " Code Completion (requires manual install)
-Plugin 'Valloric/YouCompleteMe'
+" For rust, c, and typescript completion, update RUST_TOOLCHAIN in
+" ~/.vim/plugged/YouCompleteMe/third_party/ycmd/build.py and run:
+" ~/.vim/plugged/YouCompleteMe/install.py --racer-completer --clang-completer --ts-completer
+Plug 'Valloric/YouCompleteMe'
 
-call vundle#end()
-filetype plugin indent on
-
-" End of Vundle preamble
+call plug#end()
 
 " Auto format rust code on save
 let g:rustfmt_autosave = 1
@@ -103,4 +102,12 @@ let g:rainbow_active = 1
 " Auto format c code on save
 autocmd FileType c ClangFormatAutoEnable
 
-source ~/.vim/coc.vim
+" Configuration for vim-scala
+au BufRead,BufNewFile *.sbt set filetype=scala
+
+" Highlight comments in json
+autocmd FileType json syntax match Comment +\/\/.\+$+
+
+if filereadable(expand("~/.vim/plugged/coc.nvim/package.json"))
+    source ~/.vim/coc.vim
+endif

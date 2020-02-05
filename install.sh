@@ -19,9 +19,6 @@ cd "$HOME"
 make_link nvim .vim
 make_link nvim .config/nvim
 make_link nvim/init.vim .vimrc
-if [ ! -e $DIR/nvim/Vundle.vim ]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git $DIR/nvim/Vundle.vim
-fi
 
 if [ ! -e "$HOME/.fzf" ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
