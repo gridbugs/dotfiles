@@ -1,8 +1,5 @@
 call plug#begin('~/.vim/plugged')
 
-" Let Vundle manage itself
-Plug 'VundleVim/Vundle.vim'
-
 " Fuzzy Find
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
