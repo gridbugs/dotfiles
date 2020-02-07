@@ -58,16 +58,18 @@ call plug#end()
 let g:rustfmt_autosave = 1
 
 " GitGutter
-if has('nvim')
-    highlight GitGutterAdd    guifg=#009900 guibg=0
-    highlight GitGutterChange guifg=#bbbb00 guibg=0
-    highlight GitGutterDelete guifg=#ff2222 guibg=0
-else
-    highlight GitGutterAdd    ctermfg=2 ctermbg=0
-    highlight GitGutterChange ctermfg=3 ctermbg=0
-    highlight GitGutterDelete ctermfg=1 ctermbg=0
+if filereadable(expand("~/.vim/plugged/vim-gitgutter/autoload/gitgutter.vim"))
+    if has('nvim')
+        highlight GitGutterAdd    guifg=#009900 guibg=0
+        highlight GitGutterChange guifg=#bbbb00 guibg=0
+        highlight GitGutterDelete guifg=#ff2222 guibg=0
+    else
+        highlight GitGutterAdd    ctermfg=2 ctermbg=0
+        highlight GitGutterChange ctermfg=3 ctermbg=0
+        highlight GitGutterDelete ctermfg=1 ctermbg=0
+    endif
+    autocmd BufWritePost * GitGutter
 endif
-autocmd BufWritePost * GitGutter
 
 " Disable preview window when using autocomplete
 set completeopt-=preview
