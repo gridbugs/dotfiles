@@ -19,14 +19,8 @@ fi
 setxkbmap -option caps:swapescape
 
 dwm_loop() {
-    while true; do
-        xsetroot -name "$($HOME/.bin/dwm-bar.sh)"
-        sleep 10
-    done &
-
     new_csum=$(sha1sum $(which dwm))
     csum=""
-
     while true; do
         if [ "$csum" != "$new_csum" ]
         then
@@ -42,6 +36,9 @@ dwm_loop() {
 
 case $WM in
     dwm)
+        if test -f $HOME/.bin/dwm-bar-run-bg.sh; then
+            source $HOME/.bin/dwm-bar-run-bg.sh
+        fi
         dwm_loop
         ;;
     lxde)

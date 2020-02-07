@@ -5,7 +5,12 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "xos4 Terminus:pixelsize=16:antialias=true:autohint=true";
+#ifdef USERFONT
+static char *font = USERFONT;
+#else
+static char *font = "Inconsolata:style=Regular:size=12:antialias=true:autohint=true";
+#endif
+
 static int borderpx = 2;
 
 /*
