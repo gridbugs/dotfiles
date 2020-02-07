@@ -1,9 +1,7 @@
 # vi mode settings
 set show-mode-in-prompt on
-# TODO work out why the \1 and \2 are necessary, and why wrapping escape sequences in \[...\] cause brackets
-# to appear in the output
-set vi-ins-mode-string "\1\e[1;32mI\e[0m\2 "
-set vi-cmd-mode-string "\1\e[1;31mN\e[0m\2 "
+set vi-ins-mode-string "+"
+set vi-cmd-mode-string ":"
 set editing-mode vi
 set keyseq-timeout 50
 
