@@ -103,7 +103,15 @@ if [[ $- == *i* ]]; then
         else
             GIT_BRANCH_MESSAGE=''
         fi
-        BASE_PROMPT=\"\u\[\e[1;\${PROMPT_COLOUR}m\]@\[\e[0m\]\h \[\e[1;\${PROMPT_COLOUR}m\]\w\[\e[0m\]\"
+        HOSTNAME_COLOUR=0
+        if type hostname 2>/dev/null >/dev/null && type md5sum 2>/dev/null >/dev/null && type awk 2>/dev/null >/dev/null; then
+            NUM_COLOURS=6
+            BASE_COLOUR=91
+            HOSTNAME_HASH_SIGNED=\$((16#\$(md5sum <(hostname) | awk '{print \$1}')))
+            HOSTNAME_HASH_POSITIVE=\${HOSTNAME_HASH_SIGNED#-}
+            HOSTNAME_COLOUR=\$((\$HOSTNAME_HASH_POSITIVE % \$NUM_COLOURS + \$BASE_COLOUR))
+        fi
+        BASE_PROMPT=\"\u\[\e[1;\${PROMPT_COLOUR}m\]@\[\e[0m\]\[\e[0;\${HOSTNAME_COLOUR}m\]\h\[\e[0m\] \[\e[1;\${PROMPT_COLOUR}m\]\w\[\e[0m\]\"
         PROMPT=\"\$BASE_PROMPT \$GIT_BRANCH_MESSAGE\$EXIT_CODE_MESSAGE\$PROMPT_TERMINATOR \"
         echo \"\$PROMPT\"
     )"
