@@ -21,6 +21,7 @@ make_link nvim .config/nvim
 make_link nvim/init.vim .vimrc
 make_link bashrc .bashrc
 make_link bash_profile .bash_profile
+make_link bash_profile .profile
 make_link inputrc .inputrc
 make_link xinitrc .xinitrc
 make_link tmux.conf .tmux.conf
