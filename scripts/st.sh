@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euxo pipefail
 
+BUILD_DIR=$1
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 CONFIG=$DIR/../st/config.h
 
@@ -22,8 +23,6 @@ SCROLLBACK_MOUSE_CHECKSUM="6103a650f62b5d07672eee9e01e3f4062525083da6ba063e139ca
 SCROLLBACK_MOUSE_ALTSCREEN_FILENAME="scrollback-mouse-altscreen.diff"
 SCROLLBACK_MOUSE_ALTSCREEN_URL="https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-0.8.diff"
 SCROLLBACK_MOUSE_ALTSCREEN_CHECKSUM="bcfc106089d9eb75aa014d4915ed3e6842f1df54edd8b75597154096333df6fa"
-
-BUILD_DIR=$1
 
 mkdir -p $BUILD_DIR
 
