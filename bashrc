@@ -80,7 +80,7 @@ if [[ $- == *i* ]]; then
         EXIT=\$?;
         if [[ \$(id -u) == '0' ]]; then
             PROMPT_COLOUR=97
-            PROMPT_TERMINATOR=\"\[\e[1;\${PROMPT_COLOUR}m\]\#\[\e[0m\]\"
+            PROMPT_TERMINATOR=\"\[\e[1;\${PROMPT_COLOUR}m\]#\[\e[0m\]\"
         else
             PROMPT_COLOUR=97
             PROMPT_TERMINATOR=\"\[\e[1;\${PROMPT_COLOUR}m\]$\[\e[0m\]\"
