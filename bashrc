@@ -79,11 +79,11 @@ if [[ $- == *i* ]]; then
     PS1="\$(
         EXIT=\$?;
         if [[ \$(id -u) == '0' ]]; then
-            PROMPT_COLOUR=31
-            PROMPT_TERMINATOR='#'
+            PROMPT_COLOUR=97
+            PROMPT_TERMINATOR=\"\[\e[1;\${PROMPT_COLOUR}m\]\#\[\e[0m\]\"
         else
-            PROMPT_COLOUR=35
-            PROMPT_TERMINATOR='$'
+            PROMPT_COLOUR=97
+            PROMPT_TERMINATOR=\"\[\e[1;\${PROMPT_COLOUR}m\]$\[\e[0m\]\"
         fi
         if [[ \$EXIT != 0 ]]; then
             RED=31
@@ -91,27 +91,54 @@ if [[ $- == *i* ]]; then
         else
             EXIT_CODE_MESSAGE=''
         fi
+        function colour_by_command_output {
+            if type md5sum 2>/dev/null >/dev/null && type awk 2>/dev/null >/dev/null; then
+                NUM_COLOURS=12
+                NUM_COLOURS_NORMAL=6
+                BASE_COLOUR_NORMAL=31
+                BASE_COLOUR_BRIGHT=91
+                HASH_SIGNED=\$((16#\$(md5sum <(\$@) | awk '{print \$1}')))
+                HASH_POSITIVE=\${HASH_SIGNED#-}
+                INDEX=\$((\$HASH_POSITIVE % \$NUM_COLOURS))
+                if [ \$INDEX -lt \$NUM_COLOURS_NORMAL ]; then
+                    RET=\$((\$BASE_COLOUR_NORMAL + \$INDEX))
+                else
+                    RET=\$((\$BASE_COLOUR_NORMAL + \$INDEX - \$NUM_COLOURS_NORMAL))
+                fi
+            else
+                RET=0
+            fi
+            echo \$RET
+        }
         if type git 2>/dev/null >/dev/null; then
             if git rev-parse --is-inside-work-tree 2>/dev/null >/dev/null; then
                 BRANCH=\" \$(git symbolic-ref HEAD --short 2>/dev/null)\" || BRANCH=''
                 REV=\"\$(git log --pretty=format:'%h' -n 1 2>/dev/null)\"
-                YELLOW=33
-                GIT_BRANCH_MESSAGE=\"\[\e[0;\[\e[1;\${YELLOW}m\]\$REV\$BRANCH\[\e[0m\] \"
+                GIT_BRANCH_MESSAGE_TEXT=\$REV\$BRANCH
+                COLOUR=\$(colour_by_command_output echo \$GIT_BRANCH_MESSAGE_TEXT)
+                GIT_BRANCH_MESSAGE=\"\[\e[0;\${COLOUR}m\](\$GIT_BRANCH_MESSAGE_TEXT)\[\e[0m\] \"
             else
                 GIT_BRANCH_MESSAGE=''
             fi
         else
             GIT_BRANCH_MESSAGE=''
         fi
-        HOSTNAME_COLOUR=0
-        if type hostname 2>/dev/null >/dev/null && type md5sum 2>/dev/null >/dev/null && type awk 2>/dev/null >/dev/null; then
-            NUM_COLOURS=6
-            BASE_COLOUR=91
-            HOSTNAME_HASH_SIGNED=\$((16#\$(md5sum <(hostname) | awk '{print \$1}')))
-            HOSTNAME_HASH_POSITIVE=\${HOSTNAME_HASH_SIGNED#-}
-            HOSTNAME_COLOUR=\$((\$HOSTNAME_HASH_POSITIVE % \$NUM_COLOURS + \$BASE_COLOUR))
+        if test hostname 2>/dev/null; then
+            HOSTNAME_COLOUR=\$(colour_by_command_output hostname)
+        else
+            HOSTNAME_COLOUR=0
         fi
-        BASE_PROMPT=\"\u\[\e[1;\${PROMPT_COLOUR}m\]@\[\e[0m\]\[\e[0;\${HOSTNAME_COLOUR}m\]\h\[\e[0m\] \[\e[1;\${PROMPT_COLOUR}m\]\w\[\e[0m\]\"
+        if test whoami 2>/dev/null; then
+            USERNAME_COLOUR=\$(colour_by_command_output whoami)
+        else
+            USERNAME_COLOUR=0
+        fi
+        if test pwd 2>/dev/null; then
+            PWD_COLOUR=\$(colour_by_command_output pwd)
+        else
+            PWD_COLOUR=0
+        fi
+        BASE_PROMPT=\"\[\e[0;\${USERNAME_COLOUR}m\]\u\[\e[0m\]\[\e[1;\${PROMPT_COLOUR}m\]@\[\e[0m\]\[\e[0;\${HOSTNAME_COLOUR}m\]\h\[\e[0m\] \[\e[0;\${PWD_COLOUR}m\]\w\[\e[0m\]\"
         PROMPT=\"\$BASE_PROMPT \$GIT_BRANCH_MESSAGE\$EXIT_CODE_MESSAGE\$PROMPT_TERMINATOR \"
         echo \"\$PROMPT\"
     )"
