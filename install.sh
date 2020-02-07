@@ -26,6 +26,7 @@ make_link xinitrc .xinitrc
 make_link tmux.conf .tmux.conf
 make_link htoprc .config/htop/htoprc
 make_link bin .bin
+make_link hushlogin .hushlogin
 
 # link archlinux-specific packages
 if type pacman 2>/dev/null >/dev/null; then
