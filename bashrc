@@ -127,8 +127,13 @@ if [[ $- == *i* ]]; then
                 BRANCH=\" \$(git symbolic-ref HEAD --short 2>/dev/null)\" || BRANCH=''
                 REV=\"\$(git log --pretty=format:'%h' -n 1 2>/dev/null)\"
                 GIT_BRANCH_MESSAGE_TEXT=\$REV\$BRANCH
+                if git diff-index --quiet HEAD --; then
+                    GIT_DIRTY=''
+                else
+                    GIT_DIRTY='*'
+                fi
                 COLOUR=\$(colour_by_command_output echo \$GIT_BRANCH_MESSAGE_TEXT)
-                GIT_BRANCH_MESSAGE=\"\[\e[0;\${COLOUR}m\](\$GIT_BRANCH_MESSAGE_TEXT)\[\e[0m\] \"
+                GIT_BRANCH_MESSAGE=\"\[\e[0;\${COLOUR}m\](\$GIT_BRANCH_MESSAGE_TEXT)\$GIT_DIRTY\[\e[0m\] \"
             else
                 GIT_BRANCH_MESSAGE=''
             fi
