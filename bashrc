@@ -92,12 +92,15 @@ if [[ $- == *i* ]]; then
             EXIT_CODE_MESSAGE=''
         fi
         function colour_by_command_output {
+            # change STYLE_SUFFIX until you like the colours of your username/hostname as you'll see them a lot!
+            STYLE_SUFFIX=aoeu
             if type shasum 2>/dev/null >/dev/null && type awk 2>/dev/null >/dev/null; then
                 NUM_COLOURS=12
                 NUM_COLOURS_NORMAL=6
                 BASE_COLOUR_NORMAL=31
                 BASE_COLOUR_BRIGHT=91
-                HASH_SIGNED=\$((16#\$(shasum <(\$@) | awk '{print \$1}')))
+                TO_HASH=\$(\$@)\$STYLE_SUFFIX
+                HASH_SIGNED=\$((16#\$(shasum <(echo \$TO_HASH) | awk '{print \$1}')))
                 HASH_POSITIVE=\${HASH_SIGNED#-}
                 INDEX=\$((\$HASH_POSITIVE % \$NUM_COLOURS))
                 if [ \$INDEX -lt \$NUM_COLOURS_NORMAL ]; then
