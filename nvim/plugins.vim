@@ -83,12 +83,6 @@ let g:multi_cursor_quit_key = '<Esc>'
 " Racer Config
 let g:racer_cmd="~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
-au FileType rust nmap <leader><leader>d <Plug>(rust-def)
-au FileType rust nmap <leader><leader>s <Plug>(rust-def-split)
-au FileType rust nmap <leader><leader>x <Plug>(rust-def-vertical)
-au FileType rust nmap <leader><leader>D <Plug>(rust-doc)
-au FileType rust nmap <leader><leader>t :YcmCompleter GetType<CR>
-au FileType c nmap <leader><leader>t :YcmCompleter GetType<CR>
 
 " Ycm Colours
 highlight YcmWarningSection ctermbg=238
@@ -107,6 +101,15 @@ au BufRead,BufNewFile *.sbt set filetype=scala
 " Highlight comments in json
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
-if filereadable(expand("~/.vim/plugged/coc.nvim/package.json"))
-    source ~/.vim/coc.vim
-endif
+" YCM Shortcuts
+au FileType c,rust,typescript nmap <leader><leader>t :YcmCompleter GetType<CR>
+au FileType c,rust,typescript nmap <leader><leader>d :YcmCompleter GoToDefinition<CR>
+au FileType c,rust,typescript nmap <leader><leader>D :YcmCompleter GetDoc<CR>
+
+" COC Shortcuts
+au FileType scala nmap <leader><leader>t :call CocAction('doHover')<CR>
+
+" Stop YCM from handling filetypes that COC handles
+let g:ycm_filetype_blacklist = {
+  \ 'scala': 1,
+  \}
