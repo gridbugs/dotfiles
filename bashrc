@@ -43,6 +43,15 @@ if [[ $- == *i* ]]; then
         alias ls='ls -h'
     fi
 
+    if type inotifywait 2>/dev/null >/dev/null; then
+      function do-on-every-file-change {
+         while true; do
+           $@
+           inotifywait -qre close_write .
+         done
+      }
+    fi
+
     # Start keychain if it is installed
     if type keychain 2>/dev/null >/dev/null && [[ $(basename "$SHELL") == "bash" ]] && [[ -e ~/.ssh/id_rsa ]]; then
        eval $(keychain --quiet --agents ssh id_rsa --eval)
