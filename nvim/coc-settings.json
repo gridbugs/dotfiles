@@ -1,5 +1,4 @@
 {
-    "metals.javaHome": "/usr/lib/jvm/default",
     "coc.preferences.formatOnSaveFiletypes": ["scala"],
     "coc.preferences.hoverTarget": "preview",
     "signature.target": "preview",
