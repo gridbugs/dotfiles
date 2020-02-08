@@ -84,13 +84,16 @@ let g:multi_cursor_quit_key = '<Esc>'
 let g:racer_cmd="~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 
+" YCM Global Config
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
+
 " YCM Colours
 highlight YcmWarningSection ctermbg=236
 highlight YcmErrorSection ctermfg=1
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 
 " COC Colours
-highlight CocFloating ctermbg=236
+highlight MyCocFloating ctermfg=236
+highlight default link CocFloating MyCocFloating
 
 " Enable rainbow parens
 let g:rainbow_active = 1
@@ -111,6 +114,7 @@ au FileType c,rust,typescript nmap <leader><leader>D :YcmCompleter GetDoc<CR>
 
 " COC Shortcuts
 au FileType scala nmap <leader><leader>t :call CocAction('doHover')<CR>
+au FileType scala nmap <leader><leader>d <Plug>(coc-definition)
 
 " Stop YCM from handling filetypes that COC handles
 let g:ycm_filetype_blacklist = {
