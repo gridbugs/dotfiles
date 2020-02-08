@@ -84,10 +84,13 @@ let g:multi_cursor_quit_key = '<Esc>'
 let g:racer_cmd="~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 
-" Ycm Colours
-highlight YcmWarningSection ctermbg=238
+" YCM Colours
+highlight YcmWarningSection ctermbg=236
 highlight YcmErrorSection ctermfg=1
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
+
+" COC Colours
+highlight CocFloating ctermbg=236
 
 " Enable rainbow parens
 let g:rainbow_active = 1
