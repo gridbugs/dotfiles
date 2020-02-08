@@ -34,12 +34,16 @@ dwm_loop() {
     done
 }
 
+dwm_wm() {
+    if test -f $HOME/.bin/dwm-bar-run-bg.sh; then
+        $HOME/.bin/dwm-bar-run-bg.sh
+    fi
+    dwm_loop
+}
+
 case $WM in
     dwm)
-        if test -f $HOME/.bin/dwm-bar-run-bg.sh; then
-            source $HOME/.bin/dwm-bar-run-bg.sh
-        fi
-        dwm_loop
+        dwm_wm
         ;;
     lxde)
         exec startlxde
@@ -48,5 +52,5 @@ case $WM in
         exec startxfce4
         ;;
     *)
-        dwm_loop
+        dwm_wm
 esac
