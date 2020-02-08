@@ -52,6 +52,13 @@ if [[ $- == *i* ]]; then
       }
     fi
 
+    if type sbt 2>/dev/null >/dev/null; then
+        function sbt-new {
+            name=$1
+            sbt new sbt/scala-seed.g8 --name=$name
+        }
+    fi
+
     # Start keychain if it is installed
     if type keychain 2>/dev/null >/dev/null && [[ $(basename "$SHELL") == "bash" ]] && [[ -e ~/.ssh/id_rsa ]]; then
        eval $(keychain --quiet --agents ssh id_rsa --eval)
