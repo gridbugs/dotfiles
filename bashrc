@@ -149,7 +149,7 @@ if [[ $- == *i* ]]; then
         fi
         if type hostname 2>/dev/null >/dev/null; then
             HOSTNAME_COLOUR=\$(colour_by_command_output hostname)
-        else if [[ -f /etc/hostname ]]; then
+        elif [[ -f /etc/hostname ]]; then
             HOSTNAME_COLOUR=\$(colour_by_command_output cat /etc/hostname)
         else
             HOSTNAME_COLOUR=0
