@@ -3,4 +3,5 @@
 !config.h
 !dwm.install
 !dwm.desktop
+!usercflags.diff
 !.gitignore
