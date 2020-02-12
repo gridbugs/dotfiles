@@ -168,6 +168,7 @@ noremap <C-s> <C-W>l
 " Shortcut to open this config
 nnoremap <F8> :e $MYVIMRC<CR>
 
+highlight StatusLine ctermbg=15 ctermfg=0
 set statusline=
 set statusline +=\ %n\             "buffer number
 set statusline +=%{&ff}            "file format
