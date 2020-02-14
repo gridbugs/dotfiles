@@ -131,10 +131,11 @@ if [[ $- == *i* ]]; then
         }
         if type git 2>/dev/null >/dev/null; then
             if git rev-parse --is-inside-work-tree 2>/dev/null >/dev/null; then
-                BRANCH=\" \$(git symbolic-ref HEAD --short 2>/dev/null)\" || BRANCH=''
-                REV=\"\$(git log --pretty=format:'%h' -n 1 2>/dev/null)\"
-                GIT_BRANCH_MESSAGE_TEXT=\$REV\$BRANCH
-                if git diff-index --quiet HEAD --; then
+                PARTS=()
+                BRANCH=\"\$(git symbolic-ref HEAD --short 2>/dev/null)\" && PARTS+=(\$BRANCH)
+                REV=\"\$(git log --pretty=format:'%h' -n 1 2>/dev/null)\" && PARTS+=(\$REV)
+                GIT_BRANCH_MESSAGE_TEXT=\$(echo \${PARTS[@]})
+                if git diff-index --quiet HEAD -- 2>/dev/null; then
                     GIT_DIRTY=''
                 else
                     GIT_DIRTY='*'
