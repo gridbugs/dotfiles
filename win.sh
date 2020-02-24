@@ -1,5 +1,6 @@
 #!/bin/bash
 
+dos2unix.exe tmux.conf
 dos2unix.exe bashrc
 dos2unix.exe inputrc
 dos2unix.exe nvim/init.vim
