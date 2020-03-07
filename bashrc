@@ -81,6 +81,9 @@ if [[ $- == *i* ]]; then
         nvm $@
     }
 
+    # RVM
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 2> /dev/null
+
     man() {
         LESS_TERMCAP_md=$'\e[01;31m' \
         LESS_TERMCAP_me=$'\e[0m' \
