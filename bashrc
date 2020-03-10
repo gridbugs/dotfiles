@@ -94,6 +94,49 @@ if [[ $- == *i* ]]; then
         command man "$@"
     }
 
+    function __colour_by_command_output {
+        # change STYLE_SUFFIX until you like the colours of your username/hostname as you'll see them a lot!
+        STYLE_SUFFIX=aa
+        if type cksum 2>/dev/null >/dev/null && type cut 2>/dev/null >/dev/null; then
+            NUM_COLOURS=12
+            NUM_COLOURS_NORMAL=6
+            BASE_COLOUR_NORMAL=31
+            BASE_COLOUR_BRIGHT=91
+            TO_HASH=$($@)$STYLE_SUFFIX
+            HASH_SIGNED=$((16#$(cksum <(echo $TO_HASH) | cut -d' ' -f1)))
+            HASH_POSITIVE=${HASH_SIGNED#-}
+            INDEX=$(($HASH_POSITIVE % $NUM_COLOURS))
+            if [ $INDEX -lt $NUM_COLOURS_NORMAL ]; then
+                RET=$(($BASE_COLOUR_NORMAL + $INDEX))
+            else
+                RET=$(($BASE_COLOUR_NORMAL + $INDEX - $NUM_COLOURS_NORMAL))
+            fi
+        else
+            RET=0
+        fi
+        echo $RET
+    }
+
+    function __git_prompt {
+        if type git 2>/dev/null >/dev/null; then
+            if git rev-parse --is-inside-work-tree 2>/dev/null >/dev/null; then
+                PARTS=()
+                BRANCH="$(git symbolic-ref HEAD --short 2>/dev/null)" && PARTS+=($BRANCH)
+                REV="$(git log --pretty=format:'%h' -n 1 2>/dev/null)" && PARTS+=($REV)
+                GIT_BRANCH_MESSAGE_TEXT=$(echo ${PARTS[@]})
+                if git diff-index --quiet HEAD -- 2>/dev/null; then
+                    GIT_DIRTY=''
+                else
+                    GIT_DIRTY='*'
+                fi
+                COLOUR=$(__colour_by_command_output echo $GIT_BRANCH_MESSAGE_TEXT)
+                GIT_BRANCH_MESSAGE="\e[0;${COLOUR}m($GIT_BRANCH_MESSAGE_TEXT)$GIT_DIRTY\e[0m"
+                echo -e "$GIT_BRANCH_MESSAGE "
+            fi
+        fi
+
+    }
+
     # Prompt
     PS1="\$(
         EXIT=\$?;
@@ -110,61 +153,21 @@ if [[ $- == *i* ]]; then
         else
             EXIT_CODE_MESSAGE=''
         fi
-        function colour_by_command_output {
-            # change STYLE_SUFFIX until you like the colours of your username/hostname as you'll see them a lot!
-            STYLE_SUFFIX=aoeu
-            if type shasum 2>/dev/null >/dev/null && type awk 2>/dev/null >/dev/null; then
-                NUM_COLOURS=12
-                NUM_COLOURS_NORMAL=6
-                BASE_COLOUR_NORMAL=31
-                BASE_COLOUR_BRIGHT=91
-                TO_HASH=\$(\$@)\$STYLE_SUFFIX
-                HASH_SIGNED=\$((16#\$(shasum <(echo \$TO_HASH) | awk '{print \$1}')))
-                HASH_POSITIVE=\${HASH_SIGNED#-}
-                INDEX=\$((\$HASH_POSITIVE % \$NUM_COLOURS))
-                if [ \$INDEX -lt \$NUM_COLOURS_NORMAL ]; then
-                    RET=\$((\$BASE_COLOUR_NORMAL + \$INDEX))
-                else
-                    RET=\$((\$BASE_COLOUR_NORMAL + \$INDEX - \$NUM_COLOURS_NORMAL))
-                fi
-            else
-                RET=0
-            fi
-            echo \$RET
-        }
-        if type git 2>/dev/null >/dev/null; then
-            if git rev-parse --is-inside-work-tree 2>/dev/null >/dev/null; then
-                PARTS=()
-                BRANCH=\"\$(git symbolic-ref HEAD --short 2>/dev/null)\" && PARTS+=(\$BRANCH)
-                REV=\"\$(git log --pretty=format:'%h' -n 1 2>/dev/null)\" && PARTS+=(\$REV)
-                GIT_BRANCH_MESSAGE_TEXT=\$(echo \${PARTS[@]})
-                if git diff-index --quiet HEAD -- 2>/dev/null; then
-                    GIT_DIRTY=''
-                else
-                    GIT_DIRTY='*'
-                fi
-                COLOUR=\$(colour_by_command_output echo \$GIT_BRANCH_MESSAGE_TEXT)
-                GIT_BRANCH_MESSAGE=\"\[\e[0;\${COLOUR}m\](\$GIT_BRANCH_MESSAGE_TEXT)\$GIT_DIRTY\[\e[0m\] \"
-            else
-                GIT_BRANCH_MESSAGE=''
-            fi
-        else
-            GIT_BRANCH_MESSAGE=''
-        fi
+        GIT_BRANCH_MESSAGE=\$(__git_prompt)
         if type hostname 2>/dev/null >/dev/null; then
-            HOSTNAME_COLOUR=\$(colour_by_command_output hostname)
+            HOSTNAME_COLOUR=\$(__colour_by_command_output hostname)
         elif [[ -f /etc/hostname ]]; then
-            HOSTNAME_COLOUR=\$(colour_by_command_output cat /etc/hostname)
+            HOSTNAME_COLOUR=\$(__colour_by_command_output cat /etc/hostname)
         else
             HOSTNAME_COLOUR=0
         fi
         if test whoami 2>/dev/null; then
-            USERNAME_COLOUR=\$(colour_by_command_output whoami)
+            USERNAME_COLOUR=\$(__colour_by_command_output whoami)
         else
             USERNAME_COLOUR=0
         fi
         if test pwd 2>/dev/null; then
-            PWD_COLOUR=\$(colour_by_command_output pwd)
+            PWD_COLOUR=\$(__colour_by_command_output pwd)
         else
             PWD_COLOUR=0
         fi
