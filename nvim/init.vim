@@ -1,9 +1,15 @@
-if filereadable(expand("~/.vim/plugins.vim"))
-    source ~/.vim/plugins.vim
-endif
-
 if filereadable(expand("~/.vim/dvorak.vim"))
     source ~/.vim/dvorak.vim
+endif
+
+" Colours
+syntax enable
+set t_Co=256
+set background=dark
+colorscheme ron
+
+if filereadable(expand("~/.vim/plugins.vim"))
+    source ~/.vim/plugins.vim
 endif
 
 " Custom Leader
@@ -29,12 +35,6 @@ set mouse=a
 " Fast saving
 nmap <leader>w :w!<cr>
 nmap <leader>x :x!<cr>
-
-" Colours
-syntax enable
-set t_Co=256
-set background=dark
-colorscheme ron
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /

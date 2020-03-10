@@ -4,7 +4,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" See unstaged changes
+" Version Controlt
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'airblade/vim-gitgutter'
 
 " Multiple Visual Cursors
@@ -57,20 +60,6 @@ call plug#end()
 " Auto format rust code on save
 let g:rustfmt_autosave = 1
 
-" GitGutter
-if filereadable(expand("~/.vim/plugged/vim-gitgutter/autoload/gitgutter.vim"))
-    if has('nvim')
-        highlight GitGutterAdd    guifg=#009900 guibg=0
-        highlight GitGutterChange guifg=#bbbb00 guibg=0
-        highlight GitGutterDelete guifg=#ff2222 guibg=0
-    else
-        highlight GitGutterAdd    ctermfg=2 ctermbg=0
-        highlight GitGutterChange ctermfg=3 ctermbg=0
-        highlight GitGutterDelete ctermfg=1 ctermbg=0
-    endif
-    autocmd BufWritePost * GitGutter
-endif
-
 " Disable preview window when using autocomplete
 set completeopt-=preview
 
@@ -120,3 +109,11 @@ au FileType scala nmap <leader><leader>d <Plug>(coc-definition)
 let g:ycm_filetype_blacklist = {
   \ 'scala': 1,
   \}
+
+" GitGutter
+if filereadable(expand("~/.vim/plugged/vim-gitgutter/autoload/gitgutter.vim"))
+    highlight GitGutterAdd    ctermfg=2
+    highlight GitGutterChange ctermfg=3
+    highlight GitGutterDelete ctermfg=1
+    autocmd BufWritePost * GitGutter
+endif
