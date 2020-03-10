@@ -96,7 +96,7 @@ if [[ $- == *i* ]]; then
 
     function __colour_by_command_output {
         # change STYLE_SUFFIX until you like the colours of your username/hostname as you'll see them a lot!
-        STYLE_SUFFIX=aa
+        STYLE_SUFFIX=ba
         if type cksum 2>/dev/null >/dev/null && type cut 2>/dev/null >/dev/null; then
             NUM_COLOURS=12
             NUM_COLOURS_NORMAL=6
