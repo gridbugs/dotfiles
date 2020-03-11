@@ -34,9 +34,6 @@ Plug 'peitalin/vim-jsx-typescript'
 " Rainbow Parens
 Plug 'luochen1990/rainbow'
 
-" Auto Format C
-Plug 'rhysd/vim-clang-format'
-
 " Rust Completion
 Plug 'racer-rust/vim-racer'
 
