@@ -84,9 +84,6 @@ highlight default link CocFloating MyCocFloating
 " Enable rainbow parens
 let g:rainbow_active = 1
 
-" Auto format c code on save
-autocmd FileType c ClangFormatAutoEnable
-
 " Configuration for vim-scala
 au BufRead,BufNewFile *.sbt set filetype=scala
 
