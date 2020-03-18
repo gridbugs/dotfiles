@@ -123,26 +123,6 @@ if [[ $- == *i* ]]; then
         echo $RET
     }
 
-    function __git_prompt {
-        if type git 2>/dev/null >/dev/null; then
-            if git rev-parse --is-inside-work-tree 2>/dev/null >/dev/null; then
-                PARTS=()
-                BRANCH="$(git symbolic-ref HEAD --short 2>/dev/null)" && PARTS+=($BRANCH)
-                REV="$(git log --pretty=format:'%h' -n 1 2>/dev/null)" && PARTS+=($REV)
-                GIT_BRANCH_MESSAGE_TEXT=$(echo ${PARTS[@]})
-                if git diff-index --quiet HEAD -- 2>/dev/null; then
-                    GIT_DIRTY=''
-                else
-                    GIT_DIRTY='*'
-                fi
-                COLOUR=$(__colour_by_command_output echo $GIT_BRANCH_MESSAGE_TEXT)
-                GIT_BRANCH_MESSAGE="\e[0;${COLOUR}m($GIT_BRANCH_MESSAGE_TEXT)$GIT_DIRTY\e[0m"
-                echo -e "$GIT_BRANCH_MESSAGE "
-            fi
-        fi
-
-    }
-
     # Prompt
     PS1="\$(
         EXIT=\$?;
@@ -159,7 +139,25 @@ if [[ $- == *i* ]]; then
         else
             EXIT_CODE_MESSAGE=''
         fi
-        GIT_BRANCH_MESSAGE=\$(__git_prompt)
+        if type git 2>/dev/null >/dev/null; then
+            if git rev-parse --is-inside-work-tree 2>/dev/null >/dev/null; then
+                PARTS=()
+                BRANCH=\"\$(git symbolic-ref HEAD --short 2>/dev/null)\" && PARTS+=(\$BRANCH)
+                REV=\"\$(git log --pretty=format:'%h' -n 1 2>/dev/null)\" && PARTS+=(\$REV)
+                GIT_BRANCH_MESSAGE_TEXT=\$(echo \${PARTS[@]})
+                if git diff-index --quiet HEAD -- 2>/dev/null; then
+                    GIT_DIRTY=''
+                else
+                    GIT_DIRTY='*'
+                fi
+                COLOUR=\$(__colour_by_command_output echo \$GIT_BRANCH_MESSAGE_TEXT)
+                GIT_BRANCH_MESSAGE=\"\[\e[0;\${COLOUR}m\](\$GIT_BRANCH_MESSAGE_TEXT)\$GIT_DIRTY\[\e[0m\] \"
+            else
+                GIT_BRANCH_MESSAGE=''
+            fi
+        else
+            GIT_BRANCH_MESSAGE=''
+        fi
         if type hostname 2>/dev/null >/dev/null; then
             HOSTNAME_COLOUR=\$(__colour_by_command_output hostname)
         elif [[ -f /etc/hostname ]]; then
