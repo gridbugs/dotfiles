@@ -73,6 +73,7 @@ static const char *kbdbrightnessinccmd[] = { "kb-light.py", "--up", "1", NULL };
 static const char *kbdbrightnessdeccmd[] = { "kb-light.py", "--down", "1", NULL };
 static const char *volumeinccmd[] = { "amixer", "sset", "Master", "1%+", NULL };
 static const char *volumedeccmd[] = { "amixer", "sset", "Master", "1%-", NULL };
+static const char *volumemutecmd[] = { "amixer", "sset", "Master", "toggle", NULL };
 static const char *volumebiginccmd[] = { "amixer", "sset", "Master", "5%+", NULL };
 static const char *volumebigdeccmd[] = { "amixer", "sset", "Master", "5%-", NULL };
 static const char *qwertycmd[] = { "setxkbmap", "en_US", NULL };
@@ -127,6 +128,7 @@ static Key keys[] = {
     { 0,                            XF86XK_AudioLowerVolume, spawn, {.v = volumedeccmd } },
     { ShiftMask,                    XF86XK_AudioRaiseVolume, spawn, {.v = volumebiginccmd } },
     { ShiftMask,                    XF86XK_AudioLowerVolume, spawn, {.v = volumebigdeccmd } },
+    { 0,                            XF86XK_AudioMute, spawn, {.v = volumemutecmd } },
     { MODKEY,                       XK_a,      spawn,          {.v = dvorakcmd } },
     { MODKEY,                       XK_m,      spawn,          {.v = qwertycmd } },
     { MODKEY,                       XK_b,      togglebar,      {0} },
