@@ -159,11 +159,12 @@ endif
 " This sets the cursor to an underline when leaving vim
 :au VimLeave * set guicursor=a:hor20-blinkon0
 
+
 " Easier navigation between windows
-noremap <C-h> <C-W>h
-noremap <C-t> <C-W>j
-noremap <C-n> <C-W>k
-noremap <C-s> <C-W>l
+noremap <C-W>h <C-W>h
+noremap <C-W>t <C-W>j
+noremap <C-W>n <C-W>k
+noremap <C-W>s <C-W>l
 
 " Shortcut to open this config
 nnoremap <F8> :e $MYVIMRC<CR>
