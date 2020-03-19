@@ -76,8 +76,8 @@ static const char *volumedeccmd[] = { "amixer", "sset", "Master", "1%-", NULL };
 static const char *volumemutecmd[] = { "amixer", "sset", "Master", "toggle", NULL };
 static const char *volumebiginccmd[] = { "amixer", "sset", "Master", "5%+", NULL };
 static const char *volumebigdeccmd[] = { "amixer", "sset", "Master", "5%-", NULL };
-static const char *qwertycmd[] = { "setxkbmap", "en_US", NULL };
-static const char *dvorakcmd[] = { "setxkbmap", "dvorak", NULL };
+static const char *qwertycmd[] = { "aoeu", NULL };
+static const char *dvorakcmd[] = { "asdf", NULL };
 
 #include <X11/XF86keysym.h>
 
