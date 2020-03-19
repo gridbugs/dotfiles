@@ -36,7 +36,7 @@ build() {
   patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/dwm-noborder-$pkgver.diff
   patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/usercflags.diff
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2 \
-      USERCFLAGS=-DUSERFONT="\"\\\"xos4 Terminus:pixelsize=16:antialias=true:autohint=true\\\"\""
+      USERCFLAGS=-DUSERFONT="\"\\\"xos4 Terminus:pixelsize=${FONTSIZE:-16}:antialias=true:autohint=true\\\"\""
 }
 
 package() {
