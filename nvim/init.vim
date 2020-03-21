@@ -1,7 +1,3 @@
-if filereadable(expand("~/.vim/dvorak.vim"))
-    source ~/.vim/dvorak.vim
-endif
-
 " Colours
 syntax enable
 set t_Co=256
@@ -159,6 +155,8 @@ endif
 " This sets the cursor to an underline when leaving vim
 :au VimLeave * set guicursor=a:hor20-blinkon0
 
+au FileType cpp,c,h noremap <leader><leader>d <C-]>
+au FileType cpp,c,h noremap <leader><leader>b <C-t>
 
 " Easier navigation between windows
 noremap <C-W>h <C-W>h
@@ -180,3 +178,7 @@ set statusline +=%=%5l             "current line
 set statusline +=/%L               "total lines
 set statusline +=%4v\              "virtual column number
 set statusline +=0x%04B\           "character under cursor
+
+if filereadable(expand("~/.vim/dvorak.vim"))
+    source ~/.vim/dvorak.vim
+endif

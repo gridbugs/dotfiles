@@ -46,6 +46,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Scala Autocomplete
 Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
 
+" CtrlP
+Plug 'kien/ctrlp.vim'
+
 " Code Completion (requires manual install)
 " For rust, c, and typescript completion, update RUST_TOOLCHAIN in
 " ~/.vim/plugged/YouCompleteMe/third_party/ycmd/build.py and run:
@@ -91,9 +94,9 @@ au BufRead,BufNewFile *.sbt set filetype=scala
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " YCM Shortcuts
-au FileType c,rust,typescript nmap <leader><leader>t :YcmCompleter GetType<CR>
-au FileType c,rust,typescript nmap <leader><leader>d :YcmCompleter GoToDefinition<CR>
-au FileType c,rust,typescript nmap <leader><leader>D :YcmCompleter GetDoc<CR>
+au FileType rust,typescript nmap <leader><leader>t :YcmCompleter GetType<CR>
+au FileType rust,typescript nmap <leader><leader>d :YcmCompleter GoToDefinition<CR>
+au FileType rust,typescript nmap <leader><leader>D :YcmCompleter GetDoc<CR>
 
 " COC Shortcuts
 au FileType scala nmap <leader><leader>t :call CocAction('doHover')<CR>
@@ -102,6 +105,9 @@ au FileType scala nmap <leader><leader>d <Plug>(coc-definition)
 " Stop YCM from handling filetypes that COC handles
 let g:ycm_filetype_blacklist = {
   \ 'scala': 1,
+  \ 'cpp': 1,
+  \ 'c': 1,
+  \ 'h': 1,
   \}
 
 " GitGutter
