@@ -70,6 +70,9 @@ if [[ $- == *i* ]]; then
         export CARGO_HOME=$HOME/.cargo
     fi
 
+    # opam configuration
+    test -r ~/.opam/opam-init/init.sh && . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
     # FZF
     [[ -f ~/.fzf.bash ]] && [[ "$SHELL" == "/bin/bash" ]] && source ~/.fzf.bash
 
@@ -179,4 +182,9 @@ if [[ $- == *i* ]]; then
         PROMPT=\"\$BASE_PROMPT \$GIT_BRANCH_MESSAGE\$EXIT_CODE_MESSAGE\$PROMPT_TERMINATOR \"
         echo \"\$PROMPT\"
     )"
+
+    # source extra commands from .bashrc_extra
+    [[ -f ~/.bashrc_extra ]] && source ~/.bashrc_extra
+
+    true
 fi
