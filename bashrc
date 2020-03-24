@@ -103,6 +103,9 @@ if [[ $- == *i* ]]; then
         command man "$@"
     }
 
+    # Git Prompt
+    [[ -f ~/.git-prompt.sh ]] && source ~/.git-prompt.sh
+
     function __colour_by_command_output {
         # change STYLE_SUFFIX until you like the colours of your username/hostname as you'll see them a lot!
         STYLE_SUFFIX=ba
@@ -142,24 +145,15 @@ if [[ $- == *i* ]]; then
         else
             EXIT_CODE_MESSAGE=''
         fi
-        if type git 2>/dev/null >/dev/null; then
-            if git rev-parse --is-inside-work-tree 2>/dev/null >/dev/null; then
-                PARTS=()
-                BRANCH=\"\$(git symbolic-ref HEAD --short 2>/dev/null)\" && PARTS+=(\$BRANCH)
-                REV=\"\$(git log --pretty=format:'%h' -n 1 2>/dev/null)\" && PARTS+=(\$REV)
-                GIT_BRANCH_MESSAGE_TEXT=\$(echo \${PARTS[@]})
-                if git diff-index --quiet HEAD -- 2>/dev/null; then
-                    GIT_DIRTY=''
-                else
-                    GIT_DIRTY='*'
-                fi
-                COLOUR=\$(__colour_by_command_output echo \$GIT_BRANCH_MESSAGE_TEXT)
-                GIT_BRANCH_MESSAGE=\"\[\e[0;\${COLOUR}m\](\$GIT_BRANCH_MESSAGE_TEXT)\$GIT_DIRTY\[\e[0m\] \"
-            else
-                GIT_BRANCH_MESSAGE=''
-            fi
+        if type __git_ps1 2>/dev/null >/dev/null; then
+            GIT_MESSAGE=\"\$(GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWUPSTREAM=auto __git_ps1) \"
         else
-            GIT_BRANCH_MESSAGE=''
+            GIT_MESSAGE=\" \"
+        fi
+        if type git 2>/dev/null >/dev/null && git rev-parse --is-inside-work-tree 2>/dev/null >/dev/null; then
+            GIT_COLOUR=\$(__colour_by_command_output git rev-parse HEAD)
+        else
+            GIT_COLOUR=0
         fi
         if type hostname 2>/dev/null >/dev/null; then
             HOSTNAME_COLOUR=\$(__colour_by_command_output hostname)
@@ -179,7 +173,7 @@ if [[ $- == *i* ]]; then
             PWD_COLOUR=0
         fi
         BASE_PROMPT=\"\[\e[0;\${USERNAME_COLOUR}m\]\u\[\e[0m\]\[\e[1;\${PROMPT_COLOUR}m\]@\[\e[0m\]\[\e[0;\${HOSTNAME_COLOUR}m\]\h\[\e[0m\] \[\e[0;\${PWD_COLOUR}m\]\w\[\e[0m\]\"
-        PROMPT=\"\$BASE_PROMPT \$GIT_BRANCH_MESSAGE\$EXIT_CODE_MESSAGE\$PROMPT_TERMINATOR \"
+        PROMPT=\"\$BASE_PROMPT\[\e[0;\${GIT_COLOUR}m\]\$GIT_MESSAGE\[\e[0m\]\$EXIT_CODE_MESSAGE\$PROMPT_TERMINATOR \"
         echo \"\$PROMPT\"
     )"
 

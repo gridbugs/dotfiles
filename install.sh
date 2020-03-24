@@ -28,6 +28,7 @@ make_link tmux.conf .tmux.conf
 make_link htoprc .config/htop/htoprc
 make_link bin .bin
 make_link hushlogin .hushlogin
+make_link git-prompt.sh .git-prompt.sh
 
 # link archlinux-specific packages
 if type pacman 2>/dev/null >/dev/null; then
