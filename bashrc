@@ -46,7 +46,7 @@ if [[ $- == *i* ]]; then
     if type inotifywait 2>/dev/null >/dev/null; then
       function do-on-every-file-change {
          while true; do
-           $@
+           bash -c "$@"
            inotifywait -qre close_write .
          done
       }
