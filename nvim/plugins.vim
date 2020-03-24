@@ -94,9 +94,9 @@ au BufRead,BufNewFile *.sbt set filetype=scala
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " YCM Shortcuts
-au FileType rust,typescript nmap <leader><leader>t :YcmCompleter GetType<CR>
-au FileType rust,typescript nmap <leader><leader>d :YcmCompleter GoToDefinition<CR>
-au FileType rust,typescript nmap <leader><leader>D :YcmCompleter GetDoc<CR>
+au FileType rust,typescript.tsx nmap <leader><leader>t :YcmCompleter GetType<CR>
+au FileType rust,typescript.tsx nmap <leader><leader>d :YcmCompleter GoToDefinition<CR>
+au FileType rust,typescript.tsx nmap <leader><leader>D :YcmCompleter GetDoc<CR>
 
 " COC Shortcuts
 au FileType scala nmap <leader><leader>t :call CocAction('doHover')<CR>
