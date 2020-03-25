@@ -157,6 +157,8 @@ endif
 
 au FileType cpp,c,h noremap <leader><leader>d <C-]>
 au FileType cpp,c,h noremap <leader><leader>b <C-t>
+au FileType cpp,c,h nmap <leader><leader>h :e %:r.h<CR>
+au FileType cpp,c,h nmap <leader><leader>c :e %:r.c<CR>
 
 " Easier navigation between windows
 noremap <C-W>h <C-W>h
