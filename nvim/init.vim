@@ -28,6 +28,9 @@ set number
 " Enable mouse
 set mouse=a
 
+" Preview window at bottom of screen
+set splitbelow
+
 " Fast saving
 nmap <leader>w :w!<cr>
 nmap <leader>x :x!<cr>
