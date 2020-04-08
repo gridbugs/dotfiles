@@ -49,6 +49,9 @@ Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
 " CtrlP
 Plug 'kien/ctrlp.vim'
 
+" OpenCL Highlighting
+Plug 'petRUShka/vim-opencl'
+
 " Code Completion (requires manual install)
 " For rust, c, and typescript completion, update RUST_TOOLCHAIN in
 " ~/.vim/plugged/YouCompleteMe/third_party/ycmd/build.py and run:
