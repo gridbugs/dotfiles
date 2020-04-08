@@ -151,7 +151,7 @@ if [[ $- == *i* ]]; then
             GIT_MESSAGE=\" \"
         fi
         if type git 2>/dev/null >/dev/null && git rev-parse --is-inside-work-tree 2>/dev/null >/dev/null; then
-            GIT_COLOUR=\$(__colour_by_command_output git rev-parse HEAD)
+            GIT_COLOUR=\$(__colour_by_command_output git rev-parse HEAD 2> /dev/null)
         else
             GIT_COLOUR=0
         fi
