@@ -70,6 +70,10 @@ if [[ $- == *i* ]]; then
         export CARGO_HOME=$HOME/.cargo
     fi
 
+    if type rustc 2>/dev/null >/dev/null && [[ -d ~/.cargo ]]; then
+        source $(rustc --print sysroot)/etc/bash_completion.d/cargo
+    fi
+
     # opam configuration
     test -r ~/.opam/opam-init/init.sh && . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
