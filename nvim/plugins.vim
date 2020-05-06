@@ -76,9 +76,6 @@ let g:multi_cursor_quit_key = '<Esc>'
 let g:racer_cmd="~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 
-" YCM Global Config
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
-
 " YCM Colours
 highlight YcmWarningSection ctermbg=236
 highlight YcmErrorSection ctermfg=1
