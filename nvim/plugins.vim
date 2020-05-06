@@ -56,7 +56,7 @@ Plug 'petRUShka/vim-opencl'
 " For rust, c, and typescript completion, update RUST_TOOLCHAIN in
 " ~/.vim/plugged/YouCompleteMe/third_party/ycmd/build.py and run:
 " ~/.vim/plugged/YouCompleteMe/install.py --racer-completer --clang-completer --ts-completer
-Plug 'Valloric/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 
 call plug#end()
 
