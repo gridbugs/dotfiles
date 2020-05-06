@@ -43,9 +43,11 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
-    { "[]=",      tile },    /* first entry is default */
+    { "[M]",      monocle }, /* first entry is default */
+    { "[]=",      tile },
+    { "TTT",      bstack },
+    { "===",      bstackhoriz },
     { "><>",      NULL },    /* no layout function means floating behavior */
-    { "[M]",      monocle },
 };
 
 /* key definitions */
@@ -86,7 +88,7 @@ static Key keys[] = {
     { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
     { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_Return, spawn,          {.v = browsercmd } },
-    { MODKEY,                       XK_f,      togglebar,      {0} },
+    { MODKEY,                       XK_y,      togglebar,      {0} },
     { MODKEY,                       XK_apostrophe,      focusstack,     {.i = +1 } },
     { MODKEY,                       XK_t,      focusstack,     {.i = +1 } },
     { MODKEY,                       XK_n,      focusstack,     {.i = -1 } },
@@ -97,11 +99,13 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_space,  zoom,           {0} },
     { MODKEY,                       XK_Tab,    view,           {0} },
     { MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-    { MODKEY,                       XK_r,      setlayout,      {.v = &layouts[0]} },
-    { MODKEY,                       XK_l,      setlayout,      {.v = &layouts[1]} },
+    { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[0]} },
+    { MODKEY,                       XK_g,      setlayout,      {.v = &layouts[1]} },
     { MODKEY,                       XK_c,      setlayout,      {.v = &layouts[2]} },
+    { MODKEY,                       XK_r,      setlayout,      {.v = &layouts[3]} },
+    { MODKEY,                       XK_l,      setlayout,      {.v = &layouts[4]} },
     { MODKEY,                       XK_space,  setlayout,      {0} },
-    { MODKEY|ShiftMask,             XK_l,      togglefloating, {0} },
+    { MODKEY|ShiftMask,             XK_f,      togglefloating, {0} },
     { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
     { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
     { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
