@@ -16,6 +16,7 @@ install=dwm.install
 source=(https://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
         https://dwm.suckless.org/patches/noborder/dwm-noborder-$pkgver.diff
         https://dwm.suckless.org/patches/bottomstack/dwm-bottomstack-6.1.diff
+        https://dwm.suckless.org/patches/pertag/dwm-pertag-$pkgver.diff
         dwm.desktop
         usercflags.diff
         config.h
@@ -23,6 +24,7 @@ source=(https://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 sha256sums=('97902e2e007aaeaa3c6e3bed1f81785b817b7413947f1db1d3b62b8da4cd110e'
             '9bbf5f963e5a2d23ae4b8731f0c179a8615de5715a2dbf683fbe02115e24efe0'
             'ea5a7ed499a20abbbca0eec8679bbf98ee188a2d57ac59f75bb0893a4d7eee4f'
+            '055da0f12dbfde9e50df54e1f2d87966466404a36c056efb94bb21ab03b94b10'
             'bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81'
             'SKIP'
             'SKIP'
@@ -38,6 +40,7 @@ build() {
   patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/dwm-noborder-$pkgver.diff
   patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/usercflags.diff
   patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/dwm-bottomstack-6.1.diff
+  patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/dwm-pertag-$pkgver.diff
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2 \
       USERCFLAGS=-DUSERFONT="\"\\\"xos4 Terminus:pixelsize=${FONTSIZE:-16}:antialias=true:autohint=true\\\"\""
 }
