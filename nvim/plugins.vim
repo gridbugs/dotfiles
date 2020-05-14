@@ -94,21 +94,29 @@ au BufRead,BufNewFile *.sbt set filetype=scala
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " YCM Shortcuts
-au FileType rust,typescript,tsx nmap <leader><leader>t :YcmCompleter GetType<CR>
-au FileType rust,typescript,tsx nmap <leader><leader>d :YcmCompleter GoToDefinition<CR>
-au FileType rust,typescript,tsx nmap <leader><leader>D :YcmCompleter GetDoc<CR>
+au FileType rust,typescript,tsx,python nmap <leader><leader>t :YcmCompleter GetType<CR>
+au FileType rust,typescript,tsx,python nmap <leader><leader>d :YcmCompleter GoToDefinition<CR>
+au FileType rust,typescript,tsx,python nmap <leader><leader>D :YcmCompleter GetDoc<CR>
 
-" COC Shortcuts
-au FileType scala nmap <leader><leader>t :call CocAction('doHover')<CR>
-au FileType scala nmap <leader><leader>d <Plug>(coc-definition)
 
-" Stop YCM from handling filetypes that COC handles
-let g:ycm_filetype_blacklist = {
-  \ 'scala': 1,
-  \ 'cpp': 1,
-  \ 'c': 1,
-  \ 'h': 1,
-  \}
+if filereadable(expand("~/.vim/plugged/coc.nvim/package.json"))
+
+    " COC Shortcuts
+    au FileType scala nmap <leader><leader>t :call CocAction('doHover')<CR>
+    au FileType scala nmap <leader><leader>d <Plug>(coc-definition)
+
+    " Disable Coc by default
+    au VimEnter * :CocDisable
+    au VimEnter * :echo ''
+
+    " Enable Coc for some filetypes
+    au FileType scala :CocEnable
+
+    " Stop YCM from handling filetypes that COC handles
+    let g:ycm_filetype_blacklist = {
+      \ 'scala': 1,
+      \}
+endif
 
 " GitGutter
 if filereadable(expand("~/.vim/plugged/vim-gitgutter/autoload/gitgutter.vim"))
