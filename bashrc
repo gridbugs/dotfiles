@@ -25,6 +25,8 @@ if [[ $- == *i* ]]; then
     # Some handy aliases
     alias tmp='pushd $(mktemp -d)'
     alias rebash='source $HOME/.bashrc'
+    alias AOEU='aoeu'
+    alias ASDF='asdf'
 
     # Archlinux-specific pacman helpers
     if type pacman 2>/dev/null >/dev/null; then
