@@ -49,6 +49,9 @@ Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
 " CtrlP
 Plug 'kien/ctrlp.vim'
 
+" NERD Tree
+Plug 'preservim/nerdtree'
+
 " OpenCL Highlighting
 Plug 'petRUShka/vim-opencl'
 
@@ -125,3 +128,6 @@ if filereadable(expand("~/.vim/plugged/vim-gitgutter/autoload/gitgutter.vim"))
     highlight GitGutterDelete ctermfg=1
     autocmd BufWritePost * GitGutter
 endif
+
+" NERD Tree
+map <C-n> :NERDTreeFind<CR>
