@@ -54,6 +54,12 @@ if [[ $- == *i* ]]; then
       }
     fi
 
+    # Customize bash history behaviour
+    export HISTCONTROL=ignoredups:erasedups
+    export HISTSIZE=100000
+    export HISTFILESIZE=100000
+    shopt -s histappend
+
     if type sbt 2>/dev/null >/dev/null; then
         function sbt-new {
             name=$1
