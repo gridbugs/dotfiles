@@ -47,3 +47,26 @@ for inclusion in this repo, however the following can be copied into the file:
 	st = status
 	co = checkout
 ```
+
+# Language Servers
+
+## Rust
+
+[rust-analyzer](https://rust-analyzer.github.io/manual.html#installation)
+
+## Scala
+
+[metals](https://scalameta.org/metals/docs/editors/vim.html)
+
+```
+curl -L -o coursier https://git.io/coursier-cli
+chmod +x coursier
+./coursier bootstrap \
+  --java-opt -Xss4m \
+  --java-opt -Xms100m \
+  --java-opt -Dmetals.client=vim-lsc \
+  org.scalameta:metals_2.12:0.9.0 \
+  -r bintray:scalacenter/releases \
+  -r sonatype:snapshots \
+  -o $HOME/.local/bin/metals-vim -f
+```

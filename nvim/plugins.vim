@@ -34,31 +34,46 @@ Plug 'peitalin/vim-jsx-typescript'
 " Rainbow Parens
 Plug 'luochen1990/rainbow'
 
-" Rust Completion
-Plug 'racer-rust/vim-racer'
-
 " Scala Highlighting
 Plug 'derekwyatt/vim-scala'
-
-" LSP Client
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Scala Autocomplete
-Plug 'scalameta/coc-metals', {'do': 'yarn install --frozen-lockfile'}
-
-" CtrlP
-Plug 'kien/ctrlp.vim'
 
 " OpenCL Highlighting
 Plug 'petRUShka/vim-opencl'
 
-" Code Completion (requires manual install)
-" For rust, c, and typescript completion, update RUST_TOOLCHAIN in
-" ~/.vim/plugged/YouCompleteMe/third_party/ycmd/build.py and run:
-" ~/.vim/plugged/YouCompleteMe/install.py --racer-completer --clang-completer --ts-completer
-Plug 'ycm-core/YouCompleteMe'
+" Required for ncm2
+Plug 'roxma/nvim-yarp'
+
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 call plug#end()
+
+" Language Client Servers
+let g:LanguageClient_serverCommands = {
+\ 'rust': ['rust-analyzer'],
+\ 'scala': ['metals-vim'],
+\ }
+
+let g:LanguageClient_hoverPreview = "Always"
+let g:LanguageClient_useFloatingHover = 0
+
+" Language Client Shortcuts
+au FileType rust,typescript,tsx,python nmap <leader><leader>t :call LanguageClient#textDocument_hover()<CR>
+au FileType rust,typescript,tsx,python nmap <leader><leader>d :call LanguageClient#textDocument_definition()<CR>
+
+" use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
 
 " Auto format rust code on save
 let g:rustfmt_autosave = 1
@@ -72,18 +87,6 @@ let g:multi_cursor_exit_from_insert_mode = 0
 let g:multi_cursor_next_key = '<C-a>'
 let g:multi_cursor_quit_key = '<Esc>'
 
-" Racer Config
-let g:racer_cmd="~/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
-
-" YCM Colours
-highlight YcmWarningSection ctermbg=236
-highlight YcmErrorSection ctermfg=1
-
-" COC Colours
-highlight MyCocFloating ctermfg=236
-highlight default link CocFloating MyCocFloating
-
 " Enable rainbow parens
 let g:rainbow_active = 1
 
@@ -92,31 +95,6 @@ au BufRead,BufNewFile *.sbt set filetype=scala
 
 " Highlight comments in json
 autocmd FileType json syntax match Comment +\/\/.\+$+
-
-" YCM Shortcuts
-au FileType rust,typescript,tsx,python nmap <leader><leader>t :YcmCompleter GetType<CR>
-au FileType rust,typescript,tsx,python nmap <leader><leader>d :YcmCompleter GoToDefinition<CR>
-au FileType rust,typescript,tsx,python nmap <leader><leader>D :YcmCompleter GetDoc<CR>
-
-
-if filereadable(expand("~/.vim/plugged/coc.nvim/package.json"))
-
-    " COC Shortcuts
-    au FileType scala nmap <leader><leader>t :call CocAction('doHover')<CR>
-    au FileType scala nmap <leader><leader>d <Plug>(coc-definition)
-
-    " Disable Coc by default
-    au VimEnter * :CocDisable
-    au VimEnter * :echo ''
-
-    " Enable Coc for some filetypes
-    au FileType scala :CocEnable
-
-    " Stop YCM from handling filetypes that COC handles
-    let g:ycm_filetype_blacklist = {
-      \ 'scala': 1,
-      \}
-endif
 
 " GitGutter
 if filereadable(expand("~/.vim/plugged/vim-gitgutter/autoload/gitgutter.vim"))
