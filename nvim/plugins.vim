@@ -58,14 +58,17 @@ call plug#end()
 let g:LanguageClient_serverCommands = {
 \ 'rust': ['rust-analyzer'],
 \ 'scala': ['metals-vim'],
+\ 'python': ['pyls'],
+\ 'javascript.jsx': ['javascript-typescript-stdio'],
+\ 'typescript': ['javascript-typescript-stdio'],
 \ }
 
 let g:LanguageClient_hoverPreview = "Always"
 let g:LanguageClient_useFloatingHover = 0
 
 " Language Client Shortcuts
-au FileType rust,typescript,tsx,python nmap <leader><leader>t :call LanguageClient#textDocument_hover()<CR>
-au FileType rust,typescript,tsx,python nmap <leader><leader>d :call LanguageClient#textDocument_definition()<CR>
+au FileType rust,python,scala,javascript.jsx,typescript nmap <leader><leader>t :call LanguageClient#textDocument_hover()<CR>
+au FileType rust,python,scala,javascript.jsx,typescript nmap <leader><leader>d :call LanguageClient#textDocument_definition()<CR>
 
 " use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"

@@ -54,6 +54,12 @@ for inclusion in this repo, however the following can be copied into the file:
 
 [rust-analyzer](https://rust-analyzer.github.io/manual.html#installation)
 
+```
+rustup component add rust-src
+git clone https://github.com/rust-analyzer/rust-analyzer.git && cd rust-analyzer
+cargo xtask install
+```
+
 ## Scala
 
 [metals](https://scalameta.org/metals/docs/editors/vim.html)
@@ -69,4 +75,20 @@ chmod +x coursier
   -r bintray:scalacenter/releases \
   -r sonatype:snapshots \
   -o $HOME/.local/bin/metals-vim -f
+```
+
+## Python
+
+[pyls](https://github.com/palantir/python-language-server)
+
+```
+pip install python-language-server
+```
+
+## Javascript/Typescript
+
+[javascript-typescript-langserver](https://github.com/sourcegraph/javascript-typescript-langserver)
+
+```
+npm install --global javascript-typescript-langserver --prefix ~/.local/
 ```
