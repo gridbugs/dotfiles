@@ -92,3 +92,7 @@ pip install python-language-server
 ```
 npm install --global javascript-typescript-langserver --prefix ~/.local/
 ```
+
+## C
+
+Install clangd with a package manager

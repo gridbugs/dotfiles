@@ -158,11 +158,6 @@ endif
 " This sets the cursor to an underline when leaving vim
 :au VimLeave * set guicursor=a:hor20-blinkon0
 
-au FileType cpp,c,h noremap <leader><leader>d <C-]>
-au FileType cpp,c,h noremap <leader><leader>b <C-t>
-au FileType cpp,c,h nmap <leader><leader>h :e %:r.h<CR>
-au FileType cpp,c,h nmap <leader><leader>c :e %:r.c<CR>
-
 " Easier navigation between windows
 noremap <C-W>h <C-W>h
 noremap <C-W>t <C-W>j
