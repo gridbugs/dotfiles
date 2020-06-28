@@ -74,8 +74,10 @@ au FileType rust,python,scala,javascript.jsx,typescript nmap <leader><leader>d :
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
+if filereadable(expand("~/.vim/plugged/ncm2/autoload/ncm2.vim"))
+    " enable ncm2 for all buffers
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+endif
 set completeopt=noinsert,menuone,noselect
 
 " Auto format rust code on save
