@@ -62,6 +62,7 @@ let g:LanguageClient_serverCommands = {
 \ 'javascript.jsx': ['javascript-typescript-stdio'],
 \ 'typescript': ['javascript-typescript-stdio'],
 \ 'c': ['clangd'],
+\ 'cpp': ['clangd'],
 \ }
 
 let g:LanguageClient_hoverPreview = "Always"
