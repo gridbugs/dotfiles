@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -euo pipefail
 
 if test -f $HOME/.xprofile; then
     source $HOME/.xprofile
@@ -19,7 +21,7 @@ fi
 setxkbmap -option caps:swapescape
 
 dwm_loop() {
-    new_csum=$(sha1sum $(which dwm))
+    new_csum=$(shasum $(which dwm))
     csum=""
     while true; do
         if [ "$csum" != "$new_csum" ]
@@ -29,7 +31,7 @@ dwm_loop() {
         else
             exit 0
         fi
-        new_csum=$(sha1sum $(which dwm))
+        new_csum=$(shasum $(which dwm))
         sleep 0.5
     done
 }
@@ -41,7 +43,7 @@ dwm_wm() {
     dwm_loop
 }
 
-case $WM in
+case ${WM:-DWM} in
     dwm)
         dwm_wm
         ;;

@@ -1,8 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -euo pipefail
 
 TIME=$(date "+%a %Y-%m-%d %H:%M:%S %Z")
-IP=$(for i in $(ip route | grep -v 'default via' | grep -E 'dev (wl|en).*'); do echo $i; done | grep -A 1 src | tail -n1)
-MAYBE_IP="🖧 $IP |"
+
+if hash ip 2>/dev/null; then
+    IP=$(for i in $(ip route | grep -v 'default via' | grep -E 'dev (wl|en).*'); do echo $i; done | grep -A 1 src | tail -n1)
+    MAYBE_IP="🖧 $IP |"
+else
+    MAYBE_IP=""
+fi
 
 if hash acpi 2>/dev/null; then
     BATT=$(acpi -b | awk '{ printf "%s%s;", $4, $5}')
