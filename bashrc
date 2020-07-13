@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Only run if the shell is interactive
 if [[ $- == *i* ]]; then
