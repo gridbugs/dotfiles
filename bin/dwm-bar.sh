@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -eu
 
 TIME=$(date "+%a %Y-%m-%d %H:%M:%S %Z")
 
