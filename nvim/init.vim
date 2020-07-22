@@ -117,8 +117,8 @@ endif
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " filetype-specific indentation
-au FileType typescript.tsx,typescript,javascript,yaml,python set shiftwidth=2
-au FileType typescript.tsx,typescript,javascript,yaml,python set tabstop=2
+au FileType typescript.tsx,typescript,javascript,yaml,python,conf set shiftwidth=2
+au FileType typescript.tsx,typescript,javascript,yaml,python,conf set tabstop=2
 
 " highlight trailing whitespace
 set list
