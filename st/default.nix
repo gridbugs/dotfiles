@@ -20,9 +20,14 @@ let
     sha256 = "bcfc106089d9eb75aa014d4915ed3e6842f1df54edd8b75597154096333df6fa";
   };
   usercflags = ./usercflags.diff;
+  st-with-font = st.overrideAttrs ( oldAttrs: rec {
+    preBuild = ''
+      buildFlagsArray+=(USERCFLAGS=-DUSERFONT="\"\\\"${"Terminus:pixelsize=16"}\\\"\"")
+    '';
+  });
 in
   {
-    st = st.override {
+    st = st-with-font.override {
       patches = [ bold-is-not-bright scrollback scrollback-mouse scrollback-mouse-altscreen usercflags ];
       conf = builtins.readFile ./config.h;
     };

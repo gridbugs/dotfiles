@@ -16,9 +16,15 @@ let
     sha256 = "055da0f12dbfde9e50df54e1f2d87966466404a36c056efb94bb21ab03b94b10";
   };
   usercflags = ./usercflags.diff;
+  dwm-git-with-font = dwm-git.overrideAttrs ( oldAttrs: rec {
+    # TODO work out why preBuild gets ignored
+    buildPhase = ''
+      make USERCFLAGS=-DUSERFONT="\"\\\"${"Terminus:pixelsize=16"}\\\"\""
+    '';
+  });
 in
   {
-    dwm-git = dwm-git.override {
+    dwm-git = dwm-git-with-font.override {
       patches = [ noborder bottomstack pertag usercflags ];
       conf = builtins.readFile ./config.h;
     };
