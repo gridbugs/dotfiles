@@ -29,6 +29,8 @@ make_link htoprc .config/htop/htoprc
 make_link bin .bin
 make_link hushlogin .hushlogin
 make_link git-prompt.sh .git-prompt.sh
+make_link dwm .config/nixpkgs/overlays/dwm
+make_link st .config/nixpkgs/overlays/st
 
 # link archlinux-specific packages
 if type pacman 2>/dev/null >/dev/null; then

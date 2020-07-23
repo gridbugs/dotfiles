@@ -1,4 +1,4 @@
-diff --git a/Makefile b/Makefile2
+diff --git a/Makefile b/Makefile
 index 77bcbc0..26a486f 100644
 --- a/Makefile
 +++ b/Makefile

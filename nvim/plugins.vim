@@ -52,6 +52,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
+Plug 'LnL7/vim-nix'
+
 call plug#end()
 
 " Language Client Servers
