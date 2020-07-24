@@ -27,6 +27,7 @@ if [[ $- == *i* ]]; then
     alias rebash='source $HOME/.bashrc'
     alias AOEU='aoeu'
     alias ASDF='asdf'
+    alias nix-shell='nix-shell --command "$(declare -p PS1); return"'
 
     # Archlinux-specific pacman helpers
     if type pacman 2>/dev/null >/dev/null; then
@@ -187,8 +188,16 @@ if [[ $- == *i* ]]; then
         else
             PWD_COLOUR=0
         fi
+
+        if [[ -n \"\$IN_NIX_SHELL\" ]]; then
+            NIX_MESSAGE=\"(nix-shell) \"
+        else
+            NIX_MESSAGE=
+        fi
+
         BASE_PROMPT=\"\[\e[0;\${USERNAME_COLOUR}m\]\u\[\e[0m\]\[\e[1;\${PROMPT_COLOUR}m\]@\[\e[0m\]\[\e[0;\${HOSTNAME_COLOUR}m\]\h\[\e[0m\] \[\e[0;\${PWD_COLOUR}m\]\w\[\e[0m\]\"
-        PROMPT=\"\$BASE_PROMPT\[\e[0;\${GIT_COLOUR}m\]\$GIT_MESSAGE\[\e[0m\]\$EXIT_CODE_MESSAGE\$PROMPT_TERMINATOR \"
+        PROMPT=\"\$BASE_PROMPT\[\e[0;\${GIT_COLOUR}m\]\$GIT_MESSAGE\[\e[0m\]\$NIX_MESSAGE\$EXIT_CODE_MESSAGE\$PROMPT_TERMINATOR \"
+
         echo \"\$PROMPT\"
     )"
 
