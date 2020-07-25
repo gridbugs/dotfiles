@@ -10,8 +10,8 @@ histogram_cache="$cachedir/dmenu_histogram_cache"
 
 file_list_uncached() {
     if [[ -r $histogram ]]; then
-        cat $histogram | sort -nr | cut -d' ' -f1 --complement
-        comm -13 <(cat $histogram | cut -d' ' -f1 --complement | sort) <(dmenu_path)
+        cat $histogram | sort -nr | cut -d' ' -f2
+        comm -13 <(cat $histogram | cut -d' ' -f2 | sort) <(dmenu_path)
     else
         dmenu_path
     fi
