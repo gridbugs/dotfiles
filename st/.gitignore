@@ -1,5 +1,6 @@
 *
 !PKGBUILD
 !config.h
-!usercflags.diff
+!default.nix
+!*.diff
 !.gitignore

@@ -3,5 +3,6 @@
 !config.h
 !dwm.install
 !dwm.desktop
-!usercflags.diff
+!default.nix
+!*.diff
 !.gitignore
