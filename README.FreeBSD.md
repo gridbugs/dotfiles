@@ -119,7 +119,7 @@ Amazingly this just worked for me:
 # /etc/sysctl.conf
 
 hw.acpi.lid_switch_state=S3
-``
+```
 
 ### Notes
 
