@@ -3,7 +3,8 @@ set -euxo pipefail
 
 BUILD_DIR=$1
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-CONFIG=$DIR/../dwm/config.h
+DWM_DIR=$DIR/../dwm
+CONFIG=$DWM_DIR/config.h
 
 source $DIR/common.sh
 
@@ -47,4 +48,6 @@ tar xvzf $SRC_FILENAME
 patch -d $SRC_DIR -p1 < $NOBORDER_FILENAME
 patch -d $SRC_DIR -p1 < $BSTACK_FILENAME
 patch -d $SRC_DIR -p1 < $PERTAG_FILENAME
+patch -d $SRC_DIR -p1 < $DWM_DIR/usercflags.diff
+patch -d $SRC_DIR -p1 < $DWM_DIR/local.diff
 ln -sf $CONFIG $(pwd)/$SRC_DIR

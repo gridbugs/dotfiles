@@ -18,7 +18,7 @@ if hash unclutter 2>/dev/null; then
     unclutter &
 fi
 
-setxkbmap -option caps:swapescape
+setxkbmap dvorak -option caps:swapescape
 
 dwm_loop() {
     new_csum=$(shasum $(which dwm))

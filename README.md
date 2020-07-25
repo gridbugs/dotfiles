@@ -96,3 +96,81 @@ npm install --global javascript-typescript-langserver --prefix ~/.local/
 ## C
 
 Install clangd with a package manager
+
+# FreeBSD Notes
+
+## Lenovo Thinkpad 470
+
+### Trackpad
+
+Install `xf86-input-libinput`.
+
+```
+# /etc/sysctl.conf
+
+kern.evdev.rcpt_mask="12"
+```
+
+```
+# /boot/loader.conf
+
+hw.psm.synaptics_support=1
+```
+
+```
+# /etc/rc.conf
+
+moused_enable="NO"
+```
+
+```
+# /usr/local/etc/X11/xorg.conf.d/input.conf
+
+Section "InputClass"
+    Identifier "libinput keyboard catchall"
+    MatchIsKeyboard "on"
+    MatchDevicePath "/dev/input/event*"
+    Driver "libinput"
+    Option "XkbRules" "evdev"
+EndSection
+
+Section "InputClass"
+    Identifier "libinput touchpad catchall"
+    MatchIsTouchpad "on"
+    MatchDevicePath "/dev/input/event*"
+    Driver "libinput"
+    Option "NaturalScrolling" "off"
+    Option "Tapping" "off"
+    Option "DisableWhileTyping" "on"
+    Option "AccelSpeed" "0.42"
+EndSection
+```
+
+### Graphics
+
+Install `drm-kmod`.
+
+```
+# /etc/rc.conf
+
+kld_list="/boot/modules/i915kms.ko"
+```
+
+```
+# /usr/local/etc/X11/xorg.conf.d/driver-intel.conf
+Section "Device"
+    Identifier "Card0"
+    Driver     "intel"
+    Option "DRI" "3"
+EndSection
+```
+
+### Backlight
+
+Install `intel-backlight`, and run `intel_backlight`.
+
+### Notes
+
+The emojis in dwm-bar.sh work if `noto-extra` is installed. Unfortunately this package is huge.
+
+To compile `st`, the `tic` binary is required. It can be obtained by installing the `ncurses` package.
