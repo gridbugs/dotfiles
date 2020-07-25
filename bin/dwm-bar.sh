@@ -14,8 +14,8 @@ else
     MAYBE_IP=""
 fi
 
-if hash acpi 2>/dev/null; then
-    BATT=$(acpi -b | awk '{ printf "%s%s;", $4, $5}')
+if hash battery 2>/dev/null; then
+    BATT=$(battery)
     MAYBE_BATT=" 🗲 $BATT |"
 else
     MAYBE_BATT=""

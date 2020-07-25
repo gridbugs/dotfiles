@@ -3,7 +3,7 @@
 set -euo pipefail
 
 if test -f $HOME/.xprofile; then
-    source $HOME/.xprofile
+    . $HOME/.xprofile
 fi
 
 if hash xsetroot 2>/dev/null; then
