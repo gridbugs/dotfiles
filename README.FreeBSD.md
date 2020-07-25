@@ -50,7 +50,7 @@ EndSection
 
 ### Graphics
 
-Install `drm-kmod`.
+Install `drm-kmod` and `xf86-video-intel`.
 
 ```
 # /etc/rc.conf
@@ -110,6 +110,16 @@ We need to tell the kernel to load the `acpi_ibm` module when it starts. Add the
 
 acpi_ibm_load="YES"
 ```
+
+### Suspend/Resume
+
+Amazingly this just worked for me:
+
+```
+# /etc/sysctl.conf
+
+hw.acpi.lid_switch_state=S3
+``
 
 ### Notes
 

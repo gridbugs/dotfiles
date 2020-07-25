@@ -4,6 +4,10 @@ set t_Co=256
 set background=dark
 colorscheme ron
 
+if filereadable(expand("~/.vimrc_extra"))
+    source ~/.vimrc_extra
+endif
+
 if filereadable(expand("~/.vim/plugins.vim"))
     source ~/.vim/plugins.vim
 endif
