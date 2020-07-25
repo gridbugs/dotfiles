@@ -130,6 +130,8 @@ To work with ext filesystems, install `e2fsprogs`.
 
 To work with ntfs file systems, install `fusefs-ntfs`.
 
+To get the `pkg-config` command, install `pkgconf`.
+
 Some pages showing example thinkpad configs which I found helpful:
 - https://www.c0ffee.net/blog/freebsd-on-a-laptop/
 - https://unrelenting.technology/articles/freebsd-on-the-thinkpad-x240
