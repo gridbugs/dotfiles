@@ -142,6 +142,17 @@ To work with ntfs file systems, install `fusefs-ntfs`.
 
 To get the `pkg-config` command, install `pkgconf`.
 
+When using `rvm` to install rubies, the binary distribution doesn't seem dynamically link correctly. Building from source seems to fix the issue:
+
+```
+$ rvm install 2.7 --disable-binary
+```
+
+When using `nvm` to install nodes, it will want to build from source, but needs to be explicitly told what the C and C++ compilers are:
+```
+$ CC=clang CXX=clang++ nvm install node
+```
+
 Some pages showing example thinkpad configs which I found helpful:
 - https://www.c0ffee.net/blog/freebsd-on-a-laptop/
 - https://unrelenting.technology/articles/freebsd-on-the-thinkpad-x240
