@@ -31,6 +31,7 @@ make_link hushlogin .hushlogin
 make_link git-prompt.sh .git-prompt.sh
 make_link dwm .config/nixpkgs/overlays/dwm
 make_link st .config/nixpkgs/overlays/st
+make_link Xresources .Xresources
 
 # link archlinux-specific packages
 if type pacman 2>/dev/null >/dev/null; then

@@ -30,7 +30,7 @@ update_histogram() {
     choice=$1
     if count=$(grep -E "^[0-9]+ $choice$" $histogram | awk '{ print $1 }') ; then
         next_count=$((count + 1))
-        sed -i "s/^$count $choice$/$next_count $choice/" $histogram
+        sed -i '' "s/^$count $choice$/$next_count $choice/" $histogram
     else
         echo "1 $choice" >> $histogram
     fi

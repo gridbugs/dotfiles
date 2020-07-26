@@ -19,8 +19,8 @@ if [[ $- == *i* ]]; then
         alias vim=vi
     fi
 
-    # Tmux unicode support
-    alias tmux='tmux -u'
+    # Tmux unicode and 256 colour support
+    alias tmux='tmux -u -2'
 
     # Allow aliases in sudo
     alias sudo='sudo '

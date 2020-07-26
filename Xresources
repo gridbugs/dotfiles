@@ -1,0 +1,20 @@
+XTerm*locale: true
+*background: black
+*foreground: lightgray
+*color0: rgb:28/2a/2e
+*color1: rgb:c9/54/54
+*color2: rgb:8c/94/40
+*color3: rgb:de/93/5f
+*color4: rgb:46/6d/8c
+*color5: rgb:85/67/8f
+*color6: rgb:5e/8d/87
+*color7: rgb:a7/a7/a7
+*color8: rgb:65/6a/73
+*color9: rgb:cc/66/66
+*color10: rgb:b5/bd/68
+*color11: rgb:f0/c6/74
+*color12: rgb:81/a2/be
+*color13: rgb:b2/94/bb
+*color14: rgb:8a/be/b7
+*color15: rgb:c5/c8/c6
+*font: xft:xos4 Terminus:pixelsize=16:antialias=true:autohint=true
