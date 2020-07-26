@@ -4,12 +4,9 @@ set -eu
 
 TIME=$(date "+%a %Y-%m-%d %H:%M:%S %Z")
 
-if hash ip 2>/dev/null; then
-    IP=$(for i in $(ip route | grep -v 'default via' | grep -E 'dev (wl|en).*'); do echo $i; done | grep -A 1 src | tail -n1)
-    MAYBE_IP="🖧 $IP |"
-elif hash ifconfig 2>/dev/null; then
-    IP=$(ifconfig em0 | awk '/inet / { print $2 }')
-    MAYBE_IP="🖧 $IP |"
+if hash list-ips 2>/dev/null; then
+    IP=$(list-ips)
+    MAYBE_IP="🖧$IP |"
 else
     MAYBE_IP=""
 fi
