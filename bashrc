@@ -101,7 +101,11 @@ if [[ $- == *i* ]]; then
     # Lazily load NVM
     function nvm() {
         if [[ -d ~/.nvm ]]; then
-            export NVM_DIR="$HOME/.nvm"
+            if type realpath 2>/dev/null >/dev/null; then
+                export NVM_DIR=$(realpath "$HOME/.nvm")
+            else
+                export NVM_DIR="$HOME/.nvm"
+            fi
             [[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
             [[ -s "$NVM_DIR/bash_completion" ]] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
             nvm $@
@@ -112,8 +116,8 @@ if [[ $- == *i* ]]; then
         fi
     }
 
-    # RVM
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 2> /dev/null
+    # RVM wants to be at the end of PATH
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" && export PATH="$PATH:$HOME/.rvm/bin" 2> /dev/null
 
     man() {
         LESS_TERMCAP_md=$'\e[01;31m' \
