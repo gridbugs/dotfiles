@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/sh
 set -euxo pipefail
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TARGET=$HOME
 
-function make_link {
+make_link() {
     DEST="$TARGET/$2"
     if test -e "$DEST"; then
         echo "$DEST already exists"

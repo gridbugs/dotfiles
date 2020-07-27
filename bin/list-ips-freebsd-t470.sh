@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -euo pipefail
 
-function get() {
+get() {
     ifconfig $1 | awk '/inet / { printf " %s",$2 }'
 }
 
