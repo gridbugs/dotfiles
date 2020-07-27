@@ -44,7 +44,7 @@ Section "InputClass"
     Option "NaturalScrolling" "off"
     Option "Tapping" "off"
     Option "DisableWhileTyping" "on"
-    Option "AccelSpeed" "0.42"
+    Option "AccelSpeed" "0.2"
 EndSection
 ```
 
