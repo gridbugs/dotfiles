@@ -2,6 +2,33 @@
 
 ## Lenovo Thinkpad 470
 
+### Status
+
+#### Working
+
+- trackpad
+- trackpoint
+- vulkan graphics
+- audio
+- suspend/resume
+- lcd backlight controls
+- wifi
+- webcam
+
+#### Not Working
+
+- keyboard backlight
+
+#### Not Tried
+
+- fingerprint reader
+- bluetooth
+- sdcard
+
+### hw-probe
+
+https://bsd-hardware.info/?probe=e4d2dcda5b
+
 ### Trackpad
 
 Install `xf86-input-libinput`.
@@ -104,6 +131,10 @@ case $1 in
 esac
 ```
 
+For reasons I don't yet understand, this doesn't work after a fresh boot until
+I restart devd with `sudo /etc/rc.d/devd restart`. Also interestingly, if I restart
+devd with `service` the brightness controls still don't work. Needs more investigation.
+
 We need to tell the kernel to load the `acpi_ibm` module when it starts. Add the following to /boot/loader.conf:
 ```
 # /boot/loader.conf
@@ -120,6 +151,22 @@ Amazingly this just worked for me:
 
 hw.acpi.lid_switch_state=S3
 ```
+
+### Webcam
+
+```
+# /boot/loader.conf
+
+cuse_load="YES"
+```
+
+```
+# /etc/rc.conf
+
+webcamd_enable="YES"
+```
+
+Add yourself to the webcamd group.
 
 ### Notes
 
