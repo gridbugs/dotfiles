@@ -153,6 +153,11 @@ When using `nvm` to install nodes, it will want to build from source, but needs 
 $ CC=clang CXX=clang++ nvm install node
 ```
 
+To have /tmp use tmpfs, add this line to /etf/fstab:
+```
+tmpfs /tmp tmpfs rw,mode=777 0 0
+```
+
 Some pages showing example thinkpad configs which I found helpful:
 - https://www.c0ffee.net/blog/freebsd-on-a-laptop/
 - https://unrelenting.technology/articles/freebsd-on-the-thinkpad-x240
