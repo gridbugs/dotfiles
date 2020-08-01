@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eux
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIR=$(dirname "$0")
 TARGET=$HOME
 
 make_link() {
