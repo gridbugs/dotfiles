@@ -22,10 +22,6 @@ if hash setxkbmap 2>/dev/null; then
     setxkbmap dvorak -option caps:swapescape
 fi
 
-if hash xrdb 2>/dev/null; then
-    xrdb -load $HOME/.Xresources
-fi
-
 dwm_loop() {
     new_csum=$(shasum $(which dwm))
     csum=""
