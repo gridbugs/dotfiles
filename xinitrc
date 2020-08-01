@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-
-set -euo pipefail
-
 if test -f $HOME/.xprofile; then
     . $HOME/.xprofile
 fi
