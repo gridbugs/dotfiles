@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eux
 
-DIR=$(dirname "$0")
+DIR="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 TARGET=$HOME
 
 make_link() {
