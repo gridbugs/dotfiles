@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -euo pipefail
+set -eu
 
 dev=/sys/class/backlight/intel_backlight/brightness
 step=$1

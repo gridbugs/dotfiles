@@ -1,5 +1,5 @@
 #!/bin/sh
 
-set -euo pipefail
+set -eu
 
 intel_backlight | cut -d' ' -f4 | tr -d %

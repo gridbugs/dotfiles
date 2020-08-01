@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -euo pipefail
+set -eu
 
 while true; do
     xsetroot -name "$($HOME/.bin/dwm-bar.sh)"

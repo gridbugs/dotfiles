@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -euo pipefail
+set -eu
 
 get() {
     ifconfig $1 | awk '/inet / { printf " %s",$2 }'

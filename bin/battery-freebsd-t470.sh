@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -euo pipefail
+set -eu
 
 get() {
     acpiconf -i $1 | grep 'Remaining capacity' | cut -f2
