@@ -6,19 +6,19 @@ if test -f $HOME/.xprofile; then
     . $HOME/.xprofile
 fi
 
-if hash xsetroot 2>/dev/null; then
+if type xsetroot >/dev/null 2>/dev/null; then
     xsetroot -solid black
 fi
 
-if hash synclient 2>/dev/null; then
+if type synclient >/dev/null 2>/dev/null; then
     synclient HorizTwoFingerScroll=1
 fi
 
-if hash unclutter 2>/dev/null; then
+if type unclutter >/dev/null 2>/dev/null; then
     unclutter &
 fi
 
-if hash setxkbmap 2>/dev/null; then
+if type setxkbmap >/dev/null 2>/dev/null; then
     setxkbmap dvorak -option caps:swapescape
 fi
 
