@@ -9,10 +9,10 @@ make USERCFLAGS=-DUSERFONT="\"\\\"Terminus:style=Regular:size=12:antialias=true:
 
 For completeness, I found this to work for st but *not* dwm:
 ```
-make USERCFLAGS=-DUSERFONT="\"\\\"-xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso8859-1\\\"\""
+make USERCFLAGS=-DUSERFONT="\"\\\"-xos4-terminus-medium-r-normal--12-160-72-72-c-80-iso8859-1\\\"\""
 ```
 
 Finally, here's the command that I use on linux and freebsd:
 ```
-make USERCFLAGS=-DUSERFONT="\"\\\"xos4 Terminus:pixelsize=16:antialias=true:autohint=true\\\"\""
+make USERCFLAGS=-DUSERFONT="\"\\\"xos4 Terminus:pixelsize=12:antialias=true:autohint=true\\\"\""
 ```
