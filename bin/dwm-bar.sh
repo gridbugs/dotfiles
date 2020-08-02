@@ -4,13 +4,6 @@ set -eu
 
 TIME=$(date "+%a %Y-%m-%d %H:%M:%S %Z")
 
-if type isp >/dev/null 2>/dev/null; then
-    ISP=$(isp)
-    MAYBE_ISP=" $ISP |"
-else
-    MAYBE_ISP=""
-fi
-
 if type list-ips >/dev/null 2>/dev/null; then
     IP=$(list-ips)
     MAYBE_IP=" ip$IP |"
@@ -39,4 +32,4 @@ else
     MAYBE_VOLUME=""
 fi
 
-echo "$MAYBE_ISP$MAYBE_IP$MAYBE_BACKLIGHT$MAYBE_BATT$MAYBE_VOLUME $TIME"
+echo "$MAYBE_IP$MAYBE_BACKLIGHT$MAYBE_BATT$MAYBE_VOLUME $TIME"
