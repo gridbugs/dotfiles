@@ -1,3 +1,7 @@
+#!/bin/sh
+
+USER_PATH=$HOME/.local/bin:$HOME/.bin:$HOME/bin:$PATH
+
 if test -f $HOME/.xprofile; then
     . $HOME/.xprofile
 fi
@@ -18,27 +22,11 @@ if hash setxkbmap 2>/dev/null; then
     setxkbmap dvorak -option caps:swapescape
 fi
 
-dwm_loop() {
-    new_csum=$(shasum $(which dwm))
-    csum=""
-    while true; do
-        if [ "$csum" != "$new_csum" ]
-        then
-            csum=$new_csum
-            dwm
-        else
-            exit 0
-        fi
-        new_csum=$(shasum $(which dwm))
-        sleep 0.5
-    done
-}
-
 dwm_wm() {
     if test -f $HOME/.bin/dwm-bar-run-bg.sh; then
-        $HOME/.bin/dwm-bar-run-bg.sh
+        PATH=$USER_PATH $HOME/.bin/dwm-bar-run-bg.sh
     fi
-    dwm_loop
+    PATH=$USER_PATH dwm
 }
 
 case ${WM:-DWM} in

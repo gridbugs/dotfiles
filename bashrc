@@ -3,7 +3,7 @@
 # Only run if the shell is interactive
 if [[ $- == *i* ]]; then
 
-    export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:$HOME/.cargo/bin:$HOME:$PATH"
+    export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:$HOME/.cargo/bin:$PATH"
 
     # Use neovim, vim, or vi as editor
     if type nvim 2>/dev/null >/dev/null; then
