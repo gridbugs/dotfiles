@@ -93,6 +93,10 @@ if [[ $- == *i* ]]; then
     # try to load bash completion from its default location on some systems
     [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
         source /usr/local/share/bash-completion/bash_completion.sh
+    if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
+        export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+        . "/usr/local/etc/profile.d/bash_completion.sh"
+    fi
 
 
     # opam configuration
