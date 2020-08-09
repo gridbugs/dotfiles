@@ -4,7 +4,7 @@ It's never 100% clear how to specify a font to suckless tools. Using the scripts
 that correctly names terminus (in dwm and st) for openbsd is:
 
 ```
-make USERCFLAGS=-DUSERFONT="\"\\\"Terminus:style=Regular:size=12:antialias=true:autohint=true\\\"\""```
+make USERCFLAGS=-DUSERFONT="\"\\\"Terminus:style=Regular:size=12:antialias=true:autohint=true\\\"\""
 ```
 
 For completeness, I found this to work for st but *not* dwm:
