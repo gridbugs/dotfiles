@@ -86,7 +86,13 @@ if [[ $- == *i* ]]; then
     fi
 
     if type rustc 2>/dev/null >/dev/null && [[ -d ~/.cargo ]]; then
-        source $(rustc --print sysroot)/etc/bash_completion.d/cargo
+        RUST_COMPLETION1=$(rustc --print sysroot)/etc/bash_completion.d/cargo
+        RUST_COMPLETION2=$(rustc --print sysroot)/share/bash-completion/completions/cargo
+        if [[ -f $RUST_COMPLETION1 ]]; then
+            . $RUST_COMPLETION1
+        elif [[ -f $RUST_COMPLETION2 ]]; then
+            . $RUST_COMPLETION2
+        fi
     fi
 
 
