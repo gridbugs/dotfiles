@@ -54,27 +54,11 @@ if [[ $- == *i* ]]; then
         alias ls='ls -h'
     fi
 
-    if type inotifywait 2>/dev/null >/dev/null; then
-      function do-on-every-file-change {
-         while true; do
-           bash -c "$@"
-           inotifywait -qre close_write .
-         done
-      }
-    fi
-
     # Customize bash history behaviour
     export HISTCONTROL=ignoredups:erasedups
     export HISTSIZE=100000
     export HISTFILESIZE=100000
     shopt -s histappend
-
-    if type sbt 2>/dev/null >/dev/null; then
-        function sbt-new {
-            name=$1
-            sbt new sbt/scala-seed.g8 --name=$name
-        }
-    fi
 
     # Start keychain if it is installed
     if type keychain 2>/dev/null >/dev/null && [[ $(basename "$SHELL") == "bash" ]] && [[ -e ~/.ssh/id_rsa ]]; then
@@ -97,7 +81,6 @@ if [[ $- == *i* ]]; then
         fi
     fi
 
-
     # try to load bash completion from its default location on some systems
     [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
         source /usr/local/share/bash-completion/bash_completion.sh
@@ -114,7 +97,7 @@ if [[ $- == *i* ]]; then
     [[ -f ~/.fzf.bash ]] && [[ "$SHELL" == "/bin/bash" ]] && source ~/.fzf.bash
 
     # Lazily load NVM
-    function nvm() {
+    nvm() {
         if [[ -d ~/.nvm ]]; then
             if type realpath 2>/dev/null >/dev/null; then
                 export NVM_DIR=$(realpath "$HOME/.nvm")
@@ -147,7 +130,7 @@ if [[ $- == *i* ]]; then
     # Git Prompt
     [[ -f ~/.git-prompt.sh ]] && source ~/.git-prompt.sh
 
-    function __colour_by_command_output {
+    __colour_by_command_output() {
         # change STYLE_SUFFIX until you like the colours of your username/hostname as you'll see them a lot!
         STYLE_SUFFIX=ba
         if type cksum 2>/dev/null >/dev/null && type cut 2>/dev/null >/dev/null; then
