@@ -19,6 +19,7 @@ cd "$HOME"
 make_link nvim .vim
 make_link nvim .config/nvim
 make_link nvim/init.vim .vimrc
+make_link nvim/init.vim .ideavimrc
 make_link bashrc .bashrc
 make_link bash_profile .bash_profile
 make_link bash_profile .profile
