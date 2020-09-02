@@ -153,61 +153,32 @@ if [[ $- == *i* ]]; then
         echo $RET
     }
 
-    # Prompt
-    PS1="\$(
-        EXIT=\$?;
-        if [[ \$(id -u) == '0' ]]; then
-            PROMPT_COLOUR=97
-            PROMPT_TERMINATOR=\"\[\e[1;\${PROMPT_COLOUR}m\]#\[\e[0m\]\"
+    __prompt_command() {
+        local EXIT="$?";
+
+        if [[ $(id -u) == '0' ]]; then
+            TERMINATOR="\[\e[1;1m\]#\[\e[0m\]"
         else
-            PROMPT_COLOUR=97
-            PROMPT_TERMINATOR=\"\[\e[1;\${PROMPT_COLOUR}m\]$\[\e[0m\]\"
+            TERMINATOR="\[\e[1;1m\]$\[\e[0m\]"
         fi
-        if [[ \$EXIT != 0 ]]; then
-            RED=31
-            EXIT_CODE_MESSAGE=\"\[\e[0;\${RED}m\]\$EXIT\[\e[0m\] \"
-        else
-            EXIT_CODE_MESSAGE=''
-        fi
+
         if type __git_ps1 2>/dev/null >/dev/null; then
-            GIT_MESSAGE=\"\$(GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWUPSTREAM=auto __git_ps1) \"
+            GIT_MESSAGE="$(GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWUPSTREAM=auto __git_ps1) "
         else
-            GIT_MESSAGE=\" \"
-        fi
-        if type git 2>/dev/null >/dev/null && git rev-parse --is-inside-work-tree 2>/dev/null >/dev/null; then
-            GIT_COLOUR=\$(__colour_by_command_output git rev-parse HEAD 2> /dev/null)
-        else
-            GIT_COLOUR=0
-        fi
-        if type hostname 2>/dev/null >/dev/null; then
-            HOSTNAME_COLOUR=\$(__colour_by_command_output hostname)
-        elif [[ -f /etc/hostname ]]; then
-            HOSTNAME_COLOUR=\$(__colour_by_command_output cat /etc/hostname)
-        else
-            HOSTNAME_COLOUR=0
-        fi
-        if test whoami 2>/dev/null; then
-            USERNAME_COLOUR=\$(__colour_by_command_output whoami)
-        else
-            USERNAME_COLOUR=0
-        fi
-        if test pwd 2>/dev/null; then
-            PWD_COLOUR=\$(__colour_by_command_output pwd)
-        else
-            PWD_COLOUR=0
+            GIT_MESSAGE=" "
         fi
 
-        if [[ -n \"\$IN_NIX_SHELL\" ]]; then
-            NIX_MESSAGE=\"(nix-shell) \"
+        if [[ $EXIT != 0 ]]; then
+            RED=31
+            EXIT_CODE_MESSAGE="\[\e[0;${RED}m\]$EXIT\[\e[0m\] "
         else
-            NIX_MESSAGE=
+            EXIT_CODE_MESSAGE=""
         fi
 
-        BASE_PROMPT=\"\[\e[0;\${USERNAME_COLOUR}m\]\u\[\e[0m\]\[\e[1;\${PROMPT_COLOUR}m\]@\[\e[0m\]\[\e[0;\${HOSTNAME_COLOUR}m\]\h\[\e[0m\] \[\e[0;\${PWD_COLOUR}m\]\w\[\e[0m\]\"
-        PROMPT=\"\$BASE_PROMPT\[\e[0;\${GIT_COLOUR}m\]\$GIT_MESSAGE\[\e[0m\]\$NIX_MESSAGE\$EXIT_CODE_MESSAGE\$PROMPT_TERMINATOR \"
+        PS1="\u\[\e[1;1m\]@\[\e[0m\]\h \w$GIT_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR "
+    }
 
-        echo \"\$PROMPT\"
-    )"
+    PROMPT_COMMAND=__prompt_command
 
     # source extra commands from .bashrc_extra
     [[ -f ~/.bashrc_extra ]] && source ~/.bashrc_extra
