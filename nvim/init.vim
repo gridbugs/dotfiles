@@ -184,5 +184,5 @@ set statusline +=%4v\              "virtual column number
 set statusline +=0x%04B\           "character under cursor
 
 if filereadable(expand("~/.vim/dvorak.vim"))
-    source ~/.vim/dvorak.vim
+    "source ~/.vim/dvorak.vim
 endif

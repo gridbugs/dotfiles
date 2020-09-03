@@ -15,18 +15,17 @@ set show-all-if-unmodified on
 set completion-ignore-case on
 set menu-complete-display-prefix on
 
-# dvorak navigation
 set keymap vi-command
 "\e[A": history-search-backward
 "\e[B": history-search-forward
 "\e[C": forward-char
 "\e[D": backward-char
-"n": history-search-backward
-"t": history-search-forward
+"k": history-search-backward
+"j": history-search-forward
 "h": backward-char
-"s": forward-char
+"l": forward-char
 "H": backward-word
-"S": forward-word
+"L": forward-word
 
 # restore some emacs shortcuts
 set keymap vi-insert

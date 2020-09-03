@@ -157,25 +157,26 @@ if [[ $- == *i* ]]; then
         local EXIT="$?";
 
         if [[ $(id -u) == '0' ]]; then
-            TERMINATOR="\[\e[1;1m\]#\[\e[0m\]"
+            local TERMINATOR="#"
         else
-            TERMINATOR="\[\e[1;1m\]$\[\e[0m\]"
+            local TERMINATOR="$"
         fi
 
         if type __git_ps1 2>/dev/null >/dev/null; then
-            GIT_MESSAGE="$(GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWUPSTREAM=auto __git_ps1) "
+            local GIT_MESSAGE="$(GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWUPSTREAM=auto __git_ps1) "
         else
-            GIT_MESSAGE=" "
+            local GIT_MESSAGE=" "
         fi
 
         if [[ $EXIT != 0 ]]; then
-            RED=31
-            EXIT_CODE_MESSAGE="\[\e[0;${RED}m\]$EXIT\[\e[0m\] "
+            local RED=31
+            local DEFAULT_COLOUR=39
+            local EXIT_CODE_MESSAGE="\[\e[${RED}m$EXIT\[\e[${DEFAULT_COLOUR}m\] "
         else
-            EXIT_CODE_MESSAGE=""
+            local EXIT_CODE_MESSAGE=""
         fi
 
-        PS1="\u\[\e[1;1m\]@\[\e[0m\]\h \w$GIT_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR "
+        PS1="\[\e[1m\]\u@\h \w$GIT_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR\[\e[0m\] "
     }
 
     PROMPT_COMMAND=__prompt_command

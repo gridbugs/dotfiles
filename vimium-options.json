@@ -1,5 +1,5 @@
 {
-  "settingsVersion": "1.64.6",
+  "settingsVersion": "1.66",
   "exclusionRules": [
     {
       "pattern": "https?://mail.google.com/*",
@@ -12,12 +12,52 @@
     {
       "pattern": "https?://games.gridbugs.org/*",
       "passKeys": ""
+    },
+    {
+      "pattern": "https?://0.0.0.0:8080/*",
+      "passKeys": "f"
+    },
+    {
+      "pattern": "https?://0.0.0.0:8080/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://0.0.0.0:8000/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://0.0.0.0:8000/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://v6p9d9t4.ssl.hwcdn.net/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.musipedia.org/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://bestclassicaltunes.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://0.0.0.0:8081/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://0.0.0.0:8081/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://s3-ap-southeast-2.amazonaws.com/*",
+      "passKeys": ""
     }
   ],
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\nunmapAll\n\nmap t scrollDown\nmap n scrollUp\nmap T scrollPageDown\nmap N scrollPageUp\nmap q removeTab\nmap Q restoreTab\nmap + Vomnibar.activateInNewTab\nmap = Vomnibar.activate\nmap gt nextTab\nmap gT previousTab\nmap gg scrollToTop\nmap G scrollToBottom\nmap C createTab\nmap / enterFindMode\nmap b performFind\nmap B performBackwardsFind\nmap F LinkHints.activateModeToOpenInNewTab\nmap f LinkHints.activateMode\nmap < goBack\nmap > goForward\nmap r reload",
+  "keyMappings": "# Insert your preferred key mappings here.\nunmapAll\n\nmap j scrollDown\nmap k scrollUp\nmap J scrollPageDown\nmap K scrollPageUp\nmap q removeTab\nmap Q restoreTab\nmap + Vomnibar.activateInNewTab\nmap = Vomnibar.activate\nmap gt nextTab\nmap gT previousTab\nmap gg scrollToTop\nmap G scrollToBottom\nmap C duplicateTab\nmap / enterFindMode\nmap b performFind\nmap B performBackwardsFind\nmap F LinkHints.activateModeToOpenInNewTab\nmap f LinkHints.activateMode\nmap < goBack\nmap > goForward\nmap r reload",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
