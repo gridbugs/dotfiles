@@ -1,5 +1,7 @@
 #!/bin/sh
 
+setxkbmap -option caps:swapescape
+
 USER_PATH=$HOME/.local/bin:$HOME/.bin:$HOME/bin:$PATH
 
 if test -f $HOME/.xprofile; then
