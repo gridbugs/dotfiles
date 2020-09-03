@@ -83,7 +83,7 @@ static const char *volumebigdeccmd[] = { "amixer", "sset", "Master", "5%-", NULL
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
-    { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+    { MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
     { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_Return, spawn,          {.v = browsercmd } },
     { MODKEY,                       XK_t,      togglebar,      {0} },
