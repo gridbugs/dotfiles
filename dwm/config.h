@@ -78,8 +78,6 @@ static const char *volumedeccmd[] = { "amixer", "sset", "Master", "1%-", NULL };
 static const char *volumemutecmd[] = { "amixer", "sset", "Master", "toggle", NULL };
 static const char *volumebiginccmd[] = { "amixer", "sset", "Master", "5%+", NULL };
 static const char *volumebigdeccmd[] = { "amixer", "sset", "Master", "5%-", NULL };
-static const char *qwertycmd[] = { "aoeu", NULL };
-static const char *dvorakcmd[] = { "asdf", NULL };
 
 #include <X11/XF86keysym.h>
 
@@ -131,8 +129,6 @@ static Key keys[] = {
     { ShiftMask,                    XF86XK_AudioRaiseVolume, spawn, {.v = volumebiginccmd } },
     { ShiftMask,                    XF86XK_AudioLowerVolume, spawn, {.v = volumebigdeccmd } },
     { 0,                            XF86XK_AudioMute, spawn, {.v = volumemutecmd } },
-    { MODKEY,                       XK_a,      spawn,          {.v = dvorakcmd } },
-    { MODKEY,                       XK_m,      spawn,          {.v = qwertycmd } },
     { MODKEY,                       XK_b,      togglebar,      {0} },
 };
 

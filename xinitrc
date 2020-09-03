@@ -18,10 +18,6 @@ if type unclutter >/dev/null 2>/dev/null; then
     unclutter &
 fi
 
-if type setxkbmap >/dev/null 2>/dev/null; then
-    setxkbmap dvorak -option caps:swapescape
-fi
-
 dwm_wm() {
     if test -f $HOME/.bin/dwm-bar-run-bg.sh; then
         PATH=$USER_PATH $HOME/.bin/dwm-bar-run-bg.sh
