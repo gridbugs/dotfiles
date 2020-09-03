@@ -40,19 +40,19 @@ Plug 'derekwyatt/vim-scala'
 " OpenCL Highlighting
 Plug 'petRUShka/vim-opencl'
 
-" Required for ncm2
-Plug 'roxma/nvim-yarp'
+if has('nvim')
+    " Required for ncm2
+    Plug 'roxma/nvim-yarp'
 
-Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
+    Plug 'ncm2/ncm2'
+    Plug 'ncm2/ncm2-bufword'
+    Plug 'ncm2/ncm2-path'
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
-Plug 'LnL7/vim-nix'
+    Plug 'autozimu/LanguageClient-neovim', {
+        \ 'branch': 'next',
+        \ 'do': 'bash install.sh',
+        \ }
+endif
 
 call plug#end()
 
