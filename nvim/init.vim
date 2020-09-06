@@ -39,20 +39,11 @@ set splitbelow
 nmap <leader>w :w!<cr>
 nmap <leader>x :x!<cr>
 
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
-
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
 " Map fzf
 map <C-f> :FZF<CR>
-
-" Let 'tl' toggle between this and the last accessed tab
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -94,9 +85,6 @@ set novisualbell
 let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
-
-" Remap VIM 0 to first non-blank character
-map 0 ^
 
 " Pressing ,ss will toggle spell checking
 map <leader>ss :setlocal spell!<cr>
@@ -161,12 +149,6 @@ endif
 
 " This sets the cursor to an underline when leaving vim
 :au VimLeave * set guicursor=a:hor20-blinkon0
-
-" Easier navigation between windows
-noremap <C-W>h <C-W>h
-noremap <C-W>t <C-W>j
-noremap <C-W>n <C-W>k
-noremap <C-W>s <C-W>l
 
 " Shortcut to open this config
 nnoremap <F8> :e $MYVIMRC<CR>
