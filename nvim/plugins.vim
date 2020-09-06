@@ -1,8 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
-" Fuzzy Find
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Ctrl-P
+Plug 'kien/ctrlp.vim'
 
 " Version Control
 Plug 'tpope/vim-fugitive'

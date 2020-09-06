@@ -42,9 +42,6 @@ nmap <leader>x :x!<cr>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-" Map fzf
-map <C-f> :FZF<CR>
-
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 
