@@ -111,3 +111,6 @@ if filereadable(expand("~/.vim/plugged/vim-gitgutter/autoload/gitgutter.vim"))
     highlight GitGutterDelete ctermfg=1
     autocmd BufWritePost * GitGutter
 endif
+
+let g:ctrlp_max_files=200000
+let g:ctrlp_custom_ignore='^.git$'
