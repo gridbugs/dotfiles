@@ -1,6 +1,6 @@
 #!/bin/sh
 
-setxkbmap -option caps:swapescape
+setxkbmap -option caps:swapescape en_US
 
 USER_PATH=$HOME/.local/bin:$HOME/.bin:$HOME/bin:$PATH
 
