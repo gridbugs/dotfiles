@@ -171,7 +171,7 @@ if [[ $- == *i* ]]; then
         if [[ $EXIT != 0 ]]; then
             local RED=31
             local DEFAULT_COLOUR=39
-            local EXIT_CODE_MESSAGE="\[\e[${RED}m$EXIT\[\e[${DEFAULT_COLOUR}m\] "
+            local EXIT_CODE_MESSAGE="\[\e[${RED}\]m$EXIT\[\e[${DEFAULT_COLOUR}m\] "
         else
             local EXIT_CODE_MESSAGE=""
         fi
