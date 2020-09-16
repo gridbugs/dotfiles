@@ -169,14 +169,12 @@ if [[ $- == *i* ]]; then
         fi
 
         if [[ $EXIT != 0 ]]; then
-            local RED=31
-            local DEFAULT_COLOUR=39
-            local EXIT_CODE_MESSAGE="\[\e[${RED}\]m$EXIT\[\e[${DEFAULT_COLOUR}m\] "
+            local EXIT_CODE_MESSAGE="\[\033[01;31m\]$EXIT\[\033[01;39m\] "
         else
             local EXIT_CODE_MESSAGE=""
         fi
 
-        PS1="\[\e[1m\]\u@\h \w$GIT_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR\[\e[0m\] "
+        PS1="\[\033[01;1m\]\u@\h \w$GIT_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR\[\033[01;0m\] "
     }
 
     PROMPT_COMMAND=__prompt_command
