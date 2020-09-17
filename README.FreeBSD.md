@@ -15,10 +15,6 @@
 - wifi
 - webcam
 
-#### Not Working
-
-- keyboard backlight
-
 #### Not Tried
 
 - fingerprint reader
