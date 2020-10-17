@@ -3,5 +3,3 @@ if [ -n "$BASH_VERSION" ]; then
         . ~/.bashrc
     fi
 fi
-
-export PATH="$HOME/.cargo/bin:$PATH"

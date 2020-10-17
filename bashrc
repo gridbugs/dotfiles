@@ -3,7 +3,7 @@
 # Only run if the shell is interactive
 if [[ $- == *i* ]]; then
 
-    export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:$HOME/.cargo/bin:$PATH"
+    export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:$PATH"
 
     # Use neovim, vim, or vi as editor
     if type nvim 2>/dev/null >/dev/null; then
@@ -63,6 +63,10 @@ if [[ $- == *i* ]]; then
     # Start keychain if it is installed
     if type keychain 2>/dev/null >/dev/null && [[ $(basename "$SHELL") == "bash" ]] && [[ -e ~/.ssh/id_rsa ]]; then
        eval $(keychain --quiet --agents ssh id_rsa --eval)
+    fi
+
+    if [[ -d ~/.cargo ]]; then
+        export PATH="$HOME/.cargo/bin:$PATH"
     fi
 
     # Set some rust-specific environment variables if rust is installed
