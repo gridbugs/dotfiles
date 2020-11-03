@@ -3,19 +3,10 @@
 # Only run if the shell is interactive
 if [[ $- == *i* ]]; then
 
-    export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:$PATH"
-
     # Use neovim, vim, or vi as editor
     if type nvim 2>/dev/null >/dev/null; then
-        export EDITOR=nvim
-        export VISUAL=nvim
         alias vim=nvim
-    elif type vim 2>/dev/null >/dev/null; then
-        export EDITOR=vim
-        export VISUAL=vim
-    else
-        export EDITOR=vi
-        export VISUAL=vi
+    elif ! type vim 2>/dev/null >/dev/null; then
         alias vim=vi
     fi
 
@@ -65,35 +56,6 @@ if [[ $- == *i* ]]; then
        eval $(keychain --quiet --agents ssh id_rsa --eval)
     fi
 
-    if [[ -d ~/.cargo ]]; then
-        export PATH="$HOME/.cargo/bin:$PATH"
-    fi
-
-    # Set some rust-specific environment variables if rust is installed
-    if type rustc 2>/dev/null >/dev/null && [[ -d ~/.cargo ]]; then
-        export RUST_SRC_PATH=$(rustc --print sysroot)"/lib/rustlib/src/rust/src"
-        export CARGO_HOME=$HOME/.cargo
-    fi
-
-    if type rustc 2>/dev/null >/dev/null && [[ -d ~/.cargo ]]; then
-        RUST_COMPLETION1=$(rustc --print sysroot)/etc/bash_completion.d/cargo
-        RUST_COMPLETION2=$(rustc --print sysroot)/share/bash-completion/completions/cargo
-        if [[ -f $RUST_COMPLETION1 ]]; then
-            . $RUST_COMPLETION1
-        elif [[ -f $RUST_COMPLETION2 ]]; then
-            . $RUST_COMPLETION2
-        fi
-    fi
-
-    # try to load bash completion from its default location on some systems
-    [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
-        source /usr/local/share/bash-completion/bash_completion.sh
-    if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
-        export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
-        . "/usr/local/etc/profile.d/bash_completion.sh"
-    fi
-
-
     # opam configuration
     test -r ~/.opam/opam-init/init.sh && . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
@@ -118,9 +80,6 @@ if [[ $- == *i* ]]; then
         fi
     }
 
-    # RVM wants to be at the end of PATH
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" && export PATH="$PATH:$HOME/.rvm/bin" 2> /dev/null
-
     man() {
         LESS_TERMCAP_md=$'\e[01;31m' \
         LESS_TERMCAP_me=$'\e[0m' \
@@ -133,29 +92,6 @@ if [[ $- == *i* ]]; then
 
     # Git Prompt
     [[ -f ~/.git-prompt.sh ]] && source ~/.git-prompt.sh
-
-    __colour_by_command_output() {
-        # change STYLE_SUFFIX until you like the colours of your username/hostname as you'll see them a lot!
-        STYLE_SUFFIX=ba
-        if type cksum 2>/dev/null >/dev/null && type cut 2>/dev/null >/dev/null; then
-            NUM_COLOURS=12
-            NUM_COLOURS_NORMAL=6
-            BASE_COLOUR_NORMAL=31
-            BASE_COLOUR_BRIGHT=91
-            TO_HASH=$($@)$STYLE_SUFFIX
-            HASH_SIGNED=$((16#$(cksum <(echo $TO_HASH) | cut -d' ' -f1)))
-            HASH_POSITIVE=${HASH_SIGNED#-}
-            INDEX=$(($HASH_POSITIVE % $NUM_COLOURS))
-            if [ $INDEX -lt $NUM_COLOURS_NORMAL ]; then
-                RET=$(($BASE_COLOUR_NORMAL + $INDEX))
-            else
-                RET=$(($BASE_COLOUR_NORMAL + $INDEX - $NUM_COLOURS_NORMAL))
-            fi
-        else
-            RET=0
-        fi
-        echo $RET
-    }
 
     __prompt_command() {
         local EXIT="$?";

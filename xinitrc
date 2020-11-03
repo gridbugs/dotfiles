@@ -2,8 +2,6 @@
 
 setxkbmap -option caps:swapescape en_US
 
-USER_PATH=$HOME/.local/bin:$HOME/.bin:$HOME/bin:$PATH
-
 if test -f $HOME/.xprofile; then
     . $HOME/.xprofile
 fi
@@ -21,10 +19,8 @@ if type unclutter >/dev/null 2>/dev/null; then
 fi
 
 dwm_wm() {
-    if test -f $HOME/.bin/dwm-bar-run-bg.sh; then
-        PATH=$USER_PATH $HOME/.bin/dwm-bar-run-bg.sh
-    fi
-    PATH=$USER_PATH dwm
+    dwm-bar-run-bg.sh
+    dwm
 }
 
 case ${WM:-DWM} in
