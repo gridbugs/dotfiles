@@ -1,5 +1,8 @@
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:$PATH"
 
+# Source extra commands from .profile_extra
+[[ -f ~/.profile_extra ]] && source ~/.profile_extra
+
 # Use neovim, vim, or vi as editor
 if type nvim 2>/dev/null >/dev/null; then
     export EDITOR=nvim
