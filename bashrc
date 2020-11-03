@@ -80,6 +80,26 @@ if [[ $- == *i* ]]; then
         fi
     }
 
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+    if type rustc 2>/dev/null >/dev/null && [[ -d ~/.cargo ]]; then
+        RUST_COMPLETION1=$(rustc --print sysroot)/etc/bash_completion.d/cargo
+        RUST_COMPLETION2=$(rustc --print sysroot)/share/bash-completion/completions/cargo
+        if [[ -f $RUST_COMPLETION1 ]]; then
+            . $RUST_COMPLETION1
+        elif [[ -f $RUST_COMPLETION2 ]]; then
+            . $RUST_COMPLETION2
+        fi
+    fi
+
+    # try to load bash completion from its default location on some systems
+    [[ -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
+        source /usr/local/share/bash-completion/bash_completion.sh
+    if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
+        export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+        . "/usr/local/etc/profile.d/bash_completion.sh"
+    fi
+
     man() {
         LESS_TERMCAP_md=$'\e[01;31m' \
         LESS_TERMCAP_me=$'\e[0m' \
