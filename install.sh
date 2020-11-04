@@ -25,7 +25,6 @@ make_link bashrc .bashrc
 make_link profile .profile
 make_link inputrc .inputrc
 make_link xinitrc .xinitrc
-make_link xsession .xsession
 make_link tmux.conf .tmux.conf
 make_link bin .bin
 make_link hushlogin .hushlogin
