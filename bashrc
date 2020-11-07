@@ -59,9 +59,6 @@ if [[ $- == *i* ]]; then
     # opam configuration
     test -r ~/.opam/opam-init/init.sh && . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
-    # FZF
-    [[ -f ~/.fzf.bash ]] && [[ "$SHELL" == "/bin/bash" ]] && source ~/.fzf.bash
-
     # Lazily load NVM
     nvm() {
         if [[ -d ~/.nvm ]]; then
