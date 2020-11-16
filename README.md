@@ -67,6 +67,7 @@ cargo xtask install
 ```
 curl -L -o coursier https://git.io/coursier-cli
 chmod +x coursier
+mkdir -p ~/.local/bin
 ./coursier bootstrap \
   --java-opt -Xss4m \
   --java-opt -Xms100m \
