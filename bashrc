@@ -92,6 +92,8 @@ if [[ $- == *i* ]]; then
     # try to load bash completion from its default location on some systems
     [[ -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
         source /usr/local/share/bash-completion/bash_completion.sh
+    [[ -f /usr/share/bash-completion/bash_completion ]] && \
+        source /usr/share/bash-completion/bash_completion
     if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
         export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
         . "/usr/local/etc/profile.d/bash_completion.sh"
