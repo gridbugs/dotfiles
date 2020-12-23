@@ -3,7 +3,7 @@
 # Contributor: Christoph Vigano <mail@cvigano.de>
 
 pkgname=st
-pkgver=0.8.2
+pkgver=0.8.4
 pkgrel=2
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,17 +13,17 @@ makedepends=('ncurses')
 url="https://st.suckless.org"
 source=(https://dl.suckless.org/st/$pkgname-$pkgver.tar.gz
         https://st.suckless.org/patches/bold-is-not-bright/st-bold-is-not-bright-20190127-3be4cf1.diff
-        https://st.suckless.org/patches/scrollback/st-scrollback-$pkgver.diff
-        https://st.suckless.org/patches/scrollback/st-scrollback-mouse-$pkgver.diff
-        https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-0.8.diff
+        https://st.suckless.org/patches/scrollback/st-scrollback-20201205-4ef0cbd.diff
+        https://st.suckless.org/patches/scrollback/st-scrollback-mouse-20191024-a2c479c.diff
+        https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-20200416-5703aa0.diff
         usercflags.diff
         config.h
         )
-sha256sums=('aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35'
+sha256sums=('d42d3ceceb4d6a65e32e90a5336e3d446db612c3fbd9ebc1780bc6c9a03346a6'
             '329169acac7ceaf901995d6e0897913089b799d8cd150c7f04c902f4a5b8eab2'
-            '9c5aedce2ff191437bdb78aa70894c3c91a47e1be48465286f42d046677fd166'
-            '6103a650f62b5d07672eee9e01e3f4062525083da6ba063e139ca7d9fd58a1ba'
-            'bcfc106089d9eb75aa014d4915ed3e6842f1df54edd8b75597154096333df6fa'
+            '3b8c7d1815352cbfa2e100f6bb65e4c7d5a338952a6e7513b59a6a6297f32fb4'
+            '319458d980195d18fa0f81a6898d58f8d046c5ff982ab872d741f54bb60e267d'
+            'cb87eb654985da46ff63663407184402393ad3d3013c8795570552fe56a15b9d'
             'SKIP'
             'SKIP'
             )

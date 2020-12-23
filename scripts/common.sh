@@ -28,3 +28,20 @@ else
         echo "no sha256 checksum tool found"
     }
 fi
+
+echo "Deciding which download tool to use..."
+if type wget 2> /dev/null; then
+    echo "Using wget"
+    function get {
+        url=$1
+        dest=$2
+        wget $url --output-document=$2
+    }
+else
+    echo "Using curl"
+    function get {
+        url=$1
+        dest=$2
+        curl $url --output $2
+    }
+fi
