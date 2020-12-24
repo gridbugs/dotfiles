@@ -1,3 +1,16 @@
+# Monitor Backlight
+
+The "bin" dir (symlinked to ~/.bin) contains scripts for getting and setting the backlight.
+These have names such as "t470-getbacklight" or "t470-setbacklight". These scripts are specific
+to models of laptop.
+The dwm config in this repo runs "setbacklight" to set the backlight.
+The dwm bar script runs "getbacklight" to get the current backlight brightness.
+
+# Keyboard Backlight
+
+The kb-light.py script sets the keyboard backlight on supported laptops.
+On archlinux, this script depends on `python-dbus` and `upower`.
+
 # Refind
 
 Updating macos or reinstalling grub can mess up refind. Details for fixing are
