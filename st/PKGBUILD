@@ -36,9 +36,9 @@ prepare() {
 build() {
   cd $srcdir/$pkgname-$pkgver
   patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/st-bold-is-not-bright-20190127-3be4cf1.diff
-  patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/st-scrollback-$pkgver.diff
-  patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/st-scrollback-mouse-$pkgver.diff
-  patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/st-scrollback-mouse-altscreen-0.8.diff
+  patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/st-scrollback-20201205-4ef0cbd.diff
+  patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/st-scrollback-mouse-20191024-a2c479c.diff
+  patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/st-scrollback-mouse-altscreen-20200416-5703aa0.diff
   patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/usercflags.diff
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 \
       USERCFLAGS=-DUSERFONT="\"\\\"xos4 Terminus:pixelsize=${FONTSIZE:-16}:antialias=true:autohint=true\\\"\""
