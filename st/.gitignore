@@ -4,3 +4,4 @@
 !default.nix
 !*.diff
 !.gitignore
+st-*.diff

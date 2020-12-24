@@ -6,3 +6,4 @@
 !default.nix
 !*.diff
 !.gitignore
+dwm-*.diff
