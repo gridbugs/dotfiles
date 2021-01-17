@@ -68,6 +68,8 @@ let g:LanguageClient_serverCommands = {
 
 let g:LanguageClient_hoverPreview = "Always"
 let g:LanguageClient_useFloatingHover = 0
+highlight LanguageClientWarning ctermbg=darkyellow
+highlight LanguageClientInfo ctermbg=red
 
 " Language Client Shortcuts
 au FileType * nmap <leader><leader>t :call LanguageClient#textDocument_hover()<CR>
