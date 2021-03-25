@@ -133,7 +133,7 @@ if [[ $- == *i* ]]; then
             local EXIT_CODE_MESSAGE=""
         fi
 
-        PS1="\# \[\033[01;1m\]\u@\h \w $GIT_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR\[\033[01;0m\] "
+        PS1="\# \[\033[01;1m\]\u@\h \w$GIT_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR\[\033[01;0m\] "
     }
 
     PROMPT_COMMAND=__prompt_command
