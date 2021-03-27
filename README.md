@@ -99,12 +99,12 @@ mkdir -p ~/.local/bin
 pip install python-language-server
 ```
 
-## Javascript/Typescript
+## Typescript
 
-[javascript-typescript-langserver](https://github.com/sourcegraph/javascript-typescript-langserver)
+[typescript-language-server](https://github.com/theia-ide/typescript-language-server)
 
 ```
-npm install --global javascript-typescript-langserver --prefix ~/.local/
+npm install --global typescript-language-server --prefix ~/.local/
 ```
 
 ## C

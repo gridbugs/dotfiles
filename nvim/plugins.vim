@@ -60,8 +60,7 @@ let g:LanguageClient_serverCommands = {
 \ 'rust': ['rust-analyzer'],
 \ 'scala': ['metals-vim'],
 \ 'python': ['pyls'],
-\ 'javascript.jsx': ['javascript-typescript-stdio'],
-\ 'typescript': ['javascript-typescript-stdio'],
+\ 'typescript': ['typescript-language-server', '--stdio'],
 \ 'c': ['clangd'],
 \ 'cpp': ['clangd'],
 \ }
