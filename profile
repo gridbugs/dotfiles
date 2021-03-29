@@ -1,4 +1,4 @@
-export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:$PATH"
+export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:/usr/games:/usr/local/games:$PATH"
 
 # Source extra commands from .profile_extra
 [[ -f ~/.profile_extra ]] && source ~/.profile_extra
