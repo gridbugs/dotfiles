@@ -40,6 +40,7 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/dwm-fibonacci-$pkgver.diff
+  patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/dwm-noborder-$pkgver.diff
   patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/usercflags.diff
   patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/bottomstack-custom.diff
   patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/dwm-pertag-$pkgver.diff
