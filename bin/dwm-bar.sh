@@ -32,4 +32,11 @@ else
     MAYBE_VOLUME=""
 fi
 
-echo "$MAYBE_IP$MAYBE_BACKLIGHT$MAYBE_BATT$MAYBE_VOLUME $TIME"
+if type dwm-bar-times-extra >/dev/null 2>/dev/null; then
+    TIMES_EXTRA=$(dwm-bar-times-extra)
+    MAYBE_TIMES_EXTRA=" $TIMES_EXTRA |"
+else
+    MAYBE_TIMES_EXTRA=""
+fi
+
+echo "$MAYBE_IP$MAYBE_BACKLIGHT$MAYBE_BATT$MAYBE_VOLUME$MAYBE_TIMES_EXTRA $TIME"
