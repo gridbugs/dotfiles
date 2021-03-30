@@ -90,13 +90,26 @@ if [[ $- == *i* ]]; then
     fi
 
     # try to load bash completion from its default location on some systems
-    [[ -f /usr/local/share/bash-completion/bash_completion.sh ]] && \
-        source /usr/local/share/bash-completion/bash_completion.sh
-    [[ -f /usr/share/bash-completion/bash_completion ]] && \
-        source /usr/share/bash-completion/bash_completion
-    if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
-        export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+    if [[ -r /usr/local/share/bash-completion/bash_completion.sh ]]; then
+        export BASH_COMPLETION_DIR=/usr/local/share/bash-completion/completions
+        . /usr/local/share/bash-completion/bash_completion.sh
+    elif [[ -r /usr/local/share/bash-completion/bash_completion ]]; then
+        export BASH_COMPLETION_DIR=/usr/local/share/bash-completion/completions
+        . /usr/local/share/bash-completion/bash_completion
+    elif [[ -r /usr/share/bash-completion/bash_completion ]]; then
+        export BASH_COMPLETION_DIR=/usr/share/bash-completion/completions
+        . /usr/share/bash-completion/bash_completion
+    elif [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
+        export BASH_COMPLETION_DIR="/usr/local/etc/bash_completion.d"
+        export BASH_COMPLETION_COMPAT_DIR=$BASH_COMPLETION_DIR
         . "/usr/local/etc/profile.d/bash_completion.sh"
+    fi
+
+    # fall back to completions from dotfiles for certain programs
+    if [[ -d ~/.completions ]]; then
+        if [[ ! -r $BASH_COMPLETION_DIR/git ]]; then
+            . ~/.completions/git
+        fi
     fi
 
     man() {

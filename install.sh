@@ -30,6 +30,7 @@ make_link bin .bin
 make_link hushlogin .hushlogin
 make_link git-prompt.sh .git-prompt.sh
 make_link ledgerrc .ledgerrc
+make_link completions .completions
 
 # link archlinux-specific packages
 if type pacman 2>/dev/null >/dev/null; then
