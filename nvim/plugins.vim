@@ -39,6 +39,9 @@ Plug 'derekwyatt/vim-scala'
 " OpenCL Highlighting
 Plug 'petRUShka/vim-opencl'
 
+" Ledger Highlighting
+Plug 'ledger/vim-ledger'
+
 if has('nvim')
     " Required for ncm2
     Plug 'roxma/nvim-yarp'
