@@ -69,6 +69,9 @@ if [[ $- == *i* ]]; then
             fi
             [[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
             [[ -s "$NVM_DIR/bash_completion" ]] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+            if type npm 2>/dev/null >/dev/null; then
+                 source <(npm completion)
+            fi
             nvm $@
         else
             echo nvm is not installed
