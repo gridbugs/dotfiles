@@ -27,6 +27,7 @@ if [[ $- == *i* ]]; then
     if type pacman 2>/dev/null >/dev/null; then
         alias explicit-non-default-packages='comm -23 <(pacman -Qqe | sort) <(pacman -Qqg base base-devel | sort)'
         alias orphaned-packages='pacman -Qdtq'
+        alias which-package-owns-file='pacman -Qo'
     fi
 
     # Set colours for `ls` to use. If gnu-ls is installed, prefer it over ls.
