@@ -38,7 +38,7 @@ if type pacman 2>/dev/null >/dev/null; then
     make_link st pkg/st
 fi
 
-if [ $(uname) == OpenBSD ]; then
+if [ $(uname) = OpenBSD ]; then
     make_link xsession .xsession
 fi
 
