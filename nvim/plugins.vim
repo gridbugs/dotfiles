@@ -1,8 +1,5 @@
 call plug#begin('~/.vim/plugged')
 
-" Ctrl-P
-Plug 'kien/ctrlp.vim'
-
 " Version Control
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
@@ -42,6 +39,10 @@ Plug 'petRUShka/vim-opencl'
 " Ledger Highlighting
 Plug 'ledger/vim-ledger'
 
+" Fuzzy Find
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 if has('nvim')
     " Required for ncm2
     Plug 'roxma/nvim-yarp'
@@ -77,6 +78,7 @@ highlight LanguageClientInfo ctermbg=red
 " Language Client Shortcuts
 au FileType * nmap <leader><leader>t :call LanguageClient#textDocument_hover()<CR>
 au FileType * nmap <leader><leader>d :call LanguageClient#textDocument_definition()<CR>
+au FileType * nmap <leader><leader>r :call LanguageClient#textDocument_rename()<CR>
 
 " use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -86,6 +88,7 @@ if filereadable(expand("~/.vim/plugged/ncm2/autoload/ncm2.vim")) && has('nvim')
     " enable ncm2 for all buffers
     autocmd BufEnter * call ncm2#enable_for_buffer()
 endif
+ " IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
 
 " Auto format rust code on save
