@@ -3,13 +3,6 @@
 # Only run if the shell is interactive
 if [[ $- == *i* ]]; then
 
-    # Use neovim, vim, or vi as editor
-    if type nvim 2>/dev/null >/dev/null; then
-        alias vim=nvim
-    elif ! type vim 2>/dev/null >/dev/null; then
-        alias vim=vi
-    fi
-
     # Tmux unicode and 256 colour support
     alias tmux='tmux -u -2'
 
