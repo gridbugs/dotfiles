@@ -15,7 +15,7 @@ else
     export VISUAL=vi
 fi
 
-[[ -d "$HOME/.cargo/bin" ]] && export PATH="$HOME/.cargo/bin:$PATH"
+[[ -d "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
 # Set some rust-specific environment variables if rust is installed
 if type rustc 2>/dev/null >/dev/null && [[ -d ~/.cargo ]]; then
