@@ -114,9 +114,9 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " GitGutter
 if filereadable(expand("~/.vim/plugged/vim-gitgutter/autoload/gitgutter.vim"))
-    highlight GitGutterAdd    ctermfg=2
-    highlight GitGutterChange ctermfg=3
-    highlight GitGutterDelete ctermfg=1
+    highlight GitGutterAdd ctermfg=2 ctermbg=0
+    highlight GitGutterChange ctermfg=3 ctermbg=0
+    highlight GitGutterDelete ctermfg=1 ctermbg=0
     autocmd BufWritePost * GitGutter
 endif
 
