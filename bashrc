@@ -138,7 +138,7 @@ if [[ $- == *i* ]]; then
         fi
 
         if [[ $EXIT != 0 ]]; then
-            local EXIT_CODE_MESSAGE="\033[0;31m\]$EXIT\[\033[0m\] "
+            local EXIT_CODE_MESSAGE="\[\033[01;31m\]$EXIT\[\033[01;39m\] "
         else
             local EXIT_CODE_MESSAGE=""
         fi
