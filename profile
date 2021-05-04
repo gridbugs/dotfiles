@@ -1,7 +1,7 @@
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:/usr/games:/usr/local/games:$PATH"
 
 # Source extra commands from .profile_extra
-[[ -f ~/.profile_extra ]] && source ~/.profile_extra
+[ -f ~/.profile_extra ] && source ~/.profile_extra
 
 # Use neovim, vim, or vi as editor
 if type nvim 2>/dev/null >/dev/null; then
@@ -15,16 +15,16 @@ else
     export VISUAL=vi
 fi
 
-[[ -d "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # Set some rust-specific environment variables if rust is installed
-if type rustc 2>/dev/null >/dev/null && [[ -d ~/.cargo ]]; then
+if type rustc 2>/dev/null >/dev/null && [ -d ~/.cargo ]; then
     export RUST_SRC_PATH=$(rustc --print sysroot)"/lib/rustlib/src/rust/src"
     export CARGO_HOME=$HOME/.cargo
 fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-[[ -d "$HOME/.rvm/bin" ]] && export PATH="$PATH:$HOME/.rvm/bin"
+[ -d "$HOME/.rvm/bin" ] && export PATH="$PATH:$HOME/.rvm/bin"
 
 if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
