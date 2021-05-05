@@ -43,6 +43,9 @@ Plug 'ledger/vim-ledger'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" NERD Tree
+Plug 'preservim/nerdtree'
+
 if has('nvim')
     " Required for ncm2
     Plug 'roxma/nvim-yarp'
