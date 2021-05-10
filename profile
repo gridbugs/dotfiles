@@ -1,7 +1,7 @@
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:/usr/games:/usr/local/games:$PATH"
 
 # Source extra commands from .profile_extra
-[ -f ~/.profile_extra ] && source ~/.profile_extra
+[ -f ~/.profile_extra ] && . ~/.profile_extra
 
 # Use neovim, vim, or vi as editor
 if type nvim 2>/dev/null >/dev/null; then
@@ -15,7 +15,7 @@ else
     export VISUAL=vi
 fi
 
-[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 # Set some rust-specific environment variables if rust is installed
 if type rustc 2>/dev/null >/dev/null && [ -d ~/.cargo ]; then

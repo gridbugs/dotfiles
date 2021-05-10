@@ -11,7 +11,7 @@ if [[ $- == *i* ]]; then
 
     # Some handy aliases
     alias tmp='pushd $(mktemp -d)'
-    alias rebash='source $HOME/.bashrc'
+    alias rebash='. $HOME/.bashrc'
 
     # irb gets confused by my readline config
     alias irb='INPUTRC=/dev/null irb'
@@ -64,7 +64,7 @@ if [[ $- == *i* ]]; then
             [[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
             [[ -s "$NVM_DIR/bash_completion" ]] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
             if type npm 2>/dev/null >/dev/null; then
-                 source <(npm completion)
+                 . <(npm completion)
             fi
             nvm $@
         else
@@ -74,7 +74,7 @@ if [[ $- == *i* ]]; then
         fi
     }
 
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
     if type rustc 2>/dev/null >/dev/null && [[ -d ~/.cargo ]]; then
         RUST_COMPLETION1=$(rustc --print sysroot)/etc/bash_completion.d/cargo
@@ -120,7 +120,7 @@ if [[ $- == *i* ]]; then
     }
 
     # Git Prompt
-    [[ -f ~/.git-prompt.sh ]] && source ~/.git-prompt.sh
+    [[ -f ~/.git-prompt.sh ]] && . ~/.git-prompt.sh
 
     __prompt_command() {
         local EXIT="$?";
@@ -149,7 +149,7 @@ if [[ $- == *i* ]]; then
     PROMPT_COMMAND=__prompt_command
 
     # source extra commands from .bashrc_extra
-    [[ -f ~/.bashrc_extra ]] && source ~/.bashrc_extra
+    [[ -f ~/.bashrc_extra ]] && . ~/.bashrc_extra
 
     true
 fi
