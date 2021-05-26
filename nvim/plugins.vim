@@ -126,5 +126,5 @@ endif
 " Hitting enter on a file node in NERDTree will only reuse buffers on the
 " current tab
 let NERDTreeCustomOpenArgs = {'file': {'reuse': 'currenttab', 'where': 'p', 'keepopen': 1}, 'dir': {}}
-nnoremap <leader><leader>F :NERDTreeMirror<CR>:NERDTreeFind<CR>
-nnoremap <leader><leader>f :NERDTreeMirror<CR>:NERDTreeToggle<CR>
+nnoremap <leader><leader>F :NERDTreeFind<CR>
+nnoremap <leader><leader>f :NERDTreeToggle<CR>
