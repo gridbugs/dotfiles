@@ -123,9 +123,8 @@ if filereadable(expand("~/.vim/plugged/vim-gitgutter/autoload/gitgutter.vim"))
     autocmd BufWritePost * GitGutter
 endif
 
-" CtrlP - run :CtrlPClearAllCaches after changing these
-let g:ctrlp_max_files=200000
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll|class)$',
-  \ }
+" Hitting enter on a file node in NERDTree will only reuse buffers on the
+" current tab
+let NERDTreeCustomOpenArgs = {'file': {'reuse': 'currenttab', 'where': 'p', 'keepopen': 1}, 'dir': {}}
+nnoremap <leader><leader>F :NERDTreeMirror<CR>:NERDTreeFind<CR>
+nnoremap <leader><leader>f :NERDTreeMirror<CR>:NERDTreeToggle<CR>
