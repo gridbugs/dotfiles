@@ -163,3 +163,12 @@ set statusline +=%4v\              "virtual column number
 set statusline +=0x%04B\           "character under cursor
 
 highlight SpellCap ctermbg=darkblue gui=undercurl guisp=Blue
+
+noremap <leader>j :res -1<CR>
+noremap <leader>k :res +1<CR>
+noremap <leader>h :vertical resize -1<CR>
+noremap <leader>l :vertical resize +1<CR>
+noremap <leader>J :res -10<CR>
+noremap <leader>K :res +10<CR>
+noremap <leader>H :vertical resize -10<CR>
+noremap <leader>L :vertical resize +10<CR>
