@@ -75,7 +75,7 @@ let g:LanguageClient_serverCommands = {
 
 let g:LanguageClient_hoverPreview = "Always"
 let g:LanguageClient_useFloatingHover = 0
-highlight LanguageClientWarning ctermbg=darkyellow
+highlight LanguageClientWarning ctermbg=black
 highlight LanguageClientInfo ctermbg=red
 
 " Language Client Shortcuts
