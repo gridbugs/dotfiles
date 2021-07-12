@@ -46,6 +46,9 @@ Plug 'junegunn/fzf.vim'
 " NERD Tree
 Plug 'preservim/nerdtree'
 
+" Nix Highlighting
+Plug 'LnL7/vim-nix'
+
 if has('nvim')
     " Required for ncm2
     Plug 'roxma/nvim-yarp'

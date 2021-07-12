@@ -8,16 +8,16 @@ let
     sha256 = "329169acac7ceaf901995d6e0897913089b799d8cd150c7f04c902f4a5b8eab2";
   };
   scrollback = fetchurl {
-    url = "https://st.suckless.org/patches/scrollback/st-scrollback-0.8.2.diff";
-    sha256 = "9c5aedce2ff191437bdb78aa70894c3c91a47e1be48465286f42d046677fd166";
+    url = "https://st.suckless.org/patches/scrollback/st-scrollback-0.8.4.diff";
+    sha256 = "0i0fav13sxnsydpllny26139gnzai66222502cplh18iy5fir3j1";
   };
   scrollback-mouse = fetchurl {
-    url = "https://st.suckless.org/patches/scrollback/st-scrollback-mouse-0.8.2.diff";
-    sha256 = "6103a650f62b5d07672eee9e01e3f4062525083da6ba063e139ca7d9fd58a1ba";
+    url = "https://st.suckless.org/patches/scrollback/st-scrollback-mouse-20191024-a2c479c.diff";
+    sha256 = "0z961sv4pxa1sxrbhalqzz2ldl7qb26qk9l11zx1hp8rh3cmi51i";
   };
   scrollback-mouse-altscreen = fetchurl {
-    url = "https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-0.8.diff";
-    sha256 = "bcfc106089d9eb75aa014d4915ed3e6842f1df54edd8b75597154096333df6fa";
+    url = "https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-20200416-5703aa0.diff";
+    sha256 = "17avl5bgwlh5ayaqfg01sg9klf828hc0fd36cgzldnl595jyp1yb";
   };
   usercflags = ./usercflags.diff;
   st-with-font = st.overrideAttrs ( oldAttrs: rec {

@@ -16,7 +16,6 @@ install=dwm.install
 source=(https://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
         https://dwm.suckless.org/patches/noborder/dwm-noborder-$pkgver.diff
         https://dwm.suckless.org/patches/pertag/dwm-pertag-$pkgver.diff
-        https://dwm.suckless.org/patches/fibonacci/dwm-fibonacci-$pkgver.diff
         dwm.desktop
         bottomstack-custom.diff
         usercflags.diff
@@ -25,7 +24,6 @@ source=(https://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 sha256sums=('97902e2e007aaeaa3c6e3bed1f81785b817b7413947f1db1d3b62b8da4cd110e'
             '9bbf5f963e5a2d23ae4b8731f0c179a8615de5715a2dbf683fbe02115e24efe0'
             '055da0f12dbfde9e50df54e1f2d87966466404a36c056efb94bb21ab03b94b10'
-            '2d1176728fc04308ab97cb9f2b628fd00038b2fb4162e84de339164fed9cc48b'
             'bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81'
             'SKIP'
             'SKIP'
@@ -39,7 +37,6 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/dwm-fibonacci-$pkgver.diff
   patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/dwm-noborder-$pkgver.diff
   patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/usercflags.diff
   patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/bottomstack-custom.diff

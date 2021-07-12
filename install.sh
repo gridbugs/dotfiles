@@ -26,13 +26,16 @@ make_link profile .profile
 make_link inputrc .inputrc
 make_link xinitrc .xinitrc
 make_link tmux.conf .tmux.conf
+make_link fonts.conf .fonts.conf
 make_link bin .bin
 make_link hushlogin .hushlogin
 make_link git-prompt.sh .git-prompt.sh
 make_link ledgerrc .ledgerrc
 make_link completions .completions
+make_link config.nix .config/nixpkgs/config.nix
 make_link dwm .config/nixpkgs/overlays/dwm
 make_link st .config/nixpkgs/overlays/st
+make_link terminus-font .config/nixpkgs/overlays/terminus-font
 
 # link archlinux-specific packages
 if type pacman 2>/dev/null >/dev/null; then

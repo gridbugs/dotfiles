@@ -86,6 +86,10 @@ if [[ $- == *i* ]]; then
         fi
     fi
 
+    if [[ -f ~/.nix-profile/share/bash-completion/completions/_nix ]]; then
+        . ~/.nix-profile/share/bash-completion/completions/_nix
+    fi
+
     # try to load bash completion from its default location on some systems
     if [[ -r /usr/local/share/bash-completion/bash_completion.sh ]]; then
         export BASH_COMPLETION_DIR=/usr/local/share/bash-completion/completions
