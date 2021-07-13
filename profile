@@ -3,18 +3,6 @@ export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:/usr/games:
 # Source extra commands from .profile_extra
 [ -f ~/.profile_extra ] && . ~/.profile_extra
 
-# Use neovim, vim, or vi as editor
-if type nvim 2>/dev/null >/dev/null; then
-    export EDITOR=nvim
-    export VISUAL=nvim
-elif type vim 2>/dev/null >/dev/null; then
-    export EDITOR=vim
-    export VISUAL=vim
-else
-    export EDITOR=vi
-    export VISUAL=vi
-fi
-
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 # Set some rust-specific environment variables if rust is installed
@@ -35,4 +23,16 @@ fi
 # added by Nix installer
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
   . ~/.nix-profile/etc/profile.d/nix.sh
+fi
+
+# Use neovim, vim, or vi as editor
+if type nvim 2>/dev/null >/dev/null; then
+    export EDITOR=nvim
+    export VISUAL=nvim
+elif type vim 2>/dev/null >/dev/null; then
+    export EDITOR=vim
+    export VISUAL=vim
+else
+    export EDITOR=vi
+    export VISUAL=vi
 fi
