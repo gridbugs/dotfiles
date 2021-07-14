@@ -41,7 +41,7 @@ nix repl '<nixpkgs>'
 
 ### Build a package from a nixpkgs checkout
 ```
-nix-build -A <nixpkgs> -k
+nix-build -A <nixpkgs> -K
 ```
 
 ### Install a package from a nixpkgs checkout
