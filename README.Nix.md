@@ -113,3 +113,27 @@ gpg-connect-agent: error sending standard options: No agent running
 The fix is to create a directory `/root/.gnupg`.
 
 Relevant issue: [https://github.com/NixOS/nixpkgs/issues/29331](https://github.com/NixOS/nixpkgs/issues/29331)
+
+## NixOS
+
+### Graphical login to xsession
+
+```
+  services.xserver = {
+    enable = true;
+    autorun = true;
+    layout = "us";
+    libinput.enable = true;
+    displayManager.startx.enable = false;
+    displayManager.lightdm.enable = true;
+    displayManager.lightdm.greeters.gtk.enable = true;
+    displayManager.defaultSession = "xsession";
+    displayManager.session = [
+      {
+         manage = "desktop";
+         name = "xsession";
+         start = ''exec $HOME/.xsession'';
+      }
+    ];
+  };
+```
