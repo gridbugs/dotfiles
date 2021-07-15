@@ -8,7 +8,7 @@ curl -L https://nixos.org/nix/install | sh
 
 ## Handy packages
 ```
-nix-env -i nix-bash-completions
+nix-env -i nix-bash-completions   # bash completions for nix commands
 ```
 
 ## Update Packages
@@ -54,9 +54,9 @@ nix-build -A <nixpkgs> -K
 nix-env -f . -i <package>
 ```
 
-### Install a standalone package located at <path>/default.nix
+### Install a standalone package located at PATH/default.nix
 ```
-nix-env -f <path> -i
+nix-env -f PATH -i
 ```
 
 E.g. [Shopify/comma](https://github.com/Shopify/comma)
