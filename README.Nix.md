@@ -63,6 +63,8 @@ E.g. [Shopify/comma](https://github.com/Shopify/comma)
 
 ## Quirks
 
+### Broken Locales
+
 Some programs will complain about a broken locale in a fresh install.
 E.g.
 ```
@@ -96,3 +98,18 @@ nix-env -iA nixpkgs.glibcLocales
 ```
 export LOCALE_ARCHIVE="$(readlink ~/.nix-profile/lib/locale)/locale-archive"
 ```
+
+### gpg-connect-agent: failed to create temporary file
+
+When switching to a root shell with `su`:
+
+```
+gpg-connect-agent: failed to create temporary file '/root/.gnupg/.#lk0x0000000000cfeeb0.iconofsin.1419': No such file or directory
+gpg-connect-agent: can't connect to the agent: No such file or directory
+gpg-connect-agent: error sending standard options: No agent running
+
+```
+
+The fix is to create a directory `/root/.gnupg`.
+
+Relevant issue: [https://github.com/NixOS/nixpkgs/issues/29331](https://github.com/NixOS/nixpkgs/issues/29331)
