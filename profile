@@ -20,9 +20,10 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# added by Nix installer
+# Start nix environment if present
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
   . ~/.nix-profile/etc/profile.d/nix.sh
+  export LOCALE_ARCHIVE="$(readlink ~/.nix-profile/lib/locale)/locale-archive"
 fi
 
 # Use neovim, vim, or vi as editor
