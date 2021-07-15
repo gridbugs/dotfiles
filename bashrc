@@ -154,6 +154,6 @@ if [[ $- == *i* ]]; then
 
     # source extra commands from .bashrc_extra
     [[ -f ~/.bashrc_extra ]] && . ~/.bashrc_extra
-
-    true
 fi
+
+true
