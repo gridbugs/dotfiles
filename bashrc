@@ -146,7 +146,13 @@ if [[ $- == *i* ]]; then
             local EXIT_CODE_MESSAGE=""
         fi
 
-        PS1="\[\033[01;1m\]\h \w$GIT_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR\[\033[01;0m\] "
+        if [[ -n "$IN_NIX_SHELL" ]]; then
+            local NIX_MESSAGE="nix "
+        else
+            local NIX_MESSAGE=""
+        fi
+
+        PS1="\[\033[01;1m\]\h \w$GIT_MESSAGE$NIX_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR\[\033[01;0m\] "
     }
 
     PROMPT_COMMAND=__prompt_command

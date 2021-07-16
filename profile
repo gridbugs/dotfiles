@@ -3,7 +3,12 @@ export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:/usr/games:
 # Source extra commands from .profile_extra
 [ -f ~/.profile_extra ] && . ~/.profile_extra
 
-[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+elif [ -d "$HOME/.cargo/bin" ]; then
+    # fallback for systems that don't have a ~/.cargo/env but on which rust is still installed (e.g. nixos)
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
 
 # Set some rust-specific environment variables if rust is installed
 if type rustc 2>/dev/null >/dev/null && [ -d ~/.cargo ]; then
