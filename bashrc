@@ -53,7 +53,7 @@ if [[ $- == *i* ]]; then
     # opam configuration
     test -r ~/.opam/opam-init/init.sh && . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
-    # Lazily load NVM
+    # Lazily load NVM to speed up bashrc
     nvm() {
         if [[ -d ~/.nvm ]]; then
             if type realpath 2>/dev/null >/dev/null; then
@@ -69,8 +69,7 @@ if [[ $- == *i* ]]; then
             nvm $@
         else
             echo nvm is not installed
-            echo install with:
-            echo "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash"
+            echo Installation instructions: https://github.com/nvm-sh/nvm#installing-and-updating
         fi
     }
 
