@@ -31,6 +31,22 @@ if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
   export LOCALE_ARCHIVE="$(readlink ~/.nix-profile/lib/locale)/locale-archive"
 fi
 
+# >>> conda initialize >>>
+#
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('~/.conda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "~/.conda/etc/profile.d/conda.sh" ]; then
+        . "~/.conda/etc/profile.d/conda.sh"
+    else
+        export PATH="~/.conda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
 # Use neovim, vim, or vi as editor
 if type nvim 2>/dev/null >/dev/null; then
     export EDITOR=nvim
