@@ -138,6 +138,37 @@ Relevant issue: [https://github.com/NixOS/nixpkgs/issues/29331](https://github.c
   };
 ```
 
+## Workflows
+
+### Python with conda
+
+#### Setup
+
+```
+# Install conda-shell
+$ nix-env -i conda-shell
+
+# Start conda-shell (ignoring the warning)
+$ conda-shell
+/etc/profile: line 26: /home/steve/.conda/etc/profile.d/conda.sh: No such file or directory
+
+# Install conda in the current user's home directory
+$ conda-install
+
+# This adds some stuff to the shell rc file (don't run this if the shell rc file is set up already)
+$ conda init
+```
+
+#### Usage
+
+```
+# Start conda-shell
+$ conda-shell
+
+# Activate an environment <foo>
+$ conda activate <foo>
+```
+
 ## Hacks
 
 ### Disabling `dev.i915.perf_stream_paranoid`
