@@ -72,6 +72,8 @@ let g:LanguageClient_serverCommands = {
 \ 'python': ['pyls'],
 \ 'typescript': ['typescript-language-server', '--stdio'],
 \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
+\ 'javascript': ['typescript-language-server', '--stdio'],
+\ 'javascript.jsx': ['typescript-language-server', '--stdio'],
 \ 'c': ['clangd'],
 \ 'cpp': ['clangd'],
 \ }
