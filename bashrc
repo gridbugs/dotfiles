@@ -73,7 +73,10 @@ if [[ $- == *i* ]]; then
         fi
     }
 
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+    if [[ ! -n "$IN_NIX_SHELL" ]]; then
+        # Don't start rvm in nix-shell. It's assumed that if we're in a nix-shell then we want nix to manage our ruby.
+        [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+    fi
 
     if type rustc 2>/dev/null >/dev/null && [[ -d ~/.cargo ]]; then
         RUST_COMPLETION1=$(rustc --print sysroot)/etc/bash_completion.d/cargo
