@@ -61,6 +61,35 @@ nix-env -f PATH -i
 
 E.g. [Shopify/comma](https://github.com/Shopify/comma)
 
+### Clean up unused packages
+
+```
+nix-store --gc
+```
+
+### Find out store entry is alive
+
+E.g.
+```
+nix-store --query --roots /nix/store/h5sn0iaqhjwbp9l2hqmsykb4rp08vcnm-bsnes-hd-10.6-beta/
+```
+
+### Delete a store entry unless it is alive
+
+E.g.
+```
+nix-store --delete /nix/store/h5sn0iaqhjwbp9l2hqmsykb4rp08vcnm-bsnes-hd-10.6-beta
+```
+
+### Build a package in sandbox
+
+This is one of the tests required by the PR template for nixpkgs.
+
+E.g. (from a checkout of nixpkgs)
+```
+nix-build . -A bsnes-hd --option sandbox true
+```
+
 ## Quirks
 
 ### Broken Locales
