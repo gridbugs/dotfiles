@@ -186,6 +186,13 @@ $ conda-install
 
 # This adds some stuff to the shell rc file (don't run this if the shell rc file is set up already)
 $ conda init
+
+# Set auto_stack so project environments automatically stack onto the base environment.
+# This is so dev tools can be installed in the base environment.
+$ conda config --set auto_stack 1
+
+# Install language server in base environment
+$ conda install python-language-server
 ```
 
 #### Usage
