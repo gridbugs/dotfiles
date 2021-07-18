@@ -3,7 +3,8 @@
 !config.h
 !dwm.install
 !dwm.desktop
-!default.nix
+!*.nix
 !*.diff
 !.gitignore
+!README.md
 dwm-*.diff

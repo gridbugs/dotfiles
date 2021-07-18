@@ -1,7 +1,8 @@
 *
 !PKGBUILD
 !config.h
-!default.nix
+!*.nix
 !*.diff
 !.gitignore
+!README.md
 st-*.diff
