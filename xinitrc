@@ -23,16 +23,4 @@ dwm_wm() {
     dwm
 }
 
-case ${WM:-DWM} in
-    dwm)
-        dwm_wm
-        ;;
-    lxde)
-        exec startlxde
-        ;;
-    xfce4)
-        exec startxfce4
-        ;;
-    *)
-        dwm_wm
-esac
+dwm_wm
