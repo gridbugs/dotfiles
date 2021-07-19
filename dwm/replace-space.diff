@@ -1,0 +1,17 @@
+diff --git a/drw.c b/drw.c
+index 8fd1ca4..c223032 100644
+--- a/drw.c
++++ b/drw.c
+@@ -287,7 +287,11 @@ drw_text(Drw *drw, int x, int y, unsigned int w, unsigned int h, unsigned int lp
+ 		nextfont = NULL;
+ 		while (*text) {
+ 			utf8charlen = utf8decode(text, &utf8codepoint, UTF_SIZ);
+-			for (curfont = drw->fonts; curfont; curfont = curfont->next) {
++			curfont = drw->fonts;
++			if (utf8codepoint == 0x2009) {
++				curfont = curfont->next;
++			}
++			for (; curfont; curfont = curfont->next) {
+ 				charexists = charexists || XftCharExists(drw->dpy, curfont->xfont, utf8codepoint);
+ 				if (charexists) {
+ 					if (curfont == usedfont) {

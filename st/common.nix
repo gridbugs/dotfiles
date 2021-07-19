@@ -21,10 +21,11 @@ let
     url = "https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-20200416-5703aa0.diff";
     sha256 = "17avl5bgwlh5ayaqfg01sg9klf828hc0fd36cgzldnl595jyp1yb";
   };
+  replace-space = ./replace-space.diff;
 in
   {
     st = (st.override {
-      patches = [ bold-is-not-bright scrollback scrollback-mouse scrollback-mouse-altscreen ./usercflags.diff ];
+      patches = [ bold-is-not-bright scrollback scrollback-mouse scrollback-mouse-altscreen replace-space ./usercflags.diff ];
       conf = builtins.readFile ./config.h;
     }).overrideAttrs( old: {
 

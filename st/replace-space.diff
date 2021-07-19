@@ -1,0 +1,16 @@
+diff --git a/x.c b/x.c
+index 210f184..8203f89 100644
+--- a/x.c
++++ b/x.c
+@@ -1251,6 +1251,11 @@ xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len, int x
+ 			yp = winy + font->ascent;
+ 		}
+ 
++		/* Replace certain problematic unicode space characters with ascii space */
++		if (rune == 0x2009) {
++			rune = 0x20;
++		}
++
+ 		/* Lookup character index with default font. */
+ 		glyphidx = XftCharIndex(xw.dpy, font->match, rune);
+ 		if (glyphidx) {

@@ -14,10 +14,11 @@ let
     sha256 = "055da0f12dbfde9e50df54e1f2d87966466404a36c056efb94bb21ab03b94b10";
   };
   bottomstack = ./bottomstack-custom.diff;
+  replace-space = ./replace-space.diff;
 in
   {
     dwm = (dwm.override {
-      patches = [ noborder bottomstack pertag ./usercflags.diff ];
+      patches = [ noborder bottomstack pertag replace-space ./usercflags.diff ];
       conf = builtins.readFile ./config.h;
     }).overrideAttrs( old: {
       buildPhase = ''
