@@ -170,7 +170,10 @@ if [[ $- == *i* ]]; then
             local NIX_MESSAGE=""
         fi
 
-        PS1="\[\033[01;1m\]\u@\h \w$GIT_MESSAGE$NIX_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR\[\033[01;0m\] "
+        BOLD="\[\033[01;1m\]"
+        NORMAL="\[\033[01;0m\]"
+
+        PS1="$BOLD\u@\h \w$GIT_MESSAGE$NIX_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL "
     }
 
     PROMPT_COMMAND=__prompt_command
