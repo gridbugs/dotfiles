@@ -191,8 +191,8 @@ $ conda init
 # This is so dev tools can be installed in the base environment.
 $ conda config --set auto_stack 1
 
-# Install language server in base environment
-$ conda install python-language-server
+# Install language server and neovim support in base environment
+$ conda install -c conda-forge python-language-server neovim
 ```
 
 #### Usage
