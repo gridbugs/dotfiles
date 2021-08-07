@@ -20,6 +20,12 @@ nix-env -u
 
 ## Common Operations
 
+### Add the nixpkgs-unstable channel
+
+```
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+```
+
 ### Install a Package
 
 ```
