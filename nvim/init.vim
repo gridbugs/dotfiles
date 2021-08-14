@@ -64,7 +64,7 @@ set noswapfile
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Padding below current cursor position
-set so=8
+set so=4
 
 " Tab rules
 set expandtab
@@ -159,7 +159,7 @@ set statusline +=\ %<%F            "full path
 set statusline +=%m                "modified flag
 set statusline +=%=%5l             "current line
 set statusline +=/%L               "total lines
-set statusline +=%3v\              "virtual column number
+set statusline +=%4v\              "virtual column number
 
 highlight SpellCap ctermbg=darkblue gui=undercurl guisp=Blue
 
