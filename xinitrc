@@ -18,9 +18,9 @@ if type unclutter >/dev/null 2>/dev/null; then
     unclutter &
 fi
 
-dwm_wm() {
-    dwm-bar-run-bg.sh
-    dwm
-}
+if test -f $HOME/.Xresources; then
+    xrdb -merge ~/.Xresources
+fi
 
-dwm_wm
+dwm-bar-run-bg.sh
+exec dwm
