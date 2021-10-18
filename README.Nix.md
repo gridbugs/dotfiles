@@ -96,6 +96,12 @@ E.g. (from a checkout of nixpkgs)
 nix-build . -A bsnes-hd --option sandbox true
 ```
 
+### Allow non-free packages:
+In /etc/nixos/configuration.nix:
+```
+nixpkgs.config.allowUnfree = true;
+```
+
 ## Quirks
 
 ### Broken Locales
