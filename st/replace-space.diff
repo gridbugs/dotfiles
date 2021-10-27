@@ -1,14 +1,31 @@
 diff --git a/x.c b/x.c
-index 210f184..8203f89 100644
+index 210f184..22d395a 100644
 --- a/x.c
 +++ b/x.c
-@@ -1251,6 +1251,11 @@ xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len, int x
+@@ -1251,6 +1251,28 @@ xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len, int x
  			yp = winy + font->ascent;
  		}
  
 +		/* Replace certain problematic unicode space characters with ascii space */
-+		if (rune == 0x2009) {
-+			rune = 0x20;
++		switch (rune) {
++			case 0x2000:
++			case 0x2001:
++			case 0x2002:
++			case 0x2003:
++			case 0x2004:
++			case 0x2005:
++			case 0x2006:
++			case 0x2007:
++			case 0x2008:
++			case 0x2009:
++			case 0x200A:
++			case 0x200B:
++			case 0x200C:
++			case 0x200D:
++			case 0x200E:
++			case 0x200F:
++				rune = 0x20;
++				break;
 +		}
 +
  		/* Lookup character index with default font. */
