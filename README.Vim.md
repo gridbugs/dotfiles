@@ -53,3 +53,31 @@ npm install --global typescript-language-server --prefix ~/.local/
 ### C
 
 Install clangd with a package manager
+
+## Issues
+
+### Missing `neovim` python package
+
+An error like this one is displayed when starting vim:
+```
+[ncm2_core@yarp] Job is dead. cmd=['python3', '-u', '/Users/steve/.vim/plugged/nvim-yarp/pythonx/yarp.py', '/var/folders/q4/fv2jln151qlcxw9hkvm0b6jr0000gq/T/nvimWn9v1U/0', 2, 'ncm2_core']
+```
+
+Output of `:messages`:
+```
+[ncm2_core@yarp] Traceback (most recent call last):
+[ncm2_core@yarp]   File "/Users/steve/.vim/plugged/nvim-yarp/pythonx/yarp.py", line 2, in <module>
+[ncm2_core@yarp]     from pynvim import attach, setup_logging
+[ncm2_core@yarp] ModuleNotFoundError: No module named 'pynvim'
+[ncm2_core@yarp] During handling of the above exception, another exception occurred:
+[ncm2_core@yarp] Traceback (most recent call last):
+[ncm2_core@yarp]   File "/Users/steve/.vim/plugged/nvim-yarp/pythonx/yarp.py", line 4, in <module>
+[ncm2_core@yarp]     from neovim import attach, setup_logging
+[ncm2_core@yarp] ModuleNotFoundError: No module named 'neovim'
+[ncm2_core@yarp] Job is dead. cmd=['python3', '-u', '/Users/steve/.vim/plugged/nvim-yarp/pythonx/yarp.py', '/var/folders/q4/fv2jln151qlcxw9hkvm0b6jr0000gq/T/nvimWn9v1U/0', 2, 'ncm2_core']
+```
+
+The fix is to install the `neovim` python package. E.g.
+```
+pip3 install --user neovim
+```
