@@ -155,6 +155,20 @@ The fix is to create a directory `/root/.gnupg`.
 
 Relevant issue: [https://github.com/NixOS/nixpkgs/issues/29331](https://github.com/NixOS/nixpkgs/issues/29331)
 
+### Patching Binaries
+
+Use the `autoPatchElfHook` package. E.g.
+
+```
+$ nix-shell -p alsaLib libudev autoPatchelfHook   # alsaLib and libudev are dependencies of the binary in question
+$ autoPatchelf orbital-decay-terminal
+automatically fixing dependencies for ELF files
+searching for dependencies of orbital-decay-terminal
+  libasound.so.2 -> found: /nix/store/rz5pn3gg57wracmqjb756zzhwg4zcn60-alsa-lib-1.2.5.1/lib/libasound.so.2
+  libudev.so.1 -> found: /nix/store/27855idyr8dkmh0xrzg7jln7a3fa7viy-systemd-249.4/lib/libudev.so.1
+setting RPATH to: /nix/store/rz5pn3gg57wracmqjb756zzhwg4zcn60-alsa-lib-1.2.5.1/lib:/nix/store/27855idyr8dkmh0xrzg7jln7a3fa7viy-systemd-249.4/lib
+```
+
 ## NixOS
 
 ### Graphical login to xsession
