@@ -50,6 +50,10 @@ if [[ $- == *i* ]]; then
        eval $(keychain --quiet --agents ssh id_rsa --eval)
     fi
 
+    if type direnv 2>/dev/null >/dev/null && [[ $(basename "$SHELL") == "bash" ]] ; then
+        eval "$(direnv hook bash)"
+    fi
+
     # opam configuration
     test -r ~/.opam/opam-init/init.sh && . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
