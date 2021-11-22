@@ -28,6 +28,7 @@ make_link xinitrc .xinitrc
 make_link xsession .xsession
 make_link tmux.conf .tmux.conf
 make_link fonts.conf .fonts.conf
+make_link ctags .ctags
 make_link bin .bin
 make_link hushlogin .hushlogin
 make_link git-prompt.sh .git-prompt.sh

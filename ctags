@@ -1,0 +1,5 @@
+--recurse=yes
+--exclude=.git
+--exclude=\*.swp
+--exclude=\*.bak
+--exclude=\*.pyc
