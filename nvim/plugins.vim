@@ -49,6 +49,9 @@ Plug 'preservim/nerdtree'
 " Nix Highlighting
 Plug 'LnL7/vim-nix'
 
+" Autoformatting
+Plug 'sbdchd/neoformat'
+
 if has('nvim')
     " Required for ncm2
     Plug 'roxma/nvim-yarp'
@@ -76,6 +79,7 @@ let g:LanguageClient_serverCommands = {
 \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
 \ 'c': ['clangd'],
 \ 'cpp': ['clangd'],
+\ 'ocaml': ['ocamllsp'],
 \ }
 
 let g:LanguageClient_hoverPreview = "Always"
@@ -133,3 +137,17 @@ endif
 let NERDTreeCustomOpenArgs = {'file': {'reuse': 'currenttab', 'where': 'p', 'keepopen': 1}, 'dir': {}}
 nnoremap <leader><leader>F :NERDTreeFind<CR>
 nnoremap <leader><leader>f :NERDTreeToggle<CR>
+
+let g:neoformat_ocaml_ocamlformat = {
+            \ 'exe': 'ocamlformat',
+            \ 'no_append': 1,
+            \ 'stdin': 1,
+            \ 'args': ['--disable-outside-detected-project', '--name', '"%:p"', '-']
+            \ }
+
+let g:neoformat_enabled_ocaml = ['ocamlformat']
+
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END

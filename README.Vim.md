@@ -54,6 +54,13 @@ npm install --global typescript-language-server --prefix ~/.local/
 
 Install clangd with a package manager
 
+### Ocaml
+
+```
+nix-env -iA nixpkgs.ocamlPackages.ocaml-lsp
+nix-env -iA nixpkgs.ocamlformat
+```
+
 ## Issues
 
 ### Missing `neovim` python package
