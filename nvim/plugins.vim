@@ -138,16 +138,19 @@ let NERDTreeCustomOpenArgs = {'file': {'reuse': 'currenttab', 'where': 'p', 'kee
 nnoremap <leader><leader>F :NERDTreeFind<CR>
 nnoremap <leader><leader>f :NERDTreeToggle<CR>
 
-let g:neoformat_ocaml_ocamlformat = {
-            \ 'exe': 'ocamlformat',
-            \ 'no_append': 1,
-            \ 'stdin': 1,
-            \ 'args': ['--disable-outside-detected-project', '--name', '"%:p"', '-']
-            \ }
+" Neoformat settings
+if filereadable(expand("~/.vim/plugged/neoformat/autoload/neoformat.vim"))
+    let g:neoformat_ocaml_ocamlformat = {
+                \ 'exe': 'ocamlformat',
+                \ 'no_append': 1,
+                \ 'stdin': 1,
+                \ 'args': ['--disable-outside-detected-project', '--name', '"%:p"', '-']
+                \ }
 
-let g:neoformat_enabled_ocaml = ['ocamlformat']
+    let g:neoformat_enabled_ocaml = ['ocamlformat']
 
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
+    augroup fmt
+      autocmd!
+      autocmd BufWritePre * undojoin | Neoformat
+    augroup END
+endif
