@@ -73,6 +73,12 @@ if [[ $- == *i* ]]; then
         fi
     }
 
+    # Start nix environment if present
+    if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
+        . ~/.nix-profile/etc/profile.d/nix.sh
+        export LOCALE_ARCHIVE="$(readlink ~/.nix-profile/lib/locale)/locale-archive"
+    fi
+
     if [[ ! -n "$IN_NIX_SHELL" ]]; then
         # Don't start rvm in nix-shell. It's assumed that if we're in a nix-shell then we want nix to manage our ruby.
         [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
