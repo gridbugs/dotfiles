@@ -195,6 +195,20 @@ setting RPATH to: /nix/store/rz5pn3gg57wracmqjb756zzhwg4zcn60-alsa-lib-1.2.5.1/l
 
 ## Workflows
 
+### [nix-direnv](https://github.com/nix-community/nix-direnv)
+
+#### Install
+```
+nix-env -iA nixpkgs.nix-direnv nixpkgs.direnv
+```
+
+#### Add to project
+```
+$ echo "use nix" >> .envrc
+$ direnv allow
+```
+
+
 ### Python with conda
 
 #### Setup
