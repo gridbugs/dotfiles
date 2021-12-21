@@ -55,6 +55,9 @@ Plug 'sbdchd/neoformat'
 " GLSL Highlighting
 Plug 'beyondmarc/glsl.vim'
 
+" WGSL Highlighting
+Plug 'DingDean/wgsl.vim'
+
 if has('nvim')
     " Required for ncm2
     Plug 'roxma/nvim-yarp'
