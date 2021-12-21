@@ -38,6 +38,7 @@ make_link config.nix .config/nixpkgs/config.nix
 make_link dwm .config/nixpkgs/overlays/dwm
 make_link st .config/nixpkgs/overlays/st
 make_link terminus-font .config/nixpkgs/overlays/terminus-font
+make_link direnvrc .direnvrc
 
 # link archlinux-specific packages
 if type pacman 2>/dev/null >/dev/null; then
