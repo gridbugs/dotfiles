@@ -154,6 +154,6 @@ if filereadable(expand("~/.vim/plugged/neoformat/autoload/neoformat.vim"))
 
     augroup fmt
       autocmd!
-      autocmd BufWritePre * undojoin | Neoformat
+      autocmd BufWritePre *.ml,*.mli undojoin | Neoformat
     augroup END
 endif
