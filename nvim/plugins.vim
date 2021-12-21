@@ -52,6 +52,9 @@ Plug 'LnL7/vim-nix'
 " Autoformatting
 Plug 'sbdchd/neoformat'
 
+" GLSL Highlighting
+Plug 'beyondmarc/glsl.vim'
+
 if has('nvim')
     " Required for ncm2
     Plug 'roxma/nvim-yarp'
