@@ -40,23 +40,3 @@ sudo grub-install --target=x86_64-efi --efi-directory=/boot/ --bootloader-id=arc
 Using YouCompleteMe in neovim requires `pynvim`.
 
 The kb-light.py script depends on `dbus-python`.
-
-# Git
-
-The git global config file (~/.gitconfig) contains the user's name and email, so isn't portable
-for inclusion in this repo, however the following can be copied into the file:
-
-```
-[color]
-	ui = true
-[pull]
-	rebase = true
-	default = current
-[push]
-	default = current
-[alias]
-	ls = log
-	ci = commit
-	st = status
-	co = checkout
-```
