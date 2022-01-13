@@ -15,10 +15,17 @@ let
   };
   bottomstack = ./bottomstack-custom.diff;
   replace-space = ./replace-space.diff;
+  usercflags = ./usercflags.diff;
 in
   {
     dwm = (dwm.override {
-      patches = [ noborder bottomstack pertag replace-space ./usercflags.diff ];
+      patches = [
+        noborder
+        bottomstack
+        pertag
+        replace-space
+        usercflags
+      ];
       conf = builtins.readFile ./config.h;
     }).overrideAttrs( old: {
       buildPhase = ''
