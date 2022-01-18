@@ -25,16 +25,4 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# Use neovim, vim, or vi as editor
-if type nvim 2>/dev/null >/dev/null; then
-    export EDITOR=nvim
-    export VISUAL=nvim
-elif type vim 2>/dev/null >/dev/null; then
-    export EDITOR=vim
-    export VISUAL=vim
-else
-    export EDITOR=vi
-    export VISUAL=vi
-fi
-
 export PATH="$HOME/bin:$PATH"
