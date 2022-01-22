@@ -10,6 +10,7 @@ static char *font = USERFONT;
 #else
 static char *font = "Inconsolata:style=Regular:size=12:antialias=true:autohint=true";
 #endif
+
 static int borderpx = 2;
 
 /*
@@ -135,7 +136,7 @@ static const char *colorname[] = {
  */
 unsigned int defaultfg = 259;
 unsigned int defaultbg = 258;
-static unsigned int defaultcs = 256;
+unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
 /*

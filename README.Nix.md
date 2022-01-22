@@ -23,7 +23,7 @@ nix-env -u
 To upgrade to 21.11, say:
 ```
 sudo nix-channel --remove nixos
-sudo nix-channel --add nixos https://nixos.org/channels/nixos-21.11 nixos
+sudo nix-channel --add https://nixos.org/channels/nixos-21.11 nixos
 sudo nixos-rebuild switch
 ```
 

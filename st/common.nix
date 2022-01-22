@@ -10,8 +10,8 @@ let
     sha256 = "329169acac7ceaf901995d6e0897913089b799d8cd150c7f04c902f4a5b8eab2";
   };
   scrollback = fetchurl {
-    url = "https://st.suckless.org/patches/scrollback/st-scrollback-0.8.4.diff";
-    sha256 = "0i0fav13sxnsydpllny26139gnzai66222502cplh18iy5fir3j1";
+    url = "https://st.suckless.org/patches/scrollback/st-scrollback-20210507-4536f46.diff";
+    sha256 = "072icbmj7my4c134d5apqw7v9q88vcrp6v6gdzf3668dzpkz9n0r";
   };
   scrollback-mouse = fetchurl {
     url = "https://st.suckless.org/patches/scrollback/st-scrollback-mouse-20191024-a2c479c.diff";
@@ -25,7 +25,14 @@ let
 in
   {
     st = (st.override {
-      patches = [ bold-is-not-bright scrollback scrollback-mouse scrollback-mouse-altscreen replace-space ./usercflags.diff ];
+      patches = [
+        bold-is-not-bright
+        scrollback
+        scrollback-mouse
+        scrollback-mouse-altscreen
+        replace-space
+        ./usercflags.diff
+      ];
       conf = builtins.readFile ./config.h;
     }).overrideAttrs( old: {
 
