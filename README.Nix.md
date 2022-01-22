@@ -18,6 +18,15 @@ nix-channel --update
 nix-env -u
 ```
 
+## System Upgrade
+
+To upgrade to 21.11, say:
+```
+sudo nix-channel --remove nixos
+sudo nix-channel --add nixos https://nixos.org/channels/nixos-21.11 nixos
+sudo nixos-rebuild switch
+```
+
 ## Common Operations
 
 ### Add the nixpkgs-unstable channel
