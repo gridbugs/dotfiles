@@ -3,8 +3,8 @@
 # Contributor: Christoph Vigano <mail@cvigano.de>
 
 pkgname=st
-pkgver=0.8.4
-pkgrel=2
+pkgver=0.8.5
+pkgrel=1
 pkgdesc='A simple virtual terminal emulator for X.'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
@@ -19,9 +19,9 @@ source=(https://dl.suckless.org/st/$pkgname-$pkgver.tar.gz
         usercflags.diff
         config.h
         )
-sha256sums=('d42d3ceceb4d6a65e32e90a5336e3d446db612c3fbd9ebc1780bc6c9a03346a6'
+sha256sums=('ea6832203ed02ff74182bcb8adaa9ec454c8f989e79232cb859665e2f544ab37'
             '329169acac7ceaf901995d6e0897913089b799d8cd150c7f04c902f4a5b8eab2'
-            'TODO'
+            '19d8f4e7fd0d1933dc6fcf6c7333db08e1b40fc75795464660c4d723eb62511c'
             '319458d980195d18fa0f81a6898d58f8d046c5ff982ab872d741f54bb60e267d'
             'cb87eb654985da46ff63663407184402393ad3d3013c8795570552fe56a15b9d'
             'SKIP'
