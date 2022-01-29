@@ -1,0 +1,8 @@
+*
+!PKGBUILD
+!config.h
+!*.nix
+!*.diff
+!.gitignore
+!README.md
+st-*.diff
