@@ -6,7 +6,7 @@ TIME=$(date "+%a %Y-%m-%d %H:%M:%S %Z")
 
 if type list-ips >/dev/null 2>/dev/null; then
     IP=$(list-ips)
-    MAYBE_IP=" ip$IP |"
+    MAYBE_IP=" $IP |"
 else
     MAYBE_IP=""
 fi
