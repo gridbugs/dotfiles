@@ -22,6 +22,7 @@ make_link feh .config/feh
 make_link nvim/init.vim .vimrc
 make_link nvim/init.vim .ideavimrc
 make_link bashrc .bashrc
+make_link kshrc .kshrc
 make_link profile .profile
 make_link inputrc .inputrc
 make_link xinitrc .xinitrc
@@ -40,6 +41,7 @@ make_link st .config/nixpkgs/overlays/st
 make_link terminus-font .config/nixpkgs/overlays/terminus-font
 make_link direnvrc .direnvrc
 make_link gitignore .gitignore
+make_link Xdefaults .Xdefaults
 
 # link archlinux-specific packages
 if type pacman 2>/dev/null >/dev/null; then

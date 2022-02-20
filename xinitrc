@@ -22,5 +22,9 @@ if test -f $HOME/.Xresources; then
     xrdb -merge ~/.Xresources
 fi
 
-dwm-bar-run-bg.sh
-exec dwm
+if type fvwm >/dev/null 2>/dev/null; then
+    exec fvwm
+elif type dwm >/dev/null 2>/dev/null; then
+    dwm-bar-run-bg.sh
+    exec dwm
+fi
