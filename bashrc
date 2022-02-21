@@ -164,12 +164,6 @@ if [[ $- == *i* ]]; then
     __prompt_command() {
         local EXIT="$?";
 
-        if [[ $(id -u) == '0' ]]; then
-            local TERMINATOR="#"
-        else
-            local TERMINATOR="$"
-        fi
-
         if type __git_ps1 2>/dev/null >/dev/null; then
             local GIT_MESSAGE="$(GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWUPSTREAM=auto __git_ps1) "
         else
@@ -191,7 +185,7 @@ if [[ $- == *i* ]]; then
         BOLD="\[\033[01;1m\]"
         NORMAL="\[\033[01;0m\]"
 
-        PS1="$BOLD\u@\h \w$GIT_MESSAGE$NIX_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL "
+        PS1="$BOLD\u@\h \w$GIT_MESSAGE$NIX_MESSAGE$EXIT_CODE_MESSAGE\$$NORMAL "
     }
 
     PROMPT_COMMAND=__prompt_command
