@@ -20,8 +20,10 @@ fi
 [ -d "$HOME/.rvm/bin" ] && export PATH="$PATH:$HOME/.rvm/bin"
 
 # Add NPM bin path to PATH
-NPM_PACKAGES=$HOME/.npm-packages
-export PATH="$NPM_PACKAGES/bin:$PATH"
+if [ -d "$HOME/.npm-packages" ]; then
+    NPM_PACKAGES=$HOME/.npm-packages
+    export PATH="$NPM_PACKAGES/bin:$PATH"
+fi
 
 if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
