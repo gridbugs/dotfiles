@@ -185,7 +185,7 @@ if [[ $- == *i* ]]; then
         BOLD="\[\033[01;1m\]"
         NORMAL="\[\033[01;0m\]"
 
-        PS1="$BOLD\u@\h \w$GIT_MESSAGE$NIX_MESSAGE$EXIT_CODE_MESSAGE\$$NORMAL "
+        PS1="$BOLD\u@\h \w$GIT_MESSAGE$NIX_MESSAGE$EXIT_CODE_MESSAGE\\\$$NORMAL "
     }
 
     PROMPT_COMMAND=__prompt_command
