@@ -19,6 +19,10 @@ fi
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 [ -d "$HOME/.rvm/bin" ] && export PATH="$PATH:$HOME/.rvm/bin"
 
+# Add NPM bin path to PATH
+NPM_PACKAGES=$HOME/.npm-packages
+export PATH="$NPM_PACKAGES/bin:$PATH"
+
 if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
         . ~/.bashrc
