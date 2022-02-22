@@ -1,0 +1,10 @@
+cmd - e : yabai -m display --focus prev || yabai -m display --focus last
+cmd - w : yabai -m display --focus next || yabai -m display --focus first
+cmd - h : yabai -m window --ratio rel:-0.05
+cmd - l : yabai -m window --ratio rel:0.05
+cmd - k : yabai -m window --focus prev || yabai -m window --focus last
+cmd - j : yabai -m window --focus next || yabai -m window --focus first
+cmd - space : yabai -m window --toggle zoom-fullscreen
+cmd + shift - return : iterm2-new-window
+cmd - return : open -na Firefox
+cmd + shift - c : yabai -m window --close

@@ -49,4 +49,9 @@ if type pacman 2>/dev/null >/dev/null; then
     make_link st pkg/st
 fi
 
+if [ "$(uname)" == "Darwin" ]; then
+    make_link yabairc .yabairc
+    make_link skhdrc .skhdrc
+fi
+
 echo Done!
