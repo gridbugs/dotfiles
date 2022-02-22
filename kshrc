@@ -10,4 +10,4 @@ else
 fi
 BOLD="$(tput bold)"
 NORMAL="$(tput sgr0)"
-PS1="$BOLD$(whoami)@$(hostname -s) \$PWD $TERMINATOR$NORMAL "
+PS1="$BOLD$(whoami)@$(hostname -s):\$(basename \$PWD) $TERMINATOR$NORMAL "
