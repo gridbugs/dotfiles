@@ -177,15 +177,15 @@ if [[ $- == *i* ]]; then
         fi
 
         if [[ -n "$IN_NIX_SHELL" ]]; then
-            local NIX_MESSAGE="λ "
+            local TERMINATOR="λ"
         else
-            local NIX_MESSAGE=""
+            local TERMINATOR="\\\$"
         fi
 
         BOLD="\[\033[01;1m\]"
         NORMAL="\[\033[01;0m\]"
 
-        PS1="$BOLD\u@\h:\W$GIT_MESSAGE$NIX_MESSAGE$EXIT_CODE_MESSAGE\\\$$NORMAL "
+        PS1="$BOLD\u@\h:\W$GIT_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL "
     }
 
     PROMPT_COMMAND=__prompt_command
