@@ -112,6 +112,10 @@ In /etc/nixos/configuration.nix:
 nixpkgs.config.allowUnfree = true;
 ```
 
+### Debug Failing Builds
+
+Keep the build dir by passing `--keep-failed` to `nix-build` or `nix build`.
+
 ## Quirks
 
 ### Broken Locales
