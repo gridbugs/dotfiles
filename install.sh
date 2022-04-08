@@ -43,6 +43,7 @@ make_link terminus-font .config/nixpkgs/overlays/terminus-font
 make_link direnvrc .direnvrc
 make_link gitignore .gitignore
 make_link Xdefaults .Xdefaults
+make_link npmrc .npmrc
 
 # link archlinux-specific packages
 if type pacman 2>/dev/null >/dev/null; then
