@@ -171,3 +171,6 @@ noremap <leader>J :res -10<CR>
 noremap <leader>K :res +10<CR>
 noremap <leader>H :vertical resize -10<CR>
 noremap <leader>L :vertical resize +10<CR>
+
+set foldmethod=indent
+set nofoldenable
