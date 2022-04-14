@@ -42,13 +42,10 @@ if [[ $- == *i* ]]; then
     elif type colorls 2>/dev/null >/dev/null; then
         alias ls='colorls -G'
     elif ls --color --group-directories-first 2>/dev/null >/dev/null; then
-        alias ls='ls --color -h --group-directories-first'
+        alias ls='ls --color --group-directories-first'
     elif ls --color 2>/dev/null >/dev/null; then
         # freebsd appears to understand --color, but not --group-directories-first
-        alias ls='ls --color -h'
-    else
-        # this case will be hit on macos and bsd without gls installed
-        alias ls='ls -h'
+        alias ls='ls --color'
     fi
 
     # Customize bash history behaviour
