@@ -25,6 +25,11 @@ if [ -d "$HOME/.npm-packages" ]; then
     export PATH="$NPM_PACKAGES/bin:$PATH"
 fi
 
+# Set up homebrew env if available
+if [ -f /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
         . ~/.bashrc
