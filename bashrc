@@ -123,7 +123,10 @@ if [[ $- == *i* ]]; then
     fi
 
     # try to load bash completion from its default location on some systems
-    if [[ -r /usr/local/share/bash-completion/bash_completion.sh ]]; then
+    if [[ -r ~/.nix-profile/share/bash-completion/bash_completion ]]; then
+        export BASH_COMPLETION_DIR=$HOME/.nix-profile/share/bash-completion/completions
+        . ~/.nix-profile/share/bash-completion/bash_completion
+    elif [[ -r /usr/local/share/bash-completion/bash_completion.sh ]]; then
         export BASH_COMPLETION_DIR=/usr/local/share/bash-completion/completions
         . /usr/local/share/bash-completion/bash_completion.sh
     elif [[ -r /usr/local/share/bash-completion/bash_completion ]]; then
