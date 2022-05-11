@@ -13,9 +13,25 @@ nix-env -i nix-bash-completions   # bash completions for nix commands
 
 ## Update Packages
 
+### Single User Linux
 ```
 nix-channel --update
+nix-env -iA nixpkgs.nix nixpkgs.cacert
 nix-env -u
+```
+
+### Multi User Linux
+(as root)
+```
+nix-channel --update
+ix-env -iA nixpkgs.nix nixpkgs.cacert
+systemctl daemon-reload
+systemctl restart nix-daemon
+```
+
+### MacOS
+```
+sudo -i sh -c 'nix-channel --update && nix-env -iA nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'
 ```
 
 ## System Upgrade
