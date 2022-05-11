@@ -85,6 +85,8 @@ if [[ $- == *i* ]]; then
     # Start nix environment if present
     if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
         . ~/.nix-profile/etc/profile.d/nix.sh
+    fi
+    if [ -e ~/.nix-profile/lib/locale ]; then
         export LOCALE_ARCHIVE="$(readlink ~/.nix-profile/lib/locale)/locale-archive"
     fi
 
