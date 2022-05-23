@@ -29,6 +29,9 @@ fi
 if [ -f /opt/homebrew/bin/brew ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+if [ -f /opt/homebrew/bin/brew ]; then
+    export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+fi
 
 if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
