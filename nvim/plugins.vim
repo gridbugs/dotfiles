@@ -150,7 +150,7 @@ if filereadable(expand("~/.vim/plugged/neoformat/autoload/neoformat.vim"))
                 \ 'exe': 'ocamlformat',
                 \ 'no_append': 1,
                 \ 'stdin': 1,
-                \ 'args': ['--disable-outside-detected-project', '--name', '"%:p"', '-']
+                \ 'args': ['--name', '"%:p"', '-']
                 \ }
 
     let g:neoformat_enabled_ocaml = ['ocamlformat']
