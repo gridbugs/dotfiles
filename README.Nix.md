@@ -24,7 +24,7 @@ nix-env -u
 (as root)
 ```
 nix-channel --update
-ix-env -iA nixpkgs.nix nixpkgs.cacert
+nix-env -iA nixpkgs.nix nixpkgs.cacert
 systemctl daemon-reload
 systemctl restart nix-daemon
 ```
