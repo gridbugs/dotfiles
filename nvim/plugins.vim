@@ -86,6 +86,7 @@ let g:LanguageClient_serverCommands = {
 \ 'c': ['clangd'],
 \ 'cpp': ['clangd'],
 \ 'ocaml': ['ocamllsp'],
+\ 'erlang': ['erlang_ls'],
 \ }
 
 let g:LanguageClient_hoverPreview = "Always"
