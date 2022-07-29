@@ -1,5 +1,5 @@
 #!/bin/sh
-set -eux
+set -eu
 
 DIR="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 TARGET=$HOME
@@ -10,7 +10,7 @@ make_link() {
         echo "$DEST already exists"
     else
         mkdir -p "$(dirname "$DEST")"
-        ln -s "$DIR/$1" "$DEST"
+        ln -s "$(basename $DIR)/$1" "$DEST"
     fi
 }
 
