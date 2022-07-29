@@ -148,6 +148,9 @@ if [[ $- == *i* ]]; then
         if [[ ! -r $BASH_COMPLETION_DIR/git ]]; then
             . ~/.completions/git
         fi
+        if [[ ! -r $BASH_COMPLETION_DIR/docker ]]; then
+            . ~/.completions/docker
+        fi
     fi
 
     man() {
