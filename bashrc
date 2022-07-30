@@ -60,7 +60,8 @@ if [[ $- == *i* ]]; then
     fi
 
     # opam configuration
-    test -r ~/.opam/opam-init/init.sh && . ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+    OPAMROOT=${OPAMROOT:-$HOME/.opam}
+    test -r $OPAMROOT/opam-init/init.sh && . $OPAMROOT/opam-init/init.sh > /dev/null 2> /dev/null || true
 
     # Lazily load NVM to speed up bashrc
     nvm() {
