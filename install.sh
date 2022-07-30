@@ -10,7 +10,8 @@ make_link() {
         echo "$DEST already exists"
     else
         mkdir -p "$(dirname "$DEST")"
-        ln -s "$(basename $DIR)/$1" "$DEST"
+        RELPATH=$(realpath --canonicalize-missing --relative-to=$(dirname "$DEST") "$DIR/$1")
+        ln -s "$RELPATH" "$DEST"
     fi
 }
 
