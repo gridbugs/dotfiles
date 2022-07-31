@@ -2,7 +2,7 @@
 set -eu
 
 DIR="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-TARGET=$HOME
+TARGET=$PWD
 
 make_link() {
     DEST="$TARGET/$2"
