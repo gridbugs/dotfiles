@@ -99,6 +99,8 @@ au FileType * nmap <leader><leader>t :call LanguageClient#textDocument_hover()<C
 au FileType * nmap <leader><leader>d :call LanguageClient#textDocument_definition()<CR>
 au FileType * nmap <leader><leader>r :call LanguageClient#textDocument_rename()<CR>
 
+au FileType ocaml map <leader><leader>m :e %:p:s,.mli$,.X123X,:s,.ml$,.mli,:s,.X123X$,.ml,<CR>
+
 " use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
