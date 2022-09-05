@@ -40,7 +40,7 @@ window:
   # - none: neither borders nor title bar
   # - transparent: title bar, transparent background and title bar buttons
   # - buttonless: title bar, transparent background, but no title bar buttons
-  decorations: buttonless
+  decorations: full
 
   # Startup Mode (changes require restart)
   #
@@ -68,22 +68,22 @@ scrolling:
 font:
   # The normal (roman) font face to use.
   # Style can be specified to pick a specific face.
-  normal:
-    family: "Terminus (TTF)"
-    style: Medium
+  # normal:
+    # family: "Terminus (TTF)"
+    # style: Medium
     # family: "Fira Code"
     # family: "Source Code Pro"
     # style: Retina
 
   # The bold font face
-  bold:
-    family: "Terminus (TTF)"
-    style: Bold
+  # bold:
+    # family: "Terminus (TTF)"
+    # style: Bold
     # family: "Fira Code"
     # family: "Source Code Pro"
 
   # Point size of the font
-  size: 14.0
+  size: 12.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -132,7 +132,7 @@ colors:
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
     text: '0xffffff'
-    cursor: '0xffffff'
+    cursor: '0xaaaaaa'
   # Normal colors
   normal:
     black:   '0x282a2e'
