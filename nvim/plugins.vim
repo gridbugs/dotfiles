@@ -6,6 +6,9 @@ Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'airblade/vim-gitgutter'
 
+" Colour
+Plug 'chriskempson/base16-vim'
+
 " Multiple Visual Cursors
 Plug 'terryma/vim-multiple-cursors'
 
@@ -163,3 +166,6 @@ if filereadable(expand("~/.vim/plugged/neoformat/autoload/neoformat.vim"))
       autocmd BufWritePre *.ml,*.mli,*.erl try | undojoin | Neoformat | catch /E790/ | Neoformat | endtry
     augroup END
 endif
+
+" Set the colour scheme
+colorscheme base16-default-dark

@@ -19,8 +19,8 @@ window:
   # Specified in number of columns/lines, not pixels. If both are zero this
   # setting is ignored.
   dimensions:
-    columns: 100
-    lines: 85
+    columns: 80
+    lines: 24
 
   # Window padding (changes require restart)
   #
@@ -68,22 +68,22 @@ scrolling:
 font:
   # The normal (roman) font face to use.
   # Style can be specified to pick a specific face.
-  # normal:
-    # family: "Terminus (TTF)"
-    # style: Medium
+  normal:
+    family: "Terminus (TTF)"
+    style: Medium
     # family: "Fira Code"
     # family: "Source Code Pro"
     # style: Retina
 
   # The bold font face
-  # bold:
-    # family: "Terminus (TTF)"
-    # style: Bold
+  bold:
+    family: "Terminus (TTF)"
+    style: Bold
     # family: "Fira Code"
     # family: "Source Code Pro"
 
   # Point size of the font
-  size: 12.0
+  size: 14.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -124,28 +124,19 @@ custom_cursor_colors: true
 # Colors
 colors:
 
-  # Tomorrow (https://github.com/aarowill/base16-alacritty/blob/master/colors/base16-tomorrow.yml)
   # Default colors
   primary:
-    background: '0x000000'
+    background: '0x1d1f21'
     foreground: '0xc5c8c6'
+
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0xffffff'
-    cursor: '0xaaaaaa'
+    text: '0x1d1f21'
+    cursor: '0xc5c8c6'
+
   # Normal colors
   normal:
-    black:   '0x282a2e'
-    red:     '0xc95454'
-    green:   '0x8c9440'
-    yellow:  '0xde935f'
-    blue:    '0x466d8c'
-    magenta: '0x85678f'
-    cyan:    '0x5e8d87'
-    white:   '0xa7a7a7'
-  # Bright colors
-  bright:
-    black:   '0x656a73'
+    black:   '0x1d1f21'
     red:     '0xcc6666'
     green:   '0xb5bd68'
     yellow:  '0xf0c674'
@@ -154,35 +145,18 @@ colors:
     cyan:    '0x8abeb7'
     white:   '0xc5c8c6'
 
-  # # Tomorrow Night (https://github.com/aarowill/base16-alacritty/blob/master/colors/base16-tomorrow-night.yml)
-  # # Default colors
-  # primary:
-  #   background: '0x1d1f21'
-  #   foreground: '0xc5c8c6'
-  # # Colors the cursor will use if `custom_cursor_colors` is true
-  # cursor:
-  #   text: '0x1d1f21'
-  #   cursor: '0xc5c8c6'
-  # # Normal colors
-  # normal:
-  #   black:   '0x1d1f21'
-  #   red:     '0xcc6666'
-  #   green:   '0xb5bd68'
-  #   yellow:  '0xf0c674'
-  #   blue:    '0x81a2be'
-  #   magenta: '0xb294bb'
-  #   cyan:    '0x8abeb7'
-  #   white:   '0xc5c8c6'
-  # # Bright colors
-  # bright:
-  #   black:   '0x969896'
-  #   red:     '0xde935f'
-  #   green:   '0x282a2e'
-  #   yellow:  '0x373b41'
-  #   blue:    '0xb4b7b4'
-  #   magenta: '0xe0e0e0'
-  #   cyan:    '0xa3685a'
-  #   white:   '0xffffff'
+  # Bright colors
+  bright:
+    black:   '0x969896'
+    red:     '0xde935f'
+    green:   '0x282a2e'
+    yellow:  '0x373b41'
+    blue:    '0xb4b7b4'
+    magenta: '0xe0e0e0'
+    cyan:    '0xa3685a'
+    white:   '0xffffff'
+
+draw_bold_text_with_bright_colors: false
 
   # Indexed Colors
   #
@@ -416,7 +390,7 @@ selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
-  save_to_clipboard: false
+  save_to_clipboard: true
 
 # Mouse bindings
 #
