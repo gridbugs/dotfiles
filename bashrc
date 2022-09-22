@@ -90,6 +90,9 @@ if [[ $- == *i* ]]; then
     if [ -e ~/.nix-profile/lib/locale ]; then
         export LOCALE_ARCHIVE="$(readlink ~/.nix-profile/lib/locale)/locale-archive"
     fi
+    if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then
+        . ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+    fi
 
     if [[ ! -n "$IN_NIX_SHELL" ]]; then
         # Don't start rvm in nix-shell. It's assumed that if we're in a nix-shell then we want nix to manage our ruby.
