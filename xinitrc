@@ -1,6 +1,6 @@
 #!/bin/sh
 
-setxkbmap -option caps:swapescape en_US
+setxkbmap -option caps:swapescape dvorak
 
 if test -f $HOME/.xprofile; then
     . $HOME/.xprofile
