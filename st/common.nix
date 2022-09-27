@@ -31,6 +31,7 @@ in
         scrollback-mouse
         scrollback-mouse-altscreen
         replace-space
+        ./glyph-wide-support-fixed.diff  # normal patch doesn't apply
         ./usercflags.diff
       ];
       conf = builtins.readFile ./config.h;
