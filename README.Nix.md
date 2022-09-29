@@ -95,9 +95,22 @@ E.g. [Shopify/comma](https://github.com/Shopify/comma)
 
 ### Clean up unused packages
 
+Remove old profile generations:
+```
+nix-env --delete-generations old
+```
+
+Remove unused packages:
 ```
 nix-store --gc
 ```
+
+A shorthand for running both of the above:
+```
+nix-collect-garbage -d
+```
+
+Run it as root to clean up old system generations.
 
 ### Find out store entry is alive
 
