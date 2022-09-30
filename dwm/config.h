@@ -16,8 +16,8 @@ static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_purple[]      = "#7704a8";
-static const char col_dark_purple[] = "#421654";
+static const char col_purple[]      = "#b193ba";
+static const char col_dark_purple[] = "#604c67";
 static const char *colors[][3]      = {
     /*               fg         bg          border   */
     [SchemeNorm] = { col_gray3, col_gray1,  col_gray2 },
@@ -65,7 +65,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_histogram", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_purple, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_histogram", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_dark_purple, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
 static const char *findcursorcmd[]  = { "find-cursor", "-f", "-c#aa33aa", "-l10", "-s500", "-w200", NULL };
