@@ -202,7 +202,7 @@ if [[ $- == *i* ]]; then
             local VENV_MESSAGE=""
         fi
 
-        BOLD="\[\033[01;1m\]"
+        BOLD="\[\033[01;35m\]"
         NORMAL="\[\033[01;0m\]"
 
         PS1="$BOLD\u@\h:\w$GIT_MESSAGE$VENV_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL "
