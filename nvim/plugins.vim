@@ -61,6 +61,9 @@ Plug 'beyondmarc/glsl.vim'
 " WGSL Highlighting
 Plug 'DingDean/wgsl.vim'
 
+" Latex
+Plug 'vim-latex/vim-latex'
+
 if has('nvim')
     " Required for ncm2
     Plug 'roxma/nvim-yarp'
