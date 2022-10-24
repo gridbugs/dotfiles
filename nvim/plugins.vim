@@ -84,7 +84,7 @@ call plug#end()
 let g:LanguageClient_serverCommands = {
 \ 'rust': ['rust-analyzer'],
 \ 'scala': ['metals-vim'],
-\ 'python': ['pyls'],
+\ 'python': ['pylsp'],
 \ 'typescript': ['typescript-language-server', '--stdio'],
 \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
 \ 'javascript': ['typescript-language-server', '--stdio'],
