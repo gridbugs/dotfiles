@@ -1,7 +1,33 @@
+# Only execute this file once per shell.
+if [ -n "$__USER_PROFILE_SOURCED" ]; then return; fi
+export __USER_PROFILE_SOURCED=1
+
 export PATH="$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:/usr/games:/usr/local/games:$PATH"
 
 # Source extra commands from .profile_extra
 [ -f ~/.profile_extra ] && . ~/.profile_extra
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('$HOME/.conda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$HOME/.conda/etc/profile.d/conda.sh" ]; then
+        . "$HOME/.conda/etc/profile.d/conda.sh"
+    else
+        export PATH="$HOME/.conda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# opam configuration
+if type opam 2>/dev/null >/dev/null; then
+    eval $(opam env --revert)
+    OPAMROOT=${OPAMROOT:-$HOME/.opam}
+    test -r $OPAMROOT/opam-init/init.sh && . $OPAMROOT/opam-init/init.sh > /dev/null 2> /dev/null || true
+fi
 
 if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
