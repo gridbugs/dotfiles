@@ -36,10 +36,16 @@ chmod a+x ~/bin/metals-vim
 
 ### Python
 
-[pyls](https://github.com/palantir/python-language-server)
+[python-lsp-server](https://github.com/python-lsp/python-lsp-server)
 
 ```
-pip install python-language-server
+pip install python-lsp-server
+```
+
+...or on nixos:
+
+```
+nix-env -iA nixpkgs.python3Packages.python-lsp-server
 ```
 
 ### Typescript
