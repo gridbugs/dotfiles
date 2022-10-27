@@ -64,6 +64,9 @@ Plug 'DingDean/wgsl.vim'
 " Latex
 Plug 'vim-latex/vim-latex'
 
+" Cram tests
+Plug 'gridbugs/vim-cram'
+
 if has('nvim')
     " Required for ncm2
     Plug 'roxma/nvim-yarp'
