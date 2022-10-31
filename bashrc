@@ -159,34 +159,52 @@ if [[ $- == *i* ]]; then
     __prompt_command() {
         local EXIT="$?";
 
+        PROMPT_COLOUR="\[\033[01;35m\]"
+        DOLLAR_COLOUR=$PROMPT_COLOUR
+        LAMBDA_COLOUR="\[\033[01;36m\]"
+        PROMPT_COLOUR="\[\033[01;35m\]"
+        NORMAL_COLOUR="\[\033[01;0m\]"
+        ERROR_COLOUR="\[\033[01;31m\]"
+        GIT_COLOUR="\[\033[01;32m\]"
+        VENV_COLOUR="\[\033[01;34m\]"
+        OPAM_COLOUR="\[\033[01;33m\]"
+
         if type __git_ps1 2>/dev/null >/dev/null; then
-            local GIT_MESSAGE="$(GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWUPSTREAM=auto __git_ps1) "
+            local GIT_MESSAGE="$GIT_COLOUR$(GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWUPSTREAM=auto __git_ps1)$PROMPT_COLOUR "
         else
             local GIT_MESSAGE=" "
         fi
 
+        if type opam 2>/dev/null >/dev/null; then
+            local OPAM_SWITCH=$(opam switch show)
+            if [[ $OPAM_SWITCH != "default" ]]; then
+                local OPAM_MESSAGE="$OPAM_COLOUR($OPAM_SWITCH)$PROMPT_COLOUR "
+            else
+                local OPAM_MESSAGE=""
+            fi
+        else
+            local OPAM_MESSAGE=""
+        fi
+
         if [[ $EXIT != 0 ]]; then
-            local EXIT_CODE_MESSAGE="\[\033[01;31m\]$EXIT\[\033[01;35m\] "
+            local EXIT_CODE_MESSAGE="$ERROR_COLOUR$EXIT$PROMPT_COLOUR "
         else
             local EXIT_CODE_MESSAGE=""
         fi
 
         if [[ -n "$IN_NIX_SHELL" ]]; then
-            local TERMINATOR="λ"
+            local TERMINATOR="$LAMBDA_COLOURλ$PROMPT_COLOUR"
         else
-            local TERMINATOR="\\\$"
+            local TERMINATOR="$DOLLAR_COLOUR\\\$$PROMPT_COLOUR"
         fi
 
         if [[ -n "$VIRTUAL_ENV" ]]; then
-            local VENV_MESSAGE="(venv:${VIRTUAL_ENV##*/}) "
+            local VENV_MESSAGE="$VENV_COLOUR(${VIRTUAL_ENV##*/})$PROMPT_COLOUR "
         else
             local VENV_MESSAGE=""
         fi
 
-        BOLD="\[\033[01;35m\]"
-        NORMAL="\[\033[01;0m\]"
-
-        PS1="$BOLD\u@\h:\w$GIT_MESSAGE$VENV_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL "
+        PS1="$PROMPT_COLOUR\u@\h:\w$GIT_MESSAGE$OPAM_MESSAGE$VENV_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL_COLOUR "
     }
 
     PROMPT_COMMAND=__prompt_command
