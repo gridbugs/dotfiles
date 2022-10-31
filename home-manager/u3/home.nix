@@ -33,15 +33,24 @@
       st24 = mkStSized { pixelsize = 24; };
       dwm = (import ../../dwm/common.nix { pkgs = pkgs; pixelsize = 12; }).dwm;
       obs = (import ../../nix/obs.nix { pkgs = pkgs; }).obs;
+      uiPkgs = [
+        terminus-font
+        st
+        st12
+        st16
+        st24
+        dwm
+        obs
+        dmenu
+      ];
+      devPkgs = [
+        python3
+        python3Packages.python-lsp-server
+        opam
+        ocamlformat
+        ocamlPackages.ocaml-lsp
+        nodejs
+      ];
     in
-    [
-      terminus-font
-      st
-      st12
-      st16
-      st24
-      dwm
-      obs
-      dmenu
-    ];
+    uiPkgs ++ devPkgs;
 }
