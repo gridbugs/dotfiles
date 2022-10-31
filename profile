@@ -25,8 +25,9 @@ unset __conda_setup
 # opam configuration
 if type opam 2>/dev/null >/dev/null; then
     eval $(opam env --revert)
-    OPAMROOT=${OPAMROOT:-$HOME/.opam}
+    export OPAMROOT=${OPAMROOT:-$HOME/.opam}
     test -r $OPAMROOT/opam-init/init.sh && . $OPAMROOT/opam-init/init.sh > /dev/null 2> /dev/null || true
+    export OPAMSWITCH=default
 fi
 
 if [ -f "$HOME/.cargo/env" ]; then
