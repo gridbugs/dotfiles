@@ -159,13 +159,13 @@ if [[ $- == *i* ]]; then
     __prompt_command() {
         local EXIT="$?";
 
-        PROMPT_COLOUR="\[\033[01;35m\]"
-        PROMPT_COLOUR="\[\033[01;35m\]"
-        NORMAL_COLOUR="\[\033[01;0m\]"
-        ERROR_COLOUR="\[\033[01;31m\]"
-        GIT_COLOUR="\[\033[01;32m\]"
-        VENV_COLOUR="\[\033[01;34m\]"
-        OPAM_COLOUR="\[\033[01;33m\]"
+        local PROMPT_COLOUR="\[\033[01;35m\]"
+        local PROMPT_COLOUR="\[\033[01;35m\]"
+        local NORMAL_COLOUR="\[\033[01;0m\]"
+        local ERROR_COLOUR="\[\033[01;31m\]"
+        local GIT_COLOUR="\[\033[01;32m\]"
+        local VENV_COLOUR="\[\033[01;34m\]"
+        local OPAM_COLOUR="\[\033[01;33m\]"
 
         if type __git_ps1 2>/dev/null >/dev/null; then
             local GIT_MESSAGE="$GIT_COLOUR$(GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWUPSTREAM=auto __git_ps1)$PROMPT_COLOUR "
