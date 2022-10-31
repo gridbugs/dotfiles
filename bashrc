@@ -160,8 +160,6 @@ if [[ $- == *i* ]]; then
         local EXIT="$?";
 
         PROMPT_COLOUR="\[\033[01;35m\]"
-        DOLLAR_COLOUR=$PROMPT_COLOUR
-        LAMBDA_COLOUR="\[\033[01;36m\]"
         PROMPT_COLOUR="\[\033[01;35m\]"
         NORMAL_COLOUR="\[\033[01;0m\]"
         ERROR_COLOUR="\[\033[01;31m\]"
@@ -193,9 +191,9 @@ if [[ $- == *i* ]]; then
         fi
 
         if [[ -n "$IN_NIX_SHELL" ]]; then
-            local TERMINATOR="$LAMBDA_COLOURλ$PROMPT_COLOUR"
+            local TERMINATOR="λ"
         else
-            local TERMINATOR="$DOLLAR_COLOUR\\\$$PROMPT_COLOUR"
+            local TERMINATOR="\\\$"
         fi
 
         if [[ -n "$VIRTUAL_ENV" ]]; then
