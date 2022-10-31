@@ -19,9 +19,32 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.packages = [
-    pkgs.htop
-    pkgs.neovim
-    pkgs.wget
+  # direnv
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
+
+  home.packages = with pkgs; [
+    nix-bash-completions
+    tmux
+    htop
+    neovim
+    wget
+    coreutils
+    bash-completion
+    ripgrep
+    sshfs
+    fontforge
+    youtube-dl
+    tree
+    ffmpeg
+    ledger
+    zip
+    unrar
+    nodejs
+    python3
+    python3Packages.python-lsp-server
+    opam
+    ocamlformat
+    ocamlPackages.ocaml-lsp
   ];
 }
