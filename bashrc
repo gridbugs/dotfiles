@@ -166,6 +166,8 @@ if [[ $- == *i* ]]; then
         local GIT_COLOUR="\[\033[01;32m\]"
         local VENV_COLOUR="\[\033[01;34m\]"
         local OPAM_COLOUR="\[\033[01;33m\]"
+        local DOLLAR_COLOUR=$PROMPT_COLOUR
+        local LAMBDA_COLOUR="\[\033[01;36m\]"
 
         if type __git_ps1 2>/dev/null >/dev/null; then
             local GIT_MESSAGE="$GIT_COLOUR$(GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWUPSTREAM=auto __git_ps1)$PROMPT_COLOUR "
@@ -191,9 +193,9 @@ if [[ $- == *i* ]]; then
         fi
 
         if [[ -n "$IN_NIX_SHELL" ]]; then
-            local TERMINATOR="λ"
+            local TERMINATOR="\n$LAMBDA_COLOUR λ$PROMPT_COLOUR"
         else
-            local TERMINATOR="\\\$"
+            local TERMINATOR="\n$DOLLAR_COLOUR \\\$$PROMPT_COLOUR"
         fi
 
         if [[ -n "$VIRTUAL_ENV" ]]; then
@@ -202,7 +204,7 @@ if [[ $- == *i* ]]; then
             local VENV_MESSAGE=""
         fi
 
-        PS1="$PROMPT_COLOUR\u@\h:\w$GIT_MESSAGE$OPAM_MESSAGE$VENV_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL_COLOUR "
+        PS1="\n$PROMPT_COLOUR\u@\h:\w$GIT_MESSAGE$OPAM_MESSAGE$VENV_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL_COLOUR "
     }
 
     PROMPT_COMMAND=__prompt_command
