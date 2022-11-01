@@ -46,6 +46,14 @@ sudo nixos-rebuild switch
 
 ## Common Operations
 
+### Install Home Manager on macOS
+
+```
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
+nix-shell '<home-manager>' -A install
+```
+
 ### Add the nixpkgs-unstable channel
 
 ```
