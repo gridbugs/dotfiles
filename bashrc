@@ -193,9 +193,9 @@ if [[ $- == *i* ]]; then
         fi
 
         if [[ -n "$IN_NIX_SHELL" ]]; then
-            local TERMINATOR="\n$LAMBDA_COLOUR λ$PROMPT_COLOUR"
+            local TERMINATOR="$NORMAL_COLOUR\n$LAMBDA_COLOUR λ$PROMPT_COLOUR"
         else
-            local TERMINATOR="\n$DOLLAR_COLOUR \\\$$PROMPT_COLOUR"
+            local TERMINATOR="$NORMAL_COLOUR\n$DOLLAR_COLOUR \\\$$PROMPT_COLOUR"
         fi
 
         if [[ -n "$VIRTUAL_ENV" ]]; then
