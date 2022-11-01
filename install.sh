@@ -11,7 +11,7 @@ make_link() {
     else
         mkdir -p "$(dirname "$DEST")"
         RELPATH=$(realpath --canonicalize-missing --relative-to=$(dirname "$DEST") "$DIR/$1")
-        ln -s "$RELPATH" "$DEST"
+        ln -sf "$RELPATH" "$DEST"
     fi
 }
 
