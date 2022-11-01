@@ -21,7 +21,6 @@ let
     url = "https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-20200416-5703aa0.diff";
     sha256 = "17avl5bgwlh5ayaqfg01sg9klf828hc0fd36cgzldnl595jyp1yb";
   };
-  replace-space = ./replace-space.diff;
 in
   {
     st = (st.override {
@@ -31,6 +30,7 @@ in
         scrollback-mouse
         scrollback-mouse-altscreen
         replace-space
+        ./replace-space.diff
         ./glyph-wide-support-fixed.diff  # normal patch doesn't apply
         ./usercflags.diff
       ];

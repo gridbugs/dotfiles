@@ -56,6 +56,8 @@ patch -d $SRC_DIR -p1 < $BOLD_IS_NOT_BRIGHT_FILENAME
 patch -d $SRC_DIR -p1 < $SCROLLBACK_FILENAME
 patch -d $SRC_DIR -p1 < $SCROLLBACK_MOUSE_FILENAME
 patch -d $SRC_DIR -p1 < $SCROLLBACK_MOUSE_ALTSCREEN_FILENAME
+patch -d $SRC_DIR -p1 < $ST_DIR/replace-space.diff
+patch -d $SRC_DIR -p1 < $ST_DIR/glyph-wide-support-fixed.diff
 patch -d $SRC_DIR -p1 < $ST_DIR/usercflags.diff
 patch -d $SRC_DIR -p1 < $ST_DIR/local.diff
 ln -sf $CONFIG $(pwd)/$SRC_DIR
