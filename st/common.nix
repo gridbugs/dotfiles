@@ -29,7 +29,6 @@ in
         scrollback
         scrollback-mouse
         scrollback-mouse-altscreen
-        replace-space
         ./replace-space.diff
         ./glyph-wide-support-fixed.diff  # normal patch doesn't apply
         ./usercflags.diff
