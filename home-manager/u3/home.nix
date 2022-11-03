@@ -40,7 +40,6 @@
         st16
         st24
         dwm
-        obs
         dmenu
       ];
       devPkgs = [
@@ -51,6 +50,19 @@
         ocamlPackages.ocaml-lsp
         nodejs
       ];
+      toolPkgs = [
+        obs
+        neovim
+        firefox
+        thunderbird
+        zoom-us
+        zathura
+        nomacs
+        vlc
+        mplayer
+        gimp
+        ffmpeg
+      ];
     in
-    uiPkgs ++ devPkgs;
+    uiPkgs ++ devPkgs ++ toolPkgs;
 }
