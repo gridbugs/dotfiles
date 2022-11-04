@@ -13,7 +13,10 @@
   outputs = { nixpkgs, home-manager, ... }:
     let
       system = "aarch64-darwin";
-      pkgs = import nixpkgs { system = system; config = { allowUnfree = true; }; };
+      pkgs = import nixpkgs {
+        system = system;
+        config = { allowUnfree = true; };
+      };
     in {
       homeConfigurations.s = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;

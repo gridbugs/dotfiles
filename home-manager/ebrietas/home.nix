@@ -32,6 +32,8 @@
     coreutils
     bash-completion
     ripgrep
+    ncdu
+    nix-tree
     sshfs
     fontforge
     youtube-dl
