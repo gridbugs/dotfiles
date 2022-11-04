@@ -23,30 +23,39 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  home.packages = with pkgs; [
-    nix-bash-completions
-    tmux
-    htop
-    neovim
-    wget
-    coreutils
-    bash-completion
-    ripgrep
-    ncdu
-    nix-tree
-    sshfs
-    fontforge
-    youtube-dl
-    tree
-    ffmpeg
-    ledger
-    zip
-    unrar
-    nodejs
-    python3
-    python3Packages.python-lsp-server
-    opam
-    ocamlformat
-    ocamlPackages.ocaml-lsp
-  ];
+  home.packages = with pkgs;
+    let
+      ffmpeg_noSdl = ffmpeg.override {
+        sdlSupport = false;
+        openglSupport = false;
+      };
+      youtube-dl_noSdl = youtube-dl.override {
+        ffmpeg = ffmpeg_noSdl;
+      };
+    in
+    [
+      nix-bash-completions
+      tmux
+      htop
+      neovim
+      wget
+      coreutils
+      bash-completion
+      ripgrep
+      ncdu
+      sshfs
+      fontforge
+      tree
+      ffmpeg
+      youtube-dl
+      ledger
+      zip
+      unrar
+      nodejs
+      python3
+      python3Packages.python-lsp-server
+      opam
+      ocamlformat
+      ocamlPackages.ocaml-lsp
+    ];
 }
