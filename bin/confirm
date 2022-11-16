@@ -1,0 +1,21 @@
+#!/bin/sh
+echo Will run:
+echo
+echo "    $@"
+echo
+read -p "Are you sure? (y/n/e)" -n 1 -r
+echo
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    $@
+elif [[ $REPLY =~ ^[Ee]$ ]]
+then
+    TMP=$(mktemp --suffix=.sh)
+    trap "rm -f $TMP" EXIT
+    echo $@ > $TMP
+    ${EDITOR:-vi} $TMP
+    . $TMP
+else
+    echo Aborted
+fi
