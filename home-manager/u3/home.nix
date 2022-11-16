@@ -62,6 +62,7 @@
         mplayer
         gimp
         ffmpeg
+        fzf
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs;
