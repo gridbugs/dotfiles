@@ -21,6 +21,10 @@ let
     url = "https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-20200416-5703aa0.diff";
     sha256 = "17avl5bgwlh5ayaqfg01sg9klf828hc0fd36cgzldnl595jyp1yb";
   };
+  glyph-wide-support = fetchurl {
+    url = "https://st.suckless.org/patches/glyph_wide_support/st-glyph-wide-support-20220411-ef05519.diff";
+    sha256 = "sha256-hCmRFJHGrayHavC5paoMQtk8cZd/1xLw+kCmp0jBJWc=";
+  };
 in
   {
     st = (st.override {
@@ -29,8 +33,8 @@ in
         scrollback
         scrollback-mouse
         scrollback-mouse-altscreen
+        glyph-wide-support
         ./replace-space.diff
-        ./glyph-wide-support-fixed.diff  # normal patch doesn't apply
         ./usercflags.diff
       ];
       conf = builtins.readFile ./config.h;
