@@ -72,4 +72,7 @@ fi
 
 export NIX_PATH=${NIX_PATH:+$NIX_PATH:}$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels
 
+# In some systems SHELL is shell variable by default. Force it to be an environment variable.
+export SHELL
+
 export PATH="$HOME/bin:$PATH"
