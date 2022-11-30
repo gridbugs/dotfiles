@@ -64,6 +64,7 @@
         ffmpeg
         fzf
         pavucontrol
+        megasync
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs;
