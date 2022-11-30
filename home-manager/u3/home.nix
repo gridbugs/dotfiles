@@ -63,6 +63,7 @@
         gimp
         ffmpeg
         fzf
+        pavucontrol
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs;
