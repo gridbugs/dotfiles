@@ -9,6 +9,8 @@ set keyseq-timeout 50
 set keymap vi-insert
 "\e[A": history-search-backward
 "\e[B": history-search-forward
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
 Tab: menu-complete
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
@@ -18,6 +20,8 @@ set menu-complete-display-prefix on
 set keymap vi-command
 "\e[A": history-search-backward
 "\e[B": history-search-forward
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
 "\e[C": forward-char
 "\e[D": backward-char
 "k": history-search-backward
