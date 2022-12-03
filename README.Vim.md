@@ -7,9 +7,7 @@
 [rust-analyzer](https://rust-analyzer.github.io/manual.html#installation)
 
 ```
-rustup component add rust-src
-git clone https://github.com/rust-analyzer/rust-analyzer.git && cd rust-analyzer
-cargo xtask install
+rustup component add rust-src rust-analyzer
 ```
 
 ### Scala
