@@ -65,6 +65,7 @@
         fzf
         pavucontrol
         megasync
+        file
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs;
