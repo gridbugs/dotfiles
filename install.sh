@@ -16,7 +16,8 @@ make_link() {
 
 cd "$HOME"
 
-make_link nvim .vim
+make_link nvim/autoload .vim/autoload
+make_link nvim/plugins.vim .vim/plugins.vim
 make_link nvim .config/nvim
 make_link feh .config/feh
 make_link alacritty.yml .config/alacritty/alacritty.yml
