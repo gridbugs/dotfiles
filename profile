@@ -64,7 +64,7 @@ if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
         . ~/.bashrc
     fi
-elif [ "$SHELL" == "/bin/ksh" ]; then
+elif [ "$SHELL" -eq "/bin/ksh" ]; then
     if [ -f "$HOME/.kshrc" ]; then
         export ENV=$HOME/.kshrc
     fi
