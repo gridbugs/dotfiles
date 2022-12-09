@@ -1,0 +1,18 @@
+diff --git a/dwm.c b/dwm.c
+index e5efb6a..032fbc6 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -968,6 +968,13 @@ grabkeys(void)
+ 	}
+ }
+ 
++void
++setmaster(const Arg *arg)
++{
++	selmon->nmaster = MAX(arg->i, 0);
++	arrange(selmon);
++}
++
+ void
+ incnmaster(const Arg *arg)
+ {

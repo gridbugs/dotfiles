@@ -15,6 +15,7 @@ let
   };
   bottomstack = ./bottomstack-custom.diff;
   replace-space = ./replace-space.diff;
+  setmaster = ./setmaster.diff;
   usercflags = ./usercflags.diff;
 in
   {
@@ -24,6 +25,7 @@ in
         bottomstack
         pertag
         replace-space
+        setmaster
         usercflags
       ];
       conf = builtins.readFile ./config.h;

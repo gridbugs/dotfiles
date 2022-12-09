@@ -66,6 +66,7 @@
         pavucontrol
         megasync
         file
+        discord
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs;
