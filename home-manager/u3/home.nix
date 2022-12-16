@@ -67,6 +67,7 @@
         megasync
         file
         discord
+        ncdu
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs;
