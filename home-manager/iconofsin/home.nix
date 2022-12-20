@@ -26,12 +26,12 @@
   home.packages = with pkgs;
     let
       terminus-font = (import ../../terminus-font/default.nix {} { terminus_font = terminus_font; }).terminus_font;
-      st = (import ../../st/common.nix { pkgs = pkgs; pixelsize = 12; }).st;
+      st = (import ../../st/common.nix { pkgs = pkgs; pixelsize = 16; }).st;
       mkStSized = { pixelsize }: (import ../../st/sized.nix { pkgs = pkgs; pixelsize = pixelsize;}).st;
       st12 = mkStSized { pixelsize = 12; };
       st16 = mkStSized { pixelsize = 16; };
       st24 = mkStSized { pixelsize = 24; };
-      dwm = (import ../../dwm/common.nix { pkgs = pkgs; pixelsize = 12; }).dwm;
+      dwm = (import ../../dwm/common.nix { pkgs = pkgs; pixelsize = 16; }).dwm;
       obs = (import ../../nix/obs.nix { pkgs = pkgs; }).obs;
       uiPkgs = [
         terminus-font
