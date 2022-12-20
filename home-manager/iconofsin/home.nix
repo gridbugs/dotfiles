@@ -42,21 +42,10 @@
         dwm
         dmenu
       ];
-      devPkgs = [
-        python3
-        python3Packages.python-lsp-server
-        opam
-        ocamlformat
-        ocamlPackages.ocaml-lsp
-        nodejs
-      ];
+      devPkgs = [];
       toolPkgs = [
-        obs
         neovim
         firefox
-        thunderbird
-        zoom-us
-        zathura
         nomacs
         vlc
         mplayer
@@ -64,7 +53,6 @@
         ffmpeg
         fzf
         pavucontrol
-        megasync
         file
         discord
         ncdu
