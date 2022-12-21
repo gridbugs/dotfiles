@@ -50,6 +50,9 @@
         opam
         ocamlformat
         ocamlPackages.ocaml-lsp
+        git
+        mercurial
+        darcs
       ];
     in
     toolPkgs ++ devPkgs;
