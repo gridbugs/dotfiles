@@ -34,7 +34,6 @@
         htop
         ripgrep
         wget
-        ncdu
         sshfs
         fontforge
         tree
