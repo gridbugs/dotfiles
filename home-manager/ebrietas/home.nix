@@ -25,37 +25,33 @@
 
   home.packages = with pkgs;
     let
-      ffmpeg_noSdl = ffmpeg.override {
-        sdlSupport = false;
-        openglSupport = false;
-      };
-      youtube-dl_noSdl = youtube-dl.override {
-        ffmpeg = ffmpeg_noSdl;
-      };
+      toolPkgs = [
+        coreutils
+        nix-bash-completions
+        bash-completion
+        neovim
+        tmux
+        htop
+        ripgrep
+        wget
+        ncdu
+        sshfs
+        fontforge
+        tree
+        ffmpeg
+        youtube-dl
+        ledger
+        zip
+        unrar
+      ];
+      devPkgs = [
+        nodejs
+        python3
+        python3Packages.python-lsp-server
+        opam
+        ocamlformat
+        ocamlPackages.ocaml-lsp
+      ];
     in
-    [
-      nix-bash-completions
-      tmux
-      htop
-      neovim
-      wget
-      coreutils
-      bash-completion
-      ripgrep
-      ncdu
-      sshfs
-      fontforge
-      tree
-      ffmpeg
-      youtube-dl
-      ledger
-      zip
-      unrar
-      nodejs
-      python3
-      python3Packages.python-lsp-server
-      opam
-      ocamlformat
-      ocamlPackages.ocaml-lsp
-    ];
+    toolPkgs ++ devPkgs;
 }
