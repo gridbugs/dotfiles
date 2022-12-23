@@ -7,7 +7,7 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'airblade/vim-gitgutter'
 
 " Colour
-Plug 'chriskempson/base16-vim'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 " Multiple Visual Cursors
 Plug 'terryma/vim-multiple-cursors'
@@ -173,5 +173,4 @@ if filereadable(expand("~/.vim/plugged/neoformat/autoload/neoformat.vim"))
     augroup END
 endif
 
-" Set the colour scheme
-colorscheme base16-default-dark
+colorscheme catppuccin_macchiato
