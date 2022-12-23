@@ -93,6 +93,7 @@
   "BM Growl" : true,
   "Command" : "",
   "Description" : "Default",
+  "Smart Cursor Color" : true,
   "Mouse Reporting" : true,
   "Screen" : -1,
   "Selection Color" : {

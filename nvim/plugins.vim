@@ -30,9 +30,6 @@ Plug 'leafgarland/typescript-vim'
 " Typescript JSX Plug
 Plug 'peitalin/vim-jsx-typescript'
 
-" Rainbow Parens
-Plug 'luochen1990/rainbow'
-
 " Scala Highlighting
 Plug 'derekwyatt/vim-scala'
 
