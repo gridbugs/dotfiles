@@ -7,7 +7,7 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'airblade/vim-gitgutter'
 
 " Colour
-Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'gridbugs/catppuccin-vim', { 'as': 'catppuccin' }
 
 " Multiple Visual Cursors
 Plug 'terryma/vim-multiple-cursors'
@@ -170,4 +170,6 @@ if filereadable(expand("~/.vim/plugged/neoformat/autoload/neoformat.vim"))
     augroup END
 endif
 
-colorscheme catppuccin_macchiato
+if filereadable(expand("~/.vim/plugged/catppuccin/README.md"))
+    colorscheme catppuccin_macchiato
+endif
