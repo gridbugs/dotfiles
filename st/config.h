@@ -98,30 +98,41 @@ char *termname = "xterm-256color";
  */
 unsigned int tabspaces = 8;
 
-
+/* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-  "#1d1f21", /* base00 */
-  "#cc6666", /* base08 */
-  "#b5bd68", /* base0B */
-  "#f0c674", /* base0A */
-  "#81a2be", /* base0D */
-  "#b294bb", /* base0E */
-  "#8abeb7", /* base0C */
-  "#c5c8c6", /* base05 */
-  "#969896", /* base03 */
-  "#de935f", /* base09 */
-  "#282a2e", /* base01 */
-  "#373b41", /* base02 */
-  "#b4b7b4", /* base04 */
-  "#e0e0e0", /* base06 */
-  "#a3685a", /* base0F */
-  "#ffffff", /* base07 */
+	/* 8 normal colors */
+	"#494D64",
+	"#ED8796",
+	"#A6DA95",
+	"#EED49F",
+	"#8AADF4",
+	"#F5BDE6",
+	"#8BD5CA",
+	"#B8C0E0",
+
+	/* 8 bright colors */
+	"#5B6078",
+	"#ED8796",
+	"#A6DA95",
+	"#EED49F",
+	"#8AADF4",
+	"#F5BDE6",
+	"#8BD5CA",
+	"#A5ADCB",
+
+[256] = "#CAD3F5", /* default foreground colour */
+[257] = "#24273A", /* default background colour */
+[258] = "#F4DBD6", /*575268*/
+
 };
 
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
-unsigned int defaultcs = 13;
-static unsigned int defaultrcs = 0;
+/*
+ * foreground, background, cursor, reverse cursor
+ */
+unsigned int defaultfg = 256;
+unsigned int defaultbg = 257;
+unsigned int defaultcs = 258;
+static unsigned int defaultrcs = 258;
 
 /*
  * Default shape of cursor
