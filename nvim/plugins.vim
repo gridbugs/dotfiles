@@ -185,9 +185,6 @@ require("catppuccin").setup({
         all = function(colors)
             return {
                 MatchParen = { bg = colors.surface2 },
-                LineNr = { fg = colors.blue },
-                Comment = { fg = colors.blue },
-
             }
         end,
     },
