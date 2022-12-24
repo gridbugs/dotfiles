@@ -74,9 +74,6 @@ if has('nvim')
         \ 'do': 'bash install.sh',
         \ }
 
-    " Text Wrapping
-    Plug 'andrewferrier/wrapping.nvim'
-
     " Colour
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
