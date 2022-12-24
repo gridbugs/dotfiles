@@ -6,9 +6,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'airblade/vim-gitgutter'
 
-" Colour
-Plug 'gridbugs/catppuccin-vim', { 'as': 'catppuccin' }
-
 " Multiple Visual Cursors
 Plug 'terryma/vim-multiple-cursors'
 
@@ -76,6 +73,15 @@ if has('nvim')
         \ 'branch': 'next',
         \ 'do': 'bash install.sh',
         \ }
+
+    " Text Wrapping
+    Plug 'andrewferrier/wrapping.nvim'
+
+    " Colour
+    Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+
+    " Status line
+    Plug 'itchyny/lightline.vim'
 endif
 
 call plug#end()
@@ -170,6 +176,27 @@ if filereadable(expand("~/.vim/plugged/neoformat/autoload/neoformat.vim"))
     augroup END
 endif
 
-if filereadable(expand("~/.vim/plugged/catppuccin/README.md"))
-    colorscheme catppuccin_macchiato
+if has('nvim') && filereadable(expand("~/.vim/plugged/catppuccin/README.md"))
+lua <<EOF
+require("catppuccin").setup({
+    flavour = "macchiato",
+    color_overrides = {
+        macchiato = {
+        },
+    },
+    highlight_overrides = {
+        all = function(colors)
+            return {
+                MatchParen = { bg = colors.surface2 },
+                LineNr = { fg = colors.blue },
+                Comment = { fg = colors.blue },
+
+            }
+        end,
+    },
+})
+vim.cmd.colorscheme "catppuccin"
+EOF
+   source ~/.vim/catppuccin-lightline.vim
+   let g:lightline = {'colorscheme': 'catppuccin'}
 endif
