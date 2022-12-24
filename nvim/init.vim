@@ -129,10 +129,6 @@ if bufwinnr(1)
     map - <C-W>-
 endif
 
-" Underline spelling errors
-hi clear SpellBad
-hi SpellBad cterm=bold,underline
-
 " Cursor changes depedning on mode
 if exists('$TMUX')
     let &t_SI .= "\<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"
