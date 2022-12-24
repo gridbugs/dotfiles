@@ -18,6 +18,7 @@ cd "$HOME"
 
 make_link nvim/autoload .vim/autoload
 make_link nvim/plugins.vim .vim/plugins.vim
+make_link nvim/catppuccin-lightline.vim .vim/catppuccin-lightline.vim
 make_link nvim .config/nvim
 make_link feh .config/feh
 make_link alacritty.yml .config/alacritty/alacritty.yml
