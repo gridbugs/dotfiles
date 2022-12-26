@@ -200,6 +200,9 @@ EOF
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'readonly', 'relativepath', 'modified' ] ]
       \ },
+      \ 'inactive': {
+      \   'left': [ [ 'readonly', 'relativepath', 'modified' ] ]
+      \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead'
       \ },
