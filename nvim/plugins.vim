@@ -194,5 +194,17 @@ require("catppuccin").setup({
 vim.cmd.colorscheme "catppuccin"
 EOF
    source ~/.vim/catppuccin-lightline.vim
-   let g:lightline = {'colorscheme': 'catppuccin'}
+   let g:lightline = {
+      \ 'colorscheme': 'catppuccin',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'relativepath', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+
+    " Don't display the mode again in the statusbar
+    set noshowmode
 endif
