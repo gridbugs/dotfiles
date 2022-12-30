@@ -157,8 +157,6 @@ set statusline +=%=%5l             "current line
 set statusline +=/%L               "total lines
 set statusline +=%4v\              "virtual column number
 
-highlight SpellCap ctermbg=darkblue gui=undercurl guisp=Blue
-
 noremap <leader>j :res -1<CR>
 noremap <leader>k :res +1<CR>
 noremap <leader>h :vertical resize -1<CR>
