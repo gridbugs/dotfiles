@@ -175,7 +175,7 @@ if [[ $- == *i* ]]; then
             local GIT_MESSAGE=" "
         fi
 
-        if type opam 2>/dev/null >/dev/null; then
+        if type opam 2>/dev/null >/dev/null && test -d ~/.opam ; then
             local OPAM_SWITCH=$(opam switch show)
             if [[ $OPAM_SWITCH != "default" && $OPAM_SWITCH != "system" ]]; then
                 local OPAM_MESSAGE="$OPAM_COLOUR($OPAM_SWITCH)$PROMPT_COLOUR "
