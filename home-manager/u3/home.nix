@@ -71,6 +71,7 @@
         wine
         arandr
         nmap
+        unzip
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs;
