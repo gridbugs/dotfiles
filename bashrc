@@ -165,7 +165,6 @@ if [[ $- == *i* ]]; then
         local ERROR_COLOUR="\[\033[01;31m\]"
         local GIT_COLOUR="\[\033[01;32m\]"
         local VENV_COLOUR="\[\033[01;34m\]"
-        local OPAM_COLOUR="\[\033[01;33m\]"
         local DOLLAR_COLOUR=$PROMPT_COLOUR
         local LAMBDA_COLOUR="\[\033[01;36m\]"
 
@@ -173,17 +172,6 @@ if [[ $- == *i* ]]; then
             local GIT_MESSAGE="$GIT_COLOUR$(GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWUPSTREAM=auto __git_ps1)$PROMPT_COLOUR "
         else
             local GIT_MESSAGE=" "
-        fi
-
-        if type opam 2>/dev/null >/dev/null && test -d ~/.opam ; then
-            local OPAM_SWITCH=$(opam switch show)
-            if [[ $OPAM_SWITCH != "default" && $OPAM_SWITCH != "system" ]]; then
-                local OPAM_MESSAGE="$OPAM_COLOUR($OPAM_SWITCH)$PROMPT_COLOUR "
-            else
-                local OPAM_MESSAGE=""
-            fi
-        else
-            local OPAM_MESSAGE=""
         fi
 
         if [[ $EXIT != 0 ]]; then
@@ -204,7 +192,7 @@ if [[ $- == *i* ]]; then
             local VENV_MESSAGE=""
         fi
 
-        PS1="\n$PROMPT_COLOUR\u@\h \w$GIT_MESSAGE$OPAM_MESSAGE$VENV_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL_COLOUR "
+        PS1="\n$PROMPT_COLOUR\u@\h \w$GIT_MESSAGE$VENV_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL_COLOUR "
     }
 
     PROMPT_COMMAND=__prompt_command
