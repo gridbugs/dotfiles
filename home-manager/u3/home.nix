@@ -43,6 +43,9 @@
         dmenu
       ];
       devPkgs = [
+        binutils
+        gcc
+        gnumake
         python3
         python3Packages.python-lsp-server
         opam
