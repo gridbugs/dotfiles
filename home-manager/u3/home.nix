@@ -46,6 +46,7 @@
         binutils
         gcc
         gnumake
+        pkg-config
         python3
         python3Packages.python-lsp-server
         opam
