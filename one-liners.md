@@ -16,3 +16,8 @@ Convert all the png files under the current directory to equivalently-named bmp 
 ```
 find . -type f -name '*.png' | xargs -P0 -I{} sh -c 'f={}; ffmpeg -i {} ${f%.png}.bmp'
 ```
+
+Produce an audio file with the audio from a video file:
+```
+ffmpeg -i input-video.avi -vn -acodec copy output-audio.aac
+```
