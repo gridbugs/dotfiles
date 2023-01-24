@@ -41,5 +41,6 @@
     opam
     ocamlformat
     ocamlPackages.ocaml-lsp
+    gdb
   ];
 }
