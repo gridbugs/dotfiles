@@ -42,5 +42,6 @@
     ocamlformat
     ocamlPackages.ocaml-lsp
     gdb
+    ncdu
   ];
 }
