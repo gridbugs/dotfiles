@@ -69,6 +69,8 @@ static const char *dmenucmd[] = { "dmenu_histogram", "-m", dmenumon, "-fn", dmen
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
 static const char *findcursorcmd[]  = { "find-cursor", "-f", "-c#aa33aa", "-l10", "-s500", "-w200", NULL };
+static const char *dvorakcmd[] = { "setxkbmap", "-option", "caps:swapescape", "dvorak" };
+static const char *qwertycmd[] = { "setxkbmap", "-option", "caps:swapescape", "en_S" };
 
 static const char *monbrightnessinccmd[] = { "setbacklight", "+10", NULL };
 static const char *monbrightnessdeccmd[] = { "setbacklight", "-10", NULL };
@@ -90,6 +92,8 @@ static Key keys[] = {
     { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_Return, spawn,          {.v = browsercmd } },
     { MODKEY,                       XK_a,      spawn,          {.v = findcursorcmd } },
+    { MODKEY,                       XK_m,      spawn,          {.v = dvorakcmd } },
+    { MODKEY|ShiftMask,             XK_m,      spawn,          {.v = qwertycmd } },
     { MODKEY,                       XK_t,      togglebar,      {0} },
     { MODKEY,                       XK_apostrophe,      focusstack,     {.i = +1 } },
     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
