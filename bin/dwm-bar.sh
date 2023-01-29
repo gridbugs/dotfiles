@@ -4,6 +4,13 @@ set -eu
 
 TIME=$(date "+%a %Y-%m-%d %H:%M:%S %Z")
 
+if type setxkbmap >/dev/null 2>/dev/null; then
+    KEYMAP=$(setxkbmap -query | grep layout | awk '{print $2}')
+    MAYBE_KEYMAP=" $KEYMAP |"
+else
+    MAYBE_KEYMAP=""
+fi
+
 if type list-ips >/dev/null 2>/dev/null; then
     IP=$(list-ips)
     MAYBE_IP=" $IP |"
@@ -39,4 +46,4 @@ else
     MAYBE_TIMES_EXTRA=""
 fi
 
-echo "$MAYBE_IP$MAYBE_BACKLIGHT$MAYBE_BATT$MAYBE_VOLUME$MAYBE_TIMES_EXTRA $TIME"
+echo "$MAYBE_KEYMAP$MAYBE_IP$MAYBE_BACKLIGHT$MAYBE_BATT$MAYBE_VOLUME$MAYBE_TIMES_EXTRA $TIME"
