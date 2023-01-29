@@ -76,6 +76,7 @@
         arandr
         nmap
         unzip
+        find-cursor
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs;
