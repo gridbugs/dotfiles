@@ -77,6 +77,7 @@
         nmap
         unzip
         find-cursor
+        gh
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs;
