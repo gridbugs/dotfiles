@@ -53,6 +53,12 @@
         ocamlformat
         ocamlPackages.ocaml-lsp
         nodejs
+        rustc
+        cargo
+        rustPlatform.rustLibSrc
+        rust-analyzer
+        cargo-watch
+        rustfmt
       ];
       toolPkgs = [
         obs
@@ -81,4 +87,9 @@
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs;
+
+  # Allows rust-analyzer to find the rust source
+  home.sessionVariables = {
+    RUST_SRC_PATH = "${pkgs.rustPlatform.rustLibSrc}";
+  };
 }
