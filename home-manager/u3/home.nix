@@ -30,6 +30,7 @@
       mkStSized = { pixelsize }: (import ../../st/sized.nix { pkgs = pkgs; pixelsize = pixelsize;}).st;
       st12 = mkStSized { pixelsize = 12; };
       st16 = mkStSized { pixelsize = 16; };
+      st20 = mkStSized { pixelsize = 20; };
       st24 = mkStSized { pixelsize = 24; };
       dwm = (import ../../dwm/common.nix { pkgs = pkgs; pixelsize = 12; }).dwm;
       obs = (import ../../nix/obs.nix { pkgs = pkgs; }).obs;
@@ -38,6 +39,7 @@
         st
         st12
         st16
+        st20
         st24
         dwm
         dmenu
