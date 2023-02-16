@@ -48,6 +48,8 @@
         binutils
         gcc
         gnumake
+        gmp
+        openssl
         pkg-config
         python3
         python3Packages.python-lsp-server
