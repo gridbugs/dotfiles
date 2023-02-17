@@ -42,6 +42,7 @@
         ledger
         zip
         unrar
+        gh
       ];
       devPkgs = [
         nodejs
