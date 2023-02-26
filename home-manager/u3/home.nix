@@ -88,6 +88,7 @@
         unzip
         find-cursor
         gh
+        audacity
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs;
