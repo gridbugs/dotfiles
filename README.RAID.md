@@ -67,6 +67,12 @@ mdadm --assemble --scan
 ```
 ...should be sufficient for the array's block devices to be created.
 
+## Re-adding a drive that was unplugged or replcaed on the fly
+
+```
+mdadm --manage /dev/md127 --add /dev/sda1
+```
+
 ## Resources
 - [[ArchWiki] RAID](https://wiki.archlinux.org/title/RAID)
 - [[John Mercier] switching to nixos](http://johnmercier.com/blog/2017/06-19-switching-to-nixos-again.html)
