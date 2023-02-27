@@ -30,6 +30,6 @@
       htop
       youtube-dl
       file
-      python
+      python3
     ];
 }
