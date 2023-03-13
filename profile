@@ -57,6 +57,11 @@ if [ -f /opt/homebrew/bin/brew ]; then
     export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 fi
 
+# Set up homebrew library path
+if type brew 2>/dev/null >/dev/null; then
+    export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+fi
+
 if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
         . ~/.bashrc
