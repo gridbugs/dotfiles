@@ -43,5 +43,6 @@ patch -d $SRC_DIR -p1 < $DWM_DIR/bottomstack-custom.diff
 patch -d $SRC_DIR -p1 < $PERTAG_FILENAME
 patch -d $SRC_DIR -p1 < $DWM_DIR/replace-space.diff
 patch -d $SRC_DIR -p1 < $DWM_DIR/usercflags.diff
+patch -d $SRC_DIR -p1 < $DWM_DIR/setmaster.diff
 patch -d $SRC_DIR -p1 < $DWM_DIR/local.diff
 ln -sf $CONFIG $(pwd)/$SRC_DIR

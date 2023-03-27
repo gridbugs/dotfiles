@@ -9,19 +9,19 @@ CONFIG=$ST_DIR/config.h
 source $DIR/common.sh
 
 NAME=st
-VERSION=0.8.4
+VERSION=0.9
 SRC_FILENAME="st-$VERSION.tar.gz"
 SRC_DIR="st-$VERSION"
 SRC_URL="https://dl.suckless.org/st/$SRC_FILENAME"
-SRC_CHECKSUM="d42d3ceceb4d6a65e32e90a5336e3d446db612c3fbd9ebc1780bc6c9a03346a6"
+SRC_CHECKSUM="f36359799734eae785becb374063f0be833cf22f88b4f169cd251b99324e08e7"
 
 BOLD_IS_NOT_BRIGHT_FILENAME="bold-is-not-bright.diff"
 BOLD_IS_NOT_BRIGHT_URL="https://st.suckless.org/patches/bold-is-not-bright/st-bold-is-not-bright-20190127-3be4cf1.diff"
 BOLD_IS_NOT_BRIGHT_CHECKSUM="329169acac7ceaf901995d6e0897913089b799d8cd150c7f04c902f4a5b8eab2"
 
 SCROLLBACK_FILENAME="scrollback.diff"
-SCROLLBACK_URL="https://st.suckless.org/patches/scrollback/st-scrollback-20201205-4ef0cbd.diff"
-SCROLLBACK_CHECKSUM="3b8c7d1815352cbfa2e100f6bb65e4c7d5a338952a6e7513b59a6a6297f32fb4"
+SCROLLBACK_URL="https://st.suckless.org/patches/scrollback/st-scrollback-20210507-4536f46.diff"
+SCROLLBACK_CHECKSUM="19d8f4e7fd0d1933dc6fcf6c7333db08e1b40fc75795464660c4d723eb62511c"
 
 SCROLLBACK_MOUSE_FILENAME="scrollback-mouse.diff"
 SCROLLBACK_MOUSE_URL="https://st.suckless.org/patches/scrollback/st-scrollback-mouse-20191024-a2c479c.diff"
@@ -30,6 +30,10 @@ SCROLLBACK_MOUSE_CHECKSUM="319458d980195d18fa0f81a6898d58f8d046c5ff982ab872d741f
 SCROLLBACK_MOUSE_ALTSCREEN_FILENAME="scrollback-mouse-altscreen.diff"
 SCROLLBACK_MOUSE_ALTSCREEN_URL="https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-20200416-5703aa0.diff"
 SCROLLBACK_MOUSE_ALTSCREEN_CHECKSUM="cb87eb654985da46ff63663407184402393ad3d3013c8795570552fe56a15b9d"
+
+GLYPH_WIDE_SUPPORT_FILENAME="glyph-wide-support.diff"
+GLYPH_WIDE_SUPPORT_URL="https://st.suckless.org/patches/glyph_wide_support/st-glyph-wide-support-20220411-ef05519.diff"
+GLYPH_WIDE_SUPPORT_CHECKSUM="8429911491c6adac876af0b9a5aa0c42d93c71977fd712f0fa40a6a748c12567"
 
 mkdir -p $BUILD_DIR
 
@@ -51,13 +55,16 @@ checksum $SCROLLBACK_MOUSE_CHECKSUM $SCROLLBACK_MOUSE_FILENAME
 get $SCROLLBACK_MOUSE_ALTSCREEN_URL $SCROLLBACK_MOUSE_ALTSCREEN_FILENAME
 checksum $SCROLLBACK_MOUSE_ALTSCREEN_CHECKSUM $SCROLLBACK_MOUSE_ALTSCREEN_FILENAME
 
+get $GLYPH_WIDE_SUPPORT_URL $GLYPH_WIDE_SUPPORT_FILENAME
+checksum $GLYPH_WIDE_SUPPORT_CHECKSUM $GLYPH_WIDE_SUPPORT_FILENAME
+
 tar xvzf $SRC_FILENAME
 patch -d $SRC_DIR -p1 < $BOLD_IS_NOT_BRIGHT_FILENAME
 patch -d $SRC_DIR -p1 < $SCROLLBACK_FILENAME
 patch -d $SRC_DIR -p1 < $SCROLLBACK_MOUSE_FILENAME
 patch -d $SRC_DIR -p1 < $SCROLLBACK_MOUSE_ALTSCREEN_FILENAME
+patch -d $SRC_DIR -p1 < $GLYPH_WIDE_SUPPORT_FILENAME
 patch -d $SRC_DIR -p1 < $ST_DIR/replace-space.diff
-patch -d $SRC_DIR -p1 < $ST_DIR/glyph-wide-support-fixed.diff
 patch -d $SRC_DIR -p1 < $ST_DIR/usercflags.diff
 patch -d $SRC_DIR -p1 < $ST_DIR/local.diff
 ln -sf $CONFIG $(pwd)/$SRC_DIR

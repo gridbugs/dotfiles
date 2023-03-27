@@ -33,8 +33,12 @@ else
 fi
 
 if type amixer >/dev/null 2>/dev/null; then
-    VOLUME=$(amixer sget Master | tail -n1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
-    MAYBE_VOLUME=" vo $VOLUME |"
+    VOLUME=$(amixer sget Master 2> /dev/null | tail -n1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
+    if [ $VOLUME == ""]; then
+        MAYBE_VOLUME=""
+    else
+        MAYBE_VOLUME=" vo $VOLUME |"
+    fi
 else
     MAYBE_VOLUME=""
 fi

@@ -16,3 +16,8 @@ Finally, here's the command that I use on linux and freebsd:
 ```
 make USERCFLAGS=-DUSERFONT="\"\\\"xos4 Terminus:pixelsize=12:antialias=true:autohint=true\\\"\""
 ```
+
+On alpine linux for dwm I needed to run:
+```
+make USERCFLAGS=-DUSERFONT="\"\\\"Terminus:style=Regular:pixelsize=12:antialias=true:autohint=true\\\"\""
+```
