@@ -2,10 +2,6 @@
 
 setxkbmap -option caps:swapescape dvorak
 
-if test -f $HOME/.xprofile; then
-    . $HOME/.xprofile
-fi
-
 if type xsetroot >/dev/null 2>/dev/null; then
     xsetroot -solid black
 fi
