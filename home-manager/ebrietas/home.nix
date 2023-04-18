@@ -43,6 +43,7 @@
         zip
         unrar
         gh
+        ncdu
       ];
       devPkgs = [
         nodejs
