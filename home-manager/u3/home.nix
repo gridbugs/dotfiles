@@ -69,6 +69,7 @@
         neovim
         firefox
         thunderbird
+        google-chrome
         zoom-us
         zathura
         nomacs
