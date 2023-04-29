@@ -46,6 +46,18 @@ sudo nixos-rebuild switch
 
 ## Common Operations
 
+### Flake equivalent of `nix-shell -p` that also lets you set the nixpkgs version
+
+This is handly when trying to be compatible with packages installed with home-manager or
+system-wide installed packages that were installed with flakes, and the revision of nixpkgs
+is known. Supposing the current revision of nixpkgs in the `flake.lock` file is
+`f00994e78cd39e6fc966f0c4103f908e63284780`, then you could create a transient shell with some
+specified packages by running:
+
+```
+nix shell nixpkgs/f00994e78cd39e6fc966f0c4103f908e63284780#hello nixpkgs/f00994e78cd39e6fc966f0c4103f908e63284780#cowsay
+```
+
 ### Install Home Manager on macOS
 
 ```
