@@ -48,6 +48,11 @@ if [[ $- == *i* ]]; then
         alias ls='ls --color'
     fi
 
+    # Alias for nix-shell-locked command
+    if type nix-shell-locked 2>/dev/null >/dev/null; then
+        alias ns=nix-shell-locked
+    fi
+
     # Customize bash history behaviour
     export HISTCONTROL=ignoredups:erasedups
     export HISTSIZE=100000

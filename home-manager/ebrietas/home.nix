@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, extraPkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -24,38 +24,38 @@
   programs.direnv.nix-direnv.enable = true;
 
   home.packages = with pkgs;
-    let
-      toolPkgs = [
-        coreutils
-        nix-bash-completions
-        bash-completion
-        neovim
-        tmux
-        htop
-        ripgrep
-        wget
-        sshfs
-        fontforge
-        tree
-        ffmpeg
-        youtube-dl
-        ledger
-        zip
-        unrar
-        gh
-        ncdu
-      ];
-      devPkgs = [
-        nodejs
-        python3
-        python3Packages.python-lsp-server
-        opam
-        ocamlformat
-        ocamlPackages.ocaml-lsp
-        git
-        mercurial
-        darcs
-      ];
-    in
-    toolPkgs ++ devPkgs;
+  let
+    toolPkgs = [
+      coreutils
+      nix-bash-completions
+      bash-completion
+      neovim
+      tmux
+      htop
+      ripgrep
+      wget
+      sshfs
+      fontforge
+      tree
+      ffmpeg
+      youtube-dl
+      ledger
+      zip
+      unrar
+      gh
+      ncdu
+    ];
+    devPkgs = [
+      nodejs
+      python3
+      python3Packages.python-lsp-server
+      opam
+      ocamlformat
+      ocamlPackages.ocaml-lsp
+      git
+      mercurial
+      darcs
+    ];
+  in
+  toolPkgs ++ devPkgs ++ extraPkgs;
 }
