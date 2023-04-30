@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, extraPkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -25,25 +25,28 @@
 
   home.packages = with pkgs;
     let
-      terminus-font = (import ../../terminus-font/default.nix {} { terminus_font = terminus_font; }).terminus_font;
-      st = (import ../../st/common.nix { pkgs = pkgs; pixelsize = 12; }).st;
-      mkStSized = { pixelsize }: (import ../../st/sized.nix { pkgs = pkgs; pixelsize = pixelsize;}).st;
+      terminus-font = (import ../../terminus-font/default.nix { } {
+        terminus_font = terminus_font;
+      }).terminus_font;
+      st = (import ../../st/common.nix {
+        pkgs = pkgs;
+        pixelsize = 12;
+      }).st;
+      mkStSized = { pixelsize }:
+        (import ../../st/sized.nix {
+          pkgs = pkgs;
+          pixelsize = pixelsize;
+        }).st;
       st12 = mkStSized { pixelsize = 12; };
       st16 = mkStSized { pixelsize = 16; };
       st20 = mkStSized { pixelsize = 20; };
       st24 = mkStSized { pixelsize = 24; };
-      dwm = (import ../../dwm/common.nix { pkgs = pkgs; pixelsize = 12; }).dwm;
+      dwm = (import ../../dwm/common.nix {
+        pkgs = pkgs;
+        pixelsize = 12;
+      }).dwm;
       obs = (import ../../nix/obs.nix { pkgs = pkgs; }).obs;
-      uiPkgs = [
-        terminus-font
-        st
-        st12
-        st16
-        st20
-        st24
-        dwm
-        dmenu
-      ];
+      uiPkgs = [ terminus-font st st12 st16 st20 st24 dwm dmenu ];
       devPkgs = [
         binutils
         gcc
@@ -90,9 +93,9 @@
         find-cursor
         gh
         audacity
+        nixfmt
       ];
-    in
-    uiPkgs ++ devPkgs ++ toolPkgs;
+    in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 
   # Allows rust-analyzer to find the rust source
   home.sessionVariables = {
