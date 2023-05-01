@@ -7,10 +7,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-shell-locked.url = "github:gridbugs/nix-shell-locked";
   };
 
-  outputs = { nixpkgs, home-manager, nix-shell-locked, ... }:
+  outputs = { nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -24,7 +23,7 @@
         modules = [ ./home.nix ];
 
         extraSpecialArgs = {
-          extraPkgs = [ (nix-shell-locked.defaultPackage.${system}) ];
+          extraPkgs = [];
         };
       };
     };
