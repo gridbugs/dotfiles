@@ -60,6 +60,9 @@
         arandr
         nmap
         unzip
+        pcsx2
+        p7zip
+        find-cursor
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs;
