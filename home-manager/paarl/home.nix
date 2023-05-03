@@ -36,6 +36,7 @@
     openssl
     pkg-config
     ocamlformat
+    ripgrep
   ];
 
   # Allows rust-analyzer to find the rust source
