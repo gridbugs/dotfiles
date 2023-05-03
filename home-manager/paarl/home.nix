@@ -28,6 +28,14 @@
     neovim
     unzip
     projectm
+    opam
+    binutils
+    gcc
+    gnumake
+    gmp
+    openssl
+    pkg-config
+    ocamlformat
   ];
 
   # Allows rust-analyzer to find the rust source
