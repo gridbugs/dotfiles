@@ -165,6 +165,61 @@ nixpkgs.config.allowUnfree = true;
 
 Keep the build dir by passing `--keep-failed` to `nix-build` or `nix build`.
 
+### Debub Failing Derivations
+
+In this example, the file `./CH341SER.nix` contains a package derivation for a kernel
+module, and running the following command fails:
+```
+ $ nix-build -E 'with import <nixpkgs> {}; callPackage ./CH341SER.nix { kernel = linuxPackages_latest.kernel; }'
+
+this derivation will be built:
+  /nix/store/yql89vba23p4snl40qap7m3bpqpmrm7r-ch341ser-821436a4b22a52c3b93a3fb708275db7b8ed3a65-6.3.drv
+building '/nix/store/yql89vba23p4snl40qap7m3bpqpmrm7r-ch341ser-821436a4b22a52c3b93a3fb708275db7b8ed3a65-6.3.drv'...
+unpacking sources
+unpacking source archive /nix/store/kyri1hs4k7a9j1iax272k4xq5l4an5x9-source
+source root is source
+patching sources
+configuring
+no configure script, doing nothing
+building
+build flags: SHELL=/nix/store/rnkas52f8868g1hjdlldbvh6snm3pglv-bash-5.2-p15/bin/bash KERNELRELEASE=6.3.0 KERNELDIR=/nix/store/2jz5kqqyya8rmra0q25l34v3zls3vii9-linux-6.3-dev/lib/modules/6.3.0/build INSTALL_MOD_PATH=\$\(out\)
+make: *** No targets.  Stop.
+error: builder for '/nix/store/yql89vba23p4snl40qap7m3bpqpmrm7r-ch341ser-821436a4b22a52c3b93a3fb708275db7b8ed3a65-6.3.drv' failed with exit code 2;
+       last 9 log lines:
+       > unpacking sources
+       > unpacking source archive /nix/store/kyri1hs4k7a9j1iax272k4xq5l4an5x9-source
+       > source root is source
+       > patching sources
+       > configuring
+       > no configure script, doing nothing
+       > building
+       > build flags: SHELL=/nix/store/rnkas52f8868g1hjdlldbvh6snm3pglv-bash-5.2-p15/bin/bash KERNELRELEASE=6.3.0 KERNELDIR=/nix/store/2jz5kqqyya8rmra0q25l34v3zls3vii9-linux-6.3-dev/lib/modules/6.3.0/build INSTALL_MOD_PATH=\$\(out\)
+       > make: *** No targets.  Stop.
+       For full logs, run 'nix log /nix/store/yql89vba23p4snl40qap7m3bpqpmrm7r-ch341ser-821436a4b22a52c3b93a3fb708275db7b8ed3a65-6.3.drv'.
+```
+
+Here's a shell session using `nix-shell` to instantiate an environment where the steps to build
+the derivation can be performed manually using some helper functions:
+```
+ $ nix-shell -E "with import <nixpkgs> {}; callPackage ./CH341SER.nix { kernel = linuxPackages_latest.kernel; }"
+
+ λ pushd $(mktemp -d)
+/run/user/1000/tmp.m9uAW78PpK ~/machines/u3
+
+ λ unpackPhase
+unpacking source archive /nix/store/kyri1hs4k7a9j1iax272k4xq5l4an5x9-source
+source root is source
+
+ λ cd source/
+
+ λ configurePhase
+no configure script, doing nothing
+
+ λ buildPhase
+build flags: SHELL=/nix/store/crimsl8qdrdjq0dw16wcvpfp29p2al39-bash-interactive-5.2-p15/bin/bash KERNELRELEASE=6.3.0 KERNELDIR=/nix/store/2jz5kqqyya8rmra0q25l34v3zls3vii9-linux-6.3-dev/lib/modules/6.3.0/build INSTALL_MOD_PATH=\$\(out\)
+make: *** No targets.  Stop.
+```
+
 ## Quirks
 
 ### Broken Locales
