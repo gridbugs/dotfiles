@@ -53,6 +53,7 @@
         gnumake
         gmp
         openssl
+        curlFull
         pkg-config
         python3
         python3Packages.python-lsp-server
