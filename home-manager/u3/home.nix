@@ -50,6 +50,7 @@
       devPkgs = [
         binutils
         gcc
+        gdb
         gnumake
         gmp
         openssl
@@ -95,6 +96,7 @@
         gh
         audacity
         nixfmt
+        imagemagick
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 
