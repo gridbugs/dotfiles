@@ -80,11 +80,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1682871854,
-        "narHash": "sha256-Wj+laF6Z5M2p8dLAOHbaWdJHMpJo3p1Y9GWpO/TibTE=",
+        "lastModified": 1682989924,
+        "narHash": "sha256-+C0sjzvUAQgFOPPvWJz3D8v1182ez9o9NuLdZdfjIEI=",
         "owner": "gridbugs",
         "repo": "nix-shell-locked",
-        "rev": "056f905af02fd69654f451f97a4e1c9b1109cf66",
+        "rev": "d3da75714e6a33c1d6c6d2121cf2121a7d9f88ae",
         "type": "github"
       },
       "original": {
@@ -127,11 +127,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1682692304,
-        "narHash": "sha256-9/lyXN2BpHw+1xE+D2ySBSLMCHWqiWu5tPHBMRDib8M=",
+        "lastModified": 1685168767,
+        "narHash": "sha256-wQgnxz0PdqbyKKpsWl/RU8T8QhJQcHfeC6lh1xRUTfk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "937a9d1ee7b1351d8c55fff6611a8edf6e7c1c37",
+        "rev": "e10802309bf9ae351eb27002c85cfdeb1be3b262",
         "type": "github"
       },
       "original": {
