@@ -73,6 +73,12 @@ mdadm --assemble --scan
 mdadm --manage /dev/md127 --add /dev/sda1
 ```
 
+## View current array status
+
+```
+mdadm --detail /dev/md127
+```
+
 ## Resources
 - [[ArchWiki] RAID](https://wiki.archlinux.org/title/RAID)
 - [[John Mercier] switching to nixos](http://johnmercier.com/blog/2017/06-19-switching-to-nixos-again.html)
