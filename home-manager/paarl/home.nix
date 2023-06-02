@@ -29,6 +29,8 @@
     unzip
     projectm
     opam
+    ocamlformat
+    ocamlPackages.ocaml-lsp
     binutils
     gcc
     gnumake
