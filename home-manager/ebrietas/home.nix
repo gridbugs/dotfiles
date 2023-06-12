@@ -44,6 +44,7 @@
       unrar
       gh
       ncdu
+      mosh
     ];
     devPkgs = [
       nodejs
