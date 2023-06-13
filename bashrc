@@ -192,7 +192,7 @@ if [[ $- == *i* ]]; then
             local VENV_MESSAGE=""
         fi
 
-        PS1="\n$PROMPT_COLOUR\u@\h \w$GIT_MESSAGE$VENV_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL_COLOUR "
+        PS1="\n$PROMPT_COLOUR\u@\H \w$GIT_MESSAGE$VENV_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL_COLOUR "
     }
 
     PROMPT_COMMAND=__prompt_command
