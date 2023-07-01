@@ -45,6 +45,7 @@
       gh
       ncdu
       mosh
+      imagemagick
     ];
     devPkgs = [
       nodejs
