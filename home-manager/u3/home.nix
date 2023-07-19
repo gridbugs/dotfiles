@@ -46,7 +46,7 @@
         pixelsize = 12;
       }).dwm;
       obs = (import ../../nix/obs.nix { pkgs = pkgs; }).obs;
-      uiPkgs = [ terminus-font st st12 st16 st20 st24 dwm dmenu ];
+      uiPkgs = [ terminus-font st st12 st16 st20 st24 dwm dmenu unclutter ];
       devPkgs = [
         binutils
         gcc
