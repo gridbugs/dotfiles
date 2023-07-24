@@ -97,6 +97,7 @@
         audacity
         nixfmt
         imagemagick
+        tmate
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 

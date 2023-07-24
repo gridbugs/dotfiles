@@ -31,6 +31,7 @@ make_link inputrc .inputrc
 make_link xinitrc .xinitrc
 make_link xsession .xsession
 make_link tmux.conf .tmux.conf
+make_link tmate.conf .tmate.conf
 make_link fonts.conf .fonts.conf
 make_link ctags .ctags
 make_link bin .bin
