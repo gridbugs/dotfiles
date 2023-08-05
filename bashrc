@@ -106,7 +106,7 @@ if [[ $- == *i* ]]; then
     fi
 
     if [[ -f ~/.nix-profile/share/bash-completion/completions/_nix ]]; then
-        . ~/.nix-profile/share/bash-completion/completions/_nix
+        . ~/.nix-profile/share/bash-completion/completions/_nix 2> /dev/null
     fi
 
     # try to load bash completion from its default location on some systems
