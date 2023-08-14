@@ -140,7 +140,6 @@ static Key keys[] = {
     { ShiftMask,                    XF86XK_AudioRaiseVolume, spawn, {.v = volumebiginccmd } },
     { ShiftMask,                    XF86XK_AudioLowerVolume, spawn, {.v = volumebigdeccmd } },
     { 0,                            XF86XK_AudioMute, spawn, {.v = volumemutecmd } },
-    { MODKEY,                       XK_b,      togglebar,      {0} },
 };
 
 /* button definitions */
