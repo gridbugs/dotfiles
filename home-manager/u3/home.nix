@@ -71,6 +71,7 @@
       ];
       toolPkgs = [
         obs
+        openshot-qt
         neovim
         firefox
         thunderbird
