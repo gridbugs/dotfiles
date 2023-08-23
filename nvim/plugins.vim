@@ -94,7 +94,7 @@ let g:LanguageClient_serverCommands = {
 \ 'javascript.jsx': ['typescript-language-server', '--stdio'],
 \ 'c': ['clangd'],
 \ 'cpp': ['clangd'],
-\ 'ocaml': ['ocamllsp'],
+\ 'ocaml': ['opam',  'exec', 'ocamllsp', '--', '--fallback-read-dot-merlin'],
 \ 'erlang': ['erlang_ls'],
 \ }
 
