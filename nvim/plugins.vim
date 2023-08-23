@@ -98,6 +98,7 @@ let g:LanguageClient_serverCommands = {
 \ 'erlang': ['erlang_ls'],
 \ }
 
+let g:LanguageClient_loggingFile = expand('~/.vim/LanguageClient.log')
 let g:LanguageClient_hoverPreview = "Always"
 let g:LanguageClient_useFloatingHover = 0
 highlight LanguageClientWarning ctermbg=black
