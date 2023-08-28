@@ -96,17 +96,32 @@ if [[ $- == *i* ]]; then
     fi
 
     if type rustc 2>/dev/null >/dev/null && [[ -d ~/.cargo ]]; then
-        RUST_COMPLETION1=$(rustc --print sysroot)/etc/bash_completion.d/cargo
-        RUST_COMPLETION2=$(rustc --print sysroot)/share/bash-completion/completions/cargo
-        if [[ -f $RUST_COMPLETION1 ]]; then
-            . $RUST_COMPLETION1
-        elif [[ -f $RUST_COMPLETION2 ]]; then
-            . $RUST_COMPLETION2
+        find_rust_completions() {
+            local C1 C2 C3 C4 RUST_COMPLETION
+            C1=$(rustc --print sysroot)/etc/bash_completion.d/cargo
+            C2=$(rustc --print sysroot)/share/bash-completion/completions/cargo
+            C3=$(rustc --print sysroot)/etc/bash_completion.d/cargo.bashcomp.sh
+            C4=$(rustc --print sysroot)/share/bash-completion/completions/cargo.bashcomp.sh
+            RUST_COMPLETION=/dev/null
+            for C in $C1 $C2 $C3 $C4; do
+                if [[ -f $C ]]; then
+                    RUST_COMPLETION=$C
+                    break
+                fi
+            done
+            echo $RUST_COMPLETION
+        }
+        RUST_COMPLETION=$(find_rust_completions)
+        if [[ -f $RUST_COMPLETION ]]; then
+            . $RUST_COMPLETION
         fi
     fi
 
+    # Enable extended globbing. This feature is needed by nix bash completions
+    shopt -s extglob
+
     if [[ -f ~/.nix-profile/share/bash-completion/completions/_nix ]]; then
-        . ~/.nix-profile/share/bash-completion/completions/_nix 2> /dev/null
+        . ~/.nix-profile/share/bash-completion/completions/_nix
     fi
 
     # try to load bash completion from its default location on some systems
