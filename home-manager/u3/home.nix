@@ -82,6 +82,7 @@
         vlc
         mplayer
         gimp
+        inkscape
         ffmpeg
         fzf
         pavucontrol
