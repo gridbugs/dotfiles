@@ -30,9 +30,6 @@ systemctl restart nix-daemon
 ```
 
 ### MacOS
-```
-sudo -i sh -c 'nix-channel --update && nix-env -iA nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'
-```
 
 ## System Upgrade
 
@@ -42,6 +39,19 @@ sudo nix-channel --remove nixos
 sudo nix-channel --add https://nixos.org/channels/nixos-21.11 nixos
 sudo nix-channel --update
 sudo nixos-rebuild switch
+```
+
+## After MacOS updates
+
+If MacOS updates and the `nix` command becomes unavailable it may be because the
+nix initialization has been removed from the global shell configs. Make sure
+/etc/bashrc and /etc/zshrc end with:
+```
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+# End Nix
 ```
 
 ## Common Operations
