@@ -18,8 +18,12 @@ if [[ $- == *i* ]]; then
     # Tmux unicode and 256 colour support
     alias tmux='tmux -u -2'
 
-    # Allow aliases in sudo
+    # Allow aliases in sudo and doas
     alias sudo='sudo '
+    alias doas='doas '
+
+    # Allow bash completion of commands through doas
+    complete -F _command doas
 
     # Some handy aliases
     alias tmp='pushd $(mktemp -d)'
