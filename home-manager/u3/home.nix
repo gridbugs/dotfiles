@@ -100,6 +100,7 @@
         nixfmt
         imagemagick
         tmate
+        dig
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 
