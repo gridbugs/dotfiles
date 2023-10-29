@@ -5,7 +5,7 @@ set -eu
 TIME=$(date "+%a %Y-%m-%d %H:%M:%S %Z")
 
 if type setxkbmap >/dev/null 2>/dev/null; then
-    KEYMAP=$(setxkbmap -query | grep layout | awk '{print $2}')
+    KEYMAP=$(setxkbmap -query | grep variant | awk '{print $2}')
     MAYBE_KEYMAP=" $KEYMAP |"
 else
     MAYBE_KEYMAP=""
