@@ -101,6 +101,7 @@
         imagemagick
         tmate
         dig
+        sshfs
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 
