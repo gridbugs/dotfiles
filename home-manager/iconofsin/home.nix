@@ -42,8 +42,20 @@
         dwm
         dmenu
       ];
-      devPkgs = [];
+      devPkgs = [
+        binutils
+        gcc
+        gnumake
+        gmp
+        openssl
+        opam
+        rustc
+        cargo
+      ];
       toolPkgs = [
+        rsync
+        mercurial
+        darcs
         neovim
         firefox
         nomacs
