@@ -7,10 +7,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-shell-locked.url = "github:gridbugs/nix-shell-locked";
   };
 
-  outputs = { nixpkgs, home-manager, nix-shell-locked, ... }:
+  outputs = { nixpkgs, home-manager, ... }:
     let
       system = "aarch64-darwin";
       pkgs = import nixpkgs {
@@ -22,12 +21,6 @@
         inherit pkgs;
 
         modules = [ ./home.nix ];
-
-        extraSpecialArgs = {
-          extraPkgs = [
-            (nix-shell-locked.defaultPackage.${system})
-          ];
-        };
       };
     };
 }

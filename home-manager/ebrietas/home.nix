@@ -1,4 +1,4 @@
-{ config, pkgs, extraPkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -59,5 +59,5 @@
       darcs
     ];
   in
-  toolPkgs ++ devPkgs ++ extraPkgs;
+  toolPkgs ++ devPkgs;
 }
