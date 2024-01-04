@@ -4,6 +4,20 @@ export __USER_PROFILE_SOURCED=1
 
 export PATH="$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:/usr/games:/usr/local/games:$PATH"
 
+
+# Set up homebrew env if available
+if [ -f /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+if [ -f /opt/homebrew/bin/brew ]; then
+    export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+fi
+
+# Set up homebrew library path
+if type brew 2>/dev/null >/dev/null; then
+    export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+fi
+
 # Source extra commands from .profile_extra
 [ -f ~/.profile_extra ] && . ~/.profile_extra
 
@@ -47,19 +61,6 @@ fi
 if [ -d "$HOME/.npm-packages" ]; then
     NPM_PACKAGES=$HOME/.npm-packages
     export PATH="$NPM_PACKAGES/bin:$PATH"
-fi
-
-# Set up homebrew env if available
-if [ -f /opt/homebrew/bin/brew ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-if [ -f /opt/homebrew/bin/brew ]; then
-    export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-fi
-
-# Set up homebrew library path
-if type brew 2>/dev/null >/dev/null; then
-    export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 fi
 
 if [ -n "$BASH_VERSION" ]; then
