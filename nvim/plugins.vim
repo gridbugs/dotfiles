@@ -61,6 +61,10 @@ Plug 'vim-latex/vim-latex'
 " Cram tests
 Plug 'gridbugs/vim-cram'
 
+" Version info in Cargo.toml
+Plug 'nvim-lua/plenary.nvim'
+Plug 'saecki/crates.nvim', { 'tag': 'stable' }
+
 if has('nvim')
     " Required for ncm2
     Plug 'roxma/nvim-yarp'
@@ -211,4 +215,52 @@ EOF
 
     " Don't display the mode again in the statusbar
     set noshowmode
+endif
+
+if has('nvim') && filereadable(expand("~/.vim/plugged/crates.nvim/README.md"))
+lua <<EOF
+require('crates').setup {
+    text = {
+        loading = "  Loading...",
+        version = "  ✓ %s",
+        prerelease = " * %s",
+        yanked = "  x yanked",
+        nomatch = "  Not found",
+        upgrade = "  ↑ %s",
+        error = "  Error fetching crate",
+    },
+    popup = {
+        text = {
+            title = "# %s",
+            pill_left = "",
+            pill_right = "",
+            created_label = "created        ",
+            updated_label = "updated        ",
+            downloads_label = "downloads      ",
+            homepage_label = "homepage       ",
+            repository_label = "repository     ",
+            documentation_label = "documentation  ",
+            crates_io_label = "crates.io      ",
+            categories_label = "categories     ",
+            keywords_label = "keywords       ",
+            version = "%s",
+            prerelease = "%s pre-release",
+            yanked = "%s yanked",
+            enabled = "* s",
+            transitive = "~ s",
+            normal_dependencies_title = "  Dependencies",
+            build_dependencies_title = "  Build dependencies",
+            dev_dependencies_title = "  Dev dependencies",
+            optional = "? %s",
+            loading = " ...",
+        },
+    },
+    src = {
+        text = {
+            prerelease = " pre-release ",
+            yanked = " yanked ",
+        },
+    },
+}
+EOF
 endif
