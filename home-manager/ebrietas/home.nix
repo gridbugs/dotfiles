@@ -46,6 +46,7 @@
       ncdu
       mosh
       imagemagick
+      p7zip
     ];
     devPkgs = [
       nodejs
