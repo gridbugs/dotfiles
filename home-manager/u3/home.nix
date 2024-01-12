@@ -102,6 +102,7 @@
         tmate
         dig
         sshfs
+        kicad
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 
