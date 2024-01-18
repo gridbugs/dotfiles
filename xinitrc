@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if type xset >/dev/null 2>/dev/null; then
+    xset r rate 200 50
+fi
+
 if type xsetroot >/dev/null 2>/dev/null; then
     xsetroot -solid black
 fi
