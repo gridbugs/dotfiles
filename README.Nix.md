@@ -171,6 +171,12 @@ In /etc/nixos/configuration.nix:
 nixpkgs.config.allowUnfree = true;
 ```
 
+### Force `nix run` to re-download package
+
+```
+nix run --refresh gitlab:gridbugs/ia
+```
+
 ### Debug Failing Builds
 
 Keep the build dir by passing `--keep-failed` to `nix-build` or `nix build`.
