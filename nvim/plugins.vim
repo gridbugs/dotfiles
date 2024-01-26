@@ -112,6 +112,8 @@ highlight LanguageClientInfo ctermbg=red
 au FileType * nmap <leader><leader>t :call LanguageClient#textDocument_hover()<CR>
 au FileType * nmap <leader><leader>d :call LanguageClient#textDocument_definition()<CR>
 au FileType * nmap <leader><leader>r :call LanguageClient#textDocument_rename()<CR>
+au FileType * nmap <leader><leader>n :call LanguageClient#diagnosticsNext()<CR>
+au FileType * nmap <leader><leader>N :call LanguageClient#diagnosticsPrevious()<CR>
 
 au FileType ocaml map <leader><leader>m :e %:p:s,.mli$,.X123X,:s,.ml$,.mli,:s,.X123X$,.ml,<CR>
 
