@@ -120,6 +120,7 @@ endif
 
 " Fix shift mistakes.
 cnoreabbrev Q q
+cnoreabbrev W w
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
 
