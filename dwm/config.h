@@ -56,7 +56,7 @@ static const Layout layouts[] = {
 #define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
     { MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-    { MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+    { MODKEY|ControlMask,           KEY,      tag,            {.ui = 1 << TAG} }, \
     { MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
     { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
@@ -90,7 +90,9 @@ static Key keys[] = {
     /* modifier                     key        function        argument */
     { MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
     { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+    { MODKEY,                       XK_s,      spawn,          {.v = termcmd } },
     { MODKEY,                       XK_Return, spawn,          {.v = browsercmd } },
+    { MODKEY,                       XK_n,      spawn,          {.v = browsercmd } },
     { MODKEY,                       XK_a,      spawn,          {.v = findcursorcmd } },
     { MODKEY,                       XK_m,      spawn,          {.v = dvorakcmd } },
     { MODKEY|ShiftMask,             XK_m,      spawn,          {.v = qwertycmd } },
