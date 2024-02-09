@@ -8,4 +8,5 @@ then
     set -x
     docker container prune --force
     docker image prune --force --all
+    docker system prune -a
 fi
