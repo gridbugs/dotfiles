@@ -103,6 +103,10 @@
         dig
         sshfs
         kicad
+        ripgrep
+        fd
+        bat
+        eza
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 
