@@ -107,6 +107,7 @@
         fd
         bat
         eza
+        dua
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 

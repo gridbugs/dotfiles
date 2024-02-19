@@ -42,7 +42,7 @@ if [[ $- == *i* ]]; then
     # Set colours for `ls` to use. If gnu-ls is installed, prefer it over ls.
     export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=1;30;42:ow=1;30;43'
     if type eza 2>/dev/null >/dev/null; then
-        alias ls='eza'
+        alias ls='eza --group-directories-first --git'
     elif type gls 2>/dev/null >/dev/null; then
         alias ls='gls --color --human-readable --group-directories-first'
     elif type colorls 2>/dev/null >/dev/null; then

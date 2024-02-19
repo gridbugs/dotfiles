@@ -33,6 +33,10 @@
       tmux
       htop
       ripgrep
+      fd
+      bat
+      eza
+      dua
       wget
       sshfs
       fontforge
