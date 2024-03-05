@@ -69,8 +69,8 @@ static const char *dmenucmd[] = { "dmenu_histogram", "-m", dmenumon, "-fn", dmen
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
 static const char *findcursorcmd[]  = { "find-cursor", "-f", "-c#aa33aa", "-l10", "-s500", "-w200", NULL };
-static const char *dvorakcmd[] = { "then-update-dwm-bar.sh", "setxkbmap", "-option", "caps:swapescape", "us(dvorak)", NULL };
-static const char *qwertycmd[] = { "then-update-dwm-bar.sh", "setxkbmap", "-option", "caps:swapescape", "us", NULL };
+static const char *dvorakcmd[] = { "then-update-dwm-bar.sh", "setxkbmap-dvorak.sh", NULL };
+static const char *qwertycmd[] = { "then-update-dwm-bar.sh", "setxkbmap-us.sh", NULL };
 
 static const char *monbrightnessinccmd[] = { "setbacklight", "+10", NULL };
 static const char *monbrightnessdeccmd[] = { "setbacklight", "-10", NULL };
