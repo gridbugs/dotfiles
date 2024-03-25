@@ -224,6 +224,18 @@ if [[ $- == *i* ]]; then
     if type direnv 2>/dev/null >/dev/null && [[ $(basename "$SHELL") == "bash" ]] ; then
         eval "$(direnv hook bash)"
     fi
+
+    # Open editor at path found by fzf
+    fed() {
+        if [ "$#" -ne 0 ]; then
+            pushd $1 > /dev/null
+        fi
+        $EDITOR $(fzf)
+        if [ "$#" -ne 0 ]; then
+            popd > /dev/null
+        fi
+    }
+
 fi
 
 true
