@@ -34,6 +34,9 @@
 	use-package-expand-minimally t))
 (require 'use-package)
 
+(use-package catppuccin-theme
+  :config (load-theme 'catppuccin :no-confirm))
+
 (use-package tuareg
   :custom
   (tuareg-opam-insinuate t)
@@ -60,6 +63,9 @@
   (setq git-gutter:update-interval 0.02))
 (use-package git-gutter-fringe)
 
+(setq package-install-upgrade-built-in t)
+(use-package magit)
+
 ;; The remainder of this file is automatically added by package installers.
 
 (custom-set-variables
@@ -68,7 +74,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(direnv git-gutter-fringe git-gutter tuareg lsp-mode use-package)))
+   '(seq magit catppuccin-theme catpuccin-theme direnv git-gutter-fringe git-gutter tuareg lsp-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

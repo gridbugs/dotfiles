@@ -3,3 +3,4 @@ vim/undodir
 vim/swap
 fonts/.uuid
 nvim/LanguageClient.log
+*~
