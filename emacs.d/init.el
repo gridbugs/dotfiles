@@ -72,8 +72,11 @@
 
 (use-package helm
   :config (helm-mode 1))
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 
 (use-package company)
+
+(use-package neotree)
 
 ;; The remainder of this file is automatically added by package installers.
 
@@ -83,7 +86,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company helm seq magit catppuccin-theme catpuccin-theme direnv git-gutter-fringe git-gutter tuareg lsp-mode use-package)))
+   '(neotree filetree company helm seq magit catppuccin-theme catpuccin-theme direnv git-gutter-fringe git-gutter tuareg lsp-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
