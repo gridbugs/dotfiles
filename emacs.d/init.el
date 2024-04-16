@@ -79,6 +79,7 @@
 (use-package helm
   :config (helm-mode 1))
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 (use-package company)
 
@@ -89,26 +90,21 @@
 (use-package which-key
   :config (which-key-mode))
 
-;; A simpler undo system that persists across runs
-(use-package undo-fu
+(use-package projectile
   :config
-  (global-unset-key (kbd "C-z"))
-  (global-set-key (kbd "C-z")   'undo-fu-only-undo)
-  (global-set-key (kbd "C-S-z") 'undo-fu-only-redo))
-(use-package undo-fu-session
-  :config
-  (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'")))
-(undo-fu-session-global-mode)
+  (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
+  (projectile-mode +1))
+(use-package helm-projectile
+  :config (helm-projectile-on))
 
 ;; The remainder of this file is automatically added by package installers.
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(undo-fu which-key neotree filetree company helm seq magit catppuccin-theme catpuccin-theme direnv git-gutter-fringe git-gutter tuareg lsp-mode use-package)))
+   '(seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
