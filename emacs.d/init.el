@@ -13,6 +13,9 @@
 ;; Allow the mouse when running in a terminal
 (xterm-mouse-mode 1)
 
+;; This disables emacs's warning whehn openning a symlink to a file under vcs
+(setq vc-handled-backends nil)
+
 ;; Use a line as a cursor
 (setq-default cursor-type 'bar)
 
@@ -67,6 +70,11 @@
 (global-display-line-numbers-mode 1)
 (use-package magit)
 
+(use-package helm
+  :config (helm-mode 1))
+
+(use-package company)
+
 ;; The remainder of this file is automatically added by package installers.
 
 (custom-set-variables
@@ -75,7 +83,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(seq magit catppuccin-theme catpuccin-theme direnv git-gutter-fringe git-gutter tuareg lsp-mode use-package)))
+   '(company helm seq magit catppuccin-theme catpuccin-theme direnv git-gutter-fringe git-gutter tuareg lsp-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
