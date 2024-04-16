@@ -49,6 +49,7 @@ make_link Xdefaults .Xdefaults
 make_link npmrc .npmrc
 make_link screenrc .screenrc
 make_link nix.conf .config/nix/nix.conf
+make_link emacs.d/init.el .emacs.d/init.el
 
 # link archlinux-specific packages
 if type pacman 2>/dev/null >/dev/null; then
