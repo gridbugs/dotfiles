@@ -42,8 +42,9 @@
 	use-package-expand-minimally t))
 (require 'use-package)
 
-(use-package catppuccin-theme
-  :config (load-theme 'catppuccin :no-confirm))
+(if (display-graphic-p)
+    (use-package catppuccin-theme
+      :config (load-theme 'catppuccin :no-confirm)))
 
 (use-package tuareg
   :custom
