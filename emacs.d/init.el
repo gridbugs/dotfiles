@@ -5,9 +5,6 @@
 (setq inhibit-startup-message t
       visible-bell t)
 
-;; Display line numbers in every buffer
-(global-display-line-numbers-mode 1)
-
 ;; Disable some unused UI elements 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -66,6 +63,8 @@
   (setq git-gutter:update-interval 0.02))
 (use-package git-gutter-fringe)
 
+;; Display line numbers in every buffer
+(global-display-line-numbers-mode 1)
 (use-package magit)
 
 ;; The remainder of this file is automatically added by package installers.
