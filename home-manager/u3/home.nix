@@ -73,6 +73,7 @@
         obs
         openshot-qt
         neovim
+        emacs
         firefox
         thunderbird
         google-chrome
