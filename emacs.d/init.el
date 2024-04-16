@@ -34,14 +34,25 @@
 	use-package-expand-minimally t))
 (require 'use-package)
 
+(use-package tuareg
+  :custom
+  (tuareg-opam-insinuate t)
+  :config)
+
+(use-package dune-format)
+
 (use-package lsp-mode
   :init
-  ;; set prefix for lsp-command-keymap
   (setq lsp-keymap-prefix "C-c l")
-  :hook ((tuareg-mode . lsp)
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
+  :hook ((tuareg-mode . lsp))
+  :commands lsp
+  :config
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection (lsp-stdio-connection
+                     '("opam" "exec" "--" "ocamllsp"))
+    :major-modes '(caml-mode tuareg-mode reason-mode)
+    :server-id 'ocamllsp)))
 
 (use-package git-gutter
   :hook (prog-mode . git-gutter-mode)
@@ -56,7 +67,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(git-gutter-fringe git-gutter tuareg lsp-mode use-package)))
+ '(package-selected-packages
+   '(direnv git-gutter-fringe git-gutter tuareg lsp-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
