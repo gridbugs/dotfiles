@@ -80,6 +80,8 @@
   :config (helm-mode 1))
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "M-x") 'helm-M-x)
+;; Prevent the current window from being maximized while displaying the helm buffer
+(setq helm-display-function #'pop-to-buffer)
 
 (use-package company)
 
