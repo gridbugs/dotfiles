@@ -1,3 +1,6 @@
+;; Use a dark theme so the screen is dark until the real theme loads
+(load-theme 'modus-vivendi t)
+
 ;; Don't display the splash screen
 (setq inhibit-startup-message t
       visible-bell t)
@@ -16,8 +19,8 @@
 ;; Use a line as a cursor
 (setq-default cursor-type 'bar)
 
-;; Use a dark theme
-(load-theme 'modus-vivendi t)
+;; This is needed by the magit package
+(setq package-install-upgrade-built-in t)
 
 (require 'package)
 (setq package-archives '(("elpa" . "https://elpa.gnu.org/packages/")
@@ -63,7 +66,6 @@
   (setq git-gutter:update-interval 0.02))
 (use-package git-gutter-fringe)
 
-(setq package-install-upgrade-built-in t)
 (use-package magit)
 
 ;; The remainder of this file is automatically added by package installers.
