@@ -19,6 +19,11 @@
 ;; Use a line as a cursor
 (setq-default cursor-type 'bar)
 
+;; Enable persistent undo
+(global-undo-tree-mode)
+(setq undo-tree-auto-save-history t)
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+
 ;; This is needed by the magit package
 (setq package-install-upgrade-built-in t)
 
@@ -77,6 +82,10 @@
 (use-package company)
 
 (use-package neotree)
+(global-set-key (kbd "C-x n t") 'neotree-toggle)
+
+(use-package which-key
+  :config (which-key-mode))
 
 ;; The remainder of this file is automatically added by package installers.
 
@@ -86,7 +95,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(neotree filetree company helm seq magit catppuccin-theme catpuccin-theme direnv git-gutter-fringe git-gutter tuareg lsp-mode use-package)))
+   '(which-key neotree filetree company helm seq magit catppuccin-theme catpuccin-theme direnv git-gutter-fringe git-gutter tuareg lsp-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
