@@ -27,7 +27,7 @@
       `((".*" ,(concat user-emacs-directory "autosaves") t)))
 
 ;; Where to save backups
-(setq backup-directory-alist '(("." . (concat user-emacs-directory "backups")))
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
 ;; Load the extra config file if it exists
 (setq extra-config-file "~/.emacs.d/extra.el")
