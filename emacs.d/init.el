@@ -5,7 +5,7 @@
 (setq inhibit-startup-message t
       visible-bell t)
 
-;; Disable some unused UI elements 
+;; Disable some unused UI elements
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -13,7 +13,19 @@
 ;; Allow the mouse when running in a terminal
 (xterm-mouse-mode 1)
 
-(windmove-default-keybindings 'control)
+;; Window navigation using arrow keys.  It's convenient to use shift
+;; as the modifier on macos but it's more convenient to use control on
+;; linux, so juts bind both.
+(global-set-key (kbd "S-<left>") 'windmove-left)
+(global-set-key (kbd "S-<right>") 'windmove-right)
+(global-set-key (kbd "S-<up>") 'windmove-up)
+(global-set-key (kbd "S-<down>") 'windmove-down)
+(global-set-key (kbd "C-<left>") 'windmove-left)
+(global-set-key (kbd "C-<right>") 'windmove-right)
+(global-set-key (kbd "C-<up>") 'windmove-up)
+(global-set-key (kbd "C-<down>") 'windmove-down)
+
+;; This lets us navigate the history of window positions
 (winner-mode 1)
 
 ;; This disables emacs's warning whehn openning a symlink to a file under vcs
@@ -21,6 +33,12 @@
 
 ;; Use a line as a cursor
 (setq-default cursor-type 'bar)
+
+;; Show cursor column as well as line
+(setq column-number-mode t)
+
+;; Highlight whitespace at the end of lines
+(setq-default show-trailing-whitespace t)
 
 ;; Where to save autosave files
 (setq auto-save-file-name-transforms
@@ -189,7 +207,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package)))
+   '(ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+ '(windmove-default-keybindings '([ignore] meta control)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
