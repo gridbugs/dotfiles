@@ -19,10 +19,16 @@
 ;; Use a line as a cursor
 (setq-default cursor-type 'bar)
 
+(setq auto-save-file-name-transforms
+      `((".*" ,(concat user-emacs-directory ".autosaves/") t)))
+
 ;; Load the extra config file if it exists
 (setq extra-config-file "~/.emacs.d/extra.el")
 (if (file-exists-p extra-config-file)
     (load extra-config-file))
+
+;; Load cram mode directly from a file
+(load "~/.emacs.d/cram-mode.el")
 
 ;; This is needed by the magit package
 (setq package-install-upgrade-built-in t)
@@ -52,6 +58,7 @@
   :config)
 
 (use-package dune-format)
+(use-package dune)
 
 (use-package lsp-mode
   :init
@@ -65,6 +72,8 @@
                      '("opam" "exec" "--" "ocamllsp"))
     :major-modes '(caml-mode tuareg-mode reason-mode)
     :server-id 'ocamllsp)))
+
+(use-package direnv)
 
 (use-package git-gutter
   :hook (prog-mode . git-gutter-mode)
@@ -88,6 +97,8 @@
 (setq neo-theme 'arrow)
 (use-package neotree)
 (global-set-key (kbd "C-x n t") 'neotree-toggle)
+(setq neo-window-fixed-size nil)
+
 
 (use-package which-key
   :config (which-key-mode))
@@ -95,9 +106,14 @@
 (use-package projectile
   :config
   (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
-  (projectile-mode +1))
+  (projectile-mode +1)
+  (def-projectile-commander-method ?t
+    "Run ansi-term in project."
+      (ansi-term (getenv "SHELL") (concat "ansi-term (" projectile-project-name ")"))))
+(setq projectile-switch-project-action 'projectile-commander)
 (use-package helm-projectile
   :config (helm-projectile-on))
+
 
 ;; The remainder of this file is automatically added by package installers.
 (custom-set-variables
@@ -106,7 +122,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package)))
+   '(direnv dune seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
