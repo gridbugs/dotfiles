@@ -128,7 +128,9 @@
 ;; Needed for some navigation commands in evil mode
 (use-package goto-chg)
 
-(use-package evil)
+(use-package evil
+  :config
+  (evil-mode 1))
 
 ;; The remainder of this file is automatically added by package installers.
 (custom-set-variables
