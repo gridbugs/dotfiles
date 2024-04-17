@@ -29,6 +29,24 @@
 ;; Where to save backups
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
+;; Replace the terminal history functions with just sending the escape sequence.
+;; This forces the emacs terminal emulators to respect the settings in inputrc.
+(defun my-term-history-backward ()
+  "Custom function for navigating backward through the history in term mode."
+  (interactive)
+  (setq term-buffer-maximum-size 0)
+  (term-send-raw-string "\e[A"))
+(defun my-term-history-forward ()
+  "Custom function for navigating forward through the history in term mode."
+  ;; Customize this function as needed
+  (interactive)
+  (setq term-buffer-maximum-size 0)
+  (term-send-raw-string "\e[B"))
+(add-hook 'term-mode-hook
+          (lambda ()
+            (define-key term-raw-map (kbd "<up>") 'my-term-history-backward)
+            (define-key term-raw-map (kbd "<down>") 'my-term-history-forward)))
+
 ;; Load the extra config file if it exists
 (setq extra-config-file "~/.emacs.d/extra.el")
 (if (file-exists-p extra-config-file)
@@ -64,6 +82,9 @@
   (tuareg-opam-insinuate t)
   :config)
 
+(use-package ocamlformat)
+(add-hook 'before-save-hook 'ocamlformat-before-save)
+
 (use-package dune-format)
 (use-package dune)
 
@@ -79,6 +100,8 @@
                      '("opam" "exec" "--" "ocamllsp"))
     :major-modes '(caml-mode tuareg-mode reason-mode)
     :server-id 'ocamllsp)))
+(setq lsp-inlay-hint-enable t)
+(setq lsp-signature-auto-activate t)
 
 (use-package direnv)
 
@@ -119,14 +142,12 @@
     "Run ansi-term in project."
       (ansi-term (getenv "SHELL") (concat "ansi-term (" projectile-project-name ")"))))
 (setq projectile-switch-project-action 'projectile-commander)
-(use-package helm-projectile
-  :config (helm-projectile-on))
 
 ;; A simpler undo system that persists across runs (also needed for evil mode)
 (use-package undo-fu
   :config
   (global-unset-key (kbd "C-z"))
-  (global-set-key (kbd "C-z")   'undo-fu-only-undo)
+  (global-set-key (kbd "C-z") 'undo-fu-only-undo)
   (global-set-key (kbd "C-S-z") 'undo-fu-only-redo))
 (use-package undo-fu-session
   :config
@@ -136,9 +157,11 @@
 ;; Needed for some navigation commands in evil mode
 (use-package goto-chg)
 
+(setq evil-undo-system 'undo-fu)
 (use-package evil
   :config
   (evil-mode 1))
+(evil-set-initial-state 'term-mode 'emacs)
 (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
 (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
 (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
@@ -149,14 +172,22 @@
 (evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
 (evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
 
+(use-package nix-mode
+  :mode "\\.nix\\'")
+
+(use-package terminal-toggle)
+(setq terminal-toggle--term-shell (getenv "SHELL"))
+(global-set-key (kbd "C-x w") 'terminal-toggle)
+
 ;; The remainder of this file is automatically added by package installers.
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package)))
+   '(ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
