@@ -104,8 +104,6 @@
   :config (which-key-mode))
 
 (use-package projectile
-;; A simpler undo system that persists across runs
-(use-package undo-fu
   :config
   (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
   (projectile-mode +1)
@@ -116,6 +114,9 @@
 (use-package helm-projectile
   :config (helm-projectile-on))
 
+;; A simpler undo system that persists across runs (also needed for evil mode)
+(use-package undo-fu
+  :config
   (global-unset-key (kbd "C-z"))
   (global-set-key (kbd "C-z")   'undo-fu-only-undo)
   (global-set-key (kbd "C-S-z") 'undo-fu-only-redo))
@@ -124,6 +125,11 @@
   (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'")))
 (undo-fu-session-global-mode)
 
+;; Needed for some navigation commands in evil mode
+(use-package goto-chg)
+
+(use-package evil)
+
 ;; The remainder of this file is automatically added by package installers.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -131,7 +137,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(direnv dune seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package)))
+   '(evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
