@@ -13,6 +13,9 @@
 ;; Allow the mouse when running in a terminal
 (xterm-mouse-mode 1)
 
+(windmove-default-keybindings 'control)
+(winner-mode 1)
+
 ;; This disables emacs's warning whehn openning a symlink to a file under vcs
 (setq vc-handled-backends nil)
 
