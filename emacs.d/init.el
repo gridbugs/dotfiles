@@ -142,6 +142,8 @@
     "Run ansi-term in project."
       (ansi-term (getenv "SHELL") (concat "ansi-term (" projectile-project-name ")"))))
 (setq projectile-switch-project-action 'projectile-commander)
+(use-package helm-projectile
+  :config (helm-projectile-on))
 
 ;; A simpler undo system that persists across runs (also needed for evil mode)
 (use-package undo-fu
