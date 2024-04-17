@@ -19,8 +19,12 @@
 ;; Use a line as a cursor
 (setq-default cursor-type 'bar)
 
+;; Where to save autosave files
 (setq auto-save-file-name-transforms
-      `((".*" ,(concat user-emacs-directory ".autosaves/") t)))
+      `((".*" ,(concat user-emacs-directory "autosaves") t)))
+
+;; Where to save backups
+(setq backup-directory-alist '(("." . (concat user-emacs-directory "backups")))
 
 ;; Load the extra config file if it exists
 (setq extra-config-file "~/.emacs.d/extra.el")
@@ -90,7 +94,9 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "M-x") 'helm-M-x)
 ;; Prevent the current window from being maximized while displaying the helm buffer
-(setq helm-display-function #'pop-to-buffer)
+(setq helm-display-function #'helm-default-display-buffer)
+(setq helm-split-window-default-side 'below)
+(setq helm-split-window-in-side-p t)
 
 (use-package company)
 
@@ -98,7 +104,6 @@
 (use-package neotree)
 (global-set-key (kbd "C-x n t") 'neotree-toggle)
 (setq neo-window-fixed-size nil)
-
 
 (use-package which-key
   :config (which-key-mode))
@@ -131,6 +136,15 @@
 (use-package evil
   :config
   (evil-mode 1))
+(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
+(evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
+(evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
+(evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
+(evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
 
 ;; The remainder of this file is automatically added by package installers.
 (custom-set-variables
