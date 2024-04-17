@@ -104,6 +104,8 @@
   :config (which-key-mode))
 
 (use-package projectile
+;; A simpler undo system that persists across runs
+(use-package undo-fu
   :config
   (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
   (projectile-mode +1)
@@ -114,6 +116,13 @@
 (use-package helm-projectile
   :config (helm-projectile-on))
 
+  (global-unset-key (kbd "C-z"))
+  (global-set-key (kbd "C-z")   'undo-fu-only-undo)
+  (global-set-key (kbd "C-S-z") 'undo-fu-only-redo))
+(use-package undo-fu-session
+  :config
+  (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'")))
+(undo-fu-session-global-mode)
 
 ;; The remainder of this file is automatically added by package installers.
 (custom-set-variables
