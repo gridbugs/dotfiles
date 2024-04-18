@@ -215,6 +215,11 @@
 
 (use-package vimrc-mode)
 
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
+
 ;; The remainder of this file is automatically added by package installers.
 
 (custom-set-variables
@@ -223,7 +228,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
