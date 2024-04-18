@@ -107,6 +107,11 @@
   :custom
   (tuareg-opam-insinuate t)
   :config)
+(defun my-tuareg-mode-hook ()
+  "Customize Tuareg mode behavior."
+  ;; Add underscore to the word syntax class
+  (modify-syntax-entry ?_ "w"))
+(add-hook 'tuareg-mode-hook #'my-tuareg-mode-hook)
 
 (use-package ocamlformat)
 (add-hook 'before-save-hook 'ocamlformat-before-save)
@@ -156,6 +161,11 @@
 (setq helm-split-window-in-side-p t)
 
 (use-package company)
+
+(use-package company-quickhelp
+  :config
+  (setq company-quickhelp-delay 0)
+  (company-quickhelp-mode))
 
 (setq neo-theme 'arrow)
 (use-package neotree)
@@ -233,7 +243,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
