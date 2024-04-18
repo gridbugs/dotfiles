@@ -199,8 +199,12 @@
 (evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
 (evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
 (evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
+; Match the behaviour of Alt+: in vim (same as pressing ':' in normal mode)
 (global-unset-key (kbd "M-:"))
 (global-set-key (kbd "M-:") 'evil-ex)
+;; Revert Ctrl-a and Ctrl-e to Emacs defaults in Evil mode
+(define-key evil-normal-state-map (kbd "C-a") 'move-beginning-of-line)
+(define-key evil-normal-state-map (kbd "C-e") 'move-end-of-line)
 
 (use-package nix-mode
   :mode "\\.nix\\'")
