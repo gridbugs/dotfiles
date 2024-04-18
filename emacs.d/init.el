@@ -38,7 +38,12 @@
 (setq column-number-mode t)
 
 ;; Highlight whitespace at the end of lines
-(setq-default show-trailing-whitespace t)
+(defun my-enable-trailing-whitespace ()
+  "Enable `show-trailing-whitespace' only for buffers visiting files."
+  (when (and buffer-file-name
+             (file-regular-p buffer-file-name))
+    (setq show-trailing-whitespace t)))
+(add-hook 'find-file-hook 'my-enable-trailing-whitespace)
 
 ;; Where to save autosave files
 (setq auto-save-file-name-transforms
@@ -199,6 +204,8 @@
 (setq terminal-toggle--term-shell (getenv "SHELL"))
 (global-set-key (kbd "C-x w") 'terminal-toggle)
 
+(use-package vimrc-mode)
+
 ;; The remainder of this file is automatically added by package installers.
 
 (custom-set-variables
@@ -207,7 +214,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
