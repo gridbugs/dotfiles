@@ -13,6 +13,9 @@
 ;; Allow the mouse when running in a terminal
 (xterm-mouse-mode 1)
 
+;; Remember the position in files between sessions
+(save-place-mode 1)
+
 ;; Window navigation using arrow keys.  It's convenient to use shift
 ;; as the modifier on macos but it's more convenient to use control on
 ;; linux, so juts bind both.
