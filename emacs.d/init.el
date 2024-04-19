@@ -16,18 +16,6 @@
 ;; Remember the position in files between sessions
 (save-place-mode 1)
 
-;; Window navigation using arrow keys.  It's convenient to use shift
-;; as the modifier on macos but it's more convenient to use control on
-;; linux, so juts bind both.
-(global-set-key (kbd "S-<left>") 'windmove-left)
-(global-set-key (kbd "S-<right>") 'windmove-right)
-(global-set-key (kbd "S-<up>") 'windmove-up)
-(global-set-key (kbd "S-<down>") 'windmove-down)
-(global-set-key (kbd "C-<left>") 'windmove-left)
-(global-set-key (kbd "C-<right>") 'windmove-right)
-(global-set-key (kbd "C-<up>") 'windmove-up)
-(global-set-key (kbd "C-<down>") 'windmove-down)
-
 ;; This lets us navigate the history of window positions
 (winner-mode 1)
 
@@ -220,6 +208,8 @@
 ;; Revert Ctrl-a and Ctrl-e to Emacs defaults in Evil mode
 (define-key evil-normal-state-map (kbd "C-a") 'move-beginning-of-line)
 (define-key evil-normal-state-map (kbd "C-e") 'move-end-of-line)
+(define-key isearch-mode-map (kbd "<down>") 'isearch-ring-advance)
+(define-key isearch-mode-map (kbd "<up>") 'isearch-ring-retreat)
 
 (use-package nix-mode
   :mode "\\.nix\\'")
@@ -234,6 +224,18 @@
   :ensure t
   :config
   (exec-path-from-shell-initialize))
+
+;; Window navigation using arrow keys.  It's convenient to use shift
+;; as the modifier on macos but it's more convenient to use control on
+;; linux, so juts bind both.
+(global-set-key (kbd "S-<left>") 'windmove-left)
+(global-set-key (kbd "S-<right>") 'windmove-right)
+(global-set-key (kbd "S-<up>") 'windmove-up)
+(global-set-key (kbd "S-<down>") 'windmove-down)
+(global-set-key (kbd "C-<left>") 'windmove-left)
+(global-set-key (kbd "C-<right>") 'windmove-right)
+(global-set-key (kbd "C-<up>") 'windmove-up)
+(global-set-key (kbd "C-<down>") 'windmove-down)
 
 ;; The remainder of this file is automatically added by package installers.
 

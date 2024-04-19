@@ -51,6 +51,7 @@
       mosh
       imagemagick
       p7zip
+      ispell
     ];
     devPkgs = [
       nodejs
