@@ -74,6 +74,7 @@
         openshot-qt
         neovim
         emacs-gtk
+        ispell
         firefox
         thunderbird
         google-chrome
