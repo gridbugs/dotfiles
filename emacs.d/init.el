@@ -2,8 +2,13 @@
 (load-theme 'modus-vivendi t)
 
 ;; Don't display the splash screen
-(setq inhibit-startup-message t
-      visible-bell t)
+(setq inhibit-startup-message t)
+
+(setq visible-bell nil
+      ring-bell-function 'flash-mode-line)
+(defun flash-mode-line ()
+  (invert-face 'mode-line)
+  (run-with-timer 0.1 nil #'invert-face 'mode-line))
 
 ;; Disable some unused UI elements
 (menu-bar-mode -1)
@@ -101,6 +106,22 @@
   (modify-syntax-entry ?_ "w"))
 (add-hook 'tuareg-mode-hook #'my-tuareg-mode-hook)
 
+(use-package rustic
+  :config
+  (setq lsp-eldoc-hook nil)
+  (setq lsp-enable-symbol-highlighting nil)
+  (setq lsp-signature-auto-activate nil)
+  (setq rustic-format-on-save t)
+  (add-hook 'rustic-mode-hook 'rk/rustic-mode-hook))
+(defun rk/rustic-mode-hook ()
+  ;; so that run C-c C-c C-r works without having to confirm, but don't try to
+  ;; save rust buffers that are not file visiting. Once
+  ;; https://github.com/brotzeit/rustic/issues/253 has been resolved this should
+  ;; no longer be necessary.
+  (when buffer-file-name
+    (setq-local buffer-save-without-query t))
+  (add-hook 'before-save-hook 'lsp-format-buffer nil t))
+
 (use-package ocamlformat)
 (add-hook 'before-save-hook 'ocamlformat-before-save)
 
@@ -131,6 +152,7 @@
 
 (use-package git-gutter
   :hook (prog-mode . git-gutter-mode)
+  :hook (ledger-mode .git-gutter-mode)
   :config
   (setq git-gutter:update-interval 0.02))
 (use-package git-gutter-fringe)
@@ -148,7 +170,10 @@
 (setq helm-split-window-default-side 'below)
 (setq helm-split-window-in-side-p t)
 
-(use-package company)
+(use-package company
+  :config
+  (add-hook 'after-init-hook 'global-company-mode)
+  (define-key global-map (kbd "C-.") 'company-files))
 
 (use-package company-quickhelp
   :config
@@ -225,6 +250,9 @@
   :config
   (exec-path-from-shell-initialize))
 
+(use-package ledger-mode)
+(add-hook 'ledger-mode-hook #'company-mode)
+
 ;; Window navigation using arrow keys.  It's convenient to use shift
 ;; as the modifier on macos but it's more convenient to use control on
 ;; linux, so juts bind both.
@@ -245,7 +273,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
