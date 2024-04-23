@@ -28,4 +28,8 @@ for inclusion in this repo, however the following can be copied into the file:
 	ci = commit
 	st = status
 	co = checkout
+[rerere]
+	enabled = true
+[merge]
+	conflictStyle = diff3
 ```
