@@ -159,7 +159,9 @@
 
 ;; Display line numbers in every buffer
 (global-display-line-numbers-mode 1)
-(use-package magit)
+(use-package magit
+  :config
+  (setq magit-define-global-key-bindings 'recommended))
 
 (use-package helm
   :config (helm-mode 1))
