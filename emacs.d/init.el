@@ -148,7 +148,8 @@
 (setq lsp-inlay-hint-enable t)
 (setq lsp-signature-auto-activate t)
 
-(use-package direnv)
+(use-package envrc
+  :hook (after-init . envrc-global-mode))
 
 (use-package git-gutter
   :hook (prog-mode . git-gutter-mode)
@@ -278,6 +279,9 @@
   :config
   (global-set-key (kbd "C-c a") 'mc/edit-lines))
 
+(use-package lua-mode)
+(add-hook 'lua-mode-hook #'lsp)
+
 (defun rename-buffer-unique-with-suffix (name &optional suffix-count)
   "Rename the current buffer appending a suffix to disambiguate.
 NAME is the name af the new buffer.
@@ -312,13 +316,10 @@ SUFFIX-COUNT is the first integer suffix to try
 
 (defun then-rename-terminal (&rest args)
   "Call ORIG with ARGS, then rename the terminal to its cwd."
-;  (message (concat "foo " orig))
-;  (apply orig args))
   (rename-ansi-term-buffer))
 
 (global-set-key (kbd "C-c C-t") 'named-ansi-term)
 (advice-add 'cd :after #'then-rename-terminal)
-(advice-add 'cd-absolute :after 'rename-ansi-term-buffer)
 
 
 ;; Window navigation using arrow keys.  It's convenient to use shift
@@ -341,7 +342,7 @@ SUFFIX-COUNT is the first integer suffix to try
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(envrc lua-mode multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
