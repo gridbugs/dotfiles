@@ -63,6 +63,7 @@
       git
       mercurial
       darcs
+      shellcheck
     ];
   in
   toolPkgs ++ devPkgs;

@@ -255,6 +255,72 @@
 (use-package ledger-mode)
 (add-hook 'ledger-mode-hook #'company-mode)
 
+(use-package flymake
+  :bind (("C-c e" . flymake-show-project-diagnostics)))
+
+(use-package sh-script
+  :hook (sh-mode . flymake-mode))
+
+(defun my-sh-mode-hook ()
+  "Customize shell mode behavior."
+  ;; Add underscore to the word syntax class
+  (modify-syntax-entry ?_ "w"))
+(add-hook 'sh-mode-hook #'my-sh-mode-hook)
+
+(use-package flymake-shellcheck
+  :commands flymake-shellcheck-load
+  :init
+  (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
+
+(use-package yaml-mode)
+
+(use-package multiple-cursors
+  :config
+  (global-set-key (kbd "C-c a") 'mc/edit-lines))
+
+(defun rename-buffer-unique-with-suffix (name &optional suffix-count)
+  "Rename the current buffer appending a suffix to disambiguate.
+NAME is the name af the new buffer.
+SUFFIX-COUNT is the first integer suffix to try
+  (it will be incremented until the name is unique)."
+  (let ((name (if suffix-count
+		  (concat name " (" (number-to-string suffix-count) ")")
+		name)))
+    (if (get-buffer name)
+	(let ((suffix-count (if suffix-count (+ suffix-count 1) 1)))
+	  (rename-buffer-unique-with-suffix name suffix-count))
+      (rename-buffer name))))
+
+(defun rename-ansi-term-buffer ()
+  "Rename the \"ansi-term\" buffer to match the current working directory."
+  (let* ((default-directory (expand-file-name default-directory))
+         (buffer-name (concat "*ansi-term " default-directory "*")))
+    (rename-buffer-unique-with-suffix buffer-name)))
+
+(defun named-ansi-term ()
+  "Start a new \"ansi-term\" with a buffer named after the current working directory."
+  (interactive)
+  (let* ((bash-homebrew "/opt/homebrew/bin/bash")
+	 (bash-nixos "/run/current-system/sw/bin/bash")
+	 (bash-default "/usr/bin/env bash")
+	 (bash (cond
+		((file-exists-p bash-homebrew) bash-homebrew)
+		((file-exists-p bash-nixos) bash-nixos)
+		(t bash-default))))
+    (ansi-term bash)
+    (rename-ansi-term-buffer)))
+
+(defun then-rename-terminal (&rest args)
+  "Call ORIG with ARGS, then rename the terminal to its cwd."
+;  (message (concat "foo " orig))
+;  (apply orig args))
+  (rename-ansi-term-buffer))
+
+(global-set-key (kbd "C-c C-t") 'named-ansi-term)
+(advice-add 'cd :after #'then-rename-terminal)
+(advice-add 'cd-absolute :after 'rename-ansi-term-buffer)
+
+
 ;; Window navigation using arrow keys.  It's convenient to use shift
 ;; as the modifier on macos but it's more convenient to use control on
 ;; linux, so juts bind both.
@@ -275,7 +341,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
