@@ -132,6 +132,19 @@
   :init (global-flycheck-mode))
 (global-set-key (kbd "M-n") 'flycheck-next-error)
 (global-set-key (kbd "M-p") 'flycheck-previous-error)
+(custom-set-faces
+ '(lsp-headerline-breadcrumb-symbols-error-face ((t (:background "red4" :underline nil))))
+ '(lsp-headerline-breadcrumb-path-error-face ((t (:background "red4" :underline nil))))
+ '(lsp-headerline-breadcrumb-symbols-warning-face ((t (:background "DarkGoldenrod4" :underline nil))))
+ '(lsp-headerline-breadcrumb-path-warning-face ((t (:background "DarkGoldenrod4" :underline nil))))
+ '(lsp-headerline-breadcrumb-symbols-info-face ((t (:background "blue4" :underline nil))))
+ '(lsp-headerline-breadcrumb-path-info-face ((t (:background "blue4" :underline nil))))
+ '(lsp-headerline-breadcrumb-symbols-hint-face ((t (:background "green4" :underline nil))))
+ '(lsp-headerline-breadcrumb-path-hint-face ((t (:background "green4" :underline nil))))
+ '(flycheck-error ((t (:background "red4" :underline nil))))
+ '(flycheck-warning ((t (:background "DarkGoldenrod4" :underline nil))))
+ '(flycheck-info ((t (:background "blue4" :underline nil))))
+ '(flycheck-hint ((t (:background "green4" :underline nil)))))
 
 (use-package lsp-mode
   :init
@@ -147,6 +160,10 @@
     :server-id 'ocamllsp)))
 (setq lsp-inlay-hint-enable t)
 (setq lsp-signature-auto-activate t)
+
+(use-package yasnippet
+  :config
+  (yas-global-mode 1))
 
 (use-package envrc
   :hook (after-init . envrc-global-mode))
@@ -279,8 +296,16 @@
   :config
   (global-set-key (kbd "C-c a") 'mc/edit-lines))
 
-(use-package lua-mode)
 (add-hook 'lua-mode-hook #'lsp)
+(setq lua-indent-level 2)
+(defun my-lua-mode-hook ()
+  "Customize lua mode behavior."
+  ;; Add underscore to the word syntax class
+  (modify-syntax-entry ?_ "w"))
+(add-hook 'lua-mode-hook #'my-lua-mode-hook)
+(add-hook 'lua-mode-hook
+          (lambda ()
+            (setq tab-width 2)))
 
 (defun rename-buffer-unique-with-suffix (name &optional suffix-count)
   "Rename the current buffer appending a suffix to disambiguate.
@@ -342,7 +367,7 @@ SUFFIX-COUNT is the first integer suffix to try
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(envrc lua-mode multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
