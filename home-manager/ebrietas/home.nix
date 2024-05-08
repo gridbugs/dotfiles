@@ -57,6 +57,7 @@
       nodejs
       python3
       python3Packages.python-lsp-server
+      dune_3
       opam
       ocamlformat
       ocamlPackages.ocaml-lsp
