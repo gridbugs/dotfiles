@@ -24,6 +24,17 @@
 ;; This lets us navigate the history of window positions
 (winner-mode 1)
 
+; Wrap long lines
+(global-visual-line-mode t)
+
+; Treat "_" as part of words by default in all code buffers
+(defun my-modify-syntax-hook ()
+  (modify-syntax-entry ?_ "w"))
+(add-hook 'prog-mode-hook 'my-modify-syntax-hook)
+
+; Always kill the current buffer without showing the menu when "C-x k" is pressed
+(global-set-key [(control x) (k)] 'kill-this-buffer)
+
 ;; This disables emacs's warning whehn openning a symlink to a file under vcs
 (setq vc-handled-backends nil)
 
@@ -100,11 +111,6 @@
   :custom
   (tuareg-opam-insinuate t)
   :config)
-(defun my-tuareg-mode-hook ()
-  "Customize Tuareg mode behavior."
-  ;; Add underscore to the word syntax class
-  (modify-syntax-entry ?_ "w"))
-(add-hook 'tuareg-mode-hook #'my-tuareg-mode-hook)
 
 (use-package rustic
   :config
@@ -127,6 +133,9 @@
 
 (use-package dune-format)
 (use-package dune)
+(add-hook 'dune-mode-hook
+          (lambda ()
+            (dune-format-on-save-mode)))
 
 (use-package flycheck
   :init (global-flycheck-mode))
@@ -144,7 +153,9 @@
  '(flycheck-error ((t (:background "red4" :underline nil))))
  '(flycheck-warning ((t (:background "DarkGoldenrod4" :underline nil))))
  '(flycheck-info ((t (:background "blue4" :underline nil))))
- '(flycheck-hint ((t (:background "green4" :underline nil)))))
+ '(flycheck-hint ((t (:background "green4" :underline nil))))
+ '(flyspell-duplicate ((t (:background "green4" :underline nil))))
+ '(flyspell-incorrect ((t (:background "OrangeRed4" :underline nil)))))
 
 (use-package lsp-mode
   :init
@@ -200,11 +211,6 @@
   (setq company-quickhelp-delay 0)
   (company-quickhelp-mode))
 
-(setq neo-theme 'arrow)
-(use-package neotree)
-(global-set-key (kbd "C-x n t") 'neotree-toggle)
-(setq neo-window-fixed-size nil)
-
 (use-package which-key
   :config (which-key-mode))
 
@@ -238,15 +244,6 @@
   :config
   (evil-mode 1))
 (evil-set-initial-state 'term-mode 'emacs)
-(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
-(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-(evil-define-key 'normal neotree-mode-map (kbd "g") 'neotree-refresh)
-(evil-define-key 'normal neotree-mode-map (kbd "n") 'neotree-next-line)
-(evil-define-key 'normal neotree-mode-map (kbd "p") 'neotree-previous-line)
-(evil-define-key 'normal neotree-mode-map (kbd "A") 'neotree-stretch-toggle)
-(evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
 ; Match the behaviour of Alt+: in vim (same as pressing ':' in normal mode)
 (global-unset-key (kbd "M-:"))
 (global-set-key (kbd "M-:") 'evil-ex)
@@ -279,12 +276,6 @@
 (use-package sh-script
   :hook (sh-mode . flymake-mode))
 
-(defun my-sh-mode-hook ()
-  "Customize shell mode behavior."
-  ;; Add underscore to the word syntax class
-  (modify-syntax-entry ?_ "w"))
-(add-hook 'sh-mode-hook #'my-sh-mode-hook)
-
 (use-package flymake-shellcheck
   :commands flymake-shellcheck-load
   :init
@@ -298,26 +289,21 @@
 
 (add-hook 'lua-mode-hook #'lsp)
 (setq lua-indent-level 2)
-(defun my-lua-mode-hook ()
-  "Customize lua mode behavior."
-  ;; Add underscore to the word syntax class
-  (modify-syntax-entry ?_ "w"))
-(add-hook 'lua-mode-hook #'my-lua-mode-hook)
 (add-hook 'lua-mode-hook
           (lambda ()
             (setq tab-width 2)))
 
-(defun rename-buffer-unique-with-suffix (name &optional suffix-count)
+(defun rename-buffer-unique-with-suffix (base-name &optional suffix-count)
   "Rename the current buffer appending a suffix to disambiguate.
 NAME is the name af the new buffer.
 SUFFIX-COUNT is the first integer suffix to try
   (it will be incremented until the name is unique)."
   (let ((name (if suffix-count
-		  (concat name " (" (number-to-string suffix-count) ")")
-		name)))
+		  (concat base-name " (" (number-to-string suffix-count) ")")
+		base-name)))
     (if (get-buffer name)
 	(let ((suffix-count (if suffix-count (+ suffix-count 1) 1)))
-	  (rename-buffer-unique-with-suffix name suffix-count))
+	  (rename-buffer-unique-with-suffix base-name suffix-count))
       (rename-buffer name))))
 
 (defun rename-ansi-term-buffer ()
@@ -343,9 +329,13 @@ SUFFIX-COUNT is the first integer suffix to try
   "Call ORIG with ARGS, then rename the terminal to its cwd."
   (rename-ansi-term-buffer))
 
-(global-set-key (kbd "C-c C-t") 'named-ansi-term)
+(global-set-key (kbd "C-c n t") 'named-ansi-term)
 (advice-add 'cd :after #'then-rename-terminal)
 
+; Kill a terminal's buffer when the terminal exits
+(defadvice term-handle-exit
+  (after term-kill-buffer-on-exit activate)
+  (kill-buffer))
 
 ;; Window navigation using arrow keys.  It's convenient to use shift
 ;; as the modifier on macos but it's more convenient to use control on
@@ -367,7 +357,7 @@ SUFFIX-COUNT is the first integer suffix to try
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key neotree company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
