@@ -102,30 +102,34 @@ if [[ $- == *i* ]]; then
     fi
 
     if type rustc 2>/dev/null >/dev/null && [[ -d ~/.cargo ]]; then
-        find_rust_completions() {
-            local C1 C2 C3 C4 RUST_COMPLETION
-            C1=$(rustc --print sysroot)/etc/bash_completion.d/cargo
-            C2=$(rustc --print sysroot)/share/bash-completion/completions/cargo
-            C3=$(rustc --print sysroot)/etc/bash_completion.d/cargo.bashcomp.sh
-            C4=$(rustc --print sysroot)/share/bash-completion/completions/cargo.bashcomp.sh
-            RUST_COMPLETION=/dev/null
-            for C in $C1 $C2 $C3 $C4; do
-                if [[ -f $C ]]; then
-                    RUST_COMPLETION=$C
-                    break
-                fi
-            done
-            echo $RUST_COMPLETION
-        }
-        RUST_COMPLETION=$(find_rust_completions)
-        if [[ -f $RUST_COMPLETION ]]; then
-            . $RUST_COMPLETION
+        # try to guess the rust toolchain to avoid running `rustc --print sysroot`
+        for X in \
+            $HOME/.rustup/toolchains/stable-aarch64-apple-darwin
+        do
+            if [[ -d $X ]]; then
+                __RUST_SYSROOT=$X
+                break
+            fi
+        done
+        if [[ -z "${__RUST_SYSROOT+set}" ]]; then
+            __RUST_SYSROOT=$(rustc --print sysroot)
         fi
+        __RUST_SYSROOT=$(rustc --print sysroot)
+        for X in \
+            $__RUST_SYSROOT/etc/bash_completion.d/cargo \
+            $__RUST_SYSROOT/share/bash-completion/completions/cargo \
+            $__RUST_SYSROOT/etc/bash_completion.d/cargo.bashcomp.sh \
+            $__RUST_SYSROOT/share/bash-completion/completions/cargo.bashcomp.sh
+        do
+            if [[ -f $X ]]; then
+                . $X
+                break
+            fi
+        done
     fi
 
     # Enable extended globbing. This feature is needed by nix bash completions
     shopt -s extglob
-
     if [[ -f ~/.nix-profile/share/bash-completion/completions/_nix ]]; then
         . ~/.nix-profile/share/bash-completion/completions/_nix
     fi
