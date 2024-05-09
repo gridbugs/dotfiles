@@ -142,20 +142,24 @@
 (global-set-key (kbd "M-n") 'flycheck-next-error)
 (global-set-key (kbd "M-p") 'flycheck-previous-error)
 (custom-set-faces
- '(lsp-headerline-breadcrumb-symbols-error-face ((t (:background "red4" :underline nil))))
- '(lsp-headerline-breadcrumb-path-error-face ((t (:background "red4" :underline nil))))
- '(lsp-headerline-breadcrumb-symbols-warning-face ((t (:background "DarkGoldenrod4" :underline nil))))
- '(lsp-headerline-breadcrumb-path-warning-face ((t (:background "DarkGoldenrod4" :underline nil))))
- '(lsp-headerline-breadcrumb-symbols-info-face ((t (:background "blue4" :underline nil))))
- '(lsp-headerline-breadcrumb-path-info-face ((t (:background "blue4" :underline nil))))
- '(lsp-headerline-breadcrumb-symbols-hint-face ((t (:background "green4" :underline nil))))
- '(lsp-headerline-breadcrumb-path-hint-face ((t (:background "green4" :underline nil))))
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(flycheck-error ((t (:background "red4" :underline nil))))
- '(flycheck-warning ((t (:background "DarkGoldenrod4" :underline nil))))
- '(flycheck-info ((t (:background "blue4" :underline nil))))
  '(flycheck-hint ((t (:background "green4" :underline nil))))
+ '(flycheck-info ((t (:background "blue4" :underline nil))))
+ '(flycheck-warning ((t (:background "DarkGoldenrod4" :underline nil))))
  '(flyspell-duplicate ((t (:background "green4" :underline nil))))
- '(flyspell-incorrect ((t (:background "OrangeRed4" :underline nil)))))
+ '(flyspell-incorrect ((t (:background "OrangeRed4" :underline nil))))
+ '(lsp-headerline-breadcrumb-path-error-face ((t (:background "red4" :underline nil))))
+ '(lsp-headerline-breadcrumb-path-hint-face ((t (:background "green4" :underline nil))))
+ '(lsp-headerline-breadcrumb-path-info-face ((t (:background "blue4" :underline nil))))
+ '(lsp-headerline-breadcrumb-path-warning-face ((t (:background "DarkGoldenrod4" :underline nil))))
+ '(lsp-headerline-breadcrumb-symbols-error-face ((t (:background "red4" :underline nil))))
+ '(lsp-headerline-breadcrumb-symbols-hint-face ((t (:background "green4" :underline nil))))
+ '(lsp-headerline-breadcrumb-symbols-info-face ((t (:background "blue4" :underline nil))))
+ '(lsp-headerline-breadcrumb-symbols-warning-face ((t (:background "DarkGoldenrod4" :underline nil)))))
 
 (use-package lsp-mode
   :init
@@ -219,8 +223,8 @@
   (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
   (projectile-mode +1)
   (def-projectile-commander-method ?t
-    "Run ansi-term in project."
-      (ansi-term (getenv "SHELL") (concat "ansi-term (" projectile-project-name ")"))))
+    "Run named-ansi-term in project."
+      (named-ansi-term)))
 (setq projectile-switch-project-action 'projectile-commander)
 (use-package helm-projectile
   :config (helm-projectile-on))
@@ -283,10 +287,6 @@
 
 (use-package yaml-mode)
 
-(use-package multiple-cursors
-  :config
-  (global-set-key (kbd "C-c a") 'mc/edit-lines))
-
 (add-hook 'lua-mode-hook #'lsp)
 (setq lua-indent-level 2)
 (add-hook 'lua-mode-hook
@@ -330,12 +330,20 @@ SUFFIX-COUNT is the first integer suffix to try
   (rename-ansi-term-buffer))
 
 (global-set-key (kbd "C-c n t") 'named-ansi-term)
+(global-set-key (kbd "C-c t") 'named-ansi-term)
+(global-set-key (kbd "C-<return>") 'named-ansi-term)
 (advice-add 'cd :after #'then-rename-terminal)
 
 ; Kill a terminal's buffer when the terminal exits
 (defadvice term-handle-exit
   (after term-kill-buffer-on-exit activate)
   (kill-buffer))
+
+(use-package evil-mc)
+(global-evil-mc-mode  1)
+(evil-define-key 'visual evil-mc-key-map
+  "A" #'evil-mc-make-cursor-in-visual-selection-end
+  "I" #'evil-mc-make-cursor-in-visual-selection-beg)
 
 ;; Window navigation using arrow keys.  It's convenient to use shift
 ;; as the modifier on macos but it's more convenient to use control on
@@ -357,14 +365,9 @@ SUFFIX-COUNT is the first integer suffix to try
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(evil-mc yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
 
 (provide 'init)
 ;;; init.el ends here
