@@ -61,6 +61,7 @@
         opam
         ocamlformat
         ocamlPackages.ocaml-lsp
+        dune_3
         nodejs
         rustc
         cargo
