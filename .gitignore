@@ -3,4 +3,5 @@ vim/undodir
 vim/swap
 fonts/.uuid
 nvim/LanguageClient.log
+emacs.d/flycheck_init.el
 *~

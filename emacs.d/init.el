@@ -59,6 +59,9 @@
 ;; Where to save backups
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
+;; Uncomment to print backtrace on error (to the Backtrace buffer)
+;(setq debug-on-error t)
+
 ;; Replace the terminal history functions with just sending the escape sequence.
 ;; This forces the emacs terminal emulators to respect the settings in inputrc.
 (defun my-term-history-backward ()
@@ -271,8 +274,27 @@
   :config
   (exec-path-from-shell-initialize))
 
+(use-package inheritenv)
+
+; NB ledger-mode can't use envrc to locate the "ledger" binary. The
+; calls to inheritenv-add-advice are an attempt to fix this but they
+; don't work. They're left here in case I want to try to fix this one
+; day. For now I'm fixing this by installing ledger into my nix
+; profile.
 (use-package ledger-mode)
 (add-hook 'ledger-mode-hook #'company-mode)
+(inheritenv-add-advice 'ledger-init-load-init-file)
+(inheritenv-add-advice 'ledger-version-greater-p)
+(inheritenv-add-advice 'ledger-read-commodity-with-prompt)
+(inheritenv-add-advice 'ledger-add-transaction)
+(inheritenv-add-advice 'ledger-texi-invoke-command)
+(inheritenv-add-advice 'ledger-display-balance-at-point)
+(inheritenv-add-advice 'ledger-display-ledger-stats)
+(inheritenv-add-advice 'ledger-payees-list)
+(inheritenv-add-advice 'ledger-accounts-list)
+(inheritenv-add-advice 'ledger-report-expand-format-specifiers)
+(inheritenv-add-advice 'ledger-reconcile-get-cleared-or-pending-balance)
+
 
 (use-package flymake
   :bind (("C-c e" . flymake-show-project-diagnostics)))
