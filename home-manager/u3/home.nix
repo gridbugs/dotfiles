@@ -71,6 +71,7 @@
         rustfmt
       ];
       toolPkgs = [
+        ledger
         obs
         openshot-qt
         neovim
