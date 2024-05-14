@@ -259,6 +259,8 @@
 (define-key evil-normal-state-map (kbd "C-e") 'move-end-of-line)
 (define-key isearch-mode-map (kbd "<down>") 'isearch-ring-advance)
 (define-key isearch-mode-map (kbd "<up>") 'isearch-ring-retreat)
+(define-key evil-insert-state-map (kbd "S-<left>") 'windmove-left)
+(define-key evil-insert-state-map (kbd "S-<right>") 'windmove-right)
 
 (use-package nix-mode
   :mode "\\.nix\\'")
@@ -374,10 +376,6 @@ SUFFIX-COUNT is the first integer suffix to try
 (global-set-key (kbd "S-<right>") 'windmove-right)
 (global-set-key (kbd "S-<up>") 'windmove-up)
 (global-set-key (kbd "S-<down>") 'windmove-down)
-(global-set-key (kbd "C-<left>") 'windmove-left)
-(global-set-key (kbd "C-<right>") 'windmove-right)
-(global-set-key (kbd "C-<up>") 'windmove-up)
-(global-set-key (kbd "C-<down>") 'windmove-down)
 
 ;; The remainder of this file is automatically added by package installers.
 
