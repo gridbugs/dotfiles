@@ -59,6 +59,11 @@
 ;; Where to save backups
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
+;; Use default font to render text in markdown code blocks. this face
+;; is also used for lsp-help buffers.
+(custom-set-faces
+ '(markdown-code-face ((t (:inherit default)))))
+
 ;; Uncomment to print backtrace on error (to the Backtrace buffer)
 ;(setq debug-on-error t)
 
