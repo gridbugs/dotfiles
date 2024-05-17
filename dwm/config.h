@@ -90,9 +90,7 @@ static Key keys[] = {
     /* modifier                     key        function        argument */
     { MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
     { MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-    { MODKEY,                       XK_s,      spawn,          {.v = termcmd } },
     { MODKEY,                       XK_Return, spawn,          {.v = browsercmd } },
-    { MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
     { MODKEY,                       XK_a,      spawn,          {.v = findcursorcmd } },
     { MODKEY,                       XK_m,      spawn,          {.v = dvorakcmd } },
     { MODKEY|ShiftMask,             XK_m,      spawn,          {.v = qwertycmd } },
