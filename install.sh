@@ -51,6 +51,7 @@ make_link screenrc .screenrc
 make_link nix.conf .config/nix/nix.conf
 make_link emacs.d/init.el .emacs.d/init.el
 make_link emacs.d/cram-mode.el .emacs.d/cram-mode.el
+make_link wezterm.lua .wezterm.lua
 
 # link archlinux-specific packages
 if type pacman 2>/dev/null >/dev/null; then
