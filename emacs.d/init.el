@@ -316,12 +316,16 @@
   (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
 
 (use-package yaml-mode)
+(use-package toml-mode)
 
 (add-hook 'lua-mode-hook #'lsp)
 (setq lua-indent-level 2)
 (add-hook 'lua-mode-hook
           (lambda ()
             (setq tab-width 2)))
+
+(add-hook 'python-mode-hook #'lsp)
+(setq python-indent-offset 2)
 
 (defun rename-buffer-unique-with-suffix (base-name &optional suffix-count)
   "Rename the current buffer appending a suffix to disambiguate.
@@ -391,7 +395,7 @@ SUFFIX-COUNT is the first integer suffix to try
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(evil-mc yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(toml-mode evil-mc yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
 
 
