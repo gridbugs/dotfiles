@@ -38,6 +38,10 @@
 ; Always kill the current buffer without showing the menu when "C-x k" is pressed
 (global-set-key [(control x) (k)] 'kill-this-buffer)
 
+; Copy some similar keybindings from tmux
+(global-set-key (kbd "C-x \"") 'split-window-below)
+(global-set-key (kbd "C-x %") 'split-window-right)
+
 ;; This disables emacs's warning whehn openning a symlink to a file under vcs
 (setq vc-handled-backends nil)
 
