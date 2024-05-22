@@ -297,8 +297,6 @@
 (define-key isearch-mode-map (kbd "<up>") 'isearch-ring-retreat)
 (define-key evil-insert-state-map (kbd "S-<left>") 'windmove-left)
 (define-key evil-insert-state-map (kbd "S-<right>") 'windmove-right)
-(setq evil-insert-state-cursor '("chartreuse" bar))
-(setq evil-normal-state-cursor '("grey" box))
 
 (defun set-cursor-shape (shape)
   "Set the cursor shape using terminal escape sequences."
