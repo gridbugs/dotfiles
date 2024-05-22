@@ -1,5 +1,8 @@
-;; Use a dark theme so the screen is dark until the real theme loads
-(load-theme 'modus-vivendi t)
+(set-variable 'frame-background-mode 'dark)
+
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 ;; Don't display the splash screen
 (setq inhibit-startup-message t)
@@ -112,9 +115,24 @@
 	use-package-expand-minimally t))
 (require 'use-package)
 
-(if (display-graphic-p)
-    (use-package catppuccin-theme
-      :config (load-theme 'catppuccin :no-confirm)))
+(use-package catppuccin-theme
+  :config
+  (setq catppuccin-flavor 'mocha))
+
+(defun reload-theme ()
+  (interactive)
+  (if (display-graphic-p)
+      (progn
+	(load-theme 'modus-vivendi t)
+	(load-theme 'catppuccin t)
+	(message "Using graphical theme"))
+    (progn
+      (disable-theme 'modus-vivendi)
+      (disable-theme 'catppuccin)
+      (message "Using terminal theme")
+      )))
+(reload-theme)
+(global-set-key (kbd "C-c x x") 'reload-theme)
 
 (use-package tuareg
   :custom
