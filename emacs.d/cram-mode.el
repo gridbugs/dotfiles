@@ -27,7 +27,7 @@
 ;;; Imports & Declarations:
 
 ;;;###autoload
-(add-to-list 'auto-mode-alist '("\\.t" . cram-mode))
+(add-to-list 'auto-mode-alist '("\\.t$" . cram-mode))
 
 ;;; Font lock syntax highlighting:
 
