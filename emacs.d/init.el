@@ -127,8 +127,8 @@
 	(load-theme 'catppuccin t)
 	(message "Using graphical theme"))
     (progn
-      (disable-theme 'modus-vivendi)
       (disable-theme 'catppuccin)
+      (set-background-color "color-232")
       (message "Using terminal theme")
       )))
 (reload-theme)
@@ -215,7 +215,6 @@
   :hook (ledger-mode .git-gutter-mode)
   :config
   (setq git-gutter:update-interval 0.02))
-(use-package git-gutter-fringe)
 
 ;; Display line numbers in every buffer
 (global-display-line-numbers-mode 1)
@@ -285,6 +284,15 @@
 (define-key isearch-mode-map (kbd "<up>") 'isearch-ring-retreat)
 (define-key evil-insert-state-map (kbd "S-<left>") 'windmove-left)
 (define-key evil-insert-state-map (kbd "S-<right>") 'windmove-right)
+(setq evil-insert-state-cursor '("chartreuse" bar))
+(setq evil-normal-state-cursor '("grey" box))
+
+(defun set-cursor-shape (shape)
+  "Set the cursor shape using terminal escape sequences."
+  (when (eq window-system 'nil)
+    (send-string-to-terminal (format "\033[%d q" shape))))
+(add-hook 'evil-normal-state-entry-hook (lambda () (set-cursor-shape 2)))
+(add-hook 'evil-insert-state-entry-hook (lambda () (set-cursor-shape 6)))
 
 (use-package nix-mode
   :mode "\\.nix\\'")
@@ -413,7 +421,7 @@ SUFFIX-COUNT is the first integer suffix to try
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(toml-mode evil-mc yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter-fringe git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(toml-mode evil-mc yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode vterm evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
 
 
