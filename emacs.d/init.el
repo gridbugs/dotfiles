@@ -119,12 +119,21 @@
   :config
   (setq catppuccin-flavor 'mocha))
 
+(defun my-helm-customizations ()
+  "Set custom font sizes for Helm faces."
+  (custom-set-faces
+   '(helm-source-header
+     ((t (:inherit font-lock-type-face :height 1.5 :weight bold))))
+   '(helm-selection
+     ((t (:background "gray30" :foreground "white" :weight bold))))))
+
 (defun reload-theme ()
   (interactive)
   (if (display-graphic-p)
       (progn
 	(load-theme 'modus-vivendi t)
 	(load-theme 'catppuccin t)
+	(my-helm-customizations)
 	(message "Using graphical theme"))
     (progn
       (disable-theme 'catppuccin)
