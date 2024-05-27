@@ -11,7 +11,14 @@
   (invert-face 'mode-line)
   (run-with-timer 0.1 nil #'invert-face 'mode-line))
 
+;; Never blink the cursor
 (blink-cursor-mode 0)
+
+;; Display images in org mode by default
+(setq org-startup-with-inline-images t)
+
+;; In org mode, don't auto indent code blocks
+(setq org-src-preserve-indentation t)
 
 ;; Disable some unused UI elements
 (menu-bar-mode -1)
@@ -90,7 +97,8 @@
  '(lsp-headerline-breadcrumb-symbols-info-face ((t (:background "blue4" :underline nil))))
  '(lsp-headerline-breadcrumb-symbols-warning-face ((t (:background "DarkGoldenrod4" :underline nil))))
  '(markdown-code-face ((t (:inherit default))))
- '(markdown-inline-code-face ((t (:inherit default)))))
+ '(markdown-inline-code-face ((t (:inherit default))))
+ '(org-document-title ((t (:inherit default :height 1.0)))))
 
 ;; Uncomment to print backtrace on error (to the Backtrace buffer)
 ;(setq debug-on-error t)
@@ -241,6 +249,7 @@
 (use-package git-gutter
   :hook (prog-mode . git-gutter-mode)
   :hook (ledger-mode .git-gutter-mode)
+  :hook (org-mode .git-gutter-mode)
   :config
   (setq git-gutter:update-interval 0.02))
 
@@ -261,8 +270,12 @@
 
 (use-package company
   :config
-  (add-hook 'after-init-hook 'global-company-mode)
-  (define-key global-map (kbd "C-.") 'company-files))
+  (add-hook 'after-init-hook 'global-company-mode))
+
+;; Customize company-mode for better filename completion in Org mode
+(defun my/company-org-mode-setup ()
+  (setq-local company-backends '((company-files company-dabbrev-code company-keywords))))
+(add-hook 'org-mode-hook 'my/company-org-mode-setup)
 
 (use-package company-quickhelp
   :config
@@ -438,11 +451,22 @@ SUFFIX-COUNT is the first integer suffix to try
 
 (use-package org-tree-slide
   :config
-  (org-tree-slide-slide-in-effect-toggle)
+  (setq org-tree-slide-slide-in-effect nil)
+  (setq org-tree-slide-header t)
   (define-key org-tree-slide-mode-map (kbd "<f9>") 'org-tree-slide-move-previous-tree)
   (define-key org-tree-slide-mode-map (kbd "<f10>") 'org-tree-slide-move-next-tree)
+  (define-key org-tree-slide-mode-map (kbd "<f7>") 'org-tree-slide-content)
   (define-key org-mode-map (kbd "<f8>") 'org-tree-slide-mode)
   (define-key org-mode-map (kbd "S-<f8>") 'org-tree-slide-skip-done-toggle))
+(add-hook 'org-tree-slide-play-hook
+	  (lambda ()
+	    (progn
+	      (git-gutter-mode -1)
+	      (display-line-numbers-mode -1))))
+(add-hook 'org-tree-slide-stop-hook
+	  (lambda ()
+	    (git-gutter-mode 1)
+	    (display-line-numbers-mode 1)))
 
 ;; Window navigation using arrow keys.  It's convenient to use shift
 ;; as the modifier on macos but it's more convenient to use control on
