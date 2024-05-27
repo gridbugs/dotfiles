@@ -1,5 +1,3 @@
-(set-variable 'frame-background-mode 'dark)
-
 (require 'server)
 (unless (server-running-p)
   (server-start))
@@ -12,6 +10,8 @@
 (defun flash-mode-line ()
   (invert-face 'mode-line)
   (run-with-timer 0.1 nil #'invert-face 'mode-line))
+
+(blink-cursor-mode 0)
 
 ;; Disable some unused UI elements
 (menu-bar-mode -1)
@@ -69,6 +69,26 @@
 ;; Use default font to render text in markdown code blocks. this face
 ;; is also used for lsp-help buffers.
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flycheck-error ((t (:background "red4" :underline nil))))
+ '(flycheck-hint ((t (:background "green4" :underline nil))))
+ '(flycheck-info ((t (:background "blue4" :underline nil))))
+ '(flycheck-warning ((t (:background "DarkGoldenrod4" :underline nil))))
+ '(flyspell-duplicate ((t (:background "green4" :underline nil))))
+ '(flyspell-incorrect ((t (:background "OrangeRed4" :underline nil))))
+ '(helm-selection ((t (:background "gray30" :foreground "white" :weight bold))))
+ '(helm-source-header ((t (:inherit font-lock-type-face :height 1.5 :weight bold))))
+ '(lsp-headerline-breadcrumb-path-error-face ((t (:background "red4" :underline nil))))
+ '(lsp-headerline-breadcrumb-path-hint-face ((t (:background "green4" :underline nil))))
+ '(lsp-headerline-breadcrumb-path-info-face ((t (:background "blue4" :underline nil))))
+ '(lsp-headerline-breadcrumb-path-warning-face ((t (:background "DarkGoldenrod4" :underline nil))))
+ '(lsp-headerline-breadcrumb-symbols-error-face ((t (:background "red4" :underline nil))))
+ '(lsp-headerline-breadcrumb-symbols-hint-face ((t (:background "green4" :underline nil))))
+ '(lsp-headerline-breadcrumb-symbols-info-face ((t (:background "blue4" :underline nil))))
+ '(lsp-headerline-breadcrumb-symbols-warning-face ((t (:background "DarkGoldenrod4" :underline nil))))
  '(markdown-code-face ((t (:inherit default))))
  '(markdown-inline-code-face ((t (:inherit default)))))
 
@@ -133,19 +153,33 @@
 
 (defun reload-theme ()
   (interactive)
-  (if (display-graphic-p)
+  (progn
+    (set-variable 'frame-background-mode 'dark)
+    (disable-theme `modus-operandi)
+    (load-theme 'modus-vivendi t)
+    (if (display-graphic-p)
+	(progn
+	  (setq catppuccin-flavor 'mocha)
+	  (load-theme 'catppuccin t)
+	  (my-helm-customizations)
+	  (message "Using graphical theme"))
       (progn
-	(load-theme 'modus-vivendi t)
-	(load-theme 'catppuccin t)
-	(my-helm-customizations)
-	(message "Using graphical theme"))
-    (progn
-      (disable-theme 'catppuccin)
-      (set-background-color "color-232")
-      (message "Using terminal theme")
-      )))
+	(disable-theme 'catppuccin)
+	(set-background-color "color-232")
+	(message "Using terminal theme")
+	))))
 (reload-theme)
 (global-set-key (kbd "C-c x x") 'reload-theme)
+
+(defun light-theme ()
+  (interactive)
+  (progn
+    (set-variable 'frame-background-mode 'light)
+    (disable-theme 'modus-vivendi)
+    (load-theme 'modus-operandi)
+    (setq catppuccin-flavor 'latte)
+    (catppuccin-reload)
+    ))
 
 (use-package tuareg
   :custom
@@ -181,25 +215,6 @@
   :init (global-flycheck-mode))
 (global-set-key (kbd "M-n") 'flycheck-next-error)
 (global-set-key (kbd "M-p") 'flycheck-previous-error)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(flycheck-error ((t (:background "red4" :underline nil))))
- '(flycheck-hint ((t (:background "green4" :underline nil))))
- '(flycheck-info ((t (:background "blue4" :underline nil))))
- '(flycheck-warning ((t (:background "DarkGoldenrod4" :underline nil))))
- '(flyspell-duplicate ((t (:background "green4" :underline nil))))
- '(flyspell-incorrect ((t (:background "OrangeRed4" :underline nil))))
- '(lsp-headerline-breadcrumb-path-error-face ((t (:background "red4" :underline nil))))
- '(lsp-headerline-breadcrumb-path-hint-face ((t (:background "green4" :underline nil))))
- '(lsp-headerline-breadcrumb-path-info-face ((t (:background "blue4" :underline nil))))
- '(lsp-headerline-breadcrumb-path-warning-face ((t (:background "DarkGoldenrod4" :underline nil))))
- '(lsp-headerline-breadcrumb-symbols-error-face ((t (:background "red4" :underline nil))))
- '(lsp-headerline-breadcrumb-symbols-hint-face ((t (:background "green4" :underline nil))))
- '(lsp-headerline-breadcrumb-symbols-info-face ((t (:background "blue4" :underline nil))))
- '(lsp-headerline-breadcrumb-symbols-warning-face ((t (:background "DarkGoldenrod4" :underline nil)))))
 
 (use-package lsp-mode
   :init
@@ -297,6 +312,13 @@
 (define-key isearch-mode-map (kbd "<up>") 'isearch-ring-retreat)
 (define-key evil-insert-state-map (kbd "S-<left>") 'windmove-left)
 (define-key evil-insert-state-map (kbd "S-<right>") 'windmove-right)
+(define-key evil-insert-state-map (kbd "S-<up>") 'windmove-up)
+(define-key evil-insert-state-map (kbd "S-<down>") 'windmove-down)
+(define-key evil-normal-state-map (kbd "S-<left>") 'windmove-left)
+(define-key evil-normal-state-map (kbd "S-<right>") 'windmove-right)
+(define-key evil-normal-state-map (kbd "S-<up>") 'windmove-up)
+(define-key evil-normal-state-map (kbd "S-<down>") 'windmove-down)
+(evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
 
 (defun set-cursor-shape (shape)
   "Set the cursor shape using terminal escape sequences."
@@ -401,8 +423,6 @@ SUFFIX-COUNT is the first integer suffix to try
   (rename-ansi-term-buffer))
 
 (global-set-key (kbd "C-c n t") 'named-ansi-term)
-(global-set-key (kbd "C-c t") 'named-ansi-term)
-(global-set-key (kbd "C-<return>") 'named-ansi-term)
 (advice-add 'cd :after #'then-rename-terminal)
 
 ; Kill a terminal's buffer when the terminal exits
@@ -415,6 +435,14 @@ SUFFIX-COUNT is the first integer suffix to try
 (evil-define-key 'visual evil-mc-key-map
   "A" #'evil-mc-make-cursor-in-visual-selection-end
   "I" #'evil-mc-make-cursor-in-visual-selection-beg)
+
+(use-package org-tree-slide
+  :config
+  (org-tree-slide-slide-in-effect-toggle)
+  (define-key org-tree-slide-mode-map (kbd "<f9>") 'org-tree-slide-move-previous-tree)
+  (define-key org-tree-slide-mode-map (kbd "<f10>") 'org-tree-slide-move-next-tree)
+  (define-key org-mode-map (kbd "<f8>") 'org-tree-slide-mode)
+  (define-key org-mode-map (kbd "S-<f8>") 'org-tree-slide-skip-done-toggle))
 
 ;; Window navigation using arrow keys.  It's convenient to use shift
 ;; as the modifier on macos but it's more convenient to use control on
@@ -432,7 +460,7 @@ SUFFIX-COUNT is the first integer suffix to try
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(toml-mode evil-mc yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(org-tree-slide toml-mode evil-mc yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
 
 
