@@ -293,9 +293,14 @@
   :config
   (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
   (projectile-mode +1)
-  (def-projectile-commander-method ?t
-    "Run named-ansi-term in project."
-      (named-ansi-term)))
+  (def-projectile-commander-method
+   ?t
+   "Run named-ansi-term in project."
+   (named-ansi-term))
+  (def-projectile-commander-method
+   ?G
+   "Run magit-status in project."
+   (magit-status-setup-buffer)))
 (setq projectile-switch-project-action 'projectile-commander)
 (use-package helm-projectile
   :config (helm-projectile-on))
