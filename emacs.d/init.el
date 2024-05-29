@@ -20,6 +20,9 @@
 ;; In org mode, don't auto indent code blocks
 (setq org-src-preserve-indentation t)
 
+;; Bind C-c l to toggle link display in Org mode
+(global-set-key (kbd "C-c l") 'org-toggle-link-display)
+
 ;; Disable some unused UI elements
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -249,7 +252,7 @@
 (use-package git-gutter
   :hook (prog-mode . git-gutter-mode)
   :hook (ledger-mode .git-gutter-mode)
-  :hook (org-mode .git-gutter-mode)
+  :hook (text-mode .git-gutter-mode)
   :config
   (setq git-gutter:update-interval 0.02))
 
