@@ -460,8 +460,8 @@ SUFFIX-COUNT is the first integer suffix to try
   (define-key org-tree-slide-mode-map (kbd "<f9>") 'org-tree-slide-move-previous-tree)
   (define-key org-tree-slide-mode-map (kbd "<f10>") 'org-tree-slide-move-next-tree)
   (define-key org-tree-slide-mode-map (kbd "<f7>") 'org-tree-slide-content)
-  (define-key org-mode-map (kbd "<f8>") 'org-tree-slide-mode)
-  (define-key org-mode-map (kbd "S-<f8>") 'org-tree-slide-skip-done-toggle))
+  (define-key org-mode-map (kbd "<f5>") 'org-tree-slide-mode)
+  (define-key org-mode-map (kbd "S-<f5>") 'org-tree-slide-skip-done-toggle))
 (add-hook 'org-tree-slide-play-hook
 	  (lambda ()
 	    (progn
