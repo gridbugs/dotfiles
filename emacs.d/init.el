@@ -101,6 +101,7 @@
  '(lsp-headerline-breadcrumb-symbols-warning-face ((t (:background "DarkGoldenrod4" :underline nil))))
  '(markdown-code-face ((t (:inherit default))))
  '(markdown-inline-code-face ((t (:inherit default))))
+ '(markdown-html-tag-name-face ((t (:inherit default))))
  '(org-document-title ((t (:inherit default :height 1.0)))))
 
 ;; Uncomment to print backtrace on error (to the Backtrace buffer)
