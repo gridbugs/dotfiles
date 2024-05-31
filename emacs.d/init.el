@@ -76,6 +76,9 @@
 ;; Where to save backups
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
+;; Don't prompt when reverting a file to its state on disk
+(setq revert-without-query '(".*"))
+
 ;; Use default font to render text in markdown code blocks. this face
 ;; is also used for lsp-help buffers.
 (custom-set-faces
@@ -263,6 +266,12 @@
   :config
   (setq magit-define-global-key-bindings 'recommended))
 
+(defun my-magit-status-current-frame ()
+  "Run `magit-status` in the current frame."
+  (interactive)
+  (let ((magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+    (magit-status-setup-buffer)))
+
 (use-package helm
   :config (helm-mode 1))
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
@@ -300,7 +309,7 @@
   (def-projectile-commander-method
    ?G
    "Run magit-status in project."
-   (magit-status-setup-buffer)))
+   (my-magit-status-current-frame)))
 (setq projectile-switch-project-action 'projectile-commander)
 (use-package helm-projectile
   :config (helm-projectile-on))
@@ -484,6 +493,12 @@ SUFFIX-COUNT is the first integer suffix to try
 (global-set-key (kbd "S-<right>") 'windmove-right)
 (global-set-key (kbd "S-<up>") 'windmove-up)
 (global-set-key (kbd "S-<down>") 'windmove-down)
+
+;; Unbind some key combinations I never use that are easy to trigger
+;; by accident on keybords where letters are treated as modifier keys
+;; when held.
+(global-unset-key (kbd "M-r"))
+(global-unset-key (kbd "M-u"))
 
 ;; The remainder of this file is automatically added by package installers.
 
