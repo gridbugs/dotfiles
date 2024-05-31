@@ -44,6 +44,7 @@
 (defun my-modify-syntax-hook ()
   (modify-syntax-entry ?_ "w"))
 (add-hook 'prog-mode-hook 'my-modify-syntax-hook)
+(add-hook 'text-mode-hook 'my-modify-syntax-hook)
 
 ; Always kill the current buffer without showing the menu when "C-x k" is pressed
 (global-set-key [(control x) (k)] 'kill-this-buffer)
@@ -256,6 +257,7 @@
 (use-package git-gutter
   :hook (prog-mode . git-gutter-mode)
   :hook (ledger-mode .git-gutter-mode)
+  :hook (org-mode .git-gutter-mode)
   :hook (text-mode .git-gutter-mode)
   :config
   (setq git-gutter:update-interval 0.02))
