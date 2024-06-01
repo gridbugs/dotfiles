@@ -488,30 +488,6 @@ SUFFIX-COUNT is the first integer suffix to try
 	    (git-gutter-mode 1)
 	    (display-line-numbers-mode 1)))
 
-(use-package mmm-mode)
-(setq mmm-global-mode 'maybe)
-
-;; Use mmm-mode to enable syntax highligting of code blocks in
-;; markdown files.
-;; copied from https://jblevins.org/log/mmm
-(defun my-mmm-markdown-auto-class (lang &optional submode)
-  "Define a mmm-mode class for LANG in `markdown-mode' using SUBMODE.
-If SUBMODE is not provided, use `LANG-mode' by default."
-  (let ((class (intern (concat "markdown-" lang)))
-        (submode (or submode (intern (concat lang "-mode"))))
-        (front (concat "^```" lang "[\n\r]+"))
-        (back "^```"))
-    (mmm-add-classes (list (list class :submode submode :front front :back back)))
-    (mmm-add-mode-ext-class 'markdown-mode nil class)))
-;; Mode names that derive directly from the language name
-(mapc 'my-mmm-markdown-auto-class
-      '("rust" "python"))
-;; Mode names that differ from the language name
-(my-mmm-markdown-auto-class "shell" 'shell-script-mode)
-(my-mmm-markdown-auto-class "ocaml" 'tuareg-mode)
-(setq mmm-parse-when-idle 't)
-(global-set-key (kbd "C-c m") 'mmm-parse-buffer)
-
 ;; Window navigation using arrow keys.  It's convenient to use shift
 ;; as the modifier on macos but it's more convenient to use control on
 ;; linux, so juts bind both.
@@ -534,7 +510,7 @@ If SUBMODE is not provided, use `LANG-mode' by default."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(mmm-mode org-tree-slide toml-mode evil-mc yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(org-tree-slide toml-mode evil-mc yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
 
 
