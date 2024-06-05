@@ -258,7 +258,7 @@
   :hook (prog-mode . git-gutter-mode)
   :hook (ledger-mode .git-gutter-mode)
   :hook (org-mode .git-gutter-mode)
-  :hook (text-mode .git-gutter-mode)
+  :hook (markdown-mode .git-gutter-mode)
   :config
   (setq git-gutter:update-interval 0.02))
 
@@ -488,6 +488,8 @@ SUFFIX-COUNT is the first integer suffix to try
 	    (git-gutter-mode 1)
 	    (display-line-numbers-mode 1)))
 
+(use-package dockerfile-mode)
+
 ;; Window navigation using arrow keys.  It's convenient to use shift
 ;; as the modifier on macos but it's more convenient to use control on
 ;; linux, so juts bind both.
@@ -510,7 +512,7 @@ SUFFIX-COUNT is the first integer suffix to try
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(org-tree-slide toml-mode evil-mc yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(dockerfile-mode org-tree-slide toml-mode evil-mc yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
 
 
