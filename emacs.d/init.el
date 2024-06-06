@@ -229,8 +229,8 @@
 
 (use-package flycheck
   :init (global-flycheck-mode))
-(global-set-key (kbd "M-n") 'flycheck-next-error)
-(global-set-key (kbd "M-p") 'flycheck-previous-error)
+;; Allow flycheck to lint okra files
+(load "~/.emacs.d/flycheck-okra.el")
 
 (use-package lsp-mode
   :init
