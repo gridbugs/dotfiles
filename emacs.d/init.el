@@ -255,11 +255,8 @@
   :hook (after-init . envrc-global-mode))
 
 (use-package git-gutter
-  :hook (prog-mode . git-gutter-mode)
-  :hook (ledger-mode .git-gutter-mode)
-  :hook (org-mode .git-gutter-mode)
-  :hook (markdown-mode .git-gutter-mode)
   :config
+  (global-git-gutter-mode +1)
   (setq git-gutter:update-interval 0.02))
 
 ;; Display line numbers in every buffer
