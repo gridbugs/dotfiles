@@ -40,6 +40,12 @@
 ; Wrap long lines
 (global-visual-line-mode t)
 
+;; Enable line numbers for file buffers only
+(add-hook 'find-file-hook 'display-line-numbers-mode)
+
+;; Highlight the current line
+(global-hl-line-mode 1)
+
 ; Treat "_" as part of words by default in all code buffers
 (defun my-modify-syntax-hook ()
   (modify-syntax-entry ?_ "w"))
@@ -244,8 +250,8 @@
                      '("opam" "exec" "--" "ocamllsp"))
     :major-modes '(caml-mode tuareg-mode reason-mode)
     :server-id 'ocamllsp)))
-(setq lsp-inlay-hint-enable t)
-(setq lsp-signature-auto-activate t)
+(setq lsp-inlay-hint-enable nil)
+(setq lsp-signature-auto-activate nil)
 
 (use-package yasnippet
   :config
@@ -259,8 +265,6 @@
   (global-git-gutter-mode +1)
   (setq git-gutter:update-interval 0.02))
 
-;; Display line numbers in every buffer
-(global-display-line-numbers-mode 1)
 (use-package magit
   :config
   (setq magit-define-global-key-bindings 'recommended))
@@ -432,7 +436,7 @@ SUFFIX-COUNT is the first integer suffix to try
 (defun rename-ansi-term-buffer ()
   "Rename the \"ansi-term\" buffer to match the current working directory."
   (let* ((default-directory (expand-file-name default-directory))
-         (buffer-name (concat "*ansi-term " default-directory "*")))
+         (buffer-name (concat "*" mode-name " " default-directory "*")))
     (rename-buffer-unique-with-suffix buffer-name)))
 
 (defun named-ansi-term ()
