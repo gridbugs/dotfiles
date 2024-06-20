@@ -87,6 +87,11 @@
 ;; Don't prompt when reverting a file to its state on disk
 (setq revert-without-query '(".*"))
 
+;; Less smart indentation by default
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+
 ;; Use default font to render text in markdown code blocks. this face
 ;; is also used for lsp-help buffers.
 (custom-set-faces
@@ -479,7 +484,10 @@ SUFFIX-COUNT is the first integer suffix to try
 
 (use-package web-mode
   :config
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)))
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
 
 ;; Window navigation using arrow keys.  It's convenient to use shift
 ;; as the modifier on macos but it's more convenient to use control on
