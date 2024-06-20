@@ -491,6 +491,10 @@ SUFFIX-COUNT is the first integer suffix to try
 
 (use-package dockerfile-mode)
 
+(use-package web-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode)))
+
 ;; Window navigation using arrow keys.  It's convenient to use shift
 ;; as the modifier on macos but it's more convenient to use control on
 ;; linux, so juts bind both.

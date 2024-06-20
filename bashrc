@@ -158,6 +158,9 @@ if [[ $- == *i* ]]; then
         if [[ ! -r $BASH_COMPLETION_DIR/git ]]; then
             . ~/.completions/git
         fi
+        if [[ ! -r $BASH_COMPLETION_DIR/zola ]]; then
+            . ~/.completions/zola
+        fi
         if type docker 2>/dev/null >/dev/null; then
             if [[ ! -r $BASH_COMPLETION_DIR/docker ]]; then
                 . ~/.completions/docker
@@ -228,18 +231,6 @@ if [[ $- == *i* ]]; then
     if type direnv 2>/dev/null >/dev/null && [[ $(basename "$SHELL") == "bash" ]] ; then
         eval "$(direnv hook bash)"
     fi
-
-    # Open editor at path found by fzf
-    fed() {
-        if [ "$#" -ne 0 ]; then
-            pushd $1 > /dev/null
-        fi
-        $EDITOR $(fzf)
-        if [ "$#" -ne 0 ]; then
-            popd > /dev/null
-        fi
-    }
-
 fi
 
 true
