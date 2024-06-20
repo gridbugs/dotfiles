@@ -48,6 +48,7 @@
 
 ; Treat "_" as part of words by default in all code buffers
 (defun my-modify-syntax-hook ()
+  "Treat '_' as part of words."
   (modify-syntax-entry ?_ "w"))
 (add-hook 'prog-mode-hook 'my-modify-syntax-hook)
 (add-hook 'text-mode-hook 'my-modify-syntax-hook)
@@ -174,6 +175,7 @@
      ((t (:background "gray30" :foreground "white" :weight bold))))))
 
 (defun reload-theme ()
+  "Set the theme based on whether the current session is graphical."
   (interactive)
   (progn
     (set-variable 'frame-background-mode 'dark)
@@ -192,16 +194,6 @@
 	))))
 (reload-theme)
 (global-set-key (kbd "C-c x x") 'reload-theme)
-
-(defun light-theme ()
-  (interactive)
-  (progn
-    (set-variable 'frame-background-mode 'light)
-    (disable-theme 'modus-vivendi)
-    (load-theme 'modus-operandi)
-    (setq catppuccin-flavor 'latte)
-    (catppuccin-reload)
-    ))
 
 (use-package tuareg
   :custom
@@ -364,10 +356,6 @@
 (use-package nix-mode
   :mode "\\.nix\\'")
 
-(use-package terminal-toggle)
-(setq terminal-toggle--term-shell (getenv "SHELL"))
-(global-set-key (kbd "C-x w") 'terminal-toggle)
-
 (use-package vimrc-mode)
 
 (use-package exec-path-from-shell
@@ -380,8 +368,7 @@
 ; NB ledger-mode can't use envrc to locate the "ledger" binary. The
 ; calls to inheritenv-add-advice are an attempt to fix this but they
 ; don't work. They're left here in case I want to try to fix this one
-; day. For now I'm fixing this by installing ledger into my nix
-; profile.
+; day. For now I'm fixing this by globally installing ledger.
 (use-package ledger-mode)
 (add-hook 'ledger-mode-hook #'company-mode)
 (inheritenv-add-advice 'ledger-init-load-init-file)
@@ -395,7 +382,6 @@
 (inheritenv-add-advice 'ledger-accounts-list)
 (inheritenv-add-advice 'ledger-report-expand-format-specifiers)
 (inheritenv-add-advice 'ledger-reconcile-get-cleared-or-pending-balance)
-
 
 (use-package flymake
   :bind (("C-c e" . flymake-show-project-diagnostics)))
@@ -422,7 +408,7 @@
 
 (defun rename-buffer-unique-with-suffix (base-name &optional suffix-count)
   "Rename the current buffer appending a suffix to disambiguate.
-NAME is the name af the new buffer.
+BASE-NAME is the name af the new buffer.
 SUFFIX-COUNT is the first integer suffix to try
   (it will be incremented until the name is unique)."
   (let ((name (if suffix-count
@@ -517,7 +503,7 @@ SUFFIX-COUNT is the first integer suffix to try
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(dockerfile-mode org-tree-slide toml-mode evil-mc yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat terminal-toggle nix-mode evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(dockerfile-mode org-tree-slide toml-mode evil-mc yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat nix-mode evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
 
 
