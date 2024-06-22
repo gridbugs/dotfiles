@@ -87,11 +87,6 @@
 ;; Don't prompt when reverting a file to its state on disk
 (setq revert-without-query '(".*"))
 
-;; Less smart indentation by default
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
-(setq indent-line-function 'insert-tab)
-
 ;; Use default font to render text in markdown code blocks. this face
 ;; is also used for lsp-help buffers.
 (custom-set-faces
@@ -410,6 +405,21 @@
 
 (add-hook 'python-mode-hook #'lsp)
 (setq python-indent-offset 2)
+
+;; The amount text is moved when entering ">>" and "<<" in evil mode
+;; is a global variable and can't be configured per major mode it
+;; seems. Define some commands for switching between shifting by 2
+;; characters and 4 characters.
+(global-set-key (kbd "C-c s 2")
+                (lambda ()
+                  (interactive)
+                  (setq evil-shift-width 2)
+                  (message "evil-shift-width set to 2")))
+(global-set-key (kbd "C-c s 4")
+                (lambda ()
+                  (interactive)
+                  (setq evil-shift-width 4)
+                  (message "evil-shift-width set to 4")))
 
 (defun rename-buffer-unique-with-suffix (base-name &optional suffix-count)
   "Rename the current buffer appending a suffix to disambiguate.
