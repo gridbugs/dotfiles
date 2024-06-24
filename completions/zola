@@ -255,7 +255,7 @@ _zola() {
             return 0
             ;;
         zola__serve)
-            opts="-i -p -o -u -O -f -h --interface --port --output-dir --base-url --drafts --open --fast --no-port-append --help"
+            opts="-i -p -o -u -O -f -h --interface --port --output-dir --force --base-url --drafts --open --fast --no-port-append --help"
             if [[ ${cur} == -* || ${COMP_CWORD} -eq 2 ]] ; then
                 COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
                 return 0
@@ -303,4 +303,8 @@ _zola() {
     esac
 }
 
-complete -F _zola -o bashdefault -o default zola
+if [[ "${BASH_VERSINFO[0]}" -eq 4 && "${BASH_VERSINFO[1]}" -ge 4 || "${BASH_VERSINFO[0]}" -gt 4 ]]; then
+    complete -F _zola -o nosort -o bashdefault -o default zola
+else
+    complete -F _zola -o bashdefault -o default zola
+fi
