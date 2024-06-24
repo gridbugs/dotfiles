@@ -101,7 +101,7 @@
         find-cursor
         gh
         audacity
-        nixfmt
+        nixfmt-classic
         imagemagick
         tmate
         dig

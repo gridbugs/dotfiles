@@ -9,11 +9,11 @@ CONFIG=$ST_DIR/config.h
 source $DIR/common.sh
 
 NAME=st
-VERSION=0.9
+VERSION=0.9.2
 SRC_FILENAME="st-$VERSION.tar.gz"
 SRC_DIR="st-$VERSION"
 SRC_URL="https://dl.suckless.org/st/$SRC_FILENAME"
-SRC_CHECKSUM="f36359799734eae785becb374063f0be833cf22f88b4f169cd251b99324e08e7"
+SRC_CHECKSUM="6b215d4f472b21d6232f30f221117a777e24bcfee68955ddefb7426467f9494b"
 
 BOLD_IS_NOT_BRIGHT_FILENAME="bold-is-not-bright.diff"
 BOLD_IS_NOT_BRIGHT_URL="https://st.suckless.org/patches/bold-is-not-bright/st-bold-is-not-bright-20190127-3be4cf1.diff"

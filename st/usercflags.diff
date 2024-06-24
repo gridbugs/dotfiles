@@ -1,27 +1,19 @@
 diff --git a/Makefile b/Makefile
-index 470ac86..91d44a6 100644
+index 15db421..a759fe8 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -6,12 +6,13 @@ include config.mk
+@@ -6,6 +6,7 @@ include config.mk
  
  SRC = st.c x.c
  OBJ = $(SRC:.c=.o)
 +ALLCFLAGS = $(STCFLAGS) $(USERCFLAGS)
  
- all: options st
+ all: st
  
- options:
- 	@echo st build options:
--	@echo "CFLAGS  = $(STCFLAGS)"
-+	@echo "CFLAGS  = $(ALLCFLAGS)"
- 	@echo "LDFLAGS = $(STLDFLAGS)"
- 	@echo "CC      = $(CC)"
- 
-@@ -19,7 +20,7 @@ config.h:
- 	cp config.def.h config.h
+@@ -14,6 +15,7 @@ config.h:
  
  .c.o:
--	$(CC) $(STCFLAGS) -c $<
+ 	$(CC) $(STCFLAGS) -c $<
 +	$(CC) $(ALLCFLAGS) -c $<
  
  st.o: config.h st.h win.h
