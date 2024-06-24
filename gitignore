@@ -4,3 +4,4 @@
 Dockerfile.private
 _opam
 _build
+.#*

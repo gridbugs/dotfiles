@@ -115,9 +115,6 @@
  '(markdown-inline-code-face ((t (:inherit default))))
  '(org-document-title ((t (:inherit default :height 1.0)))))
 
-;; Uncomment to print backtrace on error (to the Backtrace buffer)
-;(setq debug-on-error t)
-
 ;; Replace the terminal history functions with just sending the escape sequence.
 ;; This forces the emacs terminal emulators to respect the settings in inputrc.
 (defun my-term-history-backward ()
