@@ -300,6 +300,10 @@
    "Run named-ansi-term in project."
    (named-ansi-term))
   (def-projectile-commander-method
+   ?S
+   "Run named-eshell in project."
+   (named-eshell))
+  (def-projectile-commander-method
    ?G
    "Run magit-status in project."
    (my-magit-status-current-frame)))
@@ -499,6 +503,10 @@ SUFFIX-COUNT is the first integer suffix to try
 (global-set-key (kbd "C-c n t") 'named-ansi-term)
 (global-set-key (kbd "C-c n s") 'named-eshell)
 (advice-add 'cd :after #'then-rename-terminal)
+
+(add-hook 'term-mode-hook
+	  '(lambda ()
+	     (define-key term-raw-map (kbd "C-c y") 'term-paste)))
 
 ; Kill a terminal's buffer when the terminal exits
 (defadvice term-handle-exit
