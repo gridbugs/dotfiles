@@ -285,7 +285,7 @@
 
 (use-package company-quickhelp
   :config
-  (setq company-quickhelp-delay 0)
+  (setq company-quickhelp-delay 2.0)
   (company-quickhelp-mode))
 
 (use-package which-key
@@ -432,9 +432,16 @@ SUFFIX-COUNT is the first integer suffix to try
 	  (rename-buffer-unique-with-suffix base-name suffix-count))
       (rename-buffer name))))
 
-(defun rename-ansi-term-buffer ()
+(defun format-path-replace-home-with-tilde (path)
+  "Replace $HOME with ~ in PATH."
+  (replace-regexp-in-string
+   (concat "^" (getenv "HOME")) "~" path))
+
+(defun rename-term-buffer-with-cwd ()
   "Rename the \"ansi-term\" buffer to match the current working directory."
-  (let* ((default-directory (expand-file-name default-directory))
+  (let* ((default-directory
+	  (format-path-replace-home-with-tilde
+	   (expand-file-name default-directory)))
          (buffer-name (concat "*" mode-name " " default-directory "*")))
     (rename-buffer-unique-with-suffix buffer-name)))
 
@@ -449,13 +456,48 @@ SUFFIX-COUNT is the first integer suffix to try
 		((file-exists-p bash-nixos) bash-nixos)
 		(t bash-default))))
     (ansi-term bash)
-    (rename-ansi-term-buffer)))
+    (rename-term-buffer-with-cwd)))
+
+(defun named-eshell ()
+  "Start a new \"ansi-term\" with a buffer named after the current working directory."
+  (interactive)
+  (eshell)
+  (rename-term-buffer-with-cwd))
 
 (defun then-rename-terminal (&rest args)
   "Call ORIG with ARGS, then rename the terminal to its cwd."
-  (rename-ansi-term-buffer))
+  (rename-term-buffer-with-cwd))
+
+(setq eshell-prompt-regexp "^[^#$\n]*[#$] "
+      eshell-prompt-function
+      (lambda nil
+	(let* ((path
+		(format-path-replace-home-with-tilde
+		 (eshell/pwd)))
+	       (colour-normal
+		(lambda (x)
+		  (propertize
+		   x 'face
+		   '(:foreground "plum" :weight bold))))
+	       (colour-error
+		(lambda (x)
+		  (propertize
+		   x 'face
+		   '(:foreground "orange red" :weight bold))))
+	       (exit-status
+		(if (= eshell-last-command-status 0) '()
+		  (concat
+		   (funcall colour-error
+			    (number-to-string eshell-last-command-status))
+		   "\n"))))
+	  (concat
+	   "\n"
+	   exit-status
+	   (funcall colour-normal path)
+	   "\n$ "))))
 
 (global-set-key (kbd "C-c n t") 'named-ansi-term)
+(global-set-key (kbd "C-c n s") 'named-eshell)
 (advice-add 'cd :after #'then-rename-terminal)
 
 ; Kill a terminal's buffer when the terminal exits
