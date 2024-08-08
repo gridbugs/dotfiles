@@ -42,7 +42,7 @@
       fontforge
       tree
       ffmpeg
-      youtube-dl
+      yt-dlp
       ledger
       zip
       unrar
