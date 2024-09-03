@@ -234,10 +234,9 @@
   :hook ((tuareg-mode . lsp))
   :commands lsp
   :config
+  (setq lsp-ocaml-lsp-server-command '("opam" "exec" "--" "ocamllsp"))
   (lsp-register-client
    (make-lsp-client
-    :new-connection (lsp-stdio-connection
-                     '("opam" "exec" "--" "ocamllsp"))
     :major-modes '(caml-mode tuareg-mode reason-mode)
     :server-id 'ocamllsp)))
 (setq lsp-inlay-hint-enable nil)
