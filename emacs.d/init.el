@@ -326,6 +326,8 @@
 
 (setq evil-undo-system 'undo-fu)
 (use-package evil
+  :init
+  (setq evil-want-keybinding nil)
   :config
   (evil-mode 1))
 (evil-set-initial-state 'term-mode 'emacs)
@@ -346,6 +348,12 @@
 (define-key evil-normal-state-map (kbd "S-<up>") 'windmove-up)
 (define-key evil-normal-state-map (kbd "S-<down>") 'windmove-down)
 (evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
 
 (defun set-cursor-shape (shape)
   "Set the cursor shape using terminal escape sequences."
@@ -568,7 +576,7 @@ SUFFIX-COUNT is the first integer suffix to try
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(dockerfile-mode org-tree-slide toml-mode evil-mc yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat nix-mode evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
+   '(evil-collection dockerfile-mode org-tree-slide toml-mode evil-mc yasnippet envrc multiple-cursors yaml-mode flymake-shellcheck rustic ledger-mode company-quickhelp flycheck exec-path-from-shell vimrc-mode ocamlformat nix-mode evil goto-chg seq helm-projectile projectile which-key company helm magit git-gutter lsp-mode dune-format tuareg catppuccin-theme use-package))
  '(windmove-default-keybindings '([ignore] meta control)))
 
 
