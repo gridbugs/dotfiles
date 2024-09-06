@@ -353,7 +353,7 @@
   :after evil
   :ensure t
   :config
-  (evil-collection-init))
+  (evil-collection-init 'magit))
 
 (defun set-cursor-shape (shape)
   "Set the cursor shape using terminal escape sequences."
