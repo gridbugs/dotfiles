@@ -28,7 +28,6 @@
       neovim
       ripgrep
       htop
-      youtube-dl
       file
       python3
     ];
