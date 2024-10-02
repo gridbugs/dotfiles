@@ -16,14 +16,10 @@ make_link() {
 
 cd "$HOME"
 
-make_link nvim/autoload .vim/autoload
-make_link nvim/plugins.vim .vim/plugins.vim
-make_link nvim/catppuccin-lightline.vim .vim/catppuccin-lightline.vim
+make_link vimrc .vimrc
 make_link nvim .config/nvim
 make_link feh .config/feh
 make_link alacritty.yml .config/alacritty/alacritty.yml
-make_link nvim/init.vim .vimrc
-make_link nvim/init.vim .ideavimrc
 make_link bashrc .bashrc
 make_link kshrc .kshrc
 make_link profile .profile

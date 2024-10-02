@@ -33,6 +33,7 @@
       tmux
       htop
       ripgrep
+      fzf
       fd
       bat
       eza

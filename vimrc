@@ -1,23 +1,11 @@
+" Common config shared between neovim and vim. Neovim will also load some
+" additional config files.
+
 " Colours
 syntax enable
 set t_Co=256
 set background=dark
 set termguicolors
-
-" Custom Leader
-let mapleader=","
-
-if filereadable(expand("~/.vimrc_extra"))
-    source ~/.vimrc_extra
-endif
-
-if filereadable(expand("~/.vim/plugins.vim"))
-    source ~/.vim/plugins.vim
-endif
-
-if filereadable(expand("~/.vim/style.vim"))
-    source ~/.vim/style.vim
-endif
 
 " Searching
 set ignorecase
@@ -92,7 +80,11 @@ map <leader>ss :setlocal spell!<cr>
 
 " Keep undo history across sessions by storing it in a file
 " Put plugins and dictionaries in this dir (also on Windows)
-let vimDir = '$HOME/.vim'
+if has('nvim')
+    let vimDir = '$HOME/.config/nvim'
+else
+    let vimDir = '$HOME/.vim'
+endif
 let &runtimepath.=','.vimDir
 if has('persistent_undo')
     let myUndoDir = expand(vimDir . '/undodir')
@@ -107,8 +99,8 @@ endif
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " filetype-specific indentation
-au FileType typescript.tsx,typescript,javascript,yaml,conf,html,css,scss,ocaml set shiftwidth=2
-au FileType typescript.tsx,typescript,javascript,yaml,conf,html,css,scss,ocaml set tabstop=2
+au FileType typescript.tsx,typescript,javascript,yaml,conf,html,css,scss,ocaml,lua set shiftwidth=2
+au FileType typescript.tsx,typescript,javascript,yaml,conf,html,css,scss,ocaml,lua set tabstop=2
 
 " highlight trailing whitespace
 set list

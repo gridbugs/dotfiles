@@ -25,10 +25,7 @@ Plug 'junegunn/fzf.vim'
 " NERD Tree
 Plug 'preservim/nerdtree'
 
-" Autoformatting
-Plug 'sbdchd/neoformat'
-
-" Cram tests
+" Cram tests (used for dune tests)
 Plug 'gridbugs/vim-cram'
 
 " Version info in Cargo.toml
@@ -36,19 +33,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'saecki/crates.nvim', { 'tag': 'stable' }
 
 if has('nvim')
-    " Required for ncm2
-    Plug 'roxma/nvim-yarp'
-
-    Plug 'ncm2/ncm2'
-    Plug 'ncm2/ncm2-bufword'
-    Plug 'ncm2/ncm2-path'
-
-    Plug 'autozimu/LanguageClient-neovim', {
-        \ 'branch': 'next',
-        \ 'do': 'bash install.sh',
-        \ }
-
-    " Colour
+    " Colour scheme
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
     " Status line
@@ -57,39 +42,11 @@ endif
 
 call plug#end()
 
-" Language Client Servers
-let g:LanguageClient_serverCommands = {
-\ 'rust': ['rust-analyzer'],
-\ 'c': ['clangd'],
-\ 'cpp': ['clangd'],
-\ 'ocaml': ['opam',  'exec', 'ocamllsp', '--', '--fallback-read-dot-merlin'],
-\ }
-
-let g:LanguageClient_loggingFile = expand('~/.vim/LanguageClient.log')
-let g:LanguageClient_hoverPreview = "Always"
-let g:LanguageClient_useFloatingHover = 0
-highlight LanguageClientWarning ctermbg=black
-highlight LanguageClientInfo ctermbg=red
-
-" Language Client Shortcuts
-au FileType * nmap <leader><leader>t :call LanguageClient#textDocument_hover()<CR>
-au FileType * nmap <leader><leader>d :call LanguageClient#textDocument_definition()<CR>
-au FileType * nmap <leader><leader>r :call LanguageClient#textDocument_rename()<CR>
-au FileType * nmap <leader><leader>n :call LanguageClient#diagnosticsNext()<CR>
-au FileType * nmap <leader><leader>N :call LanguageClient#diagnosticsPrevious()<CR>
-
 au FileType ocaml map <leader><leader>m :e %:p:s,.mli$,.X123X,:s,.ml$,.mli,:s,.X123X$,.ml,<CR>
 
 " use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-if filereadable(expand("~/.vim/plugged/ncm2/autoload/ncm2.vim")) && has('nvim')
-    " enable ncm2 for all buffers
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-endif
- " IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
 
 " Auto format rust code on save
 let g:rustfmt_autosave = 1
@@ -122,23 +79,6 @@ endif
 let NERDTreeCustomOpenArgs = {'file': {'reuse': 'currenttab', 'where': 'p', 'keepopen': 1}, 'dir': {}}
 nnoremap <leader><leader>F :NERDTreeFind<CR>
 nnoremap <leader><leader>f :NERDTreeToggle<CR>
-
-" Neoformat settings
-if filereadable(expand("~/.vim/plugged/neoformat/autoload/neoformat.vim"))
-    let g:neoformat_ocaml_ocamlformat = {
-                \ 'exe': 'ocamlformat',
-                \ 'no_append': 1,
-                \ 'stdin': 1,
-                \ 'args': ['--name', '"%:p"', '-', '--no-version-check']
-                \ }
-
-    let g:neoformat_enabled_ocaml = ['ocamlformat']
-
-    augroup fmt
-      autocmd!
-      autocmd BufWritePre *.ml,*.mli,*.erl try | undojoin | Neoformat | catch /E790/ | Neoformat | endtry
-    augroup END
-endif
 
 " Catpuccin settings
 if has('nvim') && filereadable(expand("~/.vim/plugged/catppuccin/README.md"))
