@@ -1,9 +1,9 @@
 call plug#begin('~/.vim/plugged')
 
-" Version Control
+" Git operations from git
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'shumphrey/fugitive-gitlab.vim'
+
+" Git changed markers in gutter
 Plug 'airblade/vim-gitgutter'
 
 " Multiple Visual Cursors
@@ -12,26 +12,8 @@ Plug 'terryma/vim-multiple-cursors'
 " TOML Syntax Highlighting
 Plug 'cespare/vim-toml'
 
-" Rust Plug
+" Rust syntax highlighting and autoformatting
 Plug 'rust-lang/rust.vim'
-
-" Javascript Plug
-Plug 'pangloss/vim-javascript'
-
-" JSX Plug
-Plug 'mxw/vim-jsx'
-
-" Typescript Plug
-Plug 'leafgarland/typescript-vim'
-
-" Typescript JSX Plug
-Plug 'peitalin/vim-jsx-typescript'
-
-" Scala Highlighting
-Plug 'derekwyatt/vim-scala'
-
-" OpenCL Highlighting
-Plug 'petRUShka/vim-opencl'
 
 " Ledger Highlighting
 Plug 'ledger/vim-ledger'
@@ -43,20 +25,8 @@ Plug 'junegunn/fzf.vim'
 " NERD Tree
 Plug 'preservim/nerdtree'
 
-" Nix Highlighting
-Plug 'LnL7/vim-nix'
-
 " Autoformatting
 Plug 'sbdchd/neoformat'
-
-" GLSL Highlighting
-Plug 'beyondmarc/glsl.vim'
-
-" WGSL Highlighting
-Plug 'DingDean/wgsl.vim'
-
-" Latex
-Plug 'vim-latex/vim-latex'
 
 " Cram tests
 Plug 'gridbugs/vim-cram'
@@ -90,16 +60,9 @@ call plug#end()
 " Language Client Servers
 let g:LanguageClient_serverCommands = {
 \ 'rust': ['rust-analyzer'],
-\ 'scala': ['metals-vim'],
-\ 'python': ['pylsp'],
-\ 'typescript': ['typescript-language-server', '--stdio'],
-\ 'typescript.tsx': ['typescript-language-server', '--stdio'],
-\ 'javascript': ['typescript-language-server', '--stdio'],
-\ 'javascript.jsx': ['typescript-language-server', '--stdio'],
 \ 'c': ['clangd'],
 \ 'cpp': ['clangd'],
 \ 'ocaml': ['opam',  'exec', 'ocamllsp', '--', '--fallback-read-dot-merlin'],
-\ 'erlang': ['erlang_ls'],
 \ }
 
 let g:LanguageClient_loggingFile = expand('~/.vim/LanguageClient.log')
@@ -140,9 +103,6 @@ let g:multi_cursor_exit_from_insert_mode = 0
 let g:multi_cursor_next_key = '<C-a>'
 let g:multi_cursor_quit_key = '<Esc>'
 
-" Enable rainbow parens
-let g:rainbow_active = 1
-
 " Configuration for vim-scala
 au BufRead,BufNewFile *.sbt set filetype=scala
 
@@ -180,6 +140,7 @@ if filereadable(expand("~/.vim/plugged/neoformat/autoload/neoformat.vim"))
     augroup END
 endif
 
+" Catpuccin settings
 if has('nvim') && filereadable(expand("~/.vim/plugged/catppuccin/README.md"))
 lua <<EOF
 require("catppuccin").setup({

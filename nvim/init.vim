@@ -15,6 +15,10 @@ if filereadable(expand("~/.vim/plugins.vim"))
     source ~/.vim/plugins.vim
 endif
 
+if filereadable(expand("~/.vim/style.vim"))
+    source ~/.vim/style.vim
+endif
+
 " Searching
 set ignorecase
 set smartcase
@@ -86,9 +90,6 @@ au TabLeave * let g:lasttab = tabpagenr()
 " Pressing ,ss will toggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
-" Toggle paste mode on and off
-set pastetoggle=<F2>
-
 " Keep undo history across sessions by storing it in a file
 " Put plugins and dictionaries in this dir (also on Windows)
 let vimDir = '$HOME/.vim'
@@ -147,6 +148,7 @@ endif
 " Shortcut to open this config
 nnoremap <F8> :e $MYVIMRC<CR>
 
+" Configure status line
 highlight StatusLine ctermbg=15 ctermfg=0
 set statusline=
 set statusline +=\ %n\             "buffer number
@@ -158,6 +160,7 @@ set statusline +=%=%5l             "current line
 set statusline +=/%L               "total lines
 set statusline +=%4v\              "virtual column number
 
+" Shortcuts to resize windows
 noremap <leader>j :res -1<CR>
 noremap <leader>k :res +1<CR>
 noremap <leader>h :vertical resize -1<CR>
