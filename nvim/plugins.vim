@@ -218,7 +218,7 @@ require('crates').setup {
             loading = " ...",
         },
     },
-    src = {
+    completion = {
         text = {
             prerelease = " pre-release ",
             yanked = " yanked ",
