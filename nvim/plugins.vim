@@ -142,88 +142,9 @@ endif
 
 " Catpuccin settings
 if has('nvim') && filereadable(expand("~/.vim/plugged/catppuccin/README.md"))
-lua <<EOF
-require("catppuccin").setup({
-    flavour = "macchiato",
-    color_overrides = {
-        macchiato = {
-        },
-    },
-    highlight_overrides = {
-        all = function(colors)
-            return {
-                MatchParen = { bg = colors.surface2 },
-                LineNr = { fg = colors.overlay1 },
-                Comment = { fg = colors.overlay1 },
-            }
-        end,
-    },
-})
-vim.cmd.colorscheme "catppuccin"
-EOF
-   source ~/.vim/catppuccin-lightline.vim
-   let g:lightline = {
-      \ 'colorscheme': 'catppuccin',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'relativepath', 'modified' ] ]
-      \ },
-      \ 'inactive': {
-      \   'left': [ [ 'readonly', 'relativepath', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
-
-    " Don't display the mode again in the statusbar
-    set noshowmode
+    source ~/.vim/config-catpuccin.vim
 endif
 
 if has('nvim') && filereadable(expand("~/.vim/plugged/crates.nvim/README.md"))
-lua <<EOF
-require('crates').setup {
-    text = {
-        loading = "  Loading...",
-        version = "  ✓ %s",
-        prerelease = " * %s",
-        yanked = "  x yanked",
-        nomatch = "  Not found",
-        upgrade = "  ↑ %s",
-        error = "  Error fetching crate",
-    },
-    popup = {
-        text = {
-            title = "# %s",
-            pill_left = "",
-            pill_right = "",
-            created_label = "created        ",
-            updated_label = "updated        ",
-            downloads_label = "downloads      ",
-            homepage_label = "homepage       ",
-            repository_label = "repository     ",
-            documentation_label = "documentation  ",
-            crates_io_label = "crates.io      ",
-            categories_label = "categories     ",
-            keywords_label = "keywords       ",
-            version = "%s",
-            prerelease = "%s pre-release",
-            yanked = "%s yanked",
-            enabled = "* s",
-            transitive = "~ s",
-            normal_dependencies_title = "  Dependencies",
-            build_dependencies_title = "  Build dependencies",
-            dev_dependencies_title = "  Dev dependencies",
-            optional = "? %s",
-            loading = " ...",
-        },
-    },
-    completion = {
-        text = {
-            prerelease = " pre-release ",
-            yanked = " yanked ",
-        },
-    },
-}
-EOF
+    source ~/.vim/config-crates.vim
 endif
