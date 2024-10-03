@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, extraPkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -29,7 +29,6 @@
       coreutils
       nix-bash-completions
       bash-completion
-      neovim
       tmux
       htop
       ripgrep
@@ -68,5 +67,5 @@
       shellcheck
     ];
   in
-  toolPkgs ++ devPkgs;
+  toolPkgs ++ devPkgs ++ extraPkgs;
 }
