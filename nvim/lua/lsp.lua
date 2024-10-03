@@ -1,9 +1,5 @@
--- Keybindings for lsp
-vim.keymap.set("n", "<leader>d", '<cmd>lua vim.lsp.buf.definition()<CR>')
-vim.keymap.set("n", "<leader>t", '<cmd>lua vim.lsp.buf.hover()<CR>')
-
 -- Always autoformat on save
-vim.cmd("autocmd BufWritePre * lua vim.lsp.buf.format({ async = false })")
+vim.cmd("autocmd BufWritePre *.ml,*.mli lua vim.lsp.buf.format({ async = false })")
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'ocaml',

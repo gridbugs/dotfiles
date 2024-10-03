@@ -99,8 +99,8 @@ endif
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " filetype-specific indentation
-au FileType typescript.tsx,typescript,javascript,yaml,conf,html,css,scss,ocaml,lua set shiftwidth=2
-au FileType typescript.tsx,typescript,javascript,yaml,conf,html,css,scss,ocaml,lua set tabstop=2
+au FileType typescript.tsx,typescript,javascript,yaml,conf,html,css,scss,ocaml,lua,nix set shiftwidth=2
+au FileType typescript.tsx,typescript,javascript,yaml,conf,html,css,scss,ocaml,lua,nix set tabstop=2
 
 " highlight trailing whitespace
 set list
@@ -116,6 +116,9 @@ cnoreabbrev Q q
 cnoreabbrev W w
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
+
+" Prevent vim inserting completion text automatically
+set completeopt+=noinsert,fuzzy
 
 " Resize windows with +/-
 if bufwinnr(1)
@@ -137,8 +140,8 @@ endif
 " This sets the cursor to an underline when leaving vim
 :au VimLeave * set guicursor=a:hor20-blinkon0
 
-" Shortcut to open this config
-nnoremap <F8> :e $MYVIMRC<CR>
+" Run omnifunc with control+space
+imap <c-space> <c-x><c-o>
 
 " Configure status line
 highlight StatusLine ctermbg=15 ctermfg=0

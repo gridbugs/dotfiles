@@ -48,4 +48,11 @@ return {
         require('crates').setup()
       end,
     },
+
+    -- Better nix support
+    { "LnL7/vim-nix" },
+
+    -- Better ledger support
+    { "ledger/vim-ledger" },
+
   }

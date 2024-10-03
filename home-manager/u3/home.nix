@@ -71,7 +71,6 @@
         ledger
         obs
         openshot-qt
-        neovim
         emacs-gtk
         ispell
         firefox
