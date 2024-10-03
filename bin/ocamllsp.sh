@@ -20,5 +20,5 @@ if [ -d dune.lock ]; then
 else
 
     # Fall back to an opam installation of ocamllsp if there is no lockdir.
-    opam exec ocamllsp -- $@
+    opam exec ocamllsp $@
 fi
