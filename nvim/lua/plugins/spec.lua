@@ -55,4 +55,6 @@ return {
     -- Better ledger support
     { "ledger/vim-ledger" },
 
+    -- Multiple cursors
+    { "mg979/vim-visual-multi" },
   }
