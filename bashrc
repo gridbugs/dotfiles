@@ -234,6 +234,3 @@ if [[ $- == *i* ]]; then
 fi
 
 true
-
-# dune
-export PATH=/home/s/.dune/bin:$PATH
