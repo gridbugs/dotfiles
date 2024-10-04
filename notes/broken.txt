@@ -1,4 +1,0 @@
-The following line causes crashes in st and the bar in dwm using terminus fonts.
-The problem has something to do with unicode space characters.
-
-UMAP Dimensionality Reduction - An Incredibly Robust Machine Learning Algorithm | by Saul Dobilas | Towards Data Science

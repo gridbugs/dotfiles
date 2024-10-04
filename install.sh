@@ -19,7 +19,6 @@ cd "$HOME"
 make_link vimrc .vimrc
 make_link nvim .config/nvim
 make_link feh .config/feh
-make_link alacritty.yml .config/alacritty/alacritty.yml
 make_link bashrc .bashrc
 make_link kshrc .kshrc
 make_link profile .profile
@@ -35,16 +34,11 @@ make_link hushlogin .hushlogin
 make_link git-prompt.sh .git-prompt.sh
 make_link ledgerrc .ledgerrc
 make_link completions .completions
-make_link config.nix .config/nixpkgs/config.nix
-make_link dwm .config/nixpkgs/overlays/dwm
-make_link st .config/nixpkgs/overlays/st
-make_link terminus-font .config/nixpkgs/overlays/terminus-font
 make_link direnvrc .direnvrc
 make_link gitignore .gitignore
 make_link Xdefaults .Xdefaults
 make_link npmrc .npmrc
 make_link screenrc .screenrc
-make_link nix.conf .config/nix/nix.conf
 make_link emacs.d/init.el .emacs.d/init.el
 make_link emacs.d/cram-mode.el .emacs.d/cram-mode.el
 make_link emacs.d/flycheck-okra.el .emacs.d/flycheck-okra.el
