@@ -117,8 +117,12 @@ cnoreabbrev W w
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
 
-" Prevent vim inserting completion text automatically
-set completeopt+=noinsert,fuzzy
+" Configure completion behaviour
+if has("nvim-0.10")
+    set completeopt+=noinsert,fuzzy
+else
+    set completeopt+=noinsert
+endif
 
 " Resize windows with +/-
 if bufwinnr(1)
