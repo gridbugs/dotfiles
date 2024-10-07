@@ -126,20 +126,6 @@ if bufwinnr(1)
     map - <C-W>-
 endif
 
-" Cursor changes depedning on mode
-if exists('$TMUX')
-    let &t_SI .= "\<Esc>Ptmux;\<Esc>\<Esc>[4 q\<Esc>\\"
-    let &t_EI .= "\<Esc>Ptmux;\<Esc>\<Esc>[2 q\<Esc>\\"
-    autocmd VimLeave * silent !echo -ne "\033Ptmux;\033\033[0 q\033\\"
-else
-    let &t_SI .= "\<Esc>[4 q"
-    let &t_EI .= "\<Esc>[2 q"
-    autocmd VimLeave * silent !echo -ne "\033[0 q"
-endif
-
-" This sets the cursor to an underline when leaving vim
-:au VimLeave * set guicursor=a:hor20-blinkon0
-
 " Run omnifunc with control+space
 imap <c-space> <c-x><c-o>
 
