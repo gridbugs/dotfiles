@@ -60,6 +60,8 @@
         unzip
         p7zip
         find-cursor
+        zathura
+        kicad
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
