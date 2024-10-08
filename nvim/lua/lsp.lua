@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function(args)
     vim.lsp.start({
       name = 'ocaml-lsp-server',
-      cmd = {'ocamllsp.sh', '--'},
+      cmd = {'ocamllsp.sh'},
       root_dir = vim.fs.root(args.buf, {'dune-workspace', 'dune-project'}),
     })
   end,
