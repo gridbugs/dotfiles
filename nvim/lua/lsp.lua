@@ -1,5 +1,5 @@
 -- Always autoformat on save
-vim.cmd("autocmd BufWritePre *.ml,*.mli lua vim.lsp.buf.format({ async = false })")
+vim.cmd("autocmd BufWritePre *.ml,*.mli,*.rs lua vim.lsp.buf.format({ async = false })")
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'ocaml',

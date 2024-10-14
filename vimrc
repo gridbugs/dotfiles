@@ -119,9 +119,9 @@ cnoreabbrev WQ wq
 
 " Configure completion behaviour
 if has("nvim-0.10")
-    set completeopt+=noinsert,fuzzy
+    set completeopt+=noinsert,menuone,fuzzy
 else
-    set completeopt+=noinsert
+    set completeopt+=noinsert,menuone
 endif
 
 " Resize windows with +/-
