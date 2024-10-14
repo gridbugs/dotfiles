@@ -11,3 +11,7 @@ vim.keymap.set("n", "<leader>f", ":FzfLua files<CR>")
 -- navigate between errors reported by lsp
 vim.keymap.set('n', '<leader>dn', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 vim.keymap.set('n', '<leader>dp', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>')
+vim.keymap.set('n', '<leader>bp', ':bprevious<CR>')
+vim.keymap.set('n', '<leader>bd', ':bdelete<CR>')
