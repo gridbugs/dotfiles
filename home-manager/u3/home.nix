@@ -45,7 +45,6 @@
         pkgs = pkgs;
         pixelsize = 12;
       }).dwm;
-      obs = (import ../../nix/obs.nix { pkgs = pkgs; }).obs;
       uiPkgs = [ terminus-font st st12 st16 st20 st24 dwm dmenu ];
       devPkgs = [
         binutils
@@ -66,10 +65,10 @@
         rust-analyzer
         cargo-watch
         rustfmt
+        shellcheck
       ];
       toolPkgs = [
         ledger
-        obs
         openshot-qt
         emacs-gtk
         ispell
