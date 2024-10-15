@@ -66,6 +66,8 @@
         cargo-watch
         rustfmt
         shellcheck
+        nil
+        nixfmt-classic
       ];
       toolPkgs = [
         ledger
@@ -96,7 +98,6 @@
         find-cursor
         gh
         audacity
-        nixfmt-classic
         imagemagick
         tmate
         dig

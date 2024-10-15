@@ -1,5 +1,7 @@
+local nvim_lsp = require("lspconfig")
+
 -- Always autoformat on save
-vim.cmd("autocmd BufWritePre *.ml,*.mli,*.rs lua vim.lsp.buf.format({ async = false })")
+vim.cmd("autocmd BufWritePre *.ml,*.mli,*.rs,*.nix lua vim.lsp.buf.format({ async = false })")
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'ocaml',
@@ -21,4 +23,14 @@ vim.api.nvim_create_autocmd('FileType', {
       root_dir = vim.fs.root(args.buf, {'Cargo.toml'}),
     })
   end,
+})
+
+nvim_lsp.nil_ls.setup({
+   settings = {
+      ['nil'] = {
+         formatting = {
+            command = { "nixfmt" },
+         },
+      },
+   },
 })

@@ -1,4 +1,6 @@
 return {
+    { "neovim/nvim-lspconfig" },
+
     -- Plugins for integrating git into vim
     { "tpope/vim-fugitive" },  -- git commands
     { "airblade/vim-gitgutter" }, -- display changed lines in gutter
