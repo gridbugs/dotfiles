@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.lsp.start({
       name = 'rust-analyzer',
       cmd = {'rust-analyzer'},
-      root_dir = vim.fs.root(args.buf, {'Cargo.toml'}),
+      root_dir = vim.fs.root(args.buf, {'Cargo.lock'}),
     })
   end,
 })
