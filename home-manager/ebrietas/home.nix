@@ -62,6 +62,8 @@
       mercurial
       darcs
       shellcheck
+      nixfmt-classic
+      nil
     ];
   in
   toolPkgs ++ devPkgs ++ extraPkgs;
