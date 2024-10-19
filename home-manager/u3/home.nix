@@ -70,6 +70,7 @@
         nixfmt-classic
       ];
       toolPkgs = [
+        obs-studio
         ledger
         openshot-qt
         emacs-gtk
