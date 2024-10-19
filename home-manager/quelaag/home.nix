@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, extraPkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -24,11 +24,12 @@
   programs.direnv.nix-direnv.enable = true;
 
   home.packages = with pkgs;
-    [
-      neovim
+    let toolPkgs = [
       ripgrep
       htop
       file
       python3
+      eza
     ];
+    in toolPkgs ++ extraPkgs;
 }
