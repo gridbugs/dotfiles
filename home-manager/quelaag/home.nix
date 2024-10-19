@@ -24,12 +24,8 @@
   programs.direnv.nix-direnv.enable = true;
 
   home.packages = with pkgs;
-    let toolPkgs = [
-      ripgrep
-      htop
-      file
-      python3
-      eza
-    ];
+    let
+      toolPkgs =
+        [ ripgrep htop file python3 eza nil nixfmt-classic transmission ];
     in toolPkgs ++ extraPkgs;
 }
