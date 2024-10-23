@@ -6,8 +6,8 @@ vim.keymap.set("n", "<leader>D", ":Neotree toggle dir=%:p:h<CR>")
 vim.cmd("au FileType ocaml map <leader>m :e %:p:s,.mli$,.X123X,:s,.ml$,.mli,:s,.X123X$,.ml,<CR>")
 
 -- open a fuzzy file searching window
-vim.keymap.set("n", "<leader>ff", ":FzfLua files<CR>")
-vim.keymap.set("n", "<leader>fo", ":FzfLua oldfiles<CR>")
+vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files({ cwd = get_initial_cwd() })<CR>")
+vim.keymap.set("n", "<leader>fo", "<cmd>lua require('fzf-lua').oldfiles({ cwd = get_initial_cwd() })<CR>")
 vim.keymap.set("n", "<leader>fb", ":FzfLua buffers<CR>")
 vim.keymap.set("n", "<leader>fd", ":FzfLua diagnostics_workspace<CR>")
 vim.keymap.set("n", "<leader>fg", ":FzfLua grep_visual<CR>")
