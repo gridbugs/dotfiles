@@ -44,6 +44,7 @@ if [[ $- == *i* ]]; then
     if type eza 2>/dev/null >/dev/null; then
         alias ls='eza --group-directories-first --git'
         alias l='eza --group-directories-first --git --icons=auto'
+        alias ll='eza --group-directories-first --git --icons=auto -l'
     elif type gls 2>/dev/null >/dev/null; then
         alias ls='gls --color --human-readable --group-directories-first'
     elif type colorls 2>/dev/null >/dev/null; then
