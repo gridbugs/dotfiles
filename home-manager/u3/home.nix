@@ -109,6 +109,7 @@
         bat
         eza
         dua
+        remmina
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 

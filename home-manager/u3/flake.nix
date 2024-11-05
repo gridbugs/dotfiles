@@ -2,9 +2,9 @@
   description = "Home Manager configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
@@ -24,9 +24,8 @@
         modules = [ ./home.nix ];
 
         extraSpecialArgs = {
-          extraPkgs = [
-             neovim-nightly-overlay.packages.${pkgs.system}.default
-           ];
+          extraPkgs =
+            [ neovim-nightly-overlay.packages.${pkgs.system}.default ];
         };
       };
     };
