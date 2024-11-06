@@ -8,7 +8,7 @@ set -eu
 
 if [ -d dune.lock ]; then
 
-    OCAMLFORMAT_TARGET=_build/_private/default/.dev-tool/ocamlformat/ocamlformat/target
+    OCAMLFORMAT_TARGET="_build/_private/default/.dev-tool/ocamlformat/ocamlformat/target"
 
     if [ ! -f $OCAMLFORMAT_TARGET/cookie ]; then
         # Make sure that the ocamlformat dev tool is installed as it's needed by
@@ -18,10 +18,10 @@ if [ -d dune.lock ]; then
     fi
 
     # Add ocamlformat to the environment in which ocamllsp runs so ocamllsp can invoke ocamlformat.
-    export PATH=$PWD/$OCAMLFORMAT_TARGET/bin:$PATH
+    export PATH="$PWD/$OCAMLFORMAT_TARGET/bin:$PATH"
 
     # Build and run ocamllsp.
-    dune tools exec ocamllsp -- $@
+    dune tools exec ocamllsp -- "$@"
 else
 
     # Fallback behaviour for the case where we're not in a dune project with a
@@ -29,10 +29,11 @@ else
     # configuration can be used to edit ocaml projects that use dune package
     # management as well as ocaml projects that do not.
 
-    script_dir=$(dirname $(realpath $0))
+    script_dir="$(dirname "$0")"
 
     # Remove the directory containing this script from PATH so it doesn't call itself
-    export PATH=$(echo $PATH | tr ':' '\n' | grep -v "^$script_dir$" | paste -sd ':')
+    path_without_script_dir=$(echo "$PATH" | tr ':' '\n' | grep -v "^$script_dir$" | paste -sd ':')
+    export PATH="$path_without_script_dir"
 
     if type opam 2> /dev/null > /dev/null; then
 
@@ -45,7 +46,7 @@ else
         # current opam switch. So in order to run the ocamllsp executable from
         # the current opam switch (assuming it is installed) we have to run it
         # with `opam exec`.
-        opam exec ocamllsp -- $@
+        opam exec ocamllsp -- "$@"
     else
 
         # Fall back to running ocamllsp from PATH. This requires ocamllsp to be
@@ -53,6 +54,6 @@ else
         # compiled with the same version of the compiler as is used to compile
         # the code that it's analyzing. Still there's a chance it could work so
         # try it as a last resort.
-        ocamllsp $@
+        ocamllsp "$@"
     fi
 fi
