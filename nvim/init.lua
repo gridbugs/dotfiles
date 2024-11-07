@@ -3,6 +3,7 @@ require("config.catpuccin")
 require("config.neotree")
 require("config.lualine")
 require("config.keys")
+require("config.treesitter")
 
 require("lsp")
 

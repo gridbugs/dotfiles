@@ -1,6 +1,8 @@
 return {
     { "neovim/nvim-lspconfig" },
 
+    { "nvim-treesitter/nvim-treesitter" },
+
     -- Plugins for integrating git into vim
     { "tpope/vim-fugitive" },  -- git commands
     { "airblade/vim-gitgutter" }, -- display changed lines in gutter
