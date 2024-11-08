@@ -41,6 +41,9 @@ return {
     -- Better rust support
     { "rust-lang/rust.vim" },
 
+    -- Better ocaml support
+    { "ocaml/vim-ocaml" },
+
     -- Cram tests (used for dune tests)
     { "gridbugs/vim-cram" },
 
@@ -61,4 +64,7 @@ return {
 
     -- Multiple cursors
     { "mg979/vim-visual-multi" },
+
+    -- Formatting code without an lsp server
+    { "mhartington/formatter.nvim" },
   }

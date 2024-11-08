@@ -99,8 +99,24 @@ endif
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " filetype-specific indentation
-au FileType typescript.tsx,typescript,javascript,yaml,conf,html,css,scss,ocaml,lua,nix set shiftwidth=2
-au FileType typescript.tsx,typescript,javascript,yaml,conf,html,css,scss,ocaml,lua,nix set tabstop=2
+au FileType typescript.tsx,typescript,javascript,yaml,conf,html,css,scss,ocaml,lua,nix set shiftwidth=2 tabstop=2
+
+" fix dune indentation to make it respect configured shiftwidth
+autocmd FileType dune setlocal indentexpr=DuneIndent() lispoptions=expr:1
+function! DuneIndent()
+    let prev_line = getline(v:lnum - 1)
+    let prev_indent = indent(v:lnum - 1)
+    let current_indent = prev_indent
+    for i in range(len(prev_line))
+        if prev_line[i] == '('
+            let current_indent += &shiftwidth
+        endif
+        if prev_line[i] == ')'
+            let current_indent -= &shiftwidth
+        endif
+    endfor
+    return current_indent
+endfunction
 
 " highlight trailing whitespace
 set list

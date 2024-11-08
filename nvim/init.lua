@@ -2,6 +2,7 @@ require("config.lazy")
 require("config.catpuccin")
 require("config.neotree")
 require("config.lualine")
+require("config.formatter")
 require("config.keys")
 require("config.treesitter")
 
