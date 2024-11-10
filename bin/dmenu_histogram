@@ -39,7 +39,7 @@ update_histogram() {
 }
 
 {
-    choice=$(file_list | dmenu "$@")
+    choice=$(file_list | dmenu -i "$@")
     if which $choice; then
         update_histogram $choice &
         $choice
