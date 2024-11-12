@@ -39,16 +39,12 @@
         dua
         wget
         sshfs
-        fontforge
         tree
         ffmpeg
         yt-dlp
         ledger
         zip
-        unrar
         gh
-        ncdu
-        mosh
         imagemagick
         p7zip
         ispell
