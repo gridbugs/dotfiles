@@ -1,0 +1,2 @@
+set realname="Stephen Sherratt"
+set index_format="%4C %X %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"

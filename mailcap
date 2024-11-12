@@ -1,0 +1,3 @@
+application/pdf; zathura %s
+image/jpeg; nomacs %s
+image/heic; nomacs %s
