@@ -78,6 +78,7 @@
         firefox
         thunderbird
         google-chrome
+        mutt
         zoom-us
         zathura
         nomacs
