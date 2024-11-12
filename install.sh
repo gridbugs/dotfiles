@@ -44,6 +44,7 @@ make_link emacs.d/cram-mode.el .emacs.d/cram-mode.el
 make_link emacs.d/flycheck-okra.el .emacs.d/flycheck-okra.el
 make_link wezterm.lua .wezterm.lua
 make_link nix.conf .config/nix/nix.conf
+make_link mutt .mutt
 make_link muttrc .muttrc
 make_link mailcap .mailcap
 

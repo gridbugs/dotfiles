@@ -1,2 +1,19 @@
-set realname="Stephen Sherratt"
+# This is the default plus a count of attachments
 set index_format="%4C %X %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
+
+set ssl_force_tls = yes
+set mail_check = 60
+set timeout = 10
+set sort = "reverse-date-received"
+set signature = "~/.mutt/signature"
+set copy = no # rely on imap to maintain a sent folder rather
+
+set editor=`echo \$EDITOR`
+
+bind index G imap-fetch-mail
+
+# load account information from ~/.mutt/accounts/muttrc
+source `if test -f ~/.mutt/accounts/muttrc; then echo ~/.mutt/accounts/muttrc; else echo /dev/null; fi`
+
+# set the status format after loading account information so it can refer to the account information
+source ~/.mutt/status_format
