@@ -17,3 +17,14 @@ source `if test -f ~/.mutt/accounts/muttrc; then echo ~/.mutt/accounts/muttrc; e
 
 # set the status format after loading account information so it can refer to the account information
 source ~/.mutt/status_format
+
+# Use vi/arrow keys to navigate within a message rather than to move between messages
+bind pager j next-line
+bind pager k previous-line
+bind pager <up> previous-line
+bind pager <down> next-line
+
+# Prevent page-down from switching to the next message when pressed at the bottom of a message
+set pager_stop=yes
+
+source ~/.mutt/catpuccin
