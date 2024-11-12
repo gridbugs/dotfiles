@@ -24,47 +24,47 @@
   programs.direnv.nix-direnv.enable = true;
 
   home.packages = with pkgs;
-  let
-    toolPkgs = [
-      coreutils
-      nix-bash-completions
-      bash-completion
-      tmux
-      htop
-      ripgrep
-      fzf
-      fd
-      bat
-      eza
-      dua
-      wget
-      sshfs
-      fontforge
-      tree
-      ffmpeg
-      yt-dlp
-      ledger
-      zip
-      unrar
-      gh
-      ncdu
-      mosh
-      imagemagick
-      p7zip
-      ispell
-    ];
-    devPkgs = [
-      nodejs
-      python3
-      python3Packages.python-lsp-server
-      opam
-      git
-      mercurial
-      darcs
-      shellcheck
-      nixfmt-classic
-      nil
-    ];
-  in
-  toolPkgs ++ devPkgs ++ extraPkgs;
+    let
+      toolPkgs = [
+        coreutils
+        nix-bash-completions
+        bash-completion
+        tmux
+        htop
+        ripgrep
+        fzf
+        fd
+        bat
+        eza
+        dua
+        wget
+        sshfs
+        fontforge
+        tree
+        ffmpeg
+        yt-dlp
+        ledger
+        zip
+        unrar
+        gh
+        ncdu
+        mosh
+        imagemagick
+        p7zip
+        ispell
+        mutt
+      ];
+      devPkgs = [
+        nodejs
+        python3
+        python3Packages.python-lsp-server
+        opam
+        git
+        mercurial
+        darcs
+        shellcheck
+        nixfmt-classic
+        nil
+      ];
+    in toolPkgs ++ devPkgs ++ extraPkgs;
 }
