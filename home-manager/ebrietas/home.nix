@@ -50,6 +50,8 @@
         ispell
         mutt
         w3m
+        urlscan
+        qpdf
       ];
       devPkgs = [
         nodejs
