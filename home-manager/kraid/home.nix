@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, extraPkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -27,7 +27,6 @@
     nix-bash-completions
     tmux
     htop
-    neovim
     wget
     coreutils
     bash-completion
@@ -42,6 +41,6 @@
     ocamlformat
     ocamlPackages.ocaml-lsp
     gdb
-    ncdu
-  ];
+    neovim
+  ] ++ extraPkgs;
 }
