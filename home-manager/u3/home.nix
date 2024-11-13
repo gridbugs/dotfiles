@@ -112,6 +112,8 @@
         dua
         remmina
         w3m
+        urlscan
+        qpdf
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 

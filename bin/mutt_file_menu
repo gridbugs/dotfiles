@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Copied from https://www.thyssentishman.com/blog/002.html
+
+FILES=$(fd --search-path / | fzf --height=100% --multi)
+
+printf 'push '
+for i in $FILES
+do
+    [ -f "$i" ] && printf '<%s>%s<Return>' "$1" "$i"
+    [ -d "$i" ] && find "$i"/* -type f -maxdepth 0 \
+        -exec printf '<%s>%s<Return>' "$1" {} \;
+done

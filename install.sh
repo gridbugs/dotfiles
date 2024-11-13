@@ -46,6 +46,8 @@ make_link wezterm.lua .wezterm.lua
 make_link nix.conf .config/nix/nix.conf
 make_link mutt .mutt
 make_link muttrc .muttrc
+make_link mailcap .mailcap
+make_link urlscan .config/urlscan
 
 if [ "$(uname)" == "Darwin" ]; then
     make_link mailcap.macos .mailcap

@@ -1,12 +1,12 @@
-# This is the default plus a count of attachments
-set index_format="%4C %X %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
+# This is the default plus an attachment indicator
+set index_format="%4C %?X?📎? %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
 
 set ssl_force_tls = yes
 set mail_check = 60
 set timeout = 10
 set sort = "reverse-date-received"
 set signature = "~/.mutt/signature"
-set copy = no # rely on imap to maintain a sent folder rather
+set record = "~/.mutt/sent"
 
 set editor=`echo \$EDITOR`
 
@@ -27,9 +27,16 @@ bind pager <down> next-line
 # Prevent page-down from switching to the next message when pressed at the bottom of a message
 set pager_stop=yes
 
+# Needed for rendering html emails in the pager
 auto_view text/html
 alternative_order text/plain text/html
-set implicit_autoview
-macro pager <f6> "| w3m -T text/html -dump '%F' | less\n" "Render HTML with w3m"
+
+# Macro to run urlscan on emails
+macro index,pager U "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose U "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
+macro compose a \
+'<enter-command>source "mutt_file_menu attach-file"|<Return>' \
+'attach files with fzf'
 
 source ~/.mutt/catpuccin
