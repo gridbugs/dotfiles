@@ -49,6 +49,7 @@
         p7zip
         ispell
         mutt
+        w3m
       ];
       devPkgs = [
         nodejs

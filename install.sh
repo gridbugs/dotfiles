@@ -46,12 +46,11 @@ make_link wezterm.lua .wezterm.lua
 make_link nix.conf .config/nix/nix.conf
 make_link mutt .mutt
 make_link muttrc .muttrc
-make_link mailcap .mailcap
 
-# link archlinux-specific packages
-if type pacman 2>/dev/null >/dev/null; then
-    make_link dwm pkg/dwm
-    make_link st pkg/st
+if [ "$(uname)" == "Darwin" ]; then
+    make_link mailcap.macos .mailcap
+else
+    make_link mailcap .mailcap
 fi
 
 echo Done!

@@ -1,0 +1,3 @@
+application/pdf; macos-mutt-open-attachment.sh %s
+image/*; macos-mutt-open-attachment.sh %s
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
