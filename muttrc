@@ -27,4 +27,9 @@ bind pager <down> next-line
 # Prevent page-down from switching to the next message when pressed at the bottom of a message
 set pager_stop=yes
 
+auto_view text/html
+alternative_order text/plain text/html
+set implicit_autoview
+macro pager <f6> "| w3m -T text/html -dump '%F' | less\n" "Render HTML with w3m"
+
 source ~/.mutt/catpuccin

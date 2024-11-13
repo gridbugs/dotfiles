@@ -111,6 +111,7 @@
         eza
         dua
         remmina
+        w3m
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 

@@ -1,3 +1,3 @@
 application/pdf; zathura %s
-image/jpeg; nomacs %s
-image/heic; nomacs %s
+image/*; nomacs %s
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
