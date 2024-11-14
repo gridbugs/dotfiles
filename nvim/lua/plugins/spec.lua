@@ -1,6 +1,6 @@
 return {
+    -- General language support
     { "neovim/nvim-lspconfig" },
-
     { "nvim-treesitter/nvim-treesitter" },
 
     -- Plugins for integrating git into vim
@@ -43,6 +43,7 @@ return {
 
     -- Better ocaml support
     { "ocaml/vim-ocaml" },
+    { 'ocaml-mlx/ocaml_mlx.nvim' },
 
     -- Cram tests (used for dune tests)
     { "gridbugs/vim-cram" },

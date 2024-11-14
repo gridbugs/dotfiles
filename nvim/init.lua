@@ -6,6 +6,7 @@ require("config.formatter")
 require("config.keys")
 require("config.treesitter")
 
+require("ocaml_mlx")
 require("lsp")
 
 -- Load the common vim configuration
