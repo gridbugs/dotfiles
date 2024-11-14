@@ -1,31 +1,18 @@
 local nvim_lsp = require("lspconfig")
 
--- Always autoformat on save
-vim.cmd("autocmd BufWritePre *.ml,*.mli,*.rs,*.nix lua vim.lsp.buf.format({ async = false })")
-
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'ocaml',
-  callback = function(args)
-    vim.lsp.start({
-      name = 'ocaml-lsp-server',
-      cmd = {'ocamllsp'},
-      root_dir = vim.fs.root(args.buf, {'dune-workspace', 'dune-project'}),
-    })
+-- Always autoformat on save for these types of files
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.ml", "*.mli", "*.rs", "*.nix" },
+  callback = function()
+    vim.lsp.buf.format({ async = false })
   end,
 })
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'rust',
-  callback = function(args)
-    vim.lsp.start({
-      name = 'rust-analyzer',
-      cmd = {'rust-analyzer'},
-      root_dir = vim.fs.root(args.buf, {'Cargo.lock'}),
-    })
-  end,
-})
+nvim_lsp.ocamllsp.setup {}
 
-nvim_lsp.nil_ls.setup({
+nvim_lsp.rust_analyzer.setup {}
+
+nvim_lsp.nil_ls.setup {
    settings = {
       ['nil'] = {
          formatting = {
@@ -33,7 +20,7 @@ nvim_lsp.nil_ls.setup({
          },
       },
    },
-})
+}
 
 nvim_lsp.ts_ls.setup {
   on_attach = on_attach,
