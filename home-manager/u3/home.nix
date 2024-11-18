@@ -97,6 +97,7 @@
         arandr
         nmap
         unzip
+        p7zip
         find-cursor
         gh
         audacity
