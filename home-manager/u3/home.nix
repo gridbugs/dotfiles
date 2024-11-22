@@ -57,6 +57,7 @@
         pkg-config
         python3
         python3Packages.python-lsp-server
+        black
         opam
         nodejs
         rustc

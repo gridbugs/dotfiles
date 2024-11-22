@@ -14,7 +14,17 @@ require("formatter").setup {
           stdin = true,
         }
       end
+    },
+    python = {
+      function()
+        return {
+          exe = "black",
+          args = {},
+          stdin = false,
+        }
+      end
     }
+
   }
 }
 local augroup = vim.api.nvim_create_augroup

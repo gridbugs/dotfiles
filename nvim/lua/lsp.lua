@@ -27,3 +27,5 @@ nvim_lsp.ts_ls.setup {
   filetypes = { "javascript" },
   cmd = { "npx", "typescript-language-server", "--stdio" }
 }
+
+nvim_lsp.pylsp.setup{}
