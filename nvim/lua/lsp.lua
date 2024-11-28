@@ -10,7 +10,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 nvim_lsp.ocamllsp.setup {}
 
-nvim_lsp.rust_analyzer.setup {}
+nvim_lsp.rust_analyzer.setup {
+  settings = {
+    ["rust-analyzer"] = {
+      checkOnSave = {
+        command = "clippy",
+      },
+    },
+  },
+}
 
 nvim_lsp.nil_ls.setup {
    settings = {
