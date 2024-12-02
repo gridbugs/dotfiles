@@ -73,7 +73,7 @@
       toolPkgs = [
         obs-studio
         ledger
-        openshot-qt
+        kdenlive
         emacs-gtk
         ispell
         firefox
