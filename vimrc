@@ -133,8 +133,6 @@ cnoreabbrev W w
 cnoreabbrev Wq wq
 cnoreabbrev WQ wq
 
-set completeopt+=noinsert,menuone
-
 " Resize windows with +/-
 if bufwinnr(1)
     map + <C-W>+

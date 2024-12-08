@@ -62,6 +62,7 @@
         nodejs
         rustc
         cargo
+        clippy
         rustPlatform.rustLibSrc
         rust-analyzer
         cargo-watch

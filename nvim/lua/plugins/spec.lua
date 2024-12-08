@@ -1,6 +1,8 @@
 return {
     -- General language support
     { "neovim/nvim-lspconfig" },
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "hrsh7th/nvim-cmp" },
     { "nvim-treesitter/nvim-treesitter" },
 
     -- Plugins for integrating git into vim
