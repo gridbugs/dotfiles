@@ -52,6 +52,7 @@
         w3m
         urlscan
         qpdf
+        neovim
       ];
       devPkgs = [
         nodejs
