@@ -25,7 +25,17 @@
 
   home.packages = with pkgs;
     let
-      toolPkgs =
-        [ ripgrep htop file python3 eza nil nixfmt-classic transmission ];
-    in toolPkgs ++ extraPkgs;
+      devPkgs = [ binutils gcc ];
+      toolPkgs = [
+        ripgrep
+        htop
+        file
+        python3
+        eza
+        nil
+        nixfmt-classic
+        transmission
+        neovim
+      ];
+    in devPkgs ++ toolPkgs ++ extraPkgs;
 }
