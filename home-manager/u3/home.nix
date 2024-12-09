@@ -117,6 +117,7 @@
         w3m
         urlscan
         qpdf
+        neovim
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 

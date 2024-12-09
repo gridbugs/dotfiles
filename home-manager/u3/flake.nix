@@ -7,10 +7,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { nixpkgs, home-manager, neovim-nightly-overlay, ... }:
+  outputs = { nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -23,10 +22,7 @@
 
         modules = [ ./home.nix ];
 
-        extraSpecialArgs = {
-          extraPkgs =
-            [ neovim-nightly-overlay.packages.${pkgs.system}.default ];
-        };
+        extraSpecialArgs = { extraPkgs = [ ]; };
       };
     };
 }
