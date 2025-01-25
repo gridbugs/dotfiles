@@ -99,7 +99,8 @@ endif
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " filetype-specific indentation
-au FileType typescript.tsx,typescript,javascript,yaml,conf,html,css,scss,ocaml,lua,nix set shiftwidth=2 tabstop=2
+au FileType yaml,conf,html,css,scss,ocaml,lua,nix set shiftwidth=2 tabstop=2
+au FileType typescript.tsx,typescript,javascript set noexpandtab
 
 " fix dune indentation to make it respect configured shiftwidth
 autocmd FileType dune setlocal indentexpr=DuneIndent() lispoptions=expr:1
