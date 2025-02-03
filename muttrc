@@ -39,4 +39,8 @@ macro compose a \
 '<enter-command>source "mutt_file_menu attach-file"|<Return>' \
 'attach files with fzf'
 
+# Alias file
+set alias_file=~/.mutt/aliases
+source `if test -f ~/.mutt/aliases; then echo ~/.mutt/aliases; else echo /dev/null; fi`
+
 source ~/.mutt/catpuccin

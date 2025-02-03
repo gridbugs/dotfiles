@@ -65,6 +65,9 @@ return {
     -- Better ledger support
     { "ledger/vim-ledger" },
 
+    -- Better go support
+    { "ray-x/go.nvim" },
+
     -- Multiple cursors
     { "mg979/vim-visual-multi" },
 

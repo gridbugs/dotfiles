@@ -14,7 +14,7 @@ capabilities.textDocument.completion.snippetSupport = true
 
 -- Always autoformat on save for these types of files
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.ml", "*.mli", "*.rs", "*.nix" },
+  pattern = { "*.ml", "*.mli", "*.rs", "*.nix", "*.go" },
   callback = function()
     vim.lsp.buf.format({ async = false })
   end,
@@ -50,3 +50,5 @@ nvim_lsp.ts_ls.setup {
 }
 
 nvim_lsp.pylsp.setup{}
+
+nvim_lsp.gopls.setup{}

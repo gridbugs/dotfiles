@@ -36,11 +36,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# opam configuration
-if type opam 2>/dev/null >/dev/null; then
-    test -r $HOME/.opam/opam-init/init.sh && . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-fi
-
 if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 elif [ -d "$HOME/.cargo/bin" ]; then
