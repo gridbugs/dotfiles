@@ -36,6 +36,7 @@
         nixfmt-classic
         transmission
         neovim
+        mutt
       ];
     in devPkgs ++ toolPkgs ++ extraPkgs;
 }
