@@ -50,15 +50,6 @@ return {
     -- Cram tests (used for dune tests)
     { "gridbugs/vim-cram" },
 
-    -- Version info in Cargo.toml
-    {
-      'saecki/crates.nvim',
-      tag = 'stable',
-      config = function()
-        require('crates').setup()
-      end,
-    },
-
     -- Better nix support
     { "LnL7/vim-nix" },
 
