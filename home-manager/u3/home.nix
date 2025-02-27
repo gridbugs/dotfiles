@@ -77,6 +77,7 @@
         kdenlive
         emacs-gtk
         ispell
+        librewolf
         firefox
         thunderbird
         google-chrome
