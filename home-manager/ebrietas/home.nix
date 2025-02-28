@@ -59,6 +59,7 @@
         python3
         python3Packages.python-lsp-server
         opam
+        ocaml
         git
         mercurial
         darcs
