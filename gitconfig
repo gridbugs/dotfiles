@@ -23,8 +23,8 @@
 	followTags = true
 [fetch]
 	prune = true
-	pruneTags = true
 	all = true
+	parallel = 0
 [help]
 	autocorrect = prompt
 [commit]
