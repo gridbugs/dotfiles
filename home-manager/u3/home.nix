@@ -51,7 +51,6 @@
         gcc
         gdb
         gnumake
-        gmp
         openssl
         curlFull
         pkg-config
@@ -73,8 +72,8 @@
       ];
       toolPkgs = [
         obs-studio
+        flowblade
         ledger
-        kdenlive
         emacs-gtk
         ispell
         librewolf
@@ -119,6 +118,7 @@
         urlscan
         qpdf
         neovim
+        vim
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 
