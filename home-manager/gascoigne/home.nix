@@ -71,7 +71,6 @@
         fzf
         pavucontrol
         file
-        discord
         wine
         arandr
         unzip
@@ -80,7 +79,6 @@
         imagemagick
         dig
         sshfs
-        kicad
         ripgrep
         fd
         bat
