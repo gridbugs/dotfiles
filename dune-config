@@ -1,0 +1,6 @@
+(lang dune 3.17)
+
+; should be symlinked to ~/.config/dune/config
+
+(cache enabled)
+(cache-storage-mode copy)

@@ -19,6 +19,7 @@ cd "$HOME"
 make_link vimrc .vimrc
 make_link nvim .config/nvim
 make_link feh .config/feh
+make_link dune-config .config/dune/config
 make_link bashrc .bashrc
 make_link kshrc .kshrc
 make_link profile .profile
