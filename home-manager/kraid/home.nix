@@ -42,5 +42,6 @@
     ocamlPackages.ocaml-lsp
     gdb
     neovim
+    wine64
   ] ++ extraPkgs;
 }
