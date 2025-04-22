@@ -22,8 +22,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- Allow inline diagnostic messages
 vim.diagnostic.config({
-  virtual_text = false,
-  virtual_lines = true,
+  virtual_text = true,
 })
 
 nvim_lsp.ocamllsp.setup {}
