@@ -26,7 +26,6 @@
   home.packages = with pkgs;
     let
       toolPkgs = [
-        coreutils
         nix-bash-completions
         bash-completion
         tmux
