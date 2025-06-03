@@ -1,13 +1,26 @@
 #!/bin/sh
 
-# Copied from https://www.thyssentishman.com/blog/002.html
+# Originally copied from https://www.thyssentishman.com/blog/002.html
 
-FILES=$(fd --search-path / | fzf --height=100% --multi)
+FILE=$(fd --hidden --search-path / | fzf --height=100%)
 
-printf 'push '
-for i in $FILES
-do
-    [ -f "$i" ] && printf '<%s>%s<Return>' "$1" "$i"
-    [ -d "$i" ] && find "$i"/* -type f -maxdepth 0 \
-        -exec printf '<%s>%s<Return>' "$1" {} \;
-done
+if echo "$FILE" | grep ' ' > /dev/null; then
+    printf "Path contains space: %s\n" "$FILE" > /dev/stderr
+    NEW_NAME=$(basename "$FILE" | tr ' ' '_')
+    TMP=$(mktemp -d)
+    echo "Copying file to new path without spaces..." > /dev/stderr
+    cp -v "$FILE" "$TMP/$NEW_NAME" > /dev/stderr
+    FILE="$TMP/$NEW_NAME"
+fi
+
+if [ ! -e "$FILE" ]; then
+    printf "File does not exist: %s\n" "$FILE" > /dev/stderr
+    exit 1
+fi
+
+if [ ! -f "$FILE" ]; then
+    printf "Not a regular file: %s\n" "$FILE" > /dev/stderr
+    exit 1
+fi
+
+printf "push <%s>%s<Return>" "$1" "$FILE"
