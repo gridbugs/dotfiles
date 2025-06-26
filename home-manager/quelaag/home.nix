@@ -37,6 +37,7 @@
         transmission
         neovim
         mutt
+        fzf
       ];
     in devPkgs ++ toolPkgs ++ extraPkgs;
 }
