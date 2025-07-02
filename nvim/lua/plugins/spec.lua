@@ -59,6 +59,9 @@ return {
     -- Better go support
     { "ray-x/go.nvim" },
 
+    -- Better LaTeX support
+    { "lervag/vimtex" },
+
     -- Multiple cursors
     { "mg979/vim-visual-multi" },
 

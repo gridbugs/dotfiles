@@ -12,7 +12,7 @@ then
 elif [[ $REPLY =~ ^[Ee]$ ]]
 then
     TMP=$(mktemp --suffix=.sh)
-    trap "rm -f $TMP" EXIT
+    trap 'rm -f $TMP' EXIT
     echo $@ > $TMP
     ${EDITOR:-vi} $TMP
     . $TMP

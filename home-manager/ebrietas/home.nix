@@ -49,7 +49,6 @@
         ispell
         mutt
         w3m
-        urlscan
         qpdf
         neovim
       ];
