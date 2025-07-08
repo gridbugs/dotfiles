@@ -43,5 +43,8 @@
     gdb
     neovim
     wine64
+    nixfmt-classic
+    nil
+    fzf
   ] ++ extraPkgs;
 }
