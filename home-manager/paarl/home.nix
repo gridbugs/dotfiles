@@ -39,6 +39,7 @@
     pkg-config
     ocamlformat
     ripgrep
+    wine
   ];
 
   # Allows rust-analyzer to find the rust source
