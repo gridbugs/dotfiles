@@ -70,6 +70,12 @@
         vlc
         ispell
         mutt
+        w3m
+        ledger
+        urlscan
+        htop
+        nix-bash-completions
+        bash-completion
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 }
