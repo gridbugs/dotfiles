@@ -1,3 +1,17 @@
+function file_exists(name)
+  local f = io.open(name, "r")
+  if f == nil then
+    return false
+  else
+    io.close(f)
+    return true
+  end
+end
+
+function has_noformat()
+  return file_exists(".noformat")
+end
+
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 require("formatter").setup {
   -- Enable or disable logging
@@ -8,20 +22,28 @@ require("formatter").setup {
   filetype = {
     dune = {
       function()
-        return {
-          exe = "dune",
-          args = { "format-dune-file" },
-          stdin = true,
-        }
+        if has_noformat() then
+          return nil
+        else
+          return {
+            exe = "dune",
+            args = { "format-dune-file" },
+            stdin = true,
+          }
+        end
       end
     },
     python = {
       function()
-        return {
-          exe = "black",
-          args = {},
-          stdin = false,
-        }
+        if has_noformat() then
+          return nil
+        else
+          return {
+            exe = "black",
+            args = {},
+            stdin = false,
+          }
+        end
       end
     }
 

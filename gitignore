@@ -5,3 +5,4 @@ Dockerfile.private
 _opam
 _build
 .#*
+.noformat
