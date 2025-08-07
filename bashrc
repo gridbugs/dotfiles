@@ -3,6 +3,9 @@
 # Only run if the shell is interactive
 if [[ $- == *i* ]]; then
 
+    # Start with an empty PROMPT_COMMAND so we don't end up with duplicates when things add to it.
+    PROMPT_COMMAND=""
+
     # Use neovim, vim, or vi as editor
     if type nvim 2>/dev/null >/dev/null; then
         export EDITOR=nvim
