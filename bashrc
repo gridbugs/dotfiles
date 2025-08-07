@@ -236,7 +236,7 @@ if [[ $- == *i* ]]; then
         PS1="\n\# $PROMPT_COLOUR\u@\H \w$GIT_MESSAGE$VENV_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL_COLOUR "
     }
 
-    PROMPT_COMMAND=__prompt_command
+    PROMPT_COMMAND="__prompt_command;$PROMPT_COMMAND"
 
     # source extra commands from .bashrc_extra
     [[ -f ~/.bashrc_extra ]] && . ~/.bashrc_extra
