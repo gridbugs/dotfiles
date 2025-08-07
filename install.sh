@@ -21,6 +21,7 @@ make_link nvim .config/nvim
 make_link feh .config/feh
 make_link dune-config .config/dune/config
 make_link bashrc .bashrc
+make_link zshrc .zshrc
 make_link kshrc .kshrc
 make_link profile .profile
 make_link inputrc .inputrc
