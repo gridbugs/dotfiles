@@ -135,12 +135,6 @@ if [[ $- == *i* ]]; then
         test -r $HOME/.opam/opam-init/init.sh && . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
     fi
 
-    if [[ -f $HOME/.local/share/dune/env/env.bash ]]; then
-        . $HOME/.local/share/dune/env/env.bash
-        # The dune env script doesn't put dune in path if ~/.local/bin was already in PATH behind opam's bin path.
-        export PATH="$HOME/.local/bin:$PATH"
-    fi
-
     # Enable extended globbing. This feature is needed by nix bash completions
     shopt -s extglob
     if [[ -f ~/.nix-profile/share/bash-completion/completions/_nix ]]; then
