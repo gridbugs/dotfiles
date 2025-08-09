@@ -65,6 +65,7 @@
         shellcheck
         nixfmt-classic
         nil
+        black
       ];
     in toolPkgs ++ devPkgs ++ extraPkgs;
 }
