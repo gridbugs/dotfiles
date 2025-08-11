@@ -1,9 +1,17 @@
-# Only execute this file once per shell.
+# Only execute this file once per shell. There are several different ways that
+# .profile gets run across various systems and use cases. Sourcing .profile
+# isn't usually idempotent so this line protects the environment from having
+# .profile's effects applied multiple times.
 if [ -n "$__USER_PROFILE_SOURCED" ]; then return; fi
 export __USER_PROFILE_SOURCED=1
 
-export PATH="$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:/usr/games:/usr/local/games:$PATH"
+if ! grep -i nixos /etc/issue > /dev/null; then
+    # These paths seem to be missing from the default environment on some
+    # systems that install programs to these paths nonetheless.
+    export PATH="/usr/games:/usr/local/games:$PATH"
+fi
 
+export PATH="$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:$PATH"
 
 # Set up homebrew env if available
 if [ -f /opt/homebrew/bin/brew ]; then
@@ -21,6 +29,7 @@ fi
 # Source extra commands from .profile_extra
 [ -f ~/.profile_extra ] && . ~/.profile_extra
 
+# Add the cargo bin dir to PATH if it exists
 if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 elif [ -d "$HOME/.cargo/bin" ]; then
@@ -42,19 +51,6 @@ if [ -d "$HOME/.npm-packages" ]; then
     NPM_PACKAGES=$HOME/.npm-packages
     export PATH="$NPM_PACKAGES/bin:$PATH"
 fi
-
-if [ -n "$BASH_VERSION" ]; then
-    if [ -f "$HOME/.bashrc" ]; then
-        . ~/.bashrc
-    fi
-elif [ "$SHELL" = "/bin/ksh" ]; then
-    if [ -f "$HOME/.kshrc" ]; then
-        export ENV=$HOME/.kshrc
-    fi
-fi
-
-# In some systems SHELL is shell variable by default. Force it to be an environment variable.
-export SHELL
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
@@ -79,4 +75,19 @@ if [ -f $HOME/.dune/share/dune/env/env.bash ]; then
 fi
 # END configuration from Dune installer
 
+# Make sure that my bin directory is the first entry in PATH
 export PATH="$HOME/bin:$PATH"
+
+# Source the shell config file
+if [ -n "$BASH_VERSION" ]; then
+    if [ -f "$HOME/.bashrc" ]; then
+        . ~/.bashrc
+    fi
+elif [ "$SHELL" = "/bin/ksh" ]; then
+    if [ -f "$HOME/.kshrc" ]; then
+        export ENV=$HOME/.kshrc
+    fi
+fi
+
+# In some systems SHELL is shell variable by default. Force it to be an environment variable.
+export SHELL
