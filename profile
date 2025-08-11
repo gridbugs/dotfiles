@@ -20,10 +20,24 @@ fi
 if [ -n "$__USER_PROFILE_SOURCED" ]; then return; fi
 export __USER_PROFILE_SOURCED=1
 
-if ! grep -i nixos /etc/issue > /dev/null; then
+if ! (test -f /etc/issue && grep -i nixos /etc/issue > /dev/null); then
     # These paths seem to be missing from the default environment on some
     # systems that install programs to these paths nonetheless.
-    export PATH="/usr/games:/usr/local/games:$PATH"
+
+    __prepend_path() {
+        if test -d "$1"; then
+            case :"$PATH": in
+                *:"$1":*)
+                  ;;
+                *)
+                  export PATH="$1:$PATH"
+                  ;;
+            esac
+        fi
+    }
+
+    __prepend_path "/usr/games"
+    __prepend_path "/usr/local/games"
 fi
 
 export PATH="$HOME/.bin:$HOME/.local/bin:$HOME/.local/sbin:$PATH"
