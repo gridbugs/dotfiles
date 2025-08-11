@@ -1,7 +1,22 @@
-# Only execute this file once per shell. There are several different ways that
-# .profile gets run across various systems and use cases. Sourcing .profile
-# isn't usually idempotent so this line protects the environment from having
-# .profile's effects applied multiple times.
+# Source the shell config file. This operation is supposed to be idempotent.
+if [ -n "$BASH_VERSION" ]; then
+    if [ -f "$HOME/.bashrc" ]; then
+        . ~/.bashrc
+    fi
+elif [ "$SHELL" = "/bin/ksh" ]; then
+    if [ -f "$HOME/.kshrc" ]; then
+        export ENV=$HOME/.kshrc
+    fi
+fi
+
+# Only execute the remainder of this file once per shell session. There are
+# several different ways that .profile gets run across various systems and use
+# cases. Sourcing .profile isn't usually idempotent so this line protects the
+# environment from having .profile's effects applied multiple times.
+#
+# Note that if X is started with xinitrc/xsession then the entire graphical
+# session takes place inside an environment where .profile has been sourced.
+# New terminal windows will not execute login shells.
 if [ -n "$__USER_PROFILE_SOURCED" ]; then return; fi
 export __USER_PROFILE_SOURCED=1
 
@@ -77,17 +92,6 @@ fi
 
 # Make sure that my bin directory is the first entry in PATH
 export PATH="$HOME/bin:$PATH"
-
-# Source the shell config file
-if [ -n "$BASH_VERSION" ]; then
-    if [ -f "$HOME/.bashrc" ]; then
-        . ~/.bashrc
-    fi
-elif [ "$SHELL" = "/bin/ksh" ]; then
-    if [ -f "$HOME/.kshrc" ]; then
-        export ENV=$HOME/.kshrc
-    fi
-fi
 
 # In some systems SHELL is shell variable by default. Force it to be an environment variable.
 export SHELL
