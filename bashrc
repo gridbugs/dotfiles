@@ -45,26 +45,18 @@ if [[ $- == *i* ]]; then
     # Set colours for `ls` to use. If gnu-ls is installed, prefer it over ls.
     export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=1;30;42:ow=1;30;43'
     if type eza 2>/dev/null >/dev/null; then
-        ls() { eza --group-directories-first --git "$@"; }
-        l()  { eza --group-directories-first --git --icons=auto "$@"; }
-        ll() { eza --group-directories-first --git --icons=auto -l "$@"; }
+        alias ls='eza --group-directories-first --git'
+        alias l='eza --group-directories-first --git --icons=auto'
+        alias ll='eza --group-directories-first --git --icons=auto -l'
     elif type gls 2>/dev/null >/dev/null; then
-        ls() { gls --color --human-readable --group-directories-first "$@"; }
-        l()  { gls --color --human-readable --group-directories-first "$@"; }
-        ll() { gls --color --human-readable --group-directories-first -l "$@"; }
+        alias ls='gls --color --human-readable --group-directories-first'
     elif type colorls 2>/dev/null >/dev/null; then
-        ls() { colorls -G "$@"; }
-        l() { colorls -G "$@"; }
-        ll() { colorls -G -l "$@"; }
+        alias ls='colorls -G'
     elif ls --color --group-directories-first 2>/dev/null >/dev/null; then
-        ls() { command ls --color --group-directories-first "$@"; }
-        l() { ls --color --group-directories-first "$@"; }
-        ll() { ls --color --group-directories-first -l "$@"; }
+        alias ls='ls --color --group-directories-first'
     elif ls --color 2>/dev/null >/dev/null; then
         # freebsd appears to understand --color, but not --group-directories-first
-        ls() { command ls --color "$@"; }
-        l() {  ls --color "$@"; }
-        ll() {  ls --color -l "$@"; }
+        alias ls='ls --color'
     fi
 
     # Customize bash history behaviour
