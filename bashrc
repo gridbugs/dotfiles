@@ -198,6 +198,7 @@ if [[ $- == *i* ]]; then
         local ERROR_COLOUR="\[\033[01;31m\]"
         local GIT_COLOUR="\[\033[01;32m\]"
         local VENV_COLOUR="\[\033[01;34m\]"
+        local SSH_COLOUR="\[\033[01;33m\]"
         local DOLLAR_COLOUR=$PROMPT_COLOUR
         local LAMBDA_COLOUR="\[\033[01;36m\]"
 
@@ -225,7 +226,13 @@ if [[ $- == *i* ]]; then
             local VENV_MESSAGE=""
         fi
 
-        PS1="\n\# $PROMPT_COLOUR\u@\H \w$GIT_MESSAGE$VENV_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL_COLOUR "
+        if [[ -n "$SSH_CONNECTION" ]]; then
+            local SSH_MESSAGE="$SSH_COLOUR(ssh)$PROMPT_COLOUR "
+        else
+            local SSH_MESSAGE=""
+        fi
+
+        PS1="\n\# $PROMPT_COLOUR\u@\H \w$GIT_MESSAGE$VENV_MESSAGE$SSH_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL_COLOUR "
     }
 
     PROMPT_COMMAND="__prompt_command;$PROMPT_COMMAND"
