@@ -133,11 +133,6 @@ if [[ $- == *i* ]]; then
         done
     fi
 
-    # opam configuration
-    if type opam 2>/dev/null >/dev/null; then
-        test -r $HOME/.opam/opam-init/init.sh && . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-    fi
-
     # Enable extended globbing. This feature is needed by nix bash completions
     shopt -s extglob
     if [[ -f ~/.nix-profile/share/bash-completion/completions/_nix ]]; then

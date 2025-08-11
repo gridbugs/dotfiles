@@ -72,3 +72,22 @@ fi
 export SHELL
 
 export PATH="$HOME/bin:$PATH"
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+test -r '/home/s/.opam/opam-init/init.sh' && . '/home/s/.opam/opam-init/init.sh' > /dev/null 2> /dev/null || true
+# END opam configuration
+
+# BEGIN configuration from Dune installer
+# This configuration must be placed after any opam configuration in your shell config file.
+# This performs several tasks to configure your shell for Dune:
+#   - makes sure the dune executable is available in your $PATH
+#   - registers shell completions for dune if completions are available for your shell
+#   - removes opam's pre-command hook because it would override Dune's shell configuration
+source $HOME/.dune/share/dune/env/env.bash
+__dune_env $HOME/.dune
+PROMPT_COMMAND="$(echo "$PROMPT_COMMAND" | tr ';' '\n' | grep -v _opam_env_hook | paste -sd ';' -)" # remove opam's pre-command hook
+# END configuration from Dune installer
