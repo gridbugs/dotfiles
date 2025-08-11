@@ -1,16 +1,5 @@
 #!/bin/sh
 
-# Source the shell config file. This operation is supposed to be idempotent.
-if [ -n "$BASH_VERSION" ]; then
-    if [ -f "$HOME/.bashrc" ]; then
-        . "$HOME/.bashrc"
-    fi
-elif [ "$SHELL" = "/bin/ksh" ]; then
-    if [ -f "$HOME/.kshrc" ]; then
-        export ENV="$HOME/.kshrc"
-    fi
-fi
-
 # Only execute the remainder of this file once per shell session. There are
 # several different ways that .profile gets run across various systems and use
 # cases. Sourcing .profile isn't usually idempotent so this line protects the
@@ -116,3 +105,14 @@ export PATH="$HOME/bin:$PATH"
 
 # In some systems SHELL is shell variable by default. Force it to be an environment variable.
 export SHELL
+
+# Source the shell config file.
+if [ -n "$BASH_VERSION" ]; then
+    if [ -f "$HOME/.bashrc" ]; then
+        . "$HOME/.bashrc"
+    fi
+elif [ "$SHELL" = "/bin/ksh" ]; then
+    if [ -f "$HOME/.kshrc" ]; then
+        export ENV="$HOME/.kshrc"
+    fi
+fi
