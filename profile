@@ -1,11 +1,13 @@
+#!/bin/sh
+
 # Source the shell config file. This operation is supposed to be idempotent.
 if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
-        . ~/.bashrc
+        . "$HOME/.bashrc"
     fi
 elif [ "$SHELL" = "/bin/ksh" ]; then
     if [ -f "$HOME/.kshrc" ]; then
-        export ENV=$HOME/.kshrc
+        export ENV="$HOME/.kshrc"
     fi
 fi
 
@@ -52,11 +54,12 @@ fi
 
 # Set up homebrew library path
 if type brew 2>/dev/null >/dev/null; then
-    export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+    LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+    export LIBRARY_PATH
 fi
 
 # Source extra commands from .profile_extra
-[ -f ~/.profile_extra ] && . ~/.profile_extra
+[ -f "$HOME/.profile_extra" ] && . "$HOME/.profile_extra"
 
 # Add the cargo bin dir to PATH if it exists
 if [ -f "$HOME/.cargo/env" ]; then
@@ -67,9 +70,11 @@ elif [ -d "$HOME/.cargo/bin" ]; then
 fi
 
 # Set some rust-specific environment variables if rust is installed
-if type rustc 2>/dev/null >/dev/null && [ -d ~/.cargo ]; then
-    export RUST_SRC_PATH=$(rustc --print sysroot)"/lib/rustlib/src/rust/src"
-    export CARGO_HOME=$HOME/.cargo
+if type rustc 2>/dev/null >/dev/null && [ -d "$HOME/.cargo" ]; then
+    RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+    CARGO_HOME="$HOME/.cargo"
+    export RUST_SRC_PATH
+    export CARGO_HOME
 fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -87,7 +92,9 @@ fi
 #   - auto-completion for the opam binary
 # This section can be safely removed at any time if needed.
 if type opam 2>/dev/null >/dev/null; then
-    test -r $HOME/.opam/opam-init/init.sh && . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+    if test -r "$HOME/.opam/opam-init/init.sh"; then
+        . "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null
+    fi
 fi
 # END opam configuration
 
@@ -97,9 +104,9 @@ fi
 #   - makes sure the dune executable is available in your $PATH
 #   - registers shell completions for dune if completions are available for your shell
 #   - removes opam's pre-command hook because it would override Dune's shell configuration
-if [ -f $HOME/.dune/share/dune/env/env.bash ]; then
-    source $HOME/.dune/share/dune/env/env.bash
-    __dune_env $HOME/.dune
+if [ -f "$HOME/.dune/share/dune/env/env.bash" ]; then
+    . "$HOME/.dune/share/dune/env/env.bash"
+    __dune_env "$HOME/.dune"
     PROMPT_COMMAND="$(echo "$PROMPT_COMMAND" | tr ';' '\n' | grep -v _opam_env_hook | paste -sd ';' -)" # remove opam's pre-command hook
 fi
 # END configuration from Dune installer
