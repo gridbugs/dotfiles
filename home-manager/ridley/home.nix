@@ -45,7 +45,8 @@
         pkgs = pkgs;
         pixelsize = 16;
       }).dwm;
-      uiPkgs = [ terminus-font st st12 st16 st20 st24 dwm dmenu acpi ];
+      uiPkgs =
+        [ terminus-font st st12 st16 st20 st24 dwm dmenu acpi alsa-utils ];
       devPkgs =
         [ binutils gcc gnumake gmp openssl shellcheck nil nixfmt-classic ];
       toolPkgs = [
