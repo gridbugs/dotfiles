@@ -51,6 +51,7 @@
         [ binutils gcc gnumake gmp openssl shellcheck nil nixfmt-classic ];
       toolPkgs = [
         rsync
+        bottom
         firefox
         nomacs
         gimp

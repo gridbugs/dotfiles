@@ -50,4 +50,11 @@ else
     MAYBE_TIMES_EXTRA=""
 fi
 
-echo "$MAYBE_KEYMAP$MAYBE_IP$MAYBE_BACKLIGHT$MAYBE_BATT$MAYBE_VOLUME$MAYBE_TIMES_EXTRA $TIME"
+if type free >/dev/null 2>/dev/null; then
+    MAYBE_RAM=" $(free -m | awk '/^Mem:/ { print "ram " $3 "/" $2 "mb" } /^Swap:/ { print "swap " $3 "/" $2 "mb" }' | paste -sd '|' | sed 's/|/ | /') |"
+else
+    MAYBE_RAM=""
+fi
+
+
+echo "$MAYBE_RAM$MAYBE_KEYMAP$MAYBE_IP$MAYBE_BACKLIGHT$MAYBE_BATT$MAYBE_VOLUME$MAYBE_TIMES_EXTRA $TIME"
