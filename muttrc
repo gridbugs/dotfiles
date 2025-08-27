@@ -1,4 +1,4 @@
-set index_format="%4C %?X?📎? %Z %[%Y-%m-%d %T] %-15.15L (%?l?%4l&%4c?) %s"
+set index_format="%4C %?X?A& ? %Z %[%Y-%m-%d %T] %-15.15L (%?l?%4l&%4c?) %s"
 
 set ssl_force_tls = yes
 set mail_check = 60
