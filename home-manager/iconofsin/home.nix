@@ -75,6 +75,8 @@
         pcsx2
         p7zip
         find-cursor
+        nil
+        nixfmt-classic
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs;
