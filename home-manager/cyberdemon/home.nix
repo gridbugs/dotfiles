@@ -62,6 +62,7 @@
         find-cursor
         zathura
         kicad
+        wine
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
