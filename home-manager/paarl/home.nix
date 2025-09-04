@@ -27,7 +27,6 @@
     firefox
     neovim
     unzip
-    projectm
     opam
     ocamlformat
     ocamlPackages.ocaml-lsp
@@ -40,6 +39,8 @@
     ocamlformat
     ripgrep
     wine
+    nil
+    nixfmt-classic
   ];
 
   # Allows rust-analyzer to find the rust source
