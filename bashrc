@@ -249,6 +249,10 @@ if [[ $- == *i* ]]; then
     if type direnv 2>/dev/null >/dev/null && [[ $(basename "$SHELL") == "bash" ]] ; then
         eval "$(direnv hook bash)"
     fi
+
+    if test -f $HOME/.config/broot/launcher/bash/br; then
+        . $HOME/.config/broot/launcher/bash/br
+    fi
 fi
 
 true
