@@ -132,6 +132,11 @@ if [[ $- == *i* ]]; then
         done
     fi
 
+    # Bash completion for Dune
+    if [ -f "$HOME/.dune/share/bash-completion/completions/dune" ]; then
+        . "$HOME/.dune/share/bash-completion/completions/dune"
+    fi
+
     # Enable extended globbing. This feature is needed by nix bash completions
     shopt -s extglob
     if [[ -f "$HOME/.nix-profile/share/bash-completion/completions/_nix" ]]; then

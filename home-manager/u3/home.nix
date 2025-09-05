@@ -113,6 +113,7 @@
         bat
         eza
         dua
+        broot
         remmina
         w3m
         urlscan
