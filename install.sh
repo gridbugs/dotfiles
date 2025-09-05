@@ -51,7 +51,7 @@ make_link muttrc .muttrc
 make_link mailcap .mailcap
 make_link urlscan .config/urlscan
 make_link gitconfig .gitconfig
-make_link broot .config/broot
+make_link mimeapps.list .config/mimeapps.list
 
 if [ "$(uname)" == "Darwin" ]; then
     make_link mailcap.macos .mailcap

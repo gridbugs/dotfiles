@@ -1,0 +1,28 @@
+[Default Applications]
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/chrome=firefox.desktop
+text/html=firefox.desktop
+application/x-extension-htm=firefox.desktop
+application/x-extension-html=firefox.desktop
+application/x-extension-shtml=firefox.desktop
+application/xhtml+xml=firefox.desktop
+application/x-extension-xhtml=firefox.desktop
+application/x-extension-xht=firefox.desktop
+x-scheme-handler/discord-455712169795780630=discord-455712169795780630.desktop
+image/png=org.nomacs.ImageLounge.desktop
+image/jpg=org.nomacs.ImageLounge.desktop
+text/plain=nvim.desktop
+text/markdown=nvim.desktop
+
+[Added Associations]
+x-scheme-handler/http=firefox.desktop;librewolf.desktop;
+x-scheme-handler/https=firefox.desktop;librewolf.desktop;
+x-scheme-handler/chrome=firefox.desktop;librewolf.desktop;
+text/html=firefox.desktop;librewolf.desktop;
+application/x-extension-htm=firefox.desktop;librewolf.desktop;
+application/x-extension-html=firefox.desktop;librewolf.desktop;
+application/x-extension-shtml=firefox.desktop;librewolf.desktop;
+application/xhtml+xml=firefox.desktop;librewolf.desktop;
+application/x-extension-xhtml=firefox.desktop;librewolf.desktop;
+application/x-extension-xht=firefox.desktop;librewolf.desktop;

@@ -74,7 +74,6 @@
         obs-studio
         flowblade
         ledger
-        emacs-gtk
         ispell
         librewolf
         firefox
