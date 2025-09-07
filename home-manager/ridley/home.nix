@@ -67,6 +67,8 @@
         bat
         eza
         dua
+        broot
+        tree
         wine
         file
         vlc
