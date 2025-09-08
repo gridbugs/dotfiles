@@ -1,8 +1,8 @@
 [Default Applications]
-x-scheme-handler/http=firefox.desktop
-x-scheme-handler/https=firefox.desktop
+x-scheme-handler/http=vivaldi-stable.desktop
+x-scheme-handler/https=vivaldi-stable.desktop
 x-scheme-handler/chrome=firefox.desktop
-text/html=firefox.desktop
+text/html=vivaldi-stable.desktop
 application/x-extension-htm=firefox.desktop
 application/x-extension-html=firefox.desktop
 application/x-extension-shtml=firefox.desktop
@@ -14,6 +14,8 @@ image/png=org.nomacs.ImageLounge.desktop
 image/jpg=org.nomacs.ImageLounge.desktop
 text/plain=nvim.desktop
 text/markdown=nvim.desktop
+x-scheme-handler/about=vivaldi-stable.desktop
+x-scheme-handler/unknown=vivaldi-stable.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;librewolf.desktop;

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if type vivaldi >/dev/null 2>/dev/null; then
+    vivaldi
+fi
+
+if type firefox >/dev/null 2>/dev/null; then
+    firefox
+fi

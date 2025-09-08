@@ -75,10 +75,8 @@
         flowblade
         ledger
         ispell
-        librewolf
         firefox
-        thunderbird
-        google-chrome
+        vivaldi
         mutt
         zoom-us
         zathura
