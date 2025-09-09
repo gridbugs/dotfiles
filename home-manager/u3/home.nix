@@ -111,6 +111,7 @@
         eza
         dua
         broot
+        duf
         remmina
         w3m
         urlscan
