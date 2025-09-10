@@ -53,6 +53,7 @@
         rsync
         bottom
         firefox
+        vivaldi
         nomacs
         gimp
         ffmpeg
