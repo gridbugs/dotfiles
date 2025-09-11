@@ -36,6 +36,7 @@
         bat
         eza
         dua
+        broot
         wget
         sshfs
         tree
