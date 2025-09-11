@@ -36,6 +36,7 @@
         bat
         eza
         dua
+        duf
         broot
         wget
         sshfs
@@ -52,7 +53,6 @@
         w3m
         urlscan
         qpdf
-        neovim
       ];
       devPkgs = [
         nodejs
