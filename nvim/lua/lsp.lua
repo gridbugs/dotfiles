@@ -46,11 +46,7 @@ nvim_lsp.nil_ls.setup {
    },
 }
 
-nvim_lsp.ts_ls.setup {
-  on_attach = on_attach,
-  filetypes = { "javascript", "typescript" },
-  cmd = { "npx", "typescript-language-server", "--stdio" }
-}
+nvim_lsp.ts_ls.setup {}
 
 nvim_lsp.pylsp.setup{}
 

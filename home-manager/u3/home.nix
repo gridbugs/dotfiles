@@ -59,6 +59,8 @@
         black
         opam
         nodejs
+        typescript
+        typescript-language-server
         rustc
         cargo
         clippy
