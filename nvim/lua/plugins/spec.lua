@@ -67,7 +67,4 @@ return {
 
     -- Formatting code without an lsp server
     { "mhartington/formatter.nvim" },
-
-    -- Guess indentation based on the file
-    { "tpope/vim-sleuth" },
   }
