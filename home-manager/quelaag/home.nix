@@ -32,6 +32,8 @@
         file
         python3
         eza
+        dua
+        duf
         nil
         nixfmt-classic
         transmission
