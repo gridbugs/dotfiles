@@ -45,7 +45,13 @@ return {
 
     -- Better ocaml support
     { "ocaml/vim-ocaml" },
-    { 'ocaml-mlx/ocaml_mlx.nvim' },
+    { "tarides/ocaml.nvim",
+      lazy = false,
+      config = function()
+        require("ocaml")
+      end
+    },
+    { "ocaml-mlx/ocaml_mlx.nvim" },
 
     -- Cram tests (used for dune tests)
     { "gridbugs/vim-cram" },

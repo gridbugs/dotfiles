@@ -116,3 +116,9 @@ elif [ "$SHELL" = "/bin/ksh" ]; then
         export ENV="$HOME/.kshrc"
     fi
 fi
+
+# BEGIN configuration from Alice installer
+if [ -f "$HOME/.alice/env/env.bash" ]; then
+    . "$HOME/.alice/env/env.bash"
+fi
+# END configuration from Alice installer
