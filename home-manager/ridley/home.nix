@@ -81,6 +81,7 @@
         htop
         nix-bash-completions
         bash-completion
+        inkscape
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 }
