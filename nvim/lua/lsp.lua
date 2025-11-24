@@ -1,4 +1,3 @@
-local nvim_lsp = require("lspconfig")
 local cmp = require("cmp")
 cmp.setup {
   sources = {
@@ -25,18 +24,23 @@ vim.diagnostic.config({
   virtual_text = true,
 })
 
-nvim_lsp.ocamllsp.setup {}
+vim.lsp.enable('ocamllsp')
+vim.lsp.config('ocamllsp', {
+  cmd = { 'ocamllsp', '--fallback-read-dot-merlin' },
+})
 
-nvim_lsp.rust_analyzer.setup {
-  capabilities = capabilities,
+vim.lsp.enable('rust_analyzer')
+vim.lsp.config('rust_analyzer', {
+  capabilities = capabilies,
   settings = {
     ["rust-analyzer"] = {
       checkOnSave = true,
     },
   },
-}
+})
 
-nvim_lsp.nil_ls.setup {
+vim.lsp.enable('nil_ls')
+vim.lsp.config('nil_ls', {
    settings = {
       ['nil'] = {
          formatting = {
@@ -44,10 +48,7 @@ nvim_lsp.nil_ls.setup {
          },
       },
    },
-}
+})
 
-nvim_lsp.ts_ls.setup {}
-
-nvim_lsp.pylsp.setup{}
-
-nvim_lsp.gopls.setup{}
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('pylsp')
