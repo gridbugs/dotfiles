@@ -82,6 +82,7 @@
         nix-bash-completions
         bash-completion
         inkscape
+        python3
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 }
