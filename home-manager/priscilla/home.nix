@@ -64,6 +64,7 @@
         nixfmt-classic
         nil
         black
+        typescript-language-server
       ];
     in toolPkgs ++ devPkgs ++ extraPkgs;
 }
