@@ -1,0 +1,58 @@
+# $Id$
+# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Dag Odenhall <dag.odenhall@gmail.com>
+# Contributor: Grigorios Bouzakis <grbzks@gmail.com>
+
+pkgname=dwm
+pkgver=6.3
+pkgrel=1
+pkgdesc="A dynamic window manager for X"
+url="http://dwm.suckless.org"
+arch=('i686' 'x86_64')
+license=('MIT')
+options=(zipman)
+depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'st' 'dmenu')
+install=dwm.install
+pkgver_old=6.2
+source=(https://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
+        https://dwm.suckless.org/patches/noborder/dwm-noborder-$pkgver_old.diff
+        https://dwm.suckless.org/patches/pertag/dwm-pertag-$pkgver_old.diff
+        dwm.desktop
+        bottomstack-custom.diff
+        setmaster.diff
+        usercflags.diff
+        config.h
+        )
+sha256sums=('badaa028529b1fba1fd7f9a84f3b64f31190466c858011b53e2f7b70c6a3078d'
+            '9bbf5f963e5a2d23ae4b8731f0c179a8615de5715a2dbf683fbe02115e24efe0'
+            '055da0f12dbfde9e50df54e1f2d87966466404a36c056efb94bb21ab03b94b10'
+            'bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            )
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  cp "$srcdir/config.h" config.h
+}
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/dwm-noborder-$pkgver_old.diff
+  patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/usercflags.diff
+  patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/bottomstack-custom.diff
+  patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/setmaster.diff
+  patch -p1 -d $srcdir/$pkgname-$pkgver < $srcdir/dwm-pertag-$pkgver_old.diff
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2 \
+      USERCFLAGS=-DUSERFONT="\"\\\"xos4 Terminus:pixelsize=${FONTSIZE:-16}:antialias=true:autohint=true\\\"\""
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
+  install -m644 -D "$srcdir/dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
+}

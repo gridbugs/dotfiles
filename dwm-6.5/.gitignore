@@ -1,0 +1,10 @@
+*
+!PKGBUILD
+!config.h
+!dwm.install
+!dwm.desktop
+!*.nix
+!*.diff
+!.gitignore
+!README.md
+dwm-*.diff

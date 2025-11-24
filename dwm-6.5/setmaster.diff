@@ -1,0 +1,26 @@
+diff --git a/dwm.c b/dwm.c
+index e5efb6a..bb2df70 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -175,6 +175,7 @@ static long getstate(Window w);
+ static int gettextprop(Window w, Atom atom, char *text, unsigned int size);
+ static void grabbuttons(Client *c, int focused);
+ static void grabkeys(void);
++static void setmaster(const Arg *arg);
+ static void incnmaster(const Arg *arg);
+ static void keypress(XEvent *e);
+ static void killclient(const Arg *arg);
+@@ -968,6 +969,13 @@ grabkeys(void)
+ 	}
+ }
+ 
++void
++setmaster(const Arg *arg)
++{
++	selmon->nmaster = MAX(arg->i, 0);
++	arrange(selmon);
++}
++
+ void
+ incnmaster(const Arg *arg)
+ {

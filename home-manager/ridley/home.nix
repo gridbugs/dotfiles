@@ -41,18 +41,26 @@
       st16 = mkStSized { pixelsize = 16; };
       st20 = mkStSized { pixelsize = 20; };
       st24 = mkStSized { pixelsize = 24; };
-      dwm = (import ../../dwm/common.nix {
+      dwm = (import ../../dwm-6.5/common.nix {
         pkgs = pkgs;
         pixelsize = 16;
       }).dwm;
       uiPkgs =
         [ terminus-font st st12 st16 st20 st24 dwm dmenu acpi alsa-utils ];
-      devPkgs =
-        [ binutils gcc gnumake gmp openssl shellcheck nil nixfmt-classic ];
+      devPkgs = [
+        binutils
+        gcc
+        gnumake
+        gmp
+        openssl
+        shellcheck
+        nil
+        nixfmt-classic
+        python3
+      ];
       toolPkgs = [
         rsync
         bottom
-        firefox
         vivaldi
         nomacs
         gimp
@@ -68,6 +76,7 @@
         bat
         eza
         dua
+        duf
         broot
         tree
         wine
@@ -82,7 +91,6 @@
         nix-bash-completions
         bash-completion
         inkscape
-        python3
       ];
     in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 }

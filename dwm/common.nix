@@ -21,7 +21,7 @@ in {
     conf = builtins.readFile ./config.h;
   }).overrideAttrs (old: {
     preBuild = ''
-      ${old.preBuild}
+      ${old.preBuild or ""}
       makeFlagsArray+=(
         "USERCFLAGS=-DUSERFONT="\"\\\"${
           "Terminus:pixelsize=${toString pixelsize}"
