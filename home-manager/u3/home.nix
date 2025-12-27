@@ -107,6 +107,7 @@
         dig
         sshfs
         kicad
+        freecad
         ripgrep
         fd
         bat

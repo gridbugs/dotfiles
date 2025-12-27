@@ -48,7 +48,7 @@ return {
     { "tarides/ocaml.nvim",
       lazy = false,
       config = function()
-        require("ocaml")
+        require("ocaml").setup()
       end
     },
     { "ocaml-mlx/ocaml_mlx.nvim" },

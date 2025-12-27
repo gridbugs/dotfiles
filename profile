@@ -100,6 +100,12 @@ if [ -f "$HOME/.dune/share/dune/env/env.bash" ]; then
 fi
 # END configuration from Dune installer
 
+# BEGIN configuration from Alice installer
+if [ -f "$HOME/.alice/env/env.bash" ]; then
+    . "$HOME/.alice/env/env.bash"
+fi
+# END configuration from Alice installer
+
 # Make sure that my bin directory is the first entry in PATH
 export PATH="$HOME/bin:$PATH"
 
@@ -116,9 +122,3 @@ elif [ "$SHELL" = "/bin/ksh" ]; then
         export ENV="$HOME/.kshrc"
     fi
 fi
-
-# BEGIN configuration from Alice installer
-if [ -f "$HOME/.alice/env/env.bash" ]; then
-    . "$HOME/.alice/env/env.bash"
-fi
-# END configuration from Alice installer
