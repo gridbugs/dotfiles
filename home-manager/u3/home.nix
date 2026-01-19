@@ -71,6 +71,8 @@
         shellcheck
         nil
         nixfmt-classic
+        jujutsu
+        ctags
       ];
       toolPkgs = [
         obs-studio

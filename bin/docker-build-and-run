@@ -1,0 +1,3 @@
+#!/bin/sh
+IMAGE_TAG=$RANDOM
+docker build . --tag "$IMAGE_TAG" && docker run --rm -it "$IMAGE_TAG"

@@ -59,6 +59,8 @@ if [[ $- == *i* ]]; then
         alias ls='ls --color'
     fi
 
+    export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
+
     # Customize bash history behaviour
     export HISTCONTROL=ignoredups:erasedups
     export HISTSIZE=100000
@@ -169,6 +171,12 @@ if [[ $- == *i* ]]; then
         fi
         if [[ ! -r "$BASH_COMPLETION_DIR/zola" ]]; then
             . "$HOME/.completions/zola"
+        fi
+        if [[ ! -r "$BASH_COMPLETION_DIR/jj" ]]; then
+            . "$HOME/.completions/jj"
+        fi
+        if [[ ! -r "$BASH_COMPLETION_DIR/dune" ]]; then
+            . "$HOME/.completions/dune"
         fi
         if type docker 2>/dev/null >/dev/null; then
             if [[ ! -r "$BASH_COMPLETION_DIR/docker" ]]; then

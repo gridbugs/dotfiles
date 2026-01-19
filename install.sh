@@ -52,6 +52,7 @@ make_link mailcap .mailcap
 make_link urlscan .config/urlscan
 make_link gitconfig .gitconfig
 make_link mimeapps.list .config/mimeapps.list
+make_link ripgreprc .config/ripgreprc
 
 if [ "$(uname)" == "Darwin" ]; then
     make_link mailcap.macos .mailcap

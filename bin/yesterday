@@ -1,0 +1,2 @@
+#!/bin/sh
+date -d yesterday '+%Y-%m-%d'
