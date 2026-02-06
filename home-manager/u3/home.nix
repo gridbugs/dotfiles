@@ -38,6 +38,7 @@
           pixelsize = pixelsize;
         }).st;
       st12 = mkStSized { pixelsize = 12; };
+      st14 = mkStSized { pixelsize = 14; };
       st16 = mkStSized { pixelsize = 16; };
       st20 = mkStSized { pixelsize = 20; };
       st24 = mkStSized { pixelsize = 24; };
@@ -45,7 +46,7 @@
         pkgs = pkgs;
         pixelsize = 12;
       }).dwm;
-      uiPkgs = [ terminus-font st st12 st16 st20 st24 dwm dmenu ];
+      uiPkgs = [ terminus-font st st12 st14 st16 st20 st24 dwm dmenu ];
       devPkgs = [
         binutils
         gcc
