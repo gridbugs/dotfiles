@@ -1,0 +1,33 @@
+diff --git i/VARIANTS.dat w/VARIANTS.dat
+index 399918b..25bcefd 100644
+--- i/VARIANTS.dat
++++ w/VARIANTS.dat
+@@ -13,8 +13,8 @@
+ # | slightly slanted and curly. If you prefer a straight vertical line
+ # | for the apostrophe and a slanted non-curly line for the grave
+ # | accent, delete the "#" in the following two lines:
+-#COPYTO PApostropheStraight PApostropheAscii
+-#COPYTO AccGraveStraight AccGraveAscii
++COPYTO PApostropheStraight PApostropheAscii
++COPYTO AccGraveStraight AccGraveAscii
+ 
+ # +--------------------------------------------------------------------
+ # | 0030 DIGIT ZERO
+@@ -24,7 +24,7 @@
+ # | rectangular). If you prefer a dotted or slashed zero, delete
+ # | the "#" in one of the following two lines:
+ #COPYTO Digit0Dotted Digit0
+-#COPYTO Digit0Slashed Digit0
++COPYTO Digit0Slashed Digit0
+ 
+ # +--------------------------------------------------------------------
+ # | 002A ASTERISK
+@@ -60,7 +60,7 @@
+ # +--------------------------------------------------------------------
+ # | The default glyph is raised. If you prefer a centered tilde,
+ # | delete the "#" in the following line:
+-#COPYTO MTilde AccTildeAscii
++COPYTO MTilde AccTildeAscii
+ 
+ # +--------------------------------------------------------------------
+ # | 00A0 NO-BREAK SPACE

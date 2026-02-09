@@ -1,5 +1,9 @@
-{ pkgs ? import <nixpkgs> { }, fetchurl ? pkgs.fetchurl, dwm ? pkgs.dwm
-, pixelsize ? 16 }:
+{
+  pkgs ? import <nixpkgs> { },
+  fetchurl ? pkgs.fetchurl,
+  dwm ? pkgs.dwm,
+  pixelsize ? 16,
+}:
 
 let
   noborder = fetchurl {
@@ -14,19 +18,26 @@ let
   replace-space = ./replace-space-6.6.diff;
   setmaster = ./setmaster.diff;
   usercflags = ./usercflags.diff;
-in {
-  dwm = (dwm.override {
-    patches =
-      [ noborder bottomstack pertag replace-space setmaster usercflags ];
-    conf = builtins.readFile ./config.h;
-  }).overrideAttrs (old: {
-    preBuild = ''
-      ${old.preBuild or ""}
-      makeFlagsArray+=(
-        "USERCFLAGS=-DUSERFONT="\"\\\"${
-          "Terminus:pixelsize=${toString pixelsize}"
-        }\\\"\"""
-      )
-    '';
-  });
+in
+{
+  dwm =
+    (dwm.override {
+      patches = [
+        noborder
+        bottomstack
+        pertag
+        replace-space
+        setmaster
+        usercflags
+      ];
+      conf = builtins.readFile ./config.h;
+    }).overrideAttrs
+      (old: {
+        preBuild = ''
+          ${old.preBuild or ""}
+          makeFlagsArray+=(
+            "USERCFLAGS=-DUSERFONT="\"\\\"${"Ttyp0\\\ OTB:pixelsize=${toString pixelsize}"}\\\"\"""
+          )
+        '';
+      });
 }
