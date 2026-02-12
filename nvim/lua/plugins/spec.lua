@@ -73,4 +73,6 @@ return {
 
     -- Formatting code without an lsp server
     { "mhartington/formatter.nvim" },
+
+    { "imsnif/kdl.vim" },
   }
