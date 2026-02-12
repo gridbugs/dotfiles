@@ -149,6 +149,7 @@
         qpdf
         neovim
         vim
+        net-tools
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
