@@ -24,31 +24,29 @@
   programs.direnv.nix-direnv.enable = true;
   fonts.fontconfig.enable = true;
 
-  home.packages = with pkgs;
+  home.packages =
+    with pkgs;
     let
-      terminus-font = (import ../../terminus-font/default.nix { } {
-        terminus_font = terminus_font;
-      }).terminus_font;
-      uw-ttyp0 = (import ../../uw-ttyp0/default.nix { } pkgs).uw-ttyp0;
-      st = (import ../../st/common.nix {
-        pkgs = pkgs;
-        pixelsize = 16;
-      }).st;
-      mkStSized = { pixelsize }:
-        (import ../../st/sized.nix {
-          pkgs = pkgs;
-          pixelsize = pixelsize;
-        }).st;
-      st12 = mkStSized { pixelsize = 12; };
-      st16 = mkStSized { pixelsize = 16; };
-      st24 = mkStSized { pixelsize = 24; };
-      dwm = (import ../../dwm/common.nix {
-        pkgs = pkgs;
-        pixelsize = 16;
-      }).dwm;
-      obs = (import ../../nix/obs.nix { pkgs = pkgs; }).obs;
-      uiPkgs = [ terminus-font uw-ttyp0 st st12 st16 st24 dwm dmenu ];
-      devPkgs = [ binutils gcc gnumake gmp openssl opam rustc cargo ];
+      common = (import ../common.nix { inherit pkgs; });
+      pixelsize = 16;
+      uiPkgs = common.fonts ++ [
+        (common.st { inherit pixelsize; })
+        (common.dwm { inherit pixelsize; })
+        (common.stSized { pixelsize = 16; })
+        (common.stSized { pixelsize = 20; })
+        (common.stSized { pixelsize = 30; })
+        dmenu
+      ];
+      devPkgs = [
+        binutils
+        gcc
+        gnumake
+        gmp
+        openssl
+        opam
+        rustc
+        cargo
+      ];
       toolPkgs = [
         rsync
         mercurial
@@ -75,5 +73,6 @@
         nil
         nixfmt-classic
       ];
-    in uiPkgs ++ devPkgs ++ toolPkgs;
+    in
+    uiPkgs ++ devPkgs ++ toolPkgs;
 }

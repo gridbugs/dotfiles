@@ -35,7 +35,7 @@
     let
       common = (import ../common.nix { inherit pkgs; });
       pixelsize = 11;
-      uiPkgs = [
+      uiPkgs = common.fonts ++ [
         (common.st { inherit pixelsize; })
         (common.dwm { inherit pixelsize; })
         (common.stSized { pixelsize = 12; })
@@ -45,8 +45,7 @@
         (common.stSized { pixelsize = 30; })
         (common.stSized { pixelsize = 40; })
         dmenu
-      ]
-      ++ common.fonts;
+      ];
       devPkgs = [
         binutils
         gcc
