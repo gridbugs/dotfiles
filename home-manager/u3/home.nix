@@ -150,6 +150,8 @@
         neovim
         vim
         net-tools
+        traceroute
+        wireshark-qt
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
