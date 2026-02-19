@@ -16,7 +16,7 @@
 
         # set a preprocessor constant that controls font size
         preBuild = ''
-          buildFlagsArray+=(USERCFLAGS=-DUSERFONT="\"\\\"${"Terminus:pixelsize=${toString pixelsize}"}\\\"\"")
+          buildFlagsArray+=(USERCFLAGS=-DUSERFONT="\"\\\"${"Ttyp0 OTB:pixelsize=${toString pixelsize}"}\\\"\"")
         '';
 
         # rename the binary to include the font size

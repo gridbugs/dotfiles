@@ -33,46 +33,20 @@
   home.packages =
     with pkgs;
     let
-      terminus-font =
-        (import ../../terminus-font/default.nix { } {
-          terminus_font = terminus_font;
-        }).terminus_font;
-      kakwafont = (import ../../kakwafont/default.nix { } pkgs).kakwafont;
-      uw-ttyp0 = (import ../../uw-ttyp0/default.nix { } pkgs).uw-ttyp0;
-      st =
-        (import ../../st/common.nix {
-          pkgs = pkgs;
-          pixelsize = 11;
-        }).st;
-      mkStSized =
-        { pixelsize }:
-        (import ../../st/sized.nix {
-          pkgs = pkgs;
-          pixelsize = pixelsize;
-        }).st;
-      st12 = mkStSized { pixelsize = 12; };
-      st14 = mkStSized { pixelsize = 14; };
-      st16 = mkStSized { pixelsize = 16; };
-      st20 = mkStSized { pixelsize = 20; };
-      st24 = mkStSized { pixelsize = 24; };
-      dwm =
-        (import ../../dwm/common.nix {
-          pkgs = pkgs;
-          pixelsize = 11;
-        }).dwm;
+      common = (import ../common.nix { inherit pkgs; });
+      pixelsize = 11;
       uiPkgs = [
-        kakwafont
-        terminus-font
-        uw-ttyp0
-        st
-        st12
-        st14
-        st16
-        st20
-        st24
-        dwm
+        (common.st { inherit pixelsize; })
+        (common.dwm { inherit pixelsize; })
+        (common.stSized { pixelsize = 12; })
+        (common.stSized { pixelsize = 14; })
+        (common.stSized { pixelsize = 16; })
+        (common.stSized { pixelsize = 20; })
+        (common.stSized { pixelsize = 30; })
+        (common.stSized { pixelsize = 40; })
         dmenu
-      ];
+      ]
+      ++ common.fonts;
       devPkgs = [
         binutils
         gcc
