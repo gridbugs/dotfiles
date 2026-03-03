@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if test -f $HOME/.xinitrc_extra; then
+    . $HOME/.xinitrc_extra
+fi
+
 if type xsetroot >/dev/null 2>/dev/null; then
     xsetroot -solid black
 fi
