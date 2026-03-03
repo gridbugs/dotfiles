@@ -34,7 +34,7 @@
     with pkgs;
     let
       common = (import ../common.nix { inherit pkgs; });
-      pixelsize = 20;
+      pixelsize = 12;
       uiPkgs = common.fonts ++ [
         (common.st { inherit pixelsize; })
         (common.dwm { inherit pixelsize; })
@@ -75,11 +75,11 @@
         ctags
       ];
       toolPkgs = [
+        slack
+        arandr
         stalonetray
         networkmanagerapplet
         ispell
-        vivaldi
-        firefox
         mutt
         zoom-us
         zathura
