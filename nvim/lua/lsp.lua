@@ -40,15 +40,6 @@ vim.lsp.config('rust_analyzer', {
 })
 
 vim.lsp.enable('nil_ls')
-vim.lsp.config('nil_ls', {
-   settings = {
-      ['nil'] = {
-         formatting = {
-            command = { "nixfmt" },
-         },
-      },
-   },
-})
 
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('pylsp')

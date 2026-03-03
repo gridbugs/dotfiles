@@ -45,6 +45,19 @@ require("formatter").setup {
           }
         end
       end
+    },
+    nix = {
+      function()
+        if has_noformat() then
+          return nil
+        else
+          return {
+            exe = "nixfmt",
+            args = {},
+            stdin = false,
+          }
+        end
+      end
     }
 
   }
