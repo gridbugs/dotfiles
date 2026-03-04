@@ -118,6 +118,10 @@
         neovim
         vim
         net-tools
+        tree-sitter
+        elixir
+        expect
+        unclutter
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;

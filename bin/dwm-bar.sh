@@ -51,7 +51,7 @@ else
 fi
 
 if type free >/dev/null 2>/dev/null; then
-    MAYBE_RAM=" $(free -m | awk '/^Mem:/ { print "ram " $3 "/" $2 "mb" } /^Swap:/ { print "swap " $3 "/" $2 "mb" }' | paste -sd '|' | sed 's/|/ | /') |"
+    MAYBE_RAM=" $(free -m | awk '/^Mem:/ { print "ram " $3 "/" $2 "mb" } /^Swap:/ { print "swp " $3 "/" $2 "mb" }' | paste -sd '|' | sed 's/|/ | /') |"
 else
     MAYBE_RAM=""
 fi

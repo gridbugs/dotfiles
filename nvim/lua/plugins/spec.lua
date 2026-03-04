@@ -3,7 +3,12 @@ return {
     { "neovim/nvim-lspconfig" },
     { "hrsh7th/cmp-nvim-lsp" },
     { "hrsh7th/nvim-cmp" },
-    { "nvim-treesitter/nvim-treesitter" },
+    {
+      'nvim-treesitter/nvim-treesitter',
+      branch = 'master',
+      lazy = false,
+      build = ':TSUpdate'
+    },
 
     -- Plugins for integrating git into vim
     { "tpope/vim-fugitive" },  -- git commands
