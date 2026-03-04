@@ -32,8 +32,10 @@ if [[ $- == *i* ]]; then
     alias tmp='pushd $(mktemp -d)'
     alias rebash='. $HOME/.bashrc'
 
-    # irb gets confused by my readline config
-    alias irb='INPUTRC=/dev/null irb'
+    # Helper to page the output of a command including ansi escape sequences
+    pg() {
+        unbuffer $@ | less -R
+    }
 
     # Archlinux-specific pacman helpers
     if type pacman 2>/dev/null >/dev/null; then
