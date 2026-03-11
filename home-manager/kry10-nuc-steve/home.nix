@@ -34,7 +34,7 @@
     with pkgs;
     let
       common = (import ../common.nix { inherit pkgs; });
-      pixelsize = 14;
+      pixelsize = 12;
       uiPkgs = common.fonts ++ [
         (common.st { inherit pixelsize; })
         (common.dwm { inherit pixelsize; })
@@ -120,10 +120,12 @@
         net-tools
         tree-sitter
         elixir
+        erlang
         expect
         unclutter-xfixes
         wireguard-tools
         picocom
+        tree
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;

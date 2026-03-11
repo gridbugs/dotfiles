@@ -21,8 +21,11 @@ if test -f $HOME/.Xresources; then
 fi
 
 if type dwm >/dev/null 2>/dev/null; then
+    setxkbmap -option altwin:swap_alt_win
     dwm-bar-run-bg.sh
     exec dwm
+elif type fluxbox >/dev/null 2>/dev/null; then
+    exec startfluxbox
 elif type fvwm >/dev/null 2>/dev/null; then
     exec fvwm
 fi
