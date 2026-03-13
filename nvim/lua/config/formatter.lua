@@ -58,8 +58,20 @@ require("formatter").setup {
           }
         end
       end
-    }
-
+    },
+    elixir = {
+      function()
+        if has_noformat() then
+          return nil
+        else
+          return {
+            exe = "mix",
+            args = { "format" },
+            stdin = false,
+          }
+        end
+      end
+    },
   }
 }
 local augroup = vim.api.nvim_create_augroup

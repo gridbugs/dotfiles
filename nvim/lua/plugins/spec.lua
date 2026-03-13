@@ -87,4 +87,7 @@ return {
     { "mhartington/formatter.nvim" },
 
     { "imsnif/kdl.vim" },
+
+    -- Autocompletion based on ctags
+    { "quangnguyen30192/cmp-nvim-tags" },
   }

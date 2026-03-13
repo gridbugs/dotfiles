@@ -1,6 +1,7 @@
 {
   "catppuccin": { "branch": "main", "commit": "0a5de4da015a175f416d6ef1eda84661623e0500" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "cbc7b02bb99fae35cb42f514762b89b5126651ef" },
+  "cmp-nvim-tags": { "branch": "main", "commit": "e126a09ef49f0611c127dea851fa0052aa223f15" },
   "formatter.nvim": { "branch": "master", "commit": "b9d7f853da1197b83b8edb4cc4952f7ad3a42e41" },
   "fzf-lua": { "branch": "main", "commit": "b809639ed4dd63951c107543861ce17ab8bab3f9" },
   "go.nvim": { "branch": "master", "commit": "659b105cf7f97049f6fe76a554917642f27ecd16" },
