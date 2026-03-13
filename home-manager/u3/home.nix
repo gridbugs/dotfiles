@@ -45,6 +45,7 @@
         (common.stSized { pixelsize = 30; })
         (common.stSized { pixelsize = 40; })
         dmenu
+        unclutter-xfixes
       ];
       devPkgs = [
         binutils
