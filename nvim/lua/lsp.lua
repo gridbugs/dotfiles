@@ -43,3 +43,6 @@ vim.lsp.enable('nil_ls')
 
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('pylsp')
+vim.lsp.enable('elixirls', {
+  cmd = { "elixir-ls" },
+})

@@ -61,18 +61,21 @@
         nodejs
         typescript
         typescript-language-server
-        rustc
-        cargo
-        clippy
-        rustPlatform.rustLibSrc
         rust-analyzer
         cargo-watch
-        rustfmt
         shellcheck
         nil
+        elixir-ls
         nixfmt
         jujutsu
         ctags
+        (rust-bin.stable.latest.default.override {
+          extensions = [
+            "rust-src"
+            "rust-analysis"
+          ];
+          targets = [ "wasm32-unknown-unknown" ];
+        })
       ];
       toolPkgs = [
         slack

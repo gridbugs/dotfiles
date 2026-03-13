@@ -5,7 +5,9 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
     disable = function(lang, buf)
-      return lang ~= "markdown"
+      -- Only enable syntax highlighting for the following languages
+      languages_to_highlight = { "markdown", "elixir" }
+      return (not vim.tbl_contains(languages_to_highlight, lang))
     end,
   },
 
@@ -19,4 +21,3 @@ require'nvim-treesitter.configs'.setup {
   -- The latex parser is currently broken
   ignore_install = { "latex" },
 }
-
