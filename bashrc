@@ -151,26 +151,25 @@ if [[ $- == *i* ]]; then
 
     # Load bash completions for programs installed with homebrew
     [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+    [[ -r "/opt/homebrew/etc/bash_completion.d/brew" ]] && . "/opt/homebrew/etc/bash_completion.d/brew"
 
     # try to load bash completion from its default location on some systems
-    if [[ -z ${BASH_COMPLETION_DIR+x} ]]; then
-        if [[ -r "$HOME/.nix-profile/share/bash-completion/bash_completion" ]]; then
-            export BASH_COMPLETION_DIR=$HOME/.nix-profile/share/bash-completion/completions
-            . "$HOME/.nix-profile/share/bash-completion/bash_completion"
-        elif [[ -r /usr/local/share/bash-completion/bash_completion.sh ]]; then
-            export BASH_COMPLETION_DIR=/usr/local/share/bash-completion/completions
-            . /usr/local/share/bash-completion/bash_completion.sh
-        elif [[ -r /usr/local/share/bash-completion/bash_completion ]]; then
-            export BASH_COMPLETION_DIR=/usr/local/share/bash-completion/completions
-            . /usr/local/share/bash-completion/bash_completion
-        elif [[ -r /usr/share/bash-completion/bash_completion ]]; then
-            export BASH_COMPLETION_DIR=/usr/share/bash-completion/completions
-            . /usr/share/bash-completion/bash_completion
-        elif [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
-            export BASH_COMPLETION_DIR="/usr/local/etc/bash_completion.d"
-            export BASH_COMPLETION_COMPAT_DIR=$BASH_COMPLETION_DIR
-            . "/usr/local/etc/profile.d/bash_completion.sh"
-        fi
+    if [[ -r "$HOME/.nix-profile/share/bash-completion/bash_completion" ]]; then
+        export BASH_COMPLETION_DIR=$HOME/.nix-profile/share/bash-completion/completions
+        . "$HOME/.nix-profile/share/bash-completion/bash_completion"
+    elif [[ -r /usr/local/share/bash-completion/bash_completion.sh ]]; then
+        export BASH_COMPLETION_DIR=/usr/local/share/bash-completion/completions
+        . /usr/local/share/bash-completion/bash_completion.sh
+    elif [[ -r /usr/local/share/bash-completion/bash_completion ]]; then
+        export BASH_COMPLETION_DIR=/usr/local/share/bash-completion/completions
+        . /usr/local/share/bash-completion/bash_completion
+    elif [[ -r /usr/share/bash-completion/bash_completion ]]; then
+        export BASH_COMPLETION_DIR=/usr/share/bash-completion/completions
+        . /usr/share/bash-completion/bash_completion
+    elif [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
+        export BASH_COMPLETION_DIR="/usr/local/etc/bash_completion.d"
+        export BASH_COMPLETION_COMPAT_DIR=$BASH_COMPLETION_DIR
+        . "/usr/local/etc/profile.d/bash_completion.sh"
     fi
 
     # fall back to completions from dotfiles for certain programs
