@@ -71,10 +71,10 @@ static const char *findcursorcmd[]  = { "find-cursor", "-f", "-c#aa33aa", "-l10"
 static const char *dvorakcmd[] = { "then-update-dwm-bar.sh", "setxkbmap-dvorak.sh", NULL };
 static const char *qwertycmd[] = { "then-update-dwm-bar.sh", "setxkbmap-us.sh", NULL };
 
-static const char *monbrightnessinccmd[] = { "setbacklight", "+100", NULL };
-static const char *monbrightnessdeccmd[] = { "setbacklight", "-100", NULL };
-static const char *monbrightnessbiginccmd[] = { "setbacklight", "500", NULL };
-static const char *monbrightnessbigdeccmd[] = { "setbacklight", "-500", NULL };
+static const char *monbrightnessinccmd[] = { "setbacklight", "+1", NULL };
+static const char *monbrightnessdeccmd[] = { "setbacklight", "-1", NULL };
+static const char *monbrightnessbiginccmd[] = { "setbacklight", "+2", NULL };
+static const char *monbrightnessbigdeccmd[] = { "setbacklight", "-2", NULL };
 static const char *kbdbrightnessinccmd[] = { "kb-light.py", "--up", "1", NULL };
 static const char *kbdbrightnessdeccmd[] = { "kb-light.py", "--down", "1", NULL };
 static const char *volumeinccmd[] = { "amixer", "sset", "Master", "1%+", NULL };

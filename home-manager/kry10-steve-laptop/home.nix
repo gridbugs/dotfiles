@@ -54,8 +54,9 @@
         openssl
         curlFull
         pkg-config
-        python3
+        (python3.withPackages (ps: with ps; [ pyyaml ]))
         python3Packages.python-lsp-server
+        clang-tools
         black
         opam
         nodejs
@@ -129,6 +130,12 @@
         wireguard-tools
         picocom
         tree
+        bottom
+        git-repo
+        cmake
+        ninja
+        qemu
+        dtc
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
