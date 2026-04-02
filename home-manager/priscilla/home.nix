@@ -50,6 +50,7 @@
         w3m
         urlscan
         qpdf
+        neovim
       ];
       devPkgs = [
         nodejs
@@ -61,7 +62,7 @@
         mercurial
         darcs
         shellcheck
-        nixfmt-classic
+        nixfmt
         nil
         black
         typescript-language-server
