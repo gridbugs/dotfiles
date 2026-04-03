@@ -1,18 +1,17 @@
-require("config.lazy")
+-- General configuration
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+vim.pack.add(require("plugins"))
+require("config.lsp")
+require("config.commands")
+require("config.completion")
 require("config.catpuccin")
-require("config.neotree")
 require("config.lualine")
 require("config.formatter")
+require("config.fzf")
 require("config.keys")
-require("config.treesitter")
-require("lsp")
-
-require('cmp').setup({
-  sources = {
-    { name = 'nvim_lsp' }, -- enable autocompletion based on lsp
-    { name = 'tags' },  -- enable autocompletion based on ctags
-  }
-})
+require("config.neotree")
 
 -- Load the common vim configuration
 local vimrc = vim.fn.expand("~/.vimrc")

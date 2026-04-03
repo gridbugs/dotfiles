@@ -1,3 +1,5 @@
+-- Configure the catpuccin colour scheme
+
 require("catppuccin").setup({
   flavour = "macchiato",
   color_overrides = {

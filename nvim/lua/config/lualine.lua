@@ -1,5 +1,8 @@
+-- Configure the status line
+
 require('lualine').setup {
   sections = {
+    lualine_a = {},
     lualine_c = {
       {
         'filename',
