@@ -62,7 +62,6 @@
         nodejs
         typescript
         typescript-language-server
-        rust-analyzer
         cargo-watch
         shellcheck
         nil
@@ -70,12 +69,16 @@
         nixfmt
         jujutsu
         ctags
-        (rust-bin.stable.latest.default.override {
+        (rust-bin.nightly.latest.default.override {
           extensions = [
             "rust-src"
             "rust-analysis"
+            "rust-analyzer"
           ];
-          targets = [ "wasm32-unknown-unknown" ];
+          targets = [
+            "wasm32-unknown-unknown"
+            "aarch64-unknown-uefi"
+          ];
         })
       ];
       toolPkgs = [
