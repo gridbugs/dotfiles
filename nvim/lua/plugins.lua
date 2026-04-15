@@ -36,6 +36,13 @@ return {
   "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/MunifTanjim/nui.nvim",
 
+  -- Treesitter
+  "https://github.com/neovim-treesitter/nvim-treesitter",
+
+  -- Git integration
+  "https://github.com/airblade/vim-gitgutter",
+  "https://github.com/tpope/vim-fugitive",
+
   -- Plugins for specific languages
   "https://github.com/rust-lang/rust.vim",
   "https://github.com/ledger/vim-ledger",

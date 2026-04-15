@@ -12,6 +12,8 @@ require("config.formatter")
 require("config.fzf")
 require("config.keys")
 require("config.neotree")
+require("config.treesitter")
+
 
 -- Load the common vim configuration
 local vimrc = vim.fn.expand("~/.vimrc")
