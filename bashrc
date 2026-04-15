@@ -237,9 +237,9 @@ if [[ $- == *i* ]]; then
         fi
 
         if [[ -n "$IN_NIX_SHELL" ]]; then
-            TERMINATOR="$NORMAL_COLOUR\n$LAMBDA_COLOUR λ$PROMPT_COLOUR"
+            TERMINATOR="$NORMAL_COLOUR\n$LAMBDA_COLOURλ$PROMPT_COLOUR"
         else
-            TERMINATOR="$NORMAL_COLOUR\n$DOLLAR_COLOUR \\\$$PROMPT_COLOUR"
+            TERMINATOR="$NORMAL_COLOUR\n$DOLLAR_COLOUR\\\$$PROMPT_COLOUR"
         fi
 
         if [[ -n "$VIRTUAL_ENV" ]]; then
@@ -254,7 +254,7 @@ if [[ $- == *i* ]]; then
             SSH_MESSAGE=""
         fi
 
-        PS1="\n\# $PROMPT_COLOUR\u@\H \w$GIT_MESSAGE$VENV_MESSAGE$SSH_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL_COLOUR "
+        export PS1="\n$PROMPT_COLOUR\u@\H \w$GIT_MESSAGE$VENV_MESSAGE$SSH_MESSAGE$EXIT_CODE_MESSAGE$TERMINATOR$NORMAL_COLOUR "
     }
 
     PROMPT_COMMAND="__prompt_command;$PROMPT_COMMAND"
