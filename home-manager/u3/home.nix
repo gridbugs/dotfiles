@@ -2,6 +2,7 @@
   config,
   pkgs,
   extraPkgs,
+  pkgsStable,
   ...
 }:
 
@@ -108,7 +109,7 @@
         tmate
         dig
         sshfs
-        kicad
+        pkgsStable.kicad
         freecad
         ripgrep
         fd
