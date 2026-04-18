@@ -3,8 +3,8 @@
 local cmp = require("cmp")
 cmp.setup {
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'tags' },
+    { name = 'nvim_lsp' }, -- enable autocompletion based on lsp
+    { name = 'tags' }, -- enable autocompletion based on ctags
   },
   mapping = cmp.mapping.preset.insert({
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Confirm the selected item

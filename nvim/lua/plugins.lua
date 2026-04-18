@@ -27,6 +27,10 @@ return {
   -- Fuzzyfind
   "https://github.com/ibhagwan/fzf-lua",
 
+  -- Git
+  "https://github.com/tpope/vim-fugitive",
+  "https://github.com/airblade/vim-gitgutter",
+
   -- File tree ui
   {
     src = 'https://github.com/nvim-neo-tree/neo-tree.nvim',
