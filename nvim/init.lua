@@ -14,6 +14,7 @@ require("config.keys")
 require("config.neotree")
 require("config.treesitter")
 
+require("extra.digit_blocks")
 
 -- Load the common vim configuration
 local vimrc = vim.fn.expand("~/.vimrc")
