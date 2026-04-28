@@ -34,7 +34,7 @@
     with pkgs;
     let
       common = (import ../common.nix { inherit pkgs; });
-      pixelsize = 14;
+      pixelsize = 12;
       uiPkgs = common.fonts ++ [
         (common.st { inherit pixelsize; })
         (common.dwm { inherit pixelsize; })
