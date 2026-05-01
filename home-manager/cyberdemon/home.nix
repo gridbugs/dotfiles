@@ -1,4 +1,9 @@
-{ config, pkgs, extraPkgs, ... }:
+{
+  config,
+  pkgs,
+  extraPkgs,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -23,16 +28,24 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  home.packages = with pkgs;
+  fonts.fontconfig.enable = true;
+
+  home.packages =
+    with pkgs;
     let
-      terminus-font = (import ../../terminus-font/default.nix { } {
-        terminus_font = terminus_font;
-      }).terminus_font;
-      st = (import ../../st/common.nix {
-        pkgs = pkgs;
-        pixelsize = 16;
-      }).st;
-      mkStSized = { pixelsize }:
+      terminus-font =
+        (import ../../terminus-font/default.nix { } {
+          terminus_font = terminus_font;
+        }).terminus_font;
+      kakwafont = (import ../../kakwafont/default.nix { } pkgs).kakwafont;
+      uw-ttyp0 = (import ../../uw-ttyp0/default.nix { } pkgs).uw-ttyp0;
+      st =
+        (import ../../st/common.nix {
+          pkgs = pkgs;
+          pixelsize = 16;
+        }).st;
+      mkStSized =
+        { pixelsize }:
         (import ../../st/sized.nix {
           pkgs = pkgs;
           pixelsize = pixelsize;
@@ -40,16 +53,33 @@
       st12 = mkStSized { pixelsize = 12; };
       st16 = mkStSized { pixelsize = 16; };
       st24 = mkStSized { pixelsize = 24; };
-      dwm = (import ../../dwm/common.nix {
-        pkgs = pkgs;
-        pixelsize = 16;
-      }).dwm;
+      dwm =
+        (import ../../dwm/common.nix {
+          pkgs = pkgs;
+          pixelsize = 16;
+        }).dwm;
       obs = (import ../../nix/obs.nix { pkgs = pkgs; }).obs;
-      uiPkgs = [ terminus-font st st12 st16 st24 dwm dmenu ];
-      devPkgs = [ binutils gcc gnumake gmp openssl ];
+      uiPkgs = [
+        kakwafont
+        terminus-font
+        uw-ttyp0
+        st
+        st12
+        st16
+        st24
+        dwm
+        dmenu
+      ];
+      devPkgs = [
+        binutils
+        gcc
+        gnumake
+        gmp
+        openssl
+      ];
       toolPkgs = [
         rsync
-        firefox
+        vivaldi
         nomacs
         gimp
         ffmpeg
@@ -60,6 +90,8 @@
         find-cursor
         zathura
         wine
+        neovim
       ];
-    in uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
+    in
+    uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 }
