@@ -12,7 +12,6 @@ require("config.formatter")
 require("config.fzf")
 require("config.keys")
 require("config.neotree")
-require("config.treesitter")
 
 require("extra.digit_blocks")
 

@@ -40,8 +40,6 @@ return {
   "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/MunifTanjim/nui.nvim",
 
-  -- Treesitter
-  "https://github.com/neovim-treesitter/nvim-treesitter",
 
   -- Git integration
   "https://github.com/airblade/vim-gitgutter",
@@ -52,4 +50,5 @@ return {
   "https://github.com/ledger/vim-ledger",
   "https://github.com/LnL7/vim-nix",
   "https://github.com/imsnif/kdl.vim",
+  "https://github.com/elixir-editors/vim-elixir",
 }

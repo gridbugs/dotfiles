@@ -46,8 +46,8 @@
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "cf12346a3414fa1b06af75c79faebe7f76df080a",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+      "rev": "df7489eeea351bece7fd0f9c825be5cb6a1438f0",
+      "src": "https://github.com/neovim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
       "rev": "d7462543c9e366c0d196c7f67a945eaaf5d99414",
@@ -60,6 +60,14 @@
     "rust.vim": {
       "rev": "889b9a7515db477f4cb6808bef1769e53493c578",
       "src": "https://github.com/rust-lang/rust.vim"
+    },
+    "treesitter-parser-registry": {
+      "rev": "6eb15358bb9fc88f0d3401d8538d56652e9bdf3c",
+      "src": "https://github.com/neovim-treesitter/treesitter-parser-registry"
+    },
+    "vim-elixir": {
+      "rev": "6dff29176eb35e025bc94b262bf6d4e517e11f7d",
+      "src": "https://github.com/elixir-editors/vim-elixir"
     },
     "vim-fugitive": {
       "rev": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0",
