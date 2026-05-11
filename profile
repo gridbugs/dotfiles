@@ -112,6 +112,10 @@ export PATH="$HOME/bin:$PATH"
 # In some systems SHELL is shell variable by default. Force it to be an environment variable.
 export SHELL
 
+if [ -z "${USER-}" ]; then
+    export USER=$(id -un)
+fi
+
 # Source the shell config file.
 if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
