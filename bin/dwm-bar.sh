@@ -34,7 +34,7 @@ fi
 
 if type amixer >/dev/null 2>/dev/null; then
     VOLUME=$(amixer sget Master 2> /dev/null | tail -n1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
-    if [ $VOLUME == ""]; then
+    if [ "$VOLUME" == "" ]; then
         MAYBE_VOLUME=""
     else
         MAYBE_VOLUME=" vo $VOLUME |"
@@ -56,5 +56,10 @@ else
     MAYBE_RAM=""
 fi
 
+if type sensors >/dev/null 2>/dev/null; then
+    MAYBE_SENSORS="$(sensors | awk '/CPU fan/ { print "fan " $3 $4 " | " } /CPU temp/ { print "temp "$3 }' | xargs) |"
+else
+    MAYBE_SENSORS=""
+fi
 
-echo "$MAYBE_RAM$MAYBE_KEYMAP$MAYBE_IP$MAYBE_BACKLIGHT$MAYBE_BATT$MAYBE_VOLUME$MAYBE_TIMES_EXTRA $TIME"
+echo "$MAYBE_SENSORS$MAYBE_RAM$MAYBE_KEYMAP$MAYBE_IP$MAYBE_BACKLIGHT$MAYBE_BATT$MAYBE_VOLUME$MAYBE_TIMES_EXTRA $TIME"
