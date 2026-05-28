@@ -25,7 +25,12 @@
 
   home.packages = with pkgs;
     let
-      devPkgs = [ binutils gcc ];
+      devPkgs = [
+        binutils
+        gcc
+
+        cargo
+      ];
       toolPkgs = [
         ripgrep
         htop
@@ -39,7 +44,10 @@
         transmission
         neovim
         mutt
+        urlscan
+        w3m
         fzf
+        ispell
       ];
     in devPkgs ++ toolPkgs ++ extraPkgs;
 }
