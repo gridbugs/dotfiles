@@ -56,10 +56,4 @@ else
     MAYBE_RAM=""
 fi
 
-if type sensors >/dev/null 2>/dev/null; then
-    MAYBE_SENSORS="$(sensors | awk '/CPU fan/ { print "fan " $3 $4 " | " } /CPU temp/ { print "temp "$3 }' | xargs) |"
-else
-    MAYBE_SENSORS=""
-fi
-
-echo "$MAYBE_SENSORS$MAYBE_RAM$MAYBE_KEYMAP$MAYBE_IP$MAYBE_BACKLIGHT$MAYBE_BATT$MAYBE_VOLUME$MAYBE_TIMES_EXTRA $TIME"
+echo "$MAYBE_RAM$MAYBE_KEYMAP$MAYBE_IP$MAYBE_BACKLIGHT$MAYBE_BATT$MAYBE_VOLUME$MAYBE_TIMES_EXTRA $TIME"
