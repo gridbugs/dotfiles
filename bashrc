@@ -213,13 +213,12 @@ if [[ $- == *i* ]]; then
         local EXIT="$?";
 
         local PROMPT_COLOUR="\[\033[01;35m\]"
-        local PROMPT_COLOUR="\[\033[01;35m\]"
         local NORMAL_COLOUR="\[\033[01;0m\]"
         local ERROR_COLOUR="\[\033[01;31m\]"
         local GIT_COLOUR="\[\033[01;32m\]"
         local VENV_COLOUR="\[\033[01;34m\]"
         local SSH_COLOUR="\[\033[01;33m\]"
-        local DOLLAR_COLOUR=$PROMPT_COLOUR
+        local DOLLAR_COLOUR="\[\033[01;36m\]"
         local LAMBDA_COLOUR="\[\033[01;36m\]"
 
         local GIT_MESSAGE EXIT_CODE_MESSAGE TERMINATOR VENV_MESSAGE SSH_MESSAGE
@@ -237,9 +236,9 @@ if [[ $- == *i* ]]; then
         fi
 
         if [[ -n "$IN_NIX_SHELL" ]]; then
-            TERMINATOR="$NORMAL_COLOUR\n$LAMBDA_COLOURλ$PROMPT_COLOUR"
+            TERMINATOR="${NORMAL_COLOUR}\n${LAMBDA_COLOUR}λ${PROMPT_COLOUR}"
         else
-            TERMINATOR="$NORMAL_COLOUR\n$DOLLAR_COLOUR\\\$$PROMPT_COLOUR"
+            TERMINATOR="${NORMAL_COLOUR}\n${DOLLAR_COLOUR}\\\$${PROMPT_COLOUR}"
         fi
 
         if [[ -n "$VIRTUAL_ENV" ]]; then
