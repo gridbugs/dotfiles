@@ -109,7 +109,7 @@
         tmate
         dig
         sshfs
-        pkgsStable.kicad
+        kicad
         freecad
         ripgrep
         fd
