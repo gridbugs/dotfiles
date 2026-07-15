@@ -218,7 +218,7 @@ if [[ $- == *i* ]]; then
         local GIT_COLOUR="\[\033[01;32m\]"
         local VENV_COLOUR="\[\033[01;34m\]"
         local SSH_COLOUR="\[\033[01;33m\]"
-        local DOLLAR_COLOUR="\[\033[01;36m\]"
+        local DOLLAR_COLOUR=$PROMPT_COLOUR
         local LAMBDA_COLOUR="\[\033[01;36m\]"
 
         local GIT_MESSAGE EXIT_CODE_MESSAGE TERMINATOR VENV_MESSAGE SSH_MESSAGE
