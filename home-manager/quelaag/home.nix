@@ -28,7 +28,6 @@
       devPkgs = [
         binutils
         gcc
-
         cargo
       ];
       toolPkgs = [
@@ -41,7 +40,6 @@
         duf
         nil
         nixfmt-classic
-        transmission
         neovim
         mutt
         urlscan
