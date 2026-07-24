@@ -13,7 +13,7 @@
       "src": "https://github.com/mhartington/formatter.nvim"
     },
     "fzf-lua": {
-      "rev": "3f194300c92e3ec2de8f9307d6a7ce988b7b6d0c",
+      "rev": "9ad7340dcc6d2afc30e64fb4088597c7573ed62c",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "kdl.vim": {
@@ -21,11 +21,11 @@
       "src": "https://github.com/imsnif/kdl.vim"
     },
     "lualine.nvim": {
-      "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
+      "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "neo-tree.nvim": {
-      "rev": "08edbf0ca8b5a05086c14c824e139cc67020c718",
+      "rev": "83e7a2982fd12b9c3d35bc39dd5877cd91a02a61",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim",
       "version": "3.0.0 - 4.0.0"
     },
@@ -34,36 +34,28 @@
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
     "nvim": {
-      "rev": "16408d203973da7e43fab87c6f9d3bf7fa98fa8b",
+      "rev": "c7c692a0ad3080710893abbae100171819a3e4be",
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-cmp": {
-      "rev": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",
+      "rev": "2ffe79f1f021def8dd1fcd81deb16f1bb0d989f3",
       "src": "https://github.com/hrsh7th/nvim-cmp"
     },
     "nvim-lspconfig": {
-      "rev": "8e2084bf5e40c79c1f42210a6ef96a0a4793a763",
+      "rev": "d592c1e6ad9a0a01b3d5ed3f0345d68407167181",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
-    "nvim-treesitter": {
-      "rev": "df7489eeea351bece7fd0f9c825be5cb6a1438f0",
-      "src": "https://github.com/neovim-treesitter/nvim-treesitter"
-    },
     "nvim-web-devicons": {
-      "rev": "d7462543c9e366c0d196c7f67a945eaaf5d99414",
+      "rev": "2ae6958df7ced50baac5035cec0c15799eedfbf7",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "plenary.nvim": {
-      "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "rust.vim": {
       "rev": "889b9a7515db477f4cb6808bef1769e53493c578",
       "src": "https://github.com/rust-lang/rust.vim"
-    },
-    "treesitter-parser-registry": {
-      "rev": "6eb15358bb9fc88f0d3401d8538d56652e9bdf3c",
-      "src": "https://github.com/neovim-treesitter/treesitter-parser-registry"
     },
     "vim-elixir": {
       "rev": "6dff29176eb35e025bc94b262bf6d4e517e11f7d",
@@ -74,7 +66,7 @@
       "src": "https://github.com/tpope/vim-fugitive"
     },
     "vim-gitgutter": {
-      "rev": "55b368d4c68541775b4b253d3c98d3145b695c24",
+      "rev": "90b75207bd9b55d8ac4af15f72b4e935462014d0",
       "src": "https://github.com/airblade/vim-gitgutter"
     },
     "vim-ledger": {
