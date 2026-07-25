@@ -126,7 +126,7 @@
         vim
         net-tools
         traceroute
-        wireshark-qt
+        wireshark
       ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
