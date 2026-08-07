@@ -100,25 +100,26 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-    /* 8 normal colors (Mocha) */
-    "#45475a", /* 0  Black          (Mocha Surface 1)      */
-    "#f38ba8", /* 1  Red            (Mocha)                */
-    "#63bd5c", /* 2  Green          (Mocha)                */
-    "#f9e2af", /* 3  Yellow         (Mocha)                */
-    "#6398ee", /* 4  Blue           (Mocha)                */
-    "#f5c2e7", /* 5  Magenta        (Mocha Pink)           */
-    "#94e2d5", /* 6  Cyan           (Mocha Teal)           */
-    "#d9deee", /* 7  White          (Mocha Subtext 1)      */
 
-    /* 8 bright colors (Macchiato) */
-    "#494d64", /* 8  Bright Black   (Macchiato Surface 2)  */
-    "#ed8796", /* 9  Bright Red     (Macchiato)            */
-    "#a6da95", /* 10 Bright Green   (Macchiato)            */
-    "#eed49f", /* 11 Bright Yellow  (Macchiato)            */
-    "#8aadf4", /* 12 Bright Blue    (Macchiato)            */
-    "#f5bde6", /* 13 Bright Magenta (Macchiato Pink)       */
-    "#8bd5ca", /* 14 Bright Cyan    (Macchiato Teal)       */
-    "#cad3f5", /* 15 Bright White   (Macchiato Text)       */
+    // 8 normal colors
+    "#45475a", // 0  Black
+    "#f38ba8", // 1  Red
+    "#63bd5c", // 2  Green
+    "#df8e1d", // 3  Yellow
+    "#6398ee", // 4  Blue
+    "#f5c2e7", // 5  Magenta
+    "#94e2d5", // 6  Cyan
+    "#848997", // 7  White
+
+    // 8 bright colors
+    "#494d64", // 8  Bright Black
+    "#ed8796", // 9  Bright Red
+    "#a6da95", // 10 Bright Green
+    "#eed49f", // 11 Bright Yellow
+    "#8aadf4", // 12 Bright Blue
+    "#f5bde6", // 13 Bright Magenta
+    "#8bd5ca", // 14 Bright Cyan
+    "#cad3f5", // 15 Bright White
 
 [256] = "#CAD3F5", /* default foreground colour */
 [257] = "#1b1d2a", /* default background colour */
