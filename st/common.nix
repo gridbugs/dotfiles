@@ -56,7 +56,7 @@ in
         # Post patch logic seems only to be necessary on macos or if the st
         # config is supplied via machinery in its nix package which isn't the
         # case for my usage.
-        postPatch = "";
+        postPatch = "cp ${old.configFile} config.def.h";
       });
 
 }
