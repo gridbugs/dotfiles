@@ -49,5 +49,14 @@ in
         preBuild = ''
           buildFlagsArray+=(USERCFLAGS=-DUSERFONT="\"\\\"${"Ttyp0 OTB:pixelsize=${toString pixelsize}"}\\\"\"")
         '';
+
+        # Workaround for broken postPatch command on linux.
+        # Build error was:
+        #   cp: unrecognized option '--replace-fail'
+        # Post patch logic seems only to be necessary on macos or if the st
+        # config is supplied via machinery in its nix package which isn't the
+        # case for my usage.
+        postPatch = "";
       });
+
 }

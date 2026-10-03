@@ -106,7 +106,6 @@
         gh
         audacity
         imagemagick
-        tmate
         dig
         sshfs
         kicad
