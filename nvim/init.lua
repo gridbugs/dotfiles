@@ -6,7 +6,6 @@ vim.pack.add(require("plugins"))
 require("config.lsp")
 require("config.commands")
 require("config.completion")
-require("config.catpuccin")
 require("config.lualine")
 require("config.formatter")
 require("config.fzf")
@@ -14,6 +13,9 @@ require("config.keys")
 require("config.neotree")
 
 require("extra.digit_blocks")
+
+vim.o.background = "dark"
+vim.cmd([[colorscheme gruvbox]])
 
 -- Load the common vim configuration
 local vimrc = vim.fn.expand("~/.vimrc")

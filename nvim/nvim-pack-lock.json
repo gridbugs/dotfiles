@@ -16,6 +16,10 @@
       "rev": "9ad7340dcc6d2afc30e64fb4088597c7573ed62c",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
+    "gruvbox.nvim": {
+      "rev": "154eb5ff5b96d0641307113fa385eaf0d36d9796",
+      "src": "https://github.com/ellisonleao/gruvbox.nvim"
+    },
     "kdl.vim": {
       "rev": "b84d7d3a15d8d30da016cf9e98e2cfbe35cddee5",
       "src": "https://github.com/imsnif/kdl.vim"

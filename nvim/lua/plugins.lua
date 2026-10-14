@@ -12,8 +12,8 @@ return {
   -- Alternative formatting from LSP
   "https://github.com/mhartington/formatter.nvim",
 
-  -- Catppuccin colour scheme
-  "https://github.com/catppuccin/nvim",
+  -- Gruvbox colour scheme
+  "https://github.com/ellisonleao/gruvbox.nvim",
 
   -- Multiple cursors
   "https://github.com/mg979/vim-visual-multi",
