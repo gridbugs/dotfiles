@@ -1,3 +1,3 @@
 #!/bin/sh
 set -eu
-setxkbmap -option caps:swapescape us(dvorak)
+setxkbmap us dvorak -option caps:swapescape -option altwin:swap_alt_win
