@@ -25,9 +25,6 @@ if [[ $- == *i* ]]; then
     alias sudo='sudo '
     alias doas='doas '
 
-    # Allow bash completion of commands through doas
-    complete -F _command doas
-
     # Some handy aliases
     alias tmp='pushd $(mktemp -d)'
     alias rebash='. $HOME/.bashrc'
