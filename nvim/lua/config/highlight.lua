@@ -1,0 +1,6 @@
+vim.api.nvim_set_hl(0, "@markup.heading.1.markdown", { fg = "#ff6c6b", bold = true })
+vim.api.nvim_set_hl(0, "@markup.heading.2.markdown", { fg = "#da8548", bold = true })
+vim.api.nvim_set_hl(0, "@markup.heading.3.markdown", { fg = "#ecbe7b", bold = true })
+vim.api.nvim_set_hl(0, "@markup.heading.4.markdown", { fg = "#98be65", bold = true })
+vim.api.nvim_set_hl(0, "@markup.heading.5.markdown", { fg = "#51afef", bold = true })
+vim.api.nvim_set_hl(0, "@markup.heading.6.markdown", { fg = "#c678dd", bold = true })
