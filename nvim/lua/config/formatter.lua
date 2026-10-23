@@ -13,15 +13,17 @@ function has_noformat()
 end
 
 function format_c()
+  if vim.fn.executable("clang-format") ~= 1 then
+    return nil
+  end
   if has_noformat() then
     return nil
-  else
-    return {
-      exe = "clang-format",
-      args = { "-i" },
-      stdin = false,
-    }
   end
+  return {
+    exe = "clang-format",
+    args = { "-i" },
+    stdin = false,
+  }
 end
 
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
