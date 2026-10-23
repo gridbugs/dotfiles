@@ -48,85 +48,15 @@
         dmenu
         unclutter-xfixes
       ];
-      devPkgs = [
-        binutils
-        gcc
-        gdb
-        gnumake
-        openssl
-        curlFull
-        pkg-config
-        python3
-        python3Packages.python-lsp-server
-        black
-        opam
-        nodejs
-        typescript
-        typescript-language-server
-        rustc
-        cargo
-        clippy
-        rustPlatform.rustLibSrc
-        rust-analyzer
-        cargo-watch
-        rustfmt
-        shellcheck
-        nil
-        nixfmt
-        jujutsu
-        ctags
+      devPkgs = common.devPkgs ++ [
       ];
-      toolPkgs = [
-        obs-studio
-        flowblade
-        ledger
-        ispell
-        vivaldi
-        mutt
-        zoom-us
-        zathura
-        nomacs
-        vlc
-        mplayer
-        gimp
-        inkscape
-        ffmpeg
-        fzf
-        pavucontrol
-        megasync
-        file
-        discord
-        ncdu
-        wine
-        arandr
-        nmap
-        unzip
-        p7zip
-        find-cursor
-        gh
-        audacity
-        imagemagick
-        dig
-        sshfs
-        kicad
-        freecad
-        ripgrep
-        fd
-        bat
-        eza
-        dua
-        broot
-        duf
-        remmina
-        w3m
-        urlscan
-        qpdf
-        neovim
-        vim
-        net-tools
-        traceroute
-        wireshark
-      ];
+      toolPkgs =
+        common.toolPkgs
+        ++ common.toolPkgsGraphical
+        ++ [
+          kicad
+          freecad
+        ];
     in
     uiPkgs ++ devPkgs ++ toolPkgs ++ extraPkgs;
 
