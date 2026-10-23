@@ -12,6 +12,18 @@ function has_noformat()
   return file_exists(".noformat")
 end
 
+function format_c()
+  if has_noformat() then
+    return nil
+  else
+    return {
+      exe = "clang-format",
+      args = { "-i" },
+      stdin = false,
+    }
+  end
+end
+
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 require("formatter").setup {
   -- Enable or disable logging
@@ -72,6 +84,8 @@ require("formatter").setup {
         end
       end
     },
+    c = { format_c },
+    cpp = { format_c },
   }
 }
 local augroup = vim.api.nvim_create_augroup
