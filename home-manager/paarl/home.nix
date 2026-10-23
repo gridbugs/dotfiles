@@ -24,23 +24,19 @@
   programs.direnv.nix-direnv.enable = true;
 
   home.packages = with pkgs; [
-    firefox
+    vivaldi
     neovim
     unzip
     opam
-    ocamlformat
-    ocamlPackages.ocaml-lsp
     binutils
     gcc
     gnumake
     gmp
     openssl
-    pkg-config
-    ocamlformat
     ripgrep
     wine
     nil
-    nixfmt-classic
+    nixfmt
   ];
 
   # Allows rust-analyzer to find the rust source
