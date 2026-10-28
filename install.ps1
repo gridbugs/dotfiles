@@ -13,3 +13,4 @@ function ReplaceDir {
 }
 
 ReplaceDir -Path "$PSScriptRoot\nvim" -Destination "$HOME\AppData\Local\nvim"
+Copy-Item -Path "$PSScriptRoot\vimrc" -Destination "$HOME\.vimrc"
