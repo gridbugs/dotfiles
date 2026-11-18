@@ -45,17 +45,20 @@ if [[ $- == *i* ]]; then
     export LS_COLORS='di=1;34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=1;30;42:ow=1;30;43'
     if type eza 2>/dev/null >/dev/null; then
         alias ls='eza --group-directories-first --git'
-        alias l='eza --group-directories-first --git --icons=auto'
         alias ll='eza --group-directories-first --git --icons=auto -l'
     elif type gls 2>/dev/null >/dev/null; then
         alias ls='gls --color --human-readable --group-directories-first'
+        alias ll='gls --color --human-readable --group-directories-first -l'
     elif type colorls 2>/dev/null >/dev/null; then
         alias ls='colorls -G'
+        alias ll='colorls -G -l'
     elif ls --color --group-directories-first 2>/dev/null >/dev/null; then
         alias ls='ls --color --group-directories-first'
+        alias ll='ls --color --group-directories-first -l'
     elif ls --color 2>/dev/null >/dev/null; then
         # freebsd appears to understand --color, but not --group-directories-first
         alias ls='ls --color'
+        alias ll='ls --color -l'
     fi
 
     export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
