@@ -41,10 +41,11 @@
     ocamlformat
     ocamlPackages.ocaml-lsp
     gdb
-    neovim
-    wine64
     nixfmt-classic
     nil
     fzf
+    dua
+    duf
+    eza
   ] ++ extraPkgs;
 }
