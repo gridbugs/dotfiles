@@ -31,6 +31,17 @@
 
   fonts.fontconfig.enable = true;
 
+  programs.obsidian = {
+    enable = true;
+
+    vaults.notes.target = "obsidian";
+
+    defaultSettings.app = {
+      alwaysUpdateLinks = true;
+      spellcheck = true;
+    };
+  };
+
   home.packages =
     with pkgs;
     let
