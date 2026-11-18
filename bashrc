@@ -66,9 +66,8 @@ if [[ $- == *i* ]]; then
     export HISTFILESIZE=100000
     shopt -s histappend
 
-    # Start keychain if it is installed
-    if type keychain 2>/dev/null >/dev/null && [[ $(basename "$SHELL") == "bash" ]] && [[ -e "$HOME/.ssh/id_rsa" ]]; then
-       eval "$(keychain --quiet --agents ssh id_rsa --eval)"
+    if type keychain 2>/dev/null >/dev/null && [[ $(basename "$SHELL") == "bash" ]] && [[ -e "$HOME/.ssh" ]]; then
+       eval "$(keychain --quiet --eval)"
     fi
 
     # Lazily load NVM to speed up bashrc
